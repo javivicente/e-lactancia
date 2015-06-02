@@ -1,0 +1,4 @@
+# exclude pyc files
+/django_project/django_project/*.pyc
+/djang_project/lactancia/*.pyc
+/djang_project/lactancia/migrations/*.pyc
