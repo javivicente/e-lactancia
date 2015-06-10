@@ -1,0 +1,22 @@
+# Crawler de Bing
+User-agent: bingbot
+
+User-agent: *
+Disallow: /admin/
+Disallow: /actualizar_listas
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /buscar?=*
+Disallow: /search?=*
+Disallow: /resultados?q=*
+Disallow: /results?q=*
+Disallow: /producto/*
+Disallow: /grupo/*
+Disallow: /marca/*
+Disallow: /alias/*
+Disallow: /product/*
+Disallow: /group/*
+Disallow: /trademark/*
+Disallow: /alias_en/*
+
+

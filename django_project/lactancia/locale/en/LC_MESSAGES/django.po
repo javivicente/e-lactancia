@@ -1,0 +1,599 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-09 16:35+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lactancia/admin.py:34 lactancia/models.py:26
+msgid "Grupos relacionados"
+msgstr ""
+
+#: lactancia/admin.py:37 lactancia/admin.py:107 lactancia/admin.py:148
+#: lactancia/admin.py:188
+msgid "Visitas y fechas"
+msgstr ""
+
+#: lactancia/admin.py:101
+msgid "Países donde se comercializa"
+msgstr ""
+
+#: lactancia/admin.py:104
+msgid "Principios activos"
+msgstr ""
+
+#: lactancia/admin.py:142
+msgid "Alias"
+msgstr ""
+
+#: lactancia/admin.py:145 lactancia/admin.py:185
+msgid "Nombre Principal"
+msgstr ""
+
+#: lactancia/admin.py:182
+msgid "Otras escrituras"
+msgstr ""
+
+#: lactancia/admin.py:273
+msgid "Enlaces"
+msgstr ""
+
+#: lactancia/admin.py:276
+msgid "Productos que cita este trabajo"
+msgstr ""
+
+#: lactancia/admin.py:306
+msgid "Artículos"
+msgstr ""
+
+#: lactancia/admin.py:479
+msgid "Nombre(s)"
+msgstr ""
+
+#: lactancia/admin.py:480 lactancia/models.py:126
+msgid "Marcas"
+msgstr ""
+
+#: lactancia/admin.py:481
+msgid "Riesgo y Grupos"
+msgstr ""
+
+#: lactancia/admin.py:482 lactancia/models.py:73
+msgid "Comentario"
+msgstr ""
+
+#: lactancia/admin.py:483 lactancia/models.py:130
+msgid "Alternativas"
+msgstr ""
+
+#: lactancia/admin.py:484
+msgid "Farmac"
+msgstr ""
+
+#: lactancia/admin.py:485 lactancia/models.py:207 lactancia/models.py:208
+msgid "Biblio"
+msgstr ""
+
+#: lactancia/admin.py:486
+msgid "Visitas/Opiniones"
+msgstr ""
+
+#: lactancia/admin.py:521
+msgid "Comentario sobre:"
+msgstr ""
+
+#: lactancia/admin.py:524
+msgid "Del usuario:"
+msgstr ""
+
+#: lactancia/admin.py:527
+msgid "Texto:"
+msgstr ""
+
+#: lactancia/models.py:12 lactancia/models.py:55 lactancia/models.py:70
+#: lactancia/models.py:395 lactancia/models.py:466 lactancia/models.py:469
+msgid "Nombre"
+msgstr ""
+
+#: lactancia/models.py:13 lactancia/models.py:80 lactancia/models.py:179
+#: lactancia/models.py:219 lactancia/models.py:254 lactancia/models.py:284
+#: lactancia/models.py:401 lactancia/models.py:478 lactancia/models.py:578
+msgid "Fecha de creación"
+msgstr ""
+
+#: lactancia/models.py:14 lactancia/models.py:81 lactancia/models.py:180
+#: lactancia/models.py:220 lactancia/models.py:255 lactancia/models.py:285
+#: lactancia/models.py:402 lactancia/models.py:579
+msgid "Última modificación"
+msgstr ""
+
+#: lactancia/models.py:15
+msgid "grupos con los que se relaciona"
+msgstr ""
+
+#: lactancia/models.py:22 lactancia/models.py:97
+msgid "Traducido"
+msgstr ""
+
+#: lactancia/models.py:31
+msgid "Hay grupos relacionados"
+msgstr ""
+
+#: lactancia/models.py:35
+msgid "Nº productos"
+msgstr ""
+
+#: lactancia/models.py:39 lactancia/models.py:142
+msgid "Nº visitas"
+msgstr ""
+
+#: lactancia/models.py:45 lactancia/models.py:148 lactancia/models.py:240
+#: lactancia/models.py:271 lactancia/models.py:372
+msgid "Nuevas opiniones"
+msgstr ""
+
+#: lactancia/models.py:56
+msgid "Descripción"
+msgstr ""
+
+#: lactancia/models.py:60
+msgid "Número de productos"
+msgstr ""
+
+#: lactancia/models.py:72
+msgid "Nivel de riesgo"
+msgstr ""
+
+#: lactancia/models.py:74
+msgid "No puede tener alternativas"
+msgstr ""
+
+#: lactancia/models.py:74
+msgid ""
+"Marca esta casilla si no tiene sentido que el término tenga altenativas. Por "
+"ejemplo, una enfermedad congénita o adquirida."
+msgstr ""
+
+#: lactancia/models.py:75
+msgid "Lista de productos alternativos"
+msgstr ""
+
+#: lactancia/models.py:76
+msgid "Tiene bibliografia (añadida o pendiente de añadir)"
+msgstr ""
+
+#: lactancia/models.py:76
+msgid ""
+"Indica si el producto poseera referencias bibliográficas. Si no las va a "
+"tener ni ahora ni en el futuro, debe desmarcarse esta casilla. Ejemplos de "
+"productos que pueden no tener bibliografía asociada son los de Fitoterapia"
+msgstr ""
+
+#: lactancia/models.py:77
+msgid "bibliografia"
+msgstr ""
+
+#: lactancia/models.py:78
+msgid "Importar biblio con fichero CSV"
+msgstr ""
+
+#: lactancia/models.py:79
+msgid "Listado de marcas comerciales"
+msgstr ""
+
+#: lactancia/models.py:82
+msgid "Peso molecular"
+msgstr ""
+
+#: lactancia/models.py:83
+msgid "Unión proteínas"
+msgstr ""
+
+#: lactancia/models.py:84
+msgid "Volumen de distribución"
+msgstr ""
+
+#: lactancia/models.py:85
+msgid "Índice Leche/Plasma"
+msgstr ""
+
+#: lactancia/models.py:86
+msgid "Tiempo máximo"
+msgstr ""
+
+#: lactancia/models.py:87
+msgid "Tiempo medio"
+msgstr ""
+
+#: lactancia/models.py:88
+msgid "Biodisponibilidad"
+msgstr ""
+
+#: lactancia/models.py:89
+msgid "Dosis teórica del lactante"
+msgstr ""
+
+#: lactancia/models.py:90
+msgid "Dosis relativa del lactante"
+msgstr ""
+
+#: lactancia/models.py:91
+msgid "Porcentaje de la dosis terapéutica"
+msgstr ""
+
+#: lactancia/models.py:102
+msgid "Hay alias"
+msgstr ""
+
+#: lactancia/models.py:108
+msgid "Hay alternativas"
+msgstr ""
+
+#: lactancia/models.py:113
+msgid "Tiene biblio"
+msgstr ""
+
+#: lactancia/models.py:117
+msgid "Nº refs. bibliográficas"
+msgstr ""
+
+#: lactancia/models.py:122
+msgid "Hay marcas"
+msgstr ""
+
+#: lactancia/models.py:134
+msgid "Grupo(s)"
+msgstr ""
+
+#: lactancia/models.py:138
+msgid "Grupo inglés(s)"
+msgstr ""
+
+#: lactancia/models.py:165
+msgid "Tiene Farmac."
+msgstr ""
+
+#: lactancia/models.py:171
+msgid "Título"
+msgstr ""
+
+#: lactancia/models.py:172
+msgid "Autores"
+msgstr ""
+
+#: lactancia/models.py:173
+msgid "Revista"
+msgstr ""
+
+#: lactancia/models.py:174
+msgid "Año"
+msgstr ""
+
+#: lactancia/models.py:175
+msgid "Enlace al abstract del artículo"
+msgstr ""
+
+#: lactancia/models.py:176
+msgid "Enlace al texto completo del artículo"
+msgstr ""
+
+#: lactancia/models.py:177
+msgid "Documento PDF"
+msgstr ""
+
+#: lactancia/models.py:177
+msgid ""
+"Sube el pdf del artículo únicamente si no está disponible en ningún enlace "
+"externo. De lo contrario, usa los campos de enlaces al abstract o al texto "
+"completo."
+msgstr ""
+
+#: lactancia/models.py:178
+msgid "Productos que referencian este trabajo"
+msgstr ""
+
+#: lactancia/models.py:190
+msgid "Hay productos que lo referencian"
+msgstr ""
+
+#: lactancia/models.py:196
+msgid "PDF adjunto"
+msgstr ""
+
+#: lactancia/models.py:200
+msgid "Referencia en"
+msgstr ""
+
+#: lactancia/models.py:212
+msgid "Publicada en"
+msgstr ""
+
+#: lactancia/models.py:217 lactancia/models.py:252
+msgid "Nombre principal del producto"
+msgstr ""
+
+#: lactancia/models.py:218
+msgid "Sinónimo del producto"
+msgstr ""
+
+#: lactancia/models.py:218
+msgid ""
+"Nombre en español. Si tiene traducción al inglés, ponla en el campo del "
+"nombre en inglés. Sino, deja el campo del nombre en inglés vacío."
+msgstr ""
+
+#: lactancia/models.py:224
+msgid "Sinónimos de productos"
+msgstr ""
+
+#: lactancia/models.py:225
+msgid "Sinónimo de producto"
+msgstr ""
+
+#: lactancia/models.py:230
+msgid "En inglés y español"
+msgstr ""
+
+#: lactancia/models.py:234 lactancia/models.py:265 lactancia/models.py:366
+msgid "Número de visitas"
+msgstr ""
+
+#: lactancia/models.py:253
+msgid "Producto en otras escrituras"
+msgstr ""
+
+#: lactancia/models.py:259 lactancia/models.py:260
+msgid "Otras escrituras del producto"
+msgstr ""
+
+#: lactancia/models.py:282
+msgid "Nombre comercial"
+msgstr ""
+
+#: lactancia/models.py:283
+msgid "País donde se comercializa"
+msgstr ""
+
+#: lactancia/models.py:286
+msgid "Listado de principios activos"
+msgstr ""
+
+#: lactancia/models.py:294 lactancia/models.py:408
+msgid "Traducido al inglés"
+msgstr ""
+
+#: lactancia/models.py:299
+msgid "Compuesto"
+msgstr ""
+
+#: lactancia/models.py:354
+msgid "Tiene principios"
+msgstr ""
+
+#: lactancia/models.py:358
+msgid "Principios Activos"
+msgstr ""
+
+#: lactancia/models.py:362
+msgid "Principios Activos inglés"
+msgstr ""
+
+#: lactancia/models.py:383
+msgid "información"
+msgstr ""
+
+#: lactancia/models.py:384
+msgid "éxito"
+msgstr ""
+
+#: lactancia/models.py:385
+msgid "alerta"
+msgstr ""
+
+#: lactancia/models.py:386
+msgid "peligro"
+msgstr ""
+
+#: lactancia/models.py:389
+msgid "cambio en nivel del riesgo"
+msgstr ""
+
+#: lactancia/models.py:390
+msgid "mensaje en variable farmacocinética"
+msgstr ""
+
+#: lactancia/models.py:391
+msgid "mensaje sobre copyrigh de marcas"
+msgstr ""
+
+#: lactancia/models.py:392
+msgid "mensaje sobre el uso de e-lactancia"
+msgstr ""
+
+#: lactancia/models.py:393
+msgid "comentario de usuarios"
+msgstr ""
+
+#: lactancia/models.py:396
+msgid "Nivel del mensaje"
+msgstr ""
+
+#: lactancia/models.py:397
+msgid "Tipo de mensaje (nivel)"
+msgstr ""
+
+#: lactancia/models.py:398
+msgid "Título mensaje"
+msgstr ""
+
+#: lactancia/models.py:399
+msgid "Cuerpo del mensaje"
+msgstr ""
+
+#: lactancia/models.py:400
+msgid "Producto vinculado a este mensaje"
+msgstr ""
+
+#: lactancia/models.py:418
+msgid "Alerta 1 mes"
+msgstr ""
+
+#: lactancia/models.py:425
+msgid "Alerta 3 meses"
+msgstr ""
+
+#: lactancia/models.py:433 lactancia/models.py:510
+msgid "Pediatra"
+msgstr ""
+
+#: lactancia/models.py:434 lactancia/models.py:512
+msgid "Ginecóloga/o"
+msgstr ""
+
+#: lactancia/models.py:435 lactancia/models.py:516
+msgid "Médico de familia"
+msgstr ""
+
+#: lactancia/models.py:436
+msgid "Otra especialidad médica"
+msgstr ""
+
+#: lactancia/models.py:437 lactancia/models.py:518
+msgid "Matrona"
+msgstr ""
+
+#: lactancia/models.py:438 lactancia/models.py:520
+msgid "Enfermera/o"
+msgstr ""
+
+#: lactancia/models.py:439 lactancia/models.py:522
+msgid "Farmacéutico/a"
+msgstr ""
+
+#: lactancia/models.py:440 lactancia/models.py:524
+msgid "Otro sanitario"
+msgstr ""
+
+#: lactancia/models.py:441 lactancia/models.py:526
+msgid "Consultora lactancia (IBCLC, OMS)"
+msgstr ""
+
+#: lactancia/models.py:442 lactancia/models.py:528
+msgid "Grupo de apoyo"
+msgstr ""
+
+#: lactancia/models.py:443 lactancia/models.py:530
+msgid "Doula"
+msgstr ""
+
+#: lactancia/models.py:444 lactancia/models.py:532
+msgid "Madre/Padre"
+msgstr ""
+
+#: lactancia/models.py:445 lactancia/models.py:534
+msgid "Otro"
+msgstr ""
+
+#: lactancia/models.py:446 lactancia/models.py:536
+msgid "Anónimo"
+msgstr ""
+
+#: lactancia/models.py:467
+msgid "Dirección IP"
+msgstr ""
+
+#: lactancia/models.py:468
+msgid "e-Mail"
+msgstr ""
+
+#: lactancia/models.py:470
+msgid "Tipo de usuario (perfil)"
+msgstr ""
+
+#: lactancia/models.py:471
+msgid "Type of user (profile)"
+msgstr ""
+
+#: lactancia/models.py:472
+msgid "Ciudad"
+msgstr ""
+
+#: lactancia/models.py:473
+msgid "Longitud"
+msgstr ""
+
+#: lactancia/models.py:474
+msgid "Latitud"
+msgstr ""
+
+#: lactancia/models.py:475
+msgid "País"
+msgstr ""
+
+#: lactancia/models.py:476
+msgid "Código país"
+msgstr ""
+
+#: lactancia/models.py:477
+msgid "Código país 3"
+msgstr ""
+
+#: lactancia/models.py:483
+msgid "Visitas"
+msgstr ""
+
+#: lactancia/models.py:489
+msgid "Última visita"
+msgstr ""
+
+#: lactancia/models.py:494
+msgid "Comentarios"
+msgstr ""
+
+#: lactancia/models.py:500
+msgid "Visitante"
+msgstr ""
+
+#: lactancia/models.py:501
+msgid "Visitantes"
+msgstr ""
+
+#: lactancia/models.py:514
+msgid "Otra especialidad medica"
+msgstr ""
+
+#: lactancia/models.py:559
+msgid "Término visitado"
+msgstr ""
+
+#: lactancia/models.py:564
+msgid "ha visitado"
+msgstr ""
+
+#: lactancia/models.py:569
+msgid "Opinión"
+msgstr ""
+
+#: lactancia/models.py:570
+msgid "Opinión ya leída"
+msgstr ""
+
+#: lactancia/models.py:577
+msgid "Idioma"
+msgstr ""
+
+#: lactancia/models.py:594
+msgid "Término"
+msgstr ""

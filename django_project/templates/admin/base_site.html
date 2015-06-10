@@ -1,0 +1,71 @@
+{% extends "admin/base.html" %}
+{% load admin_static %}
+{% load i18n %}
+{# Additional <head> content here, some extra meta tags or favicon #}
+{% block extrahead %}
+<link href="{{STATIC_URL}}favicon.ico" rel="icon" type="image/x-icon">
+{% endblock %}
+
+
+{# Additional CSS includes #}
+{#{% block extrastyle %}#}
+{#  <link rel="stylesheet" type="text/css" href="{% static 'css/my_project.css' %}" media="all">#}
+{#{% endblock %}#}
+
+
+{# Additional JS files in footer, right before </body> #}
+{% block extrajs %}
+<script>
+$(document).ready(function(){
+  $('.viewsitelink').attr('target', '_blank');
+  $('.file-upload > a').attr('target', '_blank');
+});
+</script>
+{% endblock %}
+
+
+{# Additional header content like notifications or language switcher #}
+{% block header_content %}
+    {{ block.super }}
+    <div class="header-content">
+        <!-- Second icon column -->
+        <div class="header-column icon">
+        </div>
+        <div class="header-column">
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="" />
+                <select name="language" onchange="this.form.submit()">
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                            {{ language.name_local }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+{# Footer links (left side) #}
+{% block footer_links %}
+<a href="mailto:contact@javivicente.net" class="icon"><i class="icon-envelope"></i>contact@javivicente.net</a>
+<a class="icon"><i class="icon-comment"></i>+34 625 93 96 42</a>
+{#  <a href="{% url 'lactancia:lista_negra' %}" target="_blank" class="icon"><i class="icon-exclamation-sign"></i>Lista negra de productos</a> #}
+
+{% endblock %}
+
+
+
+
+{# Footer branding name (center) #}
+{#{% block footer_branding %}#}
+{#{% endblock %}#}
+
+
+{# Footer copyright (right side) #}
+{% block copyright %}
+  &copy; 2015 Apilam<br>Desarrollado por <a href="http://www.apilam.org" target="_blank">Apilam</a>
+{% endblock %}
