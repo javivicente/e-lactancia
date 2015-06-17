@@ -74,7 +74,7 @@ ALLOWED_HOSTS = ['188.166.122.21', '0.0.0.0:9000', '127.0.0.1:9000',]
 
 LANGUAGE_CODE = 'es-ES'
 
-SITE_ID = 1
+SITE_ID = 1 
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -132,6 +132,7 @@ gettext = lambda s: s
 LANGUAGES= (
     ('en', _(u'Inglés')),
     ('es', _(u'Español')),
+    
 )
 
 MODELTRANSLATION_LANGUAGES = ('en', 'es')

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-09 16:35+0200\n"
+"POT-Creation-Date: 2015-06-12 12:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,50 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: django_project/settings.py:135
+#: django_project/settings.py:133
 msgid "Inglés"
 msgstr ""
 
-#: django_project/settings.py:136
+#: django_project/settings.py:134
 msgid "Español"
 msgstr ""
 
-#: django_project/settings.py:159
-msgid "Productos, alias y marcas"
+#: django_project/settings.py:157
+msgid "Productos"
 msgstr ""
 
-#: django_project/settings.py:160
+#: django_project/settings.py:158
+msgid "Marcas"
+msgstr ""
+
+#: django_project/settings.py:159
 msgid "Riesgo, Grupos y Bibliografia"
 msgstr ""
 
-#: django_project/settings.py:161
-msgid "Mensajes, comentarios y usuarios"
+#: django_project/settings.py:160
+msgid "Mensajes y comentarios"
+msgstr ""
+
+#: templates/admin/base.html:38
+msgid "Administración"
+msgstr ""
+
+#: templates/admin/base.html:66
+msgid "Welcome,"
+msgstr ""
+
+#: templates/admin/base.html:74
+msgid "Documentation"
+msgstr ""
+
+#: templates/admin/base.html:77
+msgid "Change password"
+msgstr ""
+
+#: templates/admin/base.html:79
+msgid "Log out"
+msgstr ""
+
+#: templates/admin/base.html:99
+msgid "Home"
 msgstr ""

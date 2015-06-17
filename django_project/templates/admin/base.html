@@ -35,7 +35,7 @@
           <!-- Header -->
           <div id="header" class="header" style="height: 90px!important;">
             <div id="branding" >
-              <a href="{% url 'admin:index' %}"><h1 id="site-name text-center" >{% trans 'Administración' %} <br><img src="{% get_static_prefix %}img/logo-sombra.png" width="150" height="48"/></h1></a>
+              <a href="{% url 'admin:index' %}"><h1 id="site-name" style="text-align: center;">{% trans 'Administración' %} <br><img src="{% get_static_prefix %}img/logo-sombra.png" width="150" height="48"/></h1></a>
             </div>
 
             {% block header_time %}

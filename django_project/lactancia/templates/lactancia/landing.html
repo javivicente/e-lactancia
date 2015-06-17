@@ -1,0 +1,125 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %} {% load static %} 
+{% block style %}
+<link href="{{STATIC_URL}}css/landing.css" rel="stylesheet">
+<meta name="alexaVerifyID" content="i6GOufykI4G0GqzPWU9HIEn3U4U"/>
+{% endblock %}
+
+
+{% block topbar_brand %}
+{% endblock %}
+{% block topbar_search %}
+{% endblock %}
+
+
+
+{% block hero %}
+
+<div id="hero">
+    <div id="hero-wrap">
+        <a  href="{% url 'lactancia:landing' %}"><img class="center-logo" src="{{ STATIC_URL }}img/logo-sombra.png"></a> 
+    </div>    
+    <div id="hero-wrap-form"> 
+        <div class="container">
+            <div class="row">
+                <div class="center">
+                    <form class="form-search" action="{% url 'lactancia:buscar' %}" style="margin-top:-25px;">
+                        {% csrf_token %}
+                        <input class="typeahead input-xxlarge" placeholder="{% trans 'Escribe tu búsqueda' %}" type="text" id="search_input" name="q" autocomplete="on"/>
+                        <input class="btn btn-info" type="submit" value="{% trans 'Buscar' %}" style="margin-top:20px;"/>
+                        <p class="help-block">
+                            {% block help_landing %}
+                                Por ejemplo 
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=ibuprofeno">{% trans 'Ibuprofeno' %}</a>,
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=couldina">{% trans 'Couldina' %}</a>,
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=bayas de goji">{% trans 'Bayas de Goji' %}</a>,
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=píldora día después">{% trans 'Píldora del día después' %}</a>,
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=fitoterapia sistémica">{% trans 'Fitoterapia' %}</a>.<br>
+                                {% trans 'Última actualización' %}: {{last_update|date:"DATETIME_FORMAT"}} (CET)
+        
+                                <div class="center">
+                                    <div class="g-plusone" data-size="medium" data-annotation="bubble" data-width="300" style="width:32px; float:left;"></div>
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="{% trans 'Comprueba la compatibilidad de' %} {{N}} {% trans 'términos con la #Lactancia'  %}" data-via="APILAM_" data-lang="{{ LANGUAGE_CODE }}">{% trans 'Twittear' %}</a>
+                                    <div class="fb-like" data-href="http://www.e-lactancia.org{% block fb_url_top %}{% url 'lactancia:landing' %}{% endblock %}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                </div>
+                            
+                            {% endblock %}
+                        </p>
+                    </form>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>      
+
+{% endblock %}
+
+{% block titulo_mainpage %}
+    <p id="logo-moto" class="lead-landing text-center">
+            {% trans 'Consulta la compatibilidad de la <strong>Lactancia</strong> con' %} {{N}} {% trans 'términos' %}
+    </p>      
+{% endblock %}
+
+{% block share_top %}
+{% endblock %}
+
+{% block mainpage %}    
+    
+    <div class="row-fluid">
+    <div class="risk empty-space risk-miniblock  span12"></div>
+    </div>
+
+    
+    
+<div class="row-fluid">
+    <div class="span4">
+      <i class="icon-ok-circle icon-3x text-info center-icon"></i><h4 class="text-center text-info">{% trans 'Por la lactancia' %}</h4>
+      <p class="text-center">{% trans 'La lactancia materna es el fenómeno más saludable para bebés y madres en todo tiempo y lugar. Muy pocas situaciones justifican contraindicarla' %}</p>
+    </div>    
+    <div class="span4">
+      <i class="icon-leaf icon-3x text-info center-icon"></i><h4 class="text-center text-info">{% trans 'Más que medicamentos'  %}</h4>
+      <p class="text-center">{% trans 'Fármacos, fitoterapia (plantas), homeopatía y otros productos alternativos, procedimientos médicos y cosméticos, contaminantes, enfermedades maternas y del lactante y más' %}</p>
+    </div>
+    <div class="span4">
+      <i class="icon-user-md icon-3x text-info center-icon"></i><h4 class="text-info text-center">{% trans 'Hecho por pediatras para todos' %}</h4>
+      <p class="text-center">{% trans 'Las indicaciones de e-lactancia las realizan pediatras de <a href="http://apilam.org" target="_blank">APILAM</a> para que puedas encontrar fácilmente la información que necesitas' %}</p>
+    </div>
+</div>
+
+<!--<div class="row-fluid">
+    <div class="span4">
+      <i class="icon-share icon-3x text-info center-icon"></i><h4 class="text-info text-center">Social</h4>
+      <p class="text-center">Comparte tu valoración sobre la información de e-lactancia y consulta fácilmente las opiniones de la comunidad de usuarios.</p>
+    </div>
+    <div class="span4">
+        <i class="icon-euro icon-3x text-info center-icon"></i>
+        <h4 class="text-info text-center">Gratuita</h4>
+      <p class="text-center">Nuestra asociación funciona con un sistema de patrocinios y donativos. Entérate de cómo puedes colaborar y cómo funciona nuestro <a href="#">modelo de sostenibilidad</a>.</p> 
+    </div>
+    <div class="span4">
+      <i class="icon-tablet icon-3x text-info center-icon"></i><h4 class="text-center text-info">Donde quieras</h4>
+      <p class="text-center">e-lactancia se adapta perfectamente al tamaño de tu pantalla. Consulta la información que te interesa desde tu ordenador, tableta o móvil.</p>
+    </div>
+    </div>-->
+
+{% endblock %}
+
+{% block share %}
+{% endblock %}
+
+    {% block typeahead %}
+    
+    {#  script for the image background #}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script>
+        $("#hero").backstretch("{{ STATIC_URL }}img/foto-coche-light-corte3.jpg");
+    </script>   
+    {% endblock %}
+     
+      <!--      [
+      "{{ STATIC_URL }}img/bg-carrusell-5.jpg",
+      "{{ STATIC_URL }}img/bg-carrusell-4.jpg",
+      "{{ STATIC_URL }}img/bg-carrusell-2.jpg",
+      "{{ STATIC_URL }}img/bg-carrusell-3.jpg",
+      "{{ STATIC_URL }}img/bg-carrusell-1.jpg"  ], {duration: 9000, fade: 2500});
+    </script>-->

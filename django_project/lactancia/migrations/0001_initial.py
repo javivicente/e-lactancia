@@ -79,7 +79,6 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=254, null=True, verbose_name='e-Mail', blank=True)),
                 ('nombre', models.CharField(max_length=255, null=True, verbose_name='Nombre', blank=True)),
                 ('perfil', models.CharField(max_length=2, verbose_name='Tipo de usuario (perfil)', choices=[(b'1', 'Pediatra'), (b'2', 'Ginec\xf3loga/o'), (b'14', 'M\xe9dico de familia'), (b'3', 'Otra especialidad m\xe9dica'), (b'4', 'Matrona'), (b'5', 'Enfermera/o'), (b'13', 'Farmac\xe9utico/a'), (b'6', 'Otro sanitario'), (b'7', 'Consultora lactancia (IBCLC, OMS)'), (b'8', 'Grupo de apoyo'), (b'9', 'Doula'), (b'10', 'Madre/Padre'), (b'11', 'Otro'), (b'12', 'An\xf3nimo')])),
-                ('profile', models.CharField(max_length=2, verbose_name='Type of user (profile)', choices=[(b'1', 'Pediatrician'), (b'2', 'Gynecologist'), (b'3', 'Other medical speciality'), (b'4', 'Midwife'), (b'5', 'Nurse'), (b'13', 'Pharmacist'), (b'6', 'Other health professional'), (b'7', 'Breastfeeding councellor (IBCLC, WHO)'), (b'8', 'Support group'), (b'9', 'Doula'), (b'10', 'Mother/Father'), (b'11', 'Other'), (b'12', 'Anonymous')])),
                 ('city', models.CharField(max_length=100, null=True, verbose_name='Ciudad', blank=True)),
                 ('longitude', models.DecimalField(null=True, verbose_name='Longitud', max_digits=9, decimal_places=6, blank=True)),
                 ('latitude', models.DecimalField(null=True, verbose_name='Latitud', max_digits=9, decimal_places=6, blank=True)),

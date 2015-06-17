@@ -429,7 +429,7 @@ class Mensaje(models.Model):
 
 
 class LactUser(models.Model):
-    PROFILE_ES_CHOICES = (
+    PROFILE_CHOICES = (
                 ('1', _(u'Pediatra')),
                 ('2', _(u'Ginecóloga/o')),
                 ('14', _(u'Médico de familia')),
@@ -446,29 +446,14 @@ class LactUser(models.Model):
                 ('12', _(u'Anónimo')),
                 )
 
-    PROFILE_EN_CHOICES = (
-                ('1', u'Pediatrician'),
-                ('2', u'Gynecologist'),
-                ('3', u'Other medical speciality'),
-                ('4', u'Midwife'),
-                ('5', u'Nurse'),
-                ('13', u'Pharmacist'),
-                ('6', u'Other health professional'),
-                ('7', u'Breastfeeding councellor (IBCLC, WHO)'),
-                ('8', u'Support group'),
-                ('9', u'Doula'),
-                ('10', u'Mother/Father'),
-                ('11', u'Other'),
-                ('12', u'Anonymous'),
-                )
+    
 
     session= models.OneToOneField(Session, primary_key=True)
     user = models.ForeignKey(User, null=True, blank=True, verbose_name=_(u'Nombre')) # para permitir usuarios anonimos
     ip_address = models.CharField(verbose_name=_(u'Dirección IP'), max_length=256)
     email = models.EmailField(max_length=254, null=True, blank=True, verbose_name=_(u'e-Mail'))
     nombre = models.CharField(_(u'Nombre'),max_length=255, null=True, blank=True) # Nuevo campo para las Newsletters
-    perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_ES_CHOICES)
-    profile = models.CharField(_(u'Type of user (profile)'), max_length=2, choices=PROFILE_EN_CHOICES)
+    perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
     city = models.CharField(_(u'Ciudad'), max_length=100, null=True, blank=True)
     longitude = models.DecimalField(_(u'Longitud'), max_digits=9, decimal_places=6, null=True, blank=True)
     latitude = models.DecimalField(_(u'Latitud'), max_digits=9, decimal_places=6, null=True, blank=True)

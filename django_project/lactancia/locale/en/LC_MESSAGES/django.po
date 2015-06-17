@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-09 16:35+0200\n"
+"POT-Creation-Date: 2015-06-12 12:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: lactancia/admin.py:34 lactancia/models.py:26
 msgid "Grupos relacionados"
-msgstr ""
+msgstr "Related groups"
 
 #: lactancia/admin.py:37 lactancia/admin.py:107 lactancia/admin.py:148
 #: lactancia/admin.py:188
@@ -102,20 +102,102 @@ msgstr ""
 msgid "Texto:"
 msgstr ""
 
-#: lactancia/models.py:12 lactancia/models.py:55 lactancia/models.py:70
-#: lactancia/models.py:395 lactancia/models.py:466 lactancia/models.py:469
+#: lactancia/forms.py:7 lactancia/models.py:433 lactancia/models.py:495
+msgid "Pediatra"
+msgstr ""
+
+#: lactancia/forms.py:8 lactancia/models.py:434 lactancia/models.py:497
+msgid "Ginecóloga/o"
+msgstr ""
+
+#: lactancia/forms.py:9 lactancia/models.py:435 lactancia/models.py:501
+msgid "Médico de familia"
+msgstr ""
+
+#: lactancia/forms.py:10 lactancia/models.py:436
+msgid "Otra especialidad médica"
+msgstr ""
+
+#: lactancia/forms.py:11 lactancia/models.py:437 lactancia/models.py:503
+msgid "Matrona"
+msgstr ""
+
+#: lactancia/forms.py:12 lactancia/models.py:438 lactancia/models.py:505
+msgid "Enfermera/o"
+msgstr ""
+
+#: lactancia/forms.py:13 lactancia/models.py:439 lactancia/models.py:507
+msgid "Farmacéutico/a"
+msgstr ""
+
+#: lactancia/forms.py:14 lactancia/models.py:440 lactancia/models.py:509
+msgid "Otro sanitario"
+msgstr ""
+
+#: lactancia/forms.py:15 lactancia/models.py:441 lactancia/models.py:511
+msgid "Consultora lactancia (IBCLC, OMS)"
+msgstr ""
+
+#: lactancia/forms.py:16 lactancia/models.py:442 lactancia/models.py:513
+msgid "Grupo de apoyo"
+msgstr ""
+
+#: lactancia/forms.py:17 lactancia/models.py:443 lactancia/models.py:515
+msgid "Doula"
+msgstr ""
+
+#: lactancia/forms.py:18 lactancia/models.py:444 lactancia/models.py:517
+msgid "Madre/Padre"
+msgstr ""
+
+#: lactancia/forms.py:19 lactancia/models.py:445 lactancia/models.py:519
+msgid "Otro"
+msgstr ""
+
+#: lactancia/forms.py:20 lactancia/models.py:446 lactancia/models.py:521
+msgid "Anónimo"
+msgstr ""
+
+#: lactancia/forms.py:27
+msgid ""
+"Espacio para opinión o sugerencia. Para consultas: elactancia.org@gmail.com"
+msgstr ""
+
+#: lactancia/forms.py:34
+msgid "No hay suficiente texto"
+msgstr ""
+
+#: lactancia/forms.py:39 lactancia/models.py:12 lactancia/models.py:55
+#: lactancia/models.py:70 lactancia/models.py:395 lactancia/models.py:452
+#: lactancia/models.py:455
 msgid "Nombre"
+msgstr ""
+
+#: lactancia/forms.py:40
+msgid "Correo electrónico"
+msgstr ""
+
+#: lactancia/forms.py:44
+msgid "Este campo es obligatorio"
+msgstr ""
+
+#: lactancia/forms.py:45
+msgid "El texto es demasiado largo"
+msgstr ""
+
+#: lactancia/forms.py:46
+msgid "Introduzca una dirección de correo válida"
 msgstr ""
 
 #: lactancia/models.py:13 lactancia/models.py:80 lactancia/models.py:179
 #: lactancia/models.py:219 lactancia/models.py:254 lactancia/models.py:284
-#: lactancia/models.py:401 lactancia/models.py:478 lactancia/models.py:578
+#: lactancia/models.py:401 lactancia/models.py:463 lactancia/models.py:563
 msgid "Fecha de creación"
 msgstr ""
 
 #: lactancia/models.py:14 lactancia/models.py:81 lactancia/models.py:180
 #: lactancia/models.py:220 lactancia/models.py:255 lactancia/models.py:285
-#: lactancia/models.py:402 lactancia/models.py:579
+#: lactancia/models.py:402 lactancia/models.py:564
 msgid "Última modificación"
 msgstr ""
 
@@ -334,7 +416,7 @@ msgid ""
 "nombre en inglés. Sino, deja el campo del nombre en inglés vacío."
 msgstr ""
 
-#: lactancia/models.py:224
+#: lactancia/models.py:224 lactancia/templates/lactancia/base.html:309
 msgid "Sinónimos de productos"
 msgstr ""
 
@@ -454,146 +536,280 @@ msgstr ""
 msgid "Alerta 3 meses"
 msgstr ""
 
-#: lactancia/models.py:433 lactancia/models.py:510
-msgid "Pediatra"
-msgstr ""
-
-#: lactancia/models.py:434 lactancia/models.py:512
-msgid "Ginecóloga/o"
-msgstr ""
-
-#: lactancia/models.py:435 lactancia/models.py:516
-msgid "Médico de familia"
-msgstr ""
-
-#: lactancia/models.py:436
-msgid "Otra especialidad médica"
-msgstr ""
-
-#: lactancia/models.py:437 lactancia/models.py:518
-msgid "Matrona"
-msgstr ""
-
-#: lactancia/models.py:438 lactancia/models.py:520
-msgid "Enfermera/o"
-msgstr ""
-
-#: lactancia/models.py:439 lactancia/models.py:522
-msgid "Farmacéutico/a"
-msgstr ""
-
-#: lactancia/models.py:440 lactancia/models.py:524
-msgid "Otro sanitario"
-msgstr ""
-
-#: lactancia/models.py:441 lactancia/models.py:526
-msgid "Consultora lactancia (IBCLC, OMS)"
-msgstr ""
-
-#: lactancia/models.py:442 lactancia/models.py:528
-msgid "Grupo de apoyo"
-msgstr ""
-
-#: lactancia/models.py:443 lactancia/models.py:530
-msgid "Doula"
-msgstr ""
-
-#: lactancia/models.py:444 lactancia/models.py:532
-msgid "Madre/Padre"
-msgstr ""
-
-#: lactancia/models.py:445 lactancia/models.py:534
-msgid "Otro"
-msgstr ""
-
-#: lactancia/models.py:446 lactancia/models.py:536
-msgid "Anónimo"
-msgstr ""
-
-#: lactancia/models.py:467
+#: lactancia/models.py:453
 msgid "Dirección IP"
 msgstr ""
 
-#: lactancia/models.py:468
+#: lactancia/models.py:454
 msgid "e-Mail"
 msgstr ""
 
-#: lactancia/models.py:470
+#: lactancia/models.py:456
 msgid "Tipo de usuario (perfil)"
 msgstr ""
 
-#: lactancia/models.py:471
-msgid "Type of user (profile)"
-msgstr ""
-
-#: lactancia/models.py:472
+#: lactancia/models.py:457
 msgid "Ciudad"
 msgstr ""
 
-#: lactancia/models.py:473
+#: lactancia/models.py:458
 msgid "Longitud"
 msgstr ""
 
-#: lactancia/models.py:474
+#: lactancia/models.py:459
 msgid "Latitud"
 msgstr ""
 
-#: lactancia/models.py:475
+#: lactancia/models.py:460
 msgid "País"
 msgstr ""
 
-#: lactancia/models.py:476
+#: lactancia/models.py:461
 msgid "Código país"
 msgstr ""
 
-#: lactancia/models.py:477
+#: lactancia/models.py:462
 msgid "Código país 3"
 msgstr ""
 
-#: lactancia/models.py:483
+#: lactancia/models.py:468
 msgid "Visitas"
 msgstr ""
 
-#: lactancia/models.py:489
+#: lactancia/models.py:474
 msgid "Última visita"
 msgstr ""
 
-#: lactancia/models.py:494
+#: lactancia/models.py:479
 msgid "Comentarios"
 msgstr ""
 
-#: lactancia/models.py:500
+#: lactancia/models.py:485
 msgid "Visitante"
 msgstr ""
 
-#: lactancia/models.py:501
+#: lactancia/models.py:486
 msgid "Visitantes"
 msgstr ""
 
-#: lactancia/models.py:514
+#: lactancia/models.py:499
 msgid "Otra especialidad medica"
 msgstr ""
 
-#: lactancia/models.py:559
+#: lactancia/models.py:544
 msgid "Término visitado"
 msgstr ""
 
-#: lactancia/models.py:564
+#: lactancia/models.py:549
 msgid "ha visitado"
 msgstr ""
 
-#: lactancia/models.py:569
+#: lactancia/models.py:554
 msgid "Opinión"
 msgstr ""
 
-#: lactancia/models.py:570
+#: lactancia/models.py:555
 msgid "Opinión ya leída"
 msgstr ""
 
-#: lactancia/models.py:577
+#: lactancia/models.py:562
 msgid "Idioma"
 msgstr ""
 
-#: lactancia/models.py:594
+#: lactancia/models.py:579
 msgid "Término"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:9
+msgid ""
+"Información sobre compatibilidad de medicamentos y otros productos con la "
+"lactancia materna, desarrollada por la Asociación para la Promoción "
+"científica y cultural de la Lactancia Materna, APILAM"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:10
+msgid ""
+"e-lactancia es un proyecto de APILAM, asociación para la promoción e "
+"investigación científica y cultural de la lactancia materna"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:11
+msgid ""
+"APILAM, Lactancia, materna, lactancia materna, leche materna, medicamentos, "
+"farmacos, plantas, infusiones, drogas, contaminantes, toxicos, enfermedades, "
+"compatibilidad, Pediatria, José María Paricio Talayero, Paricio, JM Paricio, "
+"Paricio Talayero, Leo Landa, Leonardo Landa, Leo Landa Rivera, Leonardo "
+"Landa Rivera"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:103
+msgid "DONA AHORA"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:125
+#: lactancia/templates/lactancia/base.html:139
+#: lactancia/templates/lactancia/landing.html:42
+msgid "Comprueba la compatibilidad de"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:125
+#: lactancia/templates/lactancia/base.html:139
+#: lactancia/templates/lactancia/landing.html:42
+msgid "términos con la #Lactancia"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:125
+#: lactancia/templates/lactancia/base.html:139
+#: lactancia/templates/lactancia/landing.html:42
+msgid "Twittear"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:162
+msgid "COLABORA"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:165
+msgid "ALERTAS"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:168
+msgid "CONÓCENOS"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:171
+msgid "CIFRAS"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:178
+msgid ""
+"e-lactancia es un proyecto de <a class=\"white-text\" href=\"http://apilam."
+"org/\" target=\"_blank\">APILAM</a>, asociación para la promoción e "
+"investigación científica y cultural de la lactancia materna, bajo <a class="
+"\"white-text\" target=\"_blank\" href=\"http://creativecommons.org/licenses/"
+"by-nc-sa/4.0/\">Licencia Internacional Creative Commons</a>"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:207
+msgid "Aviso legal"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:208
+msgid "Política de privacidad"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:209
+msgid "Política de cookies"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:295
+msgid "Productos"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:302
+msgid "Grupos"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:316
+msgid "Marcas de productos"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:323
+msgid "Productos en otras escrituras"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:350
+msgid "¡Advertencia!"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:352
+msgid ""
+"Se ha modificado recientemente el nivel de riesgo de al menos uno de los "
+"términos."
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:352
+msgid "Más información"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:358
+msgid "política de privacidad"
+msgstr ""
+
+#: lactancia/templates/lactancia/base.html:359
+msgid ""
+"Usamos cookies para mejorar tu experiencia. Al continuar navegando en "
+"nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre "
+"nuestra "
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:28
+msgid "Escribe tu búsqueda"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:29
+msgid "Buscar"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:33
+msgid "Ibuprofeno"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:34
+msgid "Couldina"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:35
+msgid "Bayas de Goji"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:36
+msgid "Píldora del día después"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:37
+msgid "Fitoterapia"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:38
+msgid "Última actualización"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:59
+msgid "Consulta la compatibilidad de la <strong>Lactancia</strong> con"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:59
+msgid "términos"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:76
+msgid "Por la lactancia"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:77
+msgid ""
+"La lactancia materna es el fenómeno más saludable para bebés y madres en "
+"todo tiempo y lugar. Muy pocas situaciones justifican contraindicarla"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:80
+msgid "Más que medicamentos"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:81
+msgid ""
+"Fármacos, fitoterapia (plantas), homeopatía y otros productos alternativos, "
+"procedimientos médicos y cosméticos, contaminantes, enfermedades maternas y "
+"del lactante y más"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:84
+msgid "Hecho por pediatras para todos"
+msgstr ""
+
+#: lactancia/templates/lactancia/landing.html:85
+msgid ""
+"Las indicaciones de e-lactancia las realizan pediatras de <a href=\"http://"
+"apilam.org\" target=\"_blank\">APILAM</a> para que puedas encontrar "
+"fácilmente la información que necesitas"
 msgstr ""

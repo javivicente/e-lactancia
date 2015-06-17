@@ -7,9 +7,11 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', views.index, name='index'),
+   
     url(r'^admin/', include(admin.site.urls)),
-    (r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^', include('lactancia.urls', namespace="lactancia")),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^', include('ratings.urls')),
 )
 
     
