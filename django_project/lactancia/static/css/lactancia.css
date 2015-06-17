@@ -7,7 +7,7 @@ html,
       /* add padding  */
 .left-addon .typeahead  { padding-left:  35px !important; }
 .right-addon .typeahead { padding-right: 35px !important; }
-
+ 
 .form-search .typeahead,
 .form-search .tt-query,
 .form-search .tt-hint {

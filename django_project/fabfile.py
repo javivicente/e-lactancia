@@ -10,4 +10,4 @@ def deploy():
         #local('python manage.py test wildcaribe')
     #with lcd('/home/django/prod/lactancia/django_project/lactancia/'):        
     #    local('python ../manage.py compilemessages')
-        local('echo DON\'T FORGET TO "sudo service gunicorn restart"')
+        local('echo DO NOT FORGET TO "sudo service gunicorn restart"')
