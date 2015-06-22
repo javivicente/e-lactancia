@@ -1,0 +1,25 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+{% block title %}: {% trans "¡Gracias por tu donativo!" %}{% endblock %}
+{% block topbar_share %}  
+{% endblock %}
+
+
+
+{# share block #}
+{% block fb_url %}{% url 'lactancia:donativo_exito' %}{% endblock %}
+{% block twitter_data-text %}{% trans "Acabo de realizar un donativo para e-lactancia. Tu también puedes ayudar a salvar la #Lactancia" %}{% endblock %}
+
+{% block share_top %}
+{% endblock %}
+
+
+{% block mainpage %}
+
+<img class="center" src="/static/img/logo-sombra.png">
+
+<h1 class="text-center">{% trans "¡Gracias!" %}</h1>
+
+<p class="text-center">{% trans "En nombre de todos los que formamos parte de e-lactancia, te damos las gracias por tu donativo." %}</p>
+
+{% endblock %}

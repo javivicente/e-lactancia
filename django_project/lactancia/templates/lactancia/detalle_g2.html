@@ -1,0 +1,442 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+{% block style %}
+{{block.super}}
+<script type="text/javascript" src="{{ STATIC_URL }}ratings/jquery.rating.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-maxlength.js"></script>
+<link href="{{ STATIC_URL }}ratings/jquery.rating.css" rel="stylesheet" type="text/css" />
+{% if perfil %}
+<script type="text/javascript">
+
+    $(window).load(function(){
+        $('#modal_profile').modal('hide');
+    });
+</script>
+{% else %}
+<script type="text/javascript">
+
+    $(window).load(function(){
+        $('#modal_profile').modal('show');
+    });
+</script>
+{% endif %}
+
+
+{% if exito_subscription %}
+<script type="text/javascript">
+
+    $(window).load(function(){
+        $('#modal_newsletter').modal('show');
+    });
+</script>
+{% else %}
+<script type="text/javascript">
+
+    $(window).load(function(){
+        $('#modal_newsletter').modal('hide');
+    });
+</script>
+{% endif %}
+{% endblock %}
+
+
+{% block title %} {% trans "Compatibilidad de" %} {{grupop.nombre}} {% trans "con la lactancia materna" %}{% endblock %}
+
+{# share block #}
+{% block fb_url %}{% url 'lactancia:detalle_g' grupop.id %}{% endblock %}
+{% block fb_url_top %}{% url 'lactancia:detalle_g' grupop.id %}{% endblock %}
+{% block twitter_text %}{% trans "Comprueba la compatibilidad de" %} {{grupop.nombre}} {% trans "con la #lactancia" %}{% endblock %}
+{% block twitter_text_top %}{% trans "Comprueba la compatibilidad de" %} {{grupop.nombre}} {% trans "con la #lactancia" %}{% endblock %}
+
+
+{# detalle_g #}
+
+{% block titulo_mainpage %}
+{# block of header #}
+<div class="row-fluid">
+    <div class="span6">
+        <h1>{{ grupop.nombre }}</h1>
+        <p>{% trans "Última modificación " %}: {{grupop.fecha_modificacion|date:"DATE_FORMAT"}}</p>  
+    </div>
+    {# caja de newsletter #}
+    {% include 'lactancia/partial_newsletter_box.html' %}   
+</div> {# row-fluid #}    
+{# end of block of header #}     
+{% endblock %}
+
+
+{% block mainpage %}
+{# ventana modal sobre el tipo de perfil ... #}
+{% include 'lactancia/partial_modal_profile.html' %}
+
+
+
+
+{# ventana modal subscripción newsletter ... #}
+{% include 'lactancia/partial_newsletter_grupo.html' %}
+
+       
+
+{# mensaje de éxito o fracaso en el envío del comentario del usuario #}    
+{% include 'lactancia/partial_comments_terms.html' %}
+
+{# mensaje de advertencia de cambio de riesgo #}
+{% block alert %}
+{% if grupo_alerts %}
+    {% for a in grupo_alerts.all %}
+        {% if a.active_90 %}
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>    
+                <h5>{{ a.producto.nombre }} ({% trans "perteneciente a" %}  {{grupop.nombre}}): {{a.titulo | safe}}</h5>
+                <p><small>{{a.contenido | safe}}</small></p>
+                <p><small>{% trans "Nivel de riesgo revisado el" %} {{ a.fecha_modificacion|date:"DATE_FORMAT"}}</small></p>
+            </div>
+        {% endif %}  
+    {% endfor %}   
+{% endif %}
+{% endblock %}
+
+
+
+{% block risks %}
+<h3>{% trans "Riesgo para la lactancia" %}</h3>
+<p><small>{{ prod_disclaimer.contenido | safe }}</small></p>
+
+<div class="row-fluid">
+<p>{% trans "Lista de los" %} {{ grupop.num_productos }} {% trans "productos de la familia o grupo" %} <strong>{{ grupop.nombre }}</strong> {% trans "por nivel de riesgo" %}:</p>
+<br/>
+</div>
+
+
+<div class="row-fluid">    
+    <div class="{{span_block_risk.span_risks}}">    
+
+        {# risk 0 #}
+        <div class="{{span_block_risk.span_r0}}">
+            <div class="row_fluid">
+                <div class="well risk-level0-legend risk-miniblock">
+                    <a class="center btn btn-link nounderline" id="btn_risk0" data-toggle="popover"><i class="fa fa-exclamation-circle"></i> <strong>{{risk0_info.titulo | safe }} </strong></a>                    
+                </div>
+            </div>
+            <div class="row_fluid">
+                <div class="well risk-level0-prods risk-miniblock">
+                        {% if prods_r0 %} 
+                            <ul>
+                                {% for p in prods_r0 %}
+                                    <li><a href="{% url 'lactancia:detalle_p' p.id %}"> {{ p.nombre }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>{% trans "No hay productos de" %} {{risk0_info.titulo | safe }} {% trans "para" %} <strong>{{ grupop.nombre }}.</strong></p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {# risk 1 #}
+        <div class="{{span_block_risk.span_r1}}">
+            <div class="row_fluid">
+                <div class="well risk-level1-legend risk-miniblock">
+                    <a class="center btn btn-link nounderline" id="btn_risk1" data-toggle="popover"><i class="fa fa-exclamation-circle"></i> <strong>{{risk1_info.titulo | safe }}</strong></a>
+                </div>
+            </div>
+            <div class="row_fluid">
+                <div class="well risk-level1-alt risk-miniblock">
+                        {% if prods_r1 %} 
+                            <ul>
+                                {% for p in prods_r1 %}
+                                    <li><a href="{% url 'lactancia:detalle_p' p.id %}"> {{ p.nombre }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>{% trans "No hay productos de" %} {{risk1_info.titulo | safe }} {% trans "para" %} <strong>{{ grupop.nombre }}.</strong></p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {# risk 2 #}
+        <div class="{{span_block_risk.span_r2}}">
+            <div class="row_fluid">
+                <div class="well risk-level2-legend risk-miniblock">
+                    <a class="center btn btn-link nounderline" id="btn_risk2" data-toggle="popover"><i class="fa fa-exclamation-circle"></i> <strong>{{risk2_info.titulo | safe }} </strong></a>
+                </div>
+            </div>
+            <div class="row_fluid">
+                <div class="well risk-level2-alt risk-miniblock">
+                        {% if prods_r2 %} 
+                            <ul>
+                                {% for p in prods_r2 %}
+                                        <li><a href="{% url 'lactancia:detalle_p' p.id %}"> {{ p.nombre }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>{% trans "No hay productos de" %} {{risk2_info.titulo | safe }} {% trans "para" %} <strong>{{ grupop.nombre }}.</strong></p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    
+        {# risk 3 #}
+        <div class="{{span_block_risk.span_r3}}">
+            <div class="row_fluid">  
+                <div class="well risk-level3-legend risk-miniblock">
+                    <a class="center btn btn-link nounderline" id="btn_risk3" data-toggle="popover"><i class="fa fa-exclamation-circle"></i> <strong>{{risk3_info.titulo | safe }} </strong></a>
+                </div>
+            </div>
+            <div class="row_fluid">  
+                <div class="well risk-level3-alt  risk-miniblock">
+                        {% if prods_r3 %} 
+                            <ul>
+                                {% for p in prods_r3 %}
+                                    <li><a href="{% url 'lactancia:detalle_p' p.id %}"> {{ p.nombre }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>{% trans "No hay productos de" %} {{risk3_info.titulo | safe }} {% trans "para" %} <strong>{{ grupop.nombre }}.</strong></p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>    
+    </div> {# del span de bloque riesgos #}
+ 
+
+    {% block related_groups %}
+
+    <div class="{{span_block_risk.span_related}}">
+        <div class="row-fluid">
+            <div class="well span12">
+                <h4><a href="{% url 'lactancia:donativos' %}">{% trans "HAZ UN DONATIVO" %}</a></h4>
+                <p>{% trans "Si esta información te ha sido de ayuda" %}</p>
+            </div>
+        </div>
+        {% if grupop.hay_relacionados %}
+            <div class="row-fluid">
+                <div class="well well-large span12">
+                    <h3>{% trans "Grupos relacionados" %}</h3>
+                        <p>{% trans "Lista de grupos relacionados con" %} <strong>{{grupop.nombre}}</strong>:</p>
+                        <ul>
+                                {% for g in grupop.relacionados.all|dictsort:"nombre" %}
+                                    <li><a href="{% url 'lactancia:detalle_g' g.id %}">{{ g.nombre }}</a> ({{g.producto_set.count}} {% trans "productos" %})</li>
+                                {% endfor %}
+                        </ul>
+                </div>
+            </div>    
+        {% endif %}
+    </div>
+    
+    {% endblock %}
+</div>{# row-fluid para riesgos y grupos relacionados #}
+
+
+
+<div class="row-fluid">
+    <div class="risk empty-space risk-miniblock  span12"></div>
+</div>  
+    
+{% endblock %}  {# bloque de riesgos #}
+    
+    
+{% block names_and_biblio %}
+{% endblock %}
+
+
+{% block ratings %}
+{% include 'lactancia/partial_ratings.html' %}
+{% endblock %} {#  bloque de ratings#}
+
+
+
+
+{% endblock %} {# block of mainpage #}
+
+
+{############################### block of JS  ###############################}
+{########################################################################}
+
+{% block js %}
+{{ block.super }}
+{# javascripts and css required by StarVoteForm #}
+<script type="text/javascript" src="{{ STATIC_URL }}ratings/jquery.MetaData.js"></script>
+{% if perfil %}
+<script type="text/javascript" src="{{ STATIC_URL }}ratings/jquery.raty.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+      $.fn.raty.defaults.path = '{{ STATIC_URL }}ratings';
+      $('#star_average').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star1').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star2').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star14').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star3').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star4').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star5').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star13').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star6').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star7').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star8').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star9').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star10').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star11').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+      $('#star12').raty({
+        readOnly: true,
+        hints: {{hints}},
+        score: function() {
+        return $(this).attr('data-score');
+            }
+        });
+     }); 
+    </script>
+    <script>
+    (function($){
+            $('textarea#opinion').maxlength({
+            alwaysShow: true,
+            threshold: 10,
+            warningClass: "label label-success",
+            limitReachedClass: "label label-important",
+            separator: ' {% trans "de" %} ',
+            preText: '{% trans "Llevas" %} ',
+            postText: ' {% trans "caracteres" %}',
+            validate: true
+        });
+    })(jQuery);
+    </script>
+{% endif %}
+    <script>
+    
+        $("#btn_marca").popover({
+            html : true, 
+            placement:'bottom',
+            title: '{{trademark_disclaimer.titulo | safe }}' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_marca&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{trademark_disclaimer.contenido | safe }}'
+        });
+    
+        $("#btn_risk0").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk0_info.titulo | safe }}</strong>' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk0&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk0_info.contenido| safe }}'
+        });
+        $("#btn_risk1").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk1_info.titulo | safe}}</strong>' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk1&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk1_info.contenido | safe }}'
+        });
+        $("#btn_risk2").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk2_info.titulo | safe }}</strong>' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk2&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk2_info.contenido|safe }}'
+        });
+        $("#btn_risk3").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk3_info.titulo | safe }}</strong>' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk3_info.contenido | safe }}'
+        });
+
+        {% block pharma_popovers %}
+        {% endblock %}
+
+    $(':not(#anything)').on('click', function (e) {
+    $('.btn-link').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});            
+    </script>    
+        
+{% endblock %}

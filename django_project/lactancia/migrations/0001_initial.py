@@ -127,6 +127,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nombre', models.CharField(db_index=True, max_length=255, null=True, verbose_name='Producto en otras escrituras', blank=True)),
+                ('idioma', models.CharField(max_length=255, null=True, verbose_name='Idioma en que est\xe1 escrito el producto', blank=True)),
+                ('idioma_en', models.CharField(max_length=255, null=True, verbose_name='Idioma en que est\xe1 escrito el producto', blank=True)),
+                ('idioma_es', models.CharField(max_length=255, null=True, verbose_name='Idioma en que est\xe1 escrito el producto', blank=True)),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
                 ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n', db_index=True)),
             ],

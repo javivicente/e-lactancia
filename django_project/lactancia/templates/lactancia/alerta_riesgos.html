@@ -1,0 +1,43 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+{% block title %}: {% trans "Alerta de riesgos" %}{% endblock %}
+
+{# share blocks #}
+{% block fb_url %}{% url 'lactancia:alerta_riesgos' %}{% endblock %}
+{% block fb_url_top %}{% url 'lactancia:alerta_riesgos' %}{% endblock %}
+{% block twitter_data-text %}{% trans "Comprueba los últimos cambios de nivel de riesgo en e-lactancia" %}  #Lactancia{% endblock %}
+{% block twitter_data-text_top %}{% trans "Comprueba los últimos cambios de nivel de riesgo en e-lactancia" %} #Lactancia{% endblock %}
+
+
+{% block titulo_mainpage %}
+<h2>{% block alertas_header %}{% trans "Alertas" %}{% endblock %}</h2>
+{% endblock %}
+
+
+{% block mainpage %}
+                  
+{% if 90_days_alerts %}
+        <p>{% block alertas_content %}{% trans "A continuación se muestra el listado de cambios de niveles de riesgo registrados en la base de datos de e-lactancia en los últimos 3 meses. Para acceder a la ficha completa de cada producto, toca sobre su nombre. " %}{% endblock%}</p>
+
+
+        {% for a in alerts.all %}
+            {% if a.active_90  %}
+                {% if a.titulo_es == '<p class="text-error">Nivel de riesgo incrementado</p>' %}
+                    <div class="alert alert-danger">
+                {% else %}
+                    <div class="alert alert-success">
+                {% endif %} 
+                        <h3><a href="{% url 'lactancia:detalle_p' a.producto.id %}"> {{ a.producto.nombre }}</a></h3>
+                        <p><small>{% trans "Nivel de riesgo revisado el" %} {{ a.fecha_modificacion|date:"d/m/Y"}}</small></p>
+                        <h4>{{a.titulo | safe}}</h4>
+                        <p>{{a.contenido | safe}}</p>
+                        
+                    </div>  
+            {% endif %}
+        {% endfor %} 
+
+{% else %}
+        <p>{% trans "Durante los últimos 3 meses no ha habido cambios en el nivel de riesgo de ninguno de los productos de la base de datos de e-lactancia." %}</p>
+{% endif %}
+
+ {% endblock %}

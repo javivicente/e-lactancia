@@ -3,7 +3,7 @@
 {% load i18n %}
 {# Additional <head> content here, some extra meta tags or favicon #}
 {% block extrahead %}
-<link href="{{STATIC_URL}}favicon.ico" rel="icon" type="image/x-icon">
+<link href="{{STATIC_URL}}img/favicon.ico"  type="image/x-icon">
 {% endblock %}
 
 
@@ -53,7 +53,7 @@ $(document).ready(function(){
 {% block footer_links %}
 <a href="mailto:contact@javivicente.net" class="icon"><i class="icon-envelope"></i>contact@javivicente.net</a>
 <a class="icon"><i class="icon-comment"></i>+34 625 93 96 42</a>
-{#  <a href="{% url 'lactancia:lista_negra' %}" target="_blank" class="icon"><i class="icon-exclamation-sign"></i>Lista negra de productos</a> #}
+<a href="{% url 'lactancia:lista_negra' %}" target="_blank" class="icon"><i class="icon-exclamation-sign"></i>{% trans 'Lista negra de productos' %}</a>
 
 {% endblock %}
 

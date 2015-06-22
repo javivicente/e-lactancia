@@ -1,0 +1,60 @@
+{% load static %} 
+{% load i18n %} 
+{# ventana modal subscripción newsletter ... #}
+    <div class="modal hide fade"  data-keyboard="false" data-backdrop="static" id="modal_newsletter">
+        <div class="modal-header">
+            <h3>{% trans "¡Gracias por tu tiempo!" %}</h3>
+            
+        </div>
+        <div class="modal-body">
+             <p>{% trans "Muchas gracias por suscribirte," %} <strong>{{user_fname}}</strong>. {% trans "Has sido añadida/o correctamente a nuestro boletín." %}<br/><br/>
+              {% trans "Recibirás nuestro boletín en la  dirección" %} <strong>{{user_email}}</strong>.<br><br>
+              {% trans "Muchas gracias de parte de todo el equipo de e-lactancia APILAM" %}. 
+                <br/><br/><br/>{% trans "A continuación te mostramos información útil sobre nuestra política de comunicaciones" %}:<br/><br/>
+                
+                
+                <strong>{% trans "¿Qué voy a obtener? " %}</strong><br/>
+                {% trans "Únicamente te mandaremos información relevante relacionada con la lactancia materna, APILAM y e-lactancia" %}.<br/><br/>
+                
+                <strong>{% trans "¿Cómo puedo dejar de recibir vuestros correos?" %}</strong><br/>
+                {% trans "Puedes hacer click en el link que apacerá al final de cualquier correo que te mandemos para anular tu suscripción de forma segura e instantánea" %}.<br/><br/>
+                
+                <strong>{% trans "¿Cómo puedo asegurarme de que vuestros correos me llegan?" %}</strong><br/>
+                {% trans "Nos puedes ayudar a llegar a tu buzón de entrada si te tomas unos segundos para añadir nuestro email (apilam.es@gmail.com) a tu lista de contactos" %}.<br/><br/>
+    
+                <strong>{% trans "¿Mi información está segura?" %}</strong><br/>
+                {% trans "Nos tomamos tu privacidad muy en serio y empleamos una serie de medidas de seguridad para proteger tu información personal" %}.<br/><br/>
+            </p>
+        </div>
+        <div class="modal-footer">
+            {% if LANGUAGE_CODE == 'es' %}
+             <form method="post" action="https://app.icontact.com/icp/signup.php" name="icpsignup" id="icpsignup1050" accept-charset="UTF-8"  onsubmit="return true">
+                            <input type="hidden" name="fields_email" value="{{user_email}}">
+                            <input type="hidden" name="fields_fname" value="{{user_fname}}">
+                            <input type="hidden" name="redirect" value="http://e-lactancia.org{% block redirect_es %}{% endblock %}">
+                            <input type="hidden" name="errorredirect" value="http://e-lactancia.org{% url 'lactancia:boletin_error' %}">
+                            <input type="hidden" name="listid" value="16227">
+                            <input type="hidden" name="specialid:16227" value="2DLS">
+                            <input type="hidden" name="clientid" value="1498624">
+                            <input type="hidden" name="formid" value="1050">
+                            <input type="hidden" name="reallistid" value="1">
+                            <input type="hidden" name="doubleopt" value="0">
+                            <input type="submit" class="btn btn-info" name="Submit" value="{% trans 'Cerrar' %}"/>
+            </form>
+            {% else %}
+            <form method="post" action="https://app.icontact.com/icp/signup.php" name="icpsignup" id="icpsignup1053" accept-charset="UTF-8"  onsubmit="return true">
+                            <input type="hidden" name="fields_email" value="{{user_email}}">
+                            <input type="hidden" name="fields_fname" value="{{user_fname}}">
+                            <input type="hidden" name="redirect" value="http://e-lactancia.org{% block redirect_en %}{% endblock %}">
+                            <input type="hidden" name="errorredirect" value="http://e-lactancia.org{% url 'lactancia:boletin_error' %}">
+                            <input type="hidden" name="listid" value="16225">
+                            <input type="hidden" name="specialid:16225" value="RIEE">
+                            <input type="hidden" name="clientid" value="1498624">
+                            <input type="hidden" name="formid" value="1053">
+                            <input type="hidden" name="reallistid" value="1">
+                            <input type="hidden" name="doubleopt" value="0">
+                            <input type="submit" class="btn btn-info" name="Submit" value="{% trans 'Cerrar' %}"/>
+            </form>
+            {% endif %}
+        </div>
+    </div>

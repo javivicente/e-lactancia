@@ -20,6 +20,7 @@ html,
      -moz-border-radius: 8px;
           border-radius: 8px;
   outline: none;
+  
 }
 
 .form-search .typeahead {
@@ -42,6 +43,7 @@ html,
 
 .form-search .tt-dropdown-menu {
   width: 422px;
+  z-index: 9999;
   padding: 8px 0;
   background-color: #fff;
   color: #000;

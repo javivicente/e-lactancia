@@ -1,0 +1,21 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+{% block title %}: {% trans "Problema con tu donativo" %}{% endblock %}
+{% block topbar_share %}  
+{% endblock %}
+{% block url %}{% url 'lactancia:donativo_cancelado' %}{% endblock %}
+
+{# share block #}
+{% block fb_url %}{% url 'lactancia:donativo_cancelado' %}{% endblock %}
+{% block twitter_data-text %}{% trans "Estoy haciendo un donativo para e-lactancia. Tu también puedes ayudar a salvar la #Lactancia" %}{% endblock %}
+
+{% block share_top %}
+{% endblock %}
+
+{% block mainpage %}
+
+<div class="alert alert-danger">
+			{% trans "Parece que no se ha completado la transacción. Puedes " %} <a href="{% url 'lactancia:donativos' %}">{% trans "intentarlo de nuevo " %}</a> {% trans "si lo deseas." %}
+</div>
+
+{% endblock %}

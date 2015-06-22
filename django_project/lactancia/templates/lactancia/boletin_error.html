@@ -1,0 +1,21 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+{% block title %}: {% trans "Problema con registro al Boletín" %}{% endblock %}
+{% block topbar_share %}  
+{% endblock %}
+
+{# share block #}
+{% block fb_url %}{% url 'lactancia:boletin_error' %}{% endblock %}
+{% block twitter_data-text %}{% trans "Estoy suscribiéndome al boletín de APILAM y  e-lactancia. ¡Tu también puedes unirte!" %}{% endblock %}
+
+{% block share_top %}
+{% endblock %}
+
+{% block mainpage %}
+
+<div class="alert alert-danger">
+			{% trans "Hemos detectado un error en tu petición. Por favor, cierra esta ventana y vuelve a intentarlo. Comprueba que la información que has introducido es correcta." %}
+</div>
+
+
+{% endblock %}

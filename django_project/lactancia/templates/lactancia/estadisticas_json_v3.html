@@ -1,0 +1,1408 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+
+
+{% block style %}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+
+    
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_prods_1d);
+      function drawChart_prods_1d() {
+        var data = google.visualization.arrayToDataTable([
+          [{% block prods_1d_header %}'Productos', 'consultas'{% endblock %}],
+          {% for p in prods_visits_1d|slice:":50" %}
+            ['{{forloop.counter}}) {% if LAGUAGE_CODE == "es" %}{{p.prod__nombre_es}}{% else %}{{p.prod__nombre_en}}{% endif %}', {{p.n_consultations}}],
+          {% endfor %}
+        ]);
+        
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+        
+        
+        var options = {
+          legend: { position: "none" },
+          width: 1100,
+          height: 1000,
+          hAxis: { textStyle: { fontSize: 14 }},
+          vAxis: { textStyle: { fontSize: 14 }},
+          annotations: {
+            alwaysOutside: true,
+            textStyle: {
+                fontSize: 14,
+                opacity: 0.8          // The transparency of the text.
+                }
+            },
+          chartArea: { left: 350, top: 20, bottom: 10, width: "60%", height: "90%" }, 
+          bar: { groupWidth: "95%" }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('stats_prods_1d'));
+        chart.draw(view, options);
+        
+        function redraw() {
+          chart.draw(view, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_prods1d').click(redraw);
+      }
+    </script>
+
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_prods_1w);
+      function drawChart_prods_1w() {
+        var data = google.visualization.arrayToDataTable([
+          [{% block prods_1w_header %}'Productos', 'consultas'{% endblock %}],
+          {% for p in prods_visits_1w|slice:":50" %}
+            ['{{forloop.counter}}) {% if LAGUAGE_CODE == "es" %}{{p.prod__nombre_es}}{% else %}{{p.prod__nombre_en}}{% endif %}', {{p.n_consultations}}],
+          {% endfor %}
+        ]);
+        
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+        
+        
+        var options = {
+          legend: { position: "none" },
+          width: 1100,
+          height: 1000,
+          hAxis: { textStyle: { fontSize: 14 }},
+          vAxis: { textStyle: { fontSize: 14 }},
+          annotations: {
+            alwaysOutside: true,
+            textStyle: {
+                fontSize: 14,
+                opacity: 0.8          // The transparency of the text.
+                }
+            },
+          chartArea: { left: 350, top: 20, bottom: 10, width: "60%", height: "90%" }, 
+          bar: { groupWidth: "95%" }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('stats_prods_1w'));
+        chart.draw(view, options);
+        
+        function redraw() {
+          chart.draw(view, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_prods1w').click(redraw);
+      }
+    </script>
+
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_prods_1m);
+      function drawChart_prods_1m() {
+        var data = google.visualization.arrayToDataTable([
+          [{% block prods_1m_header %}'Productos', 'consultas'{% endblock %}],
+          {% for p in prods_visits_1m|slice:":50" %}
+            ['{{forloop.counter}}) {% if LAGUAGE_CODE == "es" %}{{p.prod__nombre_es}}{% else %}{{p.prod__nombre_en}}{% endif %}', {{p.n_consultations}}],
+          {% endfor %}
+        ]);
+        
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+        
+        
+        var options = {
+          legend: { position: "none" },
+          width: 1100,
+          height: 1000,
+          hAxis: { textStyle: { fontSize: 14 }},
+          vAxis: { textStyle: { fontSize: 14 }},
+          annotations: {
+            alwaysOutside: true,
+            textStyle: {
+                fontSize: 14,
+                opacity: 0.8          // The transparency of the text.
+                }
+            },
+          chartArea: { left: 350, top: 20, bottom: 10, width: "60%", height: "90%" }, 
+          bar: { groupWidth: "95%" }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('stats_prods_1m'));
+        chart.draw(view, options);
+        
+        function redraw() {
+          chart.draw(view, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_prods1m').click(redraw);
+      }
+    </script>
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_prods_1y);
+      function drawChart_prods_1y() {
+        var data = google.visualization.arrayToDataTable([
+          [{% block prods_1y_header %}'Productos', 'consultas'{% endblock %}],
+          {% for p in prods_visits_1y|slice:":50" %}
+            ['{{forloop.counter}}) {% if LAGUAGE_CODE == "es" %}{{p.prod__nombre_es}}{% else %}{{p.prod__nombre_en}}{% endif %}', {{p.n_consultations}}],
+          {% endfor %}
+        ]);
+        
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+        
+        
+        var options = {
+          legend: { position: "none" },
+          width: 1100,
+          height: 1000,
+          hAxis: { textStyle: { fontSize: 14 }},
+          vAxis: { textStyle: { fontSize: 14 }},
+          annotations: {
+            alwaysOutside: true,
+            textStyle: {
+                fontSize: 14,
+                opacity: 0.8          // The transparency of the text.
+                }
+            },
+          chartArea: { left: 350, top: 20, bottom: 10, width: "60%", height: "90%" }, 
+          bar: { groupWidth: "95%" }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('stats_prods_1y'));
+        chart.draw(view, options);
+        
+        function redraw() {
+          chart.draw(view, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_prods1y').click(redraw);
+      }
+    </script>
+
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_prods_all);
+      function drawChart_prods_all() {
+        var data = google.visualization.arrayToDataTable([
+          [{% block prods_all_header %}'Productos', 'consultas'{% endblock %}],
+          {% for p in prods_visits_all|slice:":50" %}
+            ['{{forloop.counter}}) {% if LAGUAGE_CODE == "es" %}{{p.prod__nombre_es}}{% else %}{{p.prod__nombre_en}}{% endif %}', {{p.n_consultations}}],
+          {% endfor %}
+        ]);
+        
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+        
+        
+        var options = {
+          legend: { position: "none" },
+          width: 1100,
+          height: 1000,
+          hAxis: { textStyle: { fontSize: 14 }},
+          vAxis: { textStyle: { fontSize: 14 }},
+          annotations: {
+            alwaysOutside: true,
+            textStyle: {
+                fontSize: 14,
+                opacity: 0.8          // The transparency of the text.
+                }
+            },
+          chartArea: { left: 350, top: 20, bottom: 10, width: "60%", height: "90%" }, 
+          bar: { groupWidth: "95%" }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('stats_prods_all'));
+        chart.draw(view, options);
+        
+        function redraw() {
+          chart.draw(view, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_prodsall').click(redraw);
+      }
+    </script>
+
+
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_yearly);
+      function drawChart_yearly() {
+	  
+	    var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('date', '{% trans "Año" %}');
+        dataTable.addColumn('number', '{% trans "Visitas únicas" %}');
+        dataTable.addRows([
+		    {% for v, c in yearly %}
+            [new Date("{{v.year}}"), {{v.n_visits}}],
+        {% endfor %}
+        ]);
+        var date_formatter = new google.visualization.DateFormat({ 
+        pattern: "yyyy"
+        }); 
+        date_formatter.format(dataTable, 0);
+
+        var dataView = new google.visualization.DataView(dataTable);
+
+        var options = {
+          legend: {position: 'none'},
+          width: 1150,
+          height: 490,
+          pointSize: 5,
+          series: {0:{color: '#3198b6'}},
+    	  hAxis: {
+                format: 'yyyy',
+                ticks: [ {% for v, c in yearly %} new Date("{{v.year}}"), {% endfor %} ],
+                textStyle: { fontSize: 14 },
+            },
+           vAxis: { textStyle: { fontSize: 14 }},
+          chartArea: {   width: "80%", height: "70%" }, 
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('stats_yearly_visits'));
+        chart.draw(dataView, options);
+
+        function redraw() {
+          chart.draw(dataView, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_visitsyearly').click(redraw);
+
+      }
+    </script>
+
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_monthly);
+      function drawChart_monthly() {
+	  
+	    var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('date', '{% trans "Mes" %}');
+        dataTable.addColumn('number', '{% trans "Visitas únicas" %}');
+        dataTable.addRows([
+		    {% for v, c in monthly|slice:"2:-1" %}
+            [new Date("{{v.mes}}"), {{v.n_visits}}],
+        {% endfor %}
+        ]);
+
+        var date_formatter = new google.visualization.DateFormat({ 
+        pattern: "MMM yyyy"
+        }); 
+        date_formatter.format(dataTable, 0);
+
+        var dataView = new google.visualization.DataView(dataTable);
+
+        var options = {
+          legend: {position: 'none'},
+          width: 1150,
+          height: 490,
+          pointSize: 5,
+          series: {0:{color: '#3198b6'}},
+    	  hAxis: {
+                format: 'MMM yy',
+                textStyle: { fontSize: 14 },
+                
+            },
+           vAxis: { textStyle: { fontSize: 14 }},
+          chartArea: {   width: "80%", height: "70%" }, 
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('stats_monthly_visits'));
+        chart.draw(dataView, options);
+
+        function redraw() {
+          chart.draw(dataView, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_visitsmonthly').click(redraw);
+
+      }
+    </script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_weekly);
+      function drawChart_weekly() {
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('string', '{% trans "Semana" %}');
+        dataTable.addColumn('number', '{% trans "Visitas únicas" %}');
+        dataTable.addRows([
+        {% for v, c in weekly|slice:"8:-1" %}
+            ['{% trans "Semana"  %} {{v.semana}}, {{v.year}}',  {{v.n_visits}} ], 
+        {% endfor %}
+        ]);
+
+        var dataView = new google.visualization.DataView(dataTable);
+        
+        var options = {
+          legend: {position: 'none'},
+          width: 1150,
+          height: 490,
+          pointSize: 5,
+          series: {0:{color: '#3198b6'}},
+          hAxis: {
+                textStyle: { fontSize: 14 },
+                showTextEvery: 10,
+            },
+            vAxis: { textStyle: { fontSize: 14 }},
+          chartArea: {   width: "80%", height: "75%" }, 
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('stats_weekly_visits'));
+        chart.draw(dataView, options);
+
+        function redraw() {
+          chart.draw(dataView, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_visitsweekly').click(redraw);
+      }
+    </script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_daily);
+      function drawChart_daily() {
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('date', '{% trans "Día" %}');
+        dataTable.addColumn('number', '{% trans "Visitas únicas" %}');
+        dataTable.addRows([
+        {% for v, c in daily|slice:"55:-1" %}
+            [new Date("{{v.dia}}"), {{v.n_visits}}],
+        {% endfor %}
+        ]);
+
+        var date_formatter = new google.visualization.DateFormat({ 
+        pattern: "dd MMM yyyy"
+        }); 
+        date_formatter.format(dataTable, 0);
+
+        var dataView = new google.visualization.DataView(dataTable);
+        
+        var options = {
+          legend: {position: 'none'},
+          width: 3000,
+          height: 490,
+          pointSize: 2,
+          series: {0:{color: '#3198b6'}},
+          hAxis: {
+                format: 'MMM yy',
+                textStyle: { fontSize: 14 },
+            },
+          vAxis: {
+                textStyle: { fontSize: 14 }
+           },
+            
+          chartArea: {   left:100,  width: "80%", height: "75%" }, 
+        };
+
+      
+        var chart = new google.visualization.AreaChart(document.getElementById('stats_daily_visits'));
+        chart.draw(dataView, options);
+
+        function redraw() {
+          chart.draw(dataView, options);
+        }
+
+
+        $(window).resize(redraw);
+        $('#tab_visitsdaily').click(redraw);
+      }
+    </script>
+
+
+    
+
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_profile1d);
+      function drawChart_profile1d() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "Perfil de usuario" %}', '{% trans "Visitas" %}'],
+          {% for v in visits_profile_1d %}
+            {% if v.profile != '12' %}
+            [{% if v.profile == '1' %} '{% trans "Pediatra" %}'
+             {% elif v.profile == '2' %} '{% trans "Ginecóloga/o" %}'
+             {% elif v.profile == '3' %} '{% trans "Otra especialidad médica" %}'
+             {% elif v.profile == '4' %} '{% trans "Matrona" %}'
+             {% elif v.profile == '5' %} '{% trans "Enfermera/o" %}'
+             {% elif v.profile == '6' %} '{% trans "Otro sanitario" %}'
+             {% elif v.profile == '7' %} '{% trans "Consultora lactancia (IBCLC, OMS)" %}'
+             {% elif v.profile == '8' %} '{% trans "Grupo de apoyo" %}'
+             {% elif v.profile == '9' %} '{% trans "Doula" %}'
+             {% elif v.profile == '10' %} '{% trans "Madre/Padre" %}'
+             {% elif v.profile == '11' %} '{% trans "Otro" %}'
+             {% elif v.profile == '13' %} '{% trans "Farmacéutico" %}'
+             {% elif v.profile == '14' %} '{% trans "Médico de familia" %}'
+             {% endif %}  , {{v.visits}}],
+            {% endif %}
+          {% endfor %}
+        ]);
+
+        var options = {
+          legend: { position: 'right', maxLines: 1 },
+          pieStartAngle: 270,
+          pieSliceText: 'none',
+          width: 700,
+          height: 400, 
+          chartArea: { left: 20, top: 10,  width: "65%", height: "90%" }, 
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('stats_profile_visits_1d'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_profile1d').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_profile1w);
+      function drawChart_profile1w() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "Perfil de usuario" %}', '{% trans "Visitas" %}'],
+          {% for v in visits_profile_1w %}
+            {% if v.profile != '12' %}
+            [{% if v.profile == '1' %} '{% trans "Pediatra" %}'
+             {% elif v.profile == '2' %} '{% trans "Ginecóloga/o" %}'
+             {% elif v.profile == '3' %} '{% trans "Otra especialidad médica" %}'
+             {% elif v.profile == '4' %} '{% trans "Matrona" %}'
+             {% elif v.profile == '5' %} '{% trans "Enfermera/o" %}'
+             {% elif v.profile == '6' %} '{% trans "Otro sanitario" %}'
+             {% elif v.profile == '7' %} '{% trans "Consultora lactancia (IBCLC, OMS)" %}'
+             {% elif v.profile == '8' %} '{% trans "Grupo de apoyo" %}'
+             {% elif v.profile == '9' %} '{% trans "Doula" %}'
+             {% elif v.profile == '10' %} '{% trans "Madre/Padre" %}'
+             {% elif v.profile == '11' %} '{% trans "Otro" %}'
+             {% elif v.profile == '13' %} '{% trans "Farmacéutico" %}'
+             {% elif v.profile == '14' %} '{% trans "Médico de familia" %}'
+             {% endif %}  , {{v.visits}}],
+            {% endif %}
+          {% endfor %}
+        ]);
+
+        var options = {
+          legend: { position: 'right', maxLines: 1 },
+          pieStartAngle: 270,
+          pieSliceText: 'none',
+          width: 700,
+          height: 400, 
+          chartArea: { left: 20, top: 10,  width: "65%", height: "90%" }, 
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('stats_profile_visits_1w'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_profile1w').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_profile1m);
+      function drawChart_profile1m() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "Perfil de usuario" %}', '{% trans "Visitas" %}'],
+          {% for v in visits_profile_1m %}
+            {% if v.profile != '12' %}
+            [{% if v.profile == '1' %} '{% trans "Pediatra" %}'
+             {% elif v.profile == '2' %} '{% trans "Ginecóloga/o" %}'
+             {% elif v.profile == '3' %} '{% trans "Otra especialidad médica" %}'
+             {% elif v.profile == '4' %} '{% trans "Matrona" %}'
+             {% elif v.profile == '5' %} '{% trans "Enfermera/o" %}'
+             {% elif v.profile == '6' %} '{% trans "Otro sanitario" %}'
+             {% elif v.profile == '7' %} '{% trans "Consultora lactancia (IBCLC, OMS)" %}'
+             {% elif v.profile == '8' %} '{% trans "Grupo de apoyo" %}'
+             {% elif v.profile == '9' %} '{% trans "Doula" %}'
+             {% elif v.profile == '10' %} '{% trans "Madre/Padre" %}'
+             {% elif v.profile == '11' %} '{% trans "Otro" %}'
+             {% elif v.profile == '13' %} '{% trans "Farmacéutico" %}'
+             {% elif v.profile == '14' %} '{% trans "Médico de familia" %}'
+             {% endif %}  , {{v.visits}}],
+            {% endif %}
+          {% endfor %}
+        ]);
+
+        var options = {
+          legend: { position: 'right', maxLines: 1 },
+          pieStartAngle: 270,
+          pieSliceText: 'none',
+          width: 700,
+          height: 400, 
+          chartArea: { left: 20, top: 10,  width: "65%", height: "90%" }, 
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('stats_profile_visits_1m'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_profile1m').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_profile1y);
+      function drawChart_profile1y() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "Perfil de usuario" %}', '{% trans "Visitas" %}'],
+          {% for v in visits_profile_1y %}
+            {% if v.profile != '12' %}
+            [{% if v.profile == '1' %} '{% trans "Pediatra" %}'
+             {% elif v.profile == '2' %} '{% trans "Ginecóloga/o" %}'
+             {% elif v.profile == '3' %} '{% trans "Otra especialidad médica" %}'
+             {% elif v.profile == '4' %} '{% trans "Matrona" %}'
+             {% elif v.profile == '5' %} '{% trans "Enfermera/o" %}'
+             {% elif v.profile == '6' %} '{% trans "Otro sanitario" %}'
+             {% elif v.profile == '7' %} '{% trans "Consultora lactancia (IBCLC, OMS)" %}'
+             {% elif v.profile == '8' %} '{% trans "Grupo de apoyo" %}'
+             {% elif v.profile == '9' %} '{% trans "Doula" %}'
+             {% elif v.profile == '10' %} '{% trans "Madre/Padre" %}'
+             {% elif v.profile == '11' %} '{% trans "Otro" %}'
+             {% elif v.profile == '13' %} '{% trans "Farmacéutico" %}'
+             {% elif v.profile == '14' %} '{% trans "Médico de familia" %}'
+             {% endif %}  , {{v.visits}}],
+            {% endif %}
+          {% endfor %}
+        ]);
+
+        var options = {
+          legend: { position: 'right', maxLines: 1 },
+          pieStartAngle: 270,
+          pieSliceText: 'none',
+          width: 700,
+          height: 400, 
+          chartArea: { left: 20, top: 10,  width: "65%", height: "90%" }, 
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('stats_profile_visits_1y'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_profile1y').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart_profileall);
+      function drawChart_profileall() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "Perfil de usuario" %}', '{% trans "Visitas" %}'],
+          {% for v in visits_profile_all %}
+            {% if v.profile != '12' %}
+            [{% if v.profile == '1' %} '{% trans "Pediatra" %}'
+             {% elif v.profile == '2' %} '{% trans "Ginecóloga/o" %}'
+             {% elif v.profile == '3' %} '{% trans "Otra especialidad médica" %}'
+             {% elif v.profile == '4' %} '{% trans "Matrona" %}'
+             {% elif v.profile == '5' %} '{% trans "Enfermera/o" %}'
+             {% elif v.profile == '6' %} '{% trans "Otro sanitario" %}'
+             {% elif v.profile == '7' %} '{% trans "Consultora lactancia (IBCLC, OMS)" %}'
+             {% elif v.profile == '8' %} '{% trans "Grupo de apoyo" %}'
+             {% elif v.profile == '9' %} '{% trans "Doula" %}'
+             {% elif v.profile == '10' %} '{% trans "Madre/Padre" %}'
+             {% elif v.profile == '11' %} '{% trans "Otro" %}'
+             {% elif v.profile == '13' %} '{% trans "Farmacéutico" %}'
+             {% elif v.profile == '14' %} '{% trans "Médico de familia" %}'
+             {% endif %}  , {{v.visits}}],
+            {% endif %}
+          {% endfor %}
+        ]);
+
+        var options = {
+          legend: { position: 'right', maxLines: 1 },
+          pieStartAngle: 270,
+          pieSliceText: 'none',
+          width: 700,
+          height: 400, 
+          chartArea: { left: 20, top: 10,  width: "65%", height: "90%" }, 
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('stats_profile_visits_all'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_profileall').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    
+    
+
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages':['geochart']});
+      google.setOnLoadCallback(drawChart_country1d);
+      
+      function drawChart_country1d() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "País" %}', '{% trans "Visitas únicas" %}'],
+          {% for v in visits_country_1d %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+                         
+        var options = {
+          region: 'world',
+          width: 700,
+          height: 450,
+          colorAxis: {colors: ['#CEE3F6', '#3198b6']},
+          chartArea: { left: 0,  width: "85%", height: "100%" }, 
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('stats_country_visits_1d'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_country1d').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '{% trans "País" %}');
+        data.addColumn('number', '{% trans "Visitas únicas" %}');
+        data.addRows([
+          {% for v in visits_country_1d %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1]);
+        
+        var options = {
+          showRowNumber: true,
+          sortColumn: 1,
+          sortAscending: false,
+          page: 'enable',
+          pageSize: 15,
+        };
+        
+        var table = new google.visualization.Table(document.getElementById('stats_country_table_1d'));
+
+        table.draw(view, options);
+        
+        
+        function redraw () {
+            google.visualization.events.addListener(table, 'sort',
+            function(event) {
+                view.sort([{column: event.column, desc: !event.ascending}]);
+                 table.draw(view, {showRowNumber: true});
+      });
+         
+        }
+
+        $(window).resize(redraw);
+        $('#tab_country1d').click(redraw);
+      }
+    </script>
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages':['geochart']});
+      google.setOnLoadCallback(drawChart_country1w);
+      
+      function drawChart_country1w() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "País" %}', '{% trans "Visitas únicas" %}'],
+          {% for v in visits_country_1w %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+                         
+        var options = {
+          region: 'world',
+          width: 700,
+          height: 450,
+          colorAxis: {colors: ['#CEE3F6', '#3198b6']},
+          chartArea: { left: 0,  width: "85%", height: "100%" }, 
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('stats_country_visits_1w'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_country1w').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '{% trans "País" %}');
+        data.addColumn('number', '{% trans "Visitas únicas" %}');
+        data.addRows([
+          {% for v in visits_country_1w %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1]);
+        
+        var options = {
+          showRowNumber: true,
+          sortColumn: 1,
+          sortAscending: false,
+          page: 'enable',
+          pageSize: 15,
+        };
+        
+        var table = new google.visualization.Table(document.getElementById('stats_country_table_1w'));
+
+        table.draw(view, options);
+        
+        
+        function redraw () {
+            google.visualization.events.addListener(table, 'sort',
+            function(event) {
+                view.sort([{column: event.column, desc: !event.ascending}]);
+                 table.draw(view, {showRowNumber: true});
+      });
+         
+        }
+
+        $(window).resize(redraw);
+        $('#tab_country1w').click(redraw);
+      }
+    </script>
+    
+    
+    
+    
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages':['geochart']});
+      google.setOnLoadCallback(drawChart_country1m);
+      
+      function drawChart_country1m() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "País" %}', '{% trans "Visitas únicas" %}'],
+          {% for v in visits_country_1m %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+                         
+        var options = {
+          region: 'world',
+          width: 700,
+          height: 450,
+          colorAxis: {colors: ['#CEE3F6', '#3198b6']},
+          chartArea: { left: 0,  width: "85%", height: "100%" }, 
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('stats_country_visits_1m'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_country1m').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '{% trans "País" %}');
+        data.addColumn('number', '{% trans "Visitas únicas" %}');
+        data.addRows([
+          {% for v in visits_country_1m %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1]);
+        
+        var options = {
+          showRowNumber: true,
+          sortColumn: 1,
+          sortAscending: false,
+          page: 'enable',
+          pageSize: 15,
+        };
+        
+        var table = new google.visualization.Table(document.getElementById('stats_country_table_1m'));
+
+        table.draw(view, options);
+        
+        
+        function redraw () {
+            google.visualization.events.addListener(table, 'sort',
+            function(event) {
+                view.sort([{column: event.column, desc: !event.ascending}]);
+                 table.draw(view, {showRowNumber: true});
+      });
+         
+        }
+
+        $(window).resize(redraw);
+        $('#tab_country1m').click(redraw);
+      }
+    </script>
+    
+    
+    
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages':['geochart']});
+      google.setOnLoadCallback(drawChart_country1y);
+      
+      function drawChart_country1y() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "País" %}', '{% trans "Visitas únicas" %}'],
+          {% for v in visits_country_1y %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+                         
+        var options = {
+          region: 'world',
+          width: 700,
+          height: 450,
+          colorAxis: {colors: ['#CEE3F6', '#3198b6']},
+          chartArea: { left: 0,  width: "85%", height: "100%" }, 
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('stats_country_visits_1y'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_country1y').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '{% trans "País" %}');
+        data.addColumn('number', '{% trans "Visitas únicas" %}');
+        data.addRows([
+          {% for v in visits_country_1y %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1]);
+        
+        var options = {
+          showRowNumber: true,
+          sortColumn: 1,
+          sortAscending: false,
+          page: 'enable',
+          pageSize: 15,
+        };
+        
+        var table = new google.visualization.Table(document.getElementById('stats_country_table_1y'));
+
+        table.draw(view, options);
+        
+        
+        function redraw () {
+            google.visualization.events.addListener(table, 'sort',
+            function(event) {
+                view.sort([{column: event.column, desc: !event.ascending}]);
+                 table.draw(view, {showRowNumber: true});
+      });
+         
+        }
+
+        $(window).resize(redraw);
+        $('#tab_country1y').click(redraw);
+      }
+    </script>
+    
+    
+    
+    
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages':['geochart']});
+      google.setOnLoadCallback(drawChart_countryall);
+      
+      function drawChart_countryall() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans "País" %}', '{% trans "Visitas únicas" %}'],
+          {% for v in visits_country_all %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+                         
+        var options = {
+          region: 'world',
+          width: 700,
+          height: 450,
+          colorAxis: {colors: ['#CEE3F6', '#3198b6']},
+          chartArea: { left: 0,  width: "85%", height: "100%" }, 
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('stats_country_visits_all'));
+        chart.draw(data, options);
+
+        function redraw () {
+          chart.draw(data, options);
+        }
+
+        $(window).resize(redraw);
+        $('#tab_countryall').click(redraw);
+
+      }
+    </script>
+
+    
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '{% trans "País" %}');
+        data.addColumn('number', '{% trans "Visitas únicas" %}');
+        data.addRows([
+          {% for v in visits_country_all %}
+            ['{{v.country}}', {{v.visits}}],
+          {% endfor %}
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1]);
+        
+        var options = {
+          showRowNumber: true,
+          sortColumn: 1,
+          sortAscending: false,
+          page: 'enable',
+          pageSize: 15,
+        };
+        
+        var table = new google.visualization.Table(document.getElementById('stats_country_table_all'));
+
+        table.draw(view, options);
+        
+        
+        function redraw () {
+            google.visualization.events.addListener(table, 'sort',
+            function(event) {
+                view.sort([{column: event.column, desc: !event.ascending}]);
+                 table.draw(view, {showRowNumber: true});
+      });
+         
+        }
+
+        $(window).resize(redraw);
+        $('#tab_countryall').click(redraw);
+      }
+    </script>
+    
+    
+    
+{% endblock %}
+
+{% block title %}{% trans "e-lactancia en cifras" %}{% endblock %}
+
+
+
+{# share block #}
+{% block fb_url %}{% url 'lactancia:estadisticas' %}{% endblock %}
+{% block fb_url_top %}{% url 'lactancia:estadisticas' %}{% endblock %}
+{% block twitter_data-text %}{% trans "Estas son las cifras que maneja e-lactancia para salvar la" %} #Lactancia{% endblock %}
+{% block twitter_data-text_top %}{% trans "Estas son las cifras que maneja e-lactancia para salvar la" %} #Lactancia{% endblock %}
+
+
+{% block titulo_mainpage %}
+<div class="row-fluid">
+    <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+
+</div>
+<h1 class="text-center">{% trans "e-lactancia en cifras" %}*</h1>
+<p class="text-center">* {% trans "las estadísticas se actualizan a diario" %}</p>
+<div class="row-fluid">
+    <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+{% endblock %}
+
+{% block mainpage %}
+
+
+<h3 class="text-center">{% trans "Sobre los términos" %}</h3>
+<div class="row-fluid">
+  <div class="span6 offset3">
+    <div class="well">
+        <h4 class="text-center">{% trans "Distribución de los términos en nuestra base de datos" %}</h4>
+        <p >{% trans "A día de hoy, hay" %} <br>- {{N_prods}}  <strong>{% trans "Productos" %}</strong> {% trans "distintos pertenecientes a" %} <br>- {{N_grupos}} <strong>{% trans "Grupos" %}</strong>{% trans ", con" %} <br>- {{N_alias|add:N_escrituras}} <strong>{% trans "Sinónimos" %}</strong> y <br>- {{N_marcas}} <strong>{% trans "Marcas comerciales" %}</strong>. <br><br>{% trans "En total hay" %} {{N_total}} <strong>{% trans "Términos" %}</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row-fluid">
+    <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+
+<h3 class="text-center">{% trans "Consultas y Visitas" %}</h3>
+<h5 class="text-center">{% trans "Productos más consultados" %}</h5>
+<div class="container">
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab_prods1d" id="id_prod_1d" data-toggle="tab">{% trans "Último día" %}</a></li>
+    <li><a href="#tab_prods1w" id="id_prod_1w" data-toggle="tab">{% trans "Última semana" %}</a></li>
+    <li><a href="#tab_prods1m" id="id_prod_1m" data-toggle="tab">{% trans "Último mes" %}</a></li>
+    <li><a href="#tab_prods1y" id="id_prod_1y" data-toggle="tab">{% trans "Último año" %}</a></li>
+    <li><a href="#tab_prodsall" id="id_prod_all" data-toggle="tab">{% trans "Total" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab_prods1d">
+      <div class="center stats-bar-top-products" id="stats_prods_1d"></div>
+    </div>
+    <div class="tab-pane" id="tab_prods1w">
+      <div class="center stats-bar-top-products" id="stats_prods_1w"></div>
+    </div>
+    <div class="tab-pane" id="tab_prods1m">
+      <div class="center stats-bar-top-products" id="stats_prods_1m"></div>
+    </div>
+    <div class="tab-pane" id="tab_prods1y">
+      <div class="center stats-bar-top-products" id="stats_prods_1y"></div>
+    </div>
+    <div class="tab-pane" id="tab_prodsall">
+      <div class="center stats-bar-top-products" id="stats_prods_all"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<h5 class="text-center">{% trans "Visitas por periodo de tiempo" %}</h5>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li><a href="#tab_visitsyearly" data-toggle="tab">{% trans "Anualmente" %}</a></li>
+    <li class="active"><a href="#tab_visitsmonthly" data-toggle="tab">{% trans "Mensualmente" %}</a></li>
+    <li><a href="#tab_visitsweekly" data-toggle="tab">{% trans "Semanalmente" %}</a></li>
+    <li><a href="#tab_visitsdaily" data-toggle="tab">{% trans "Diariamente" %}</a></li>
+  </ul>
+  <div class="tab-content">
+        <div class="tab-pane" id="tab_visitsyearly">
+      <div class="center stats-visits-areachart" id="stats_yearly_visits"></div>
+    </div>
+    <div class="tab-pane active" id="tab_visitsmonthly">
+      <div class="center stats-visits-areachart" id="stats_monthly_visits"></div>
+    </div>
+    <div class="tab-pane" id="tab_visitsweekly">
+      <div class="center stats-visits-areachart" id="stats_weekly_visits"></div>
+    </div>
+    <div class="tab-pane" id="tab_visitsdaily">
+      <div class="center stats-visits-areachart" id="stats_daily_visits"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+<div class="row-fluid">
+    <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+<h5 class="text-center">{% trans "Visitas por perfil de usuario" %}</h5>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab_profile1d" data-toggle="tab">{% trans "Último día" %}</a></li>
+    <li><a href="#tab_profile1w" data-toggle="tab">{% trans "Última semana" %}</a></li>
+    <li><a href="#tab_profile1m" data-toggle="tab">{% trans "Último mes" %}</a></li>
+    <li><a href="#tab_profile1y" data-toggle="tab">{% trans "Último año" %}</a></li>
+    <li><a href="#tab_profileall" data-toggle="tab">{% trans "Total" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab_profile1d">
+      <p class="text-center">{% trans "Más del 80% de las visitas son anónimas" %} <strong>({{ visits_profile_1d.3.visits }})</strong>. {% trans "A continuación mostramos el desglose de las visitas que nos han indicado su perfil de usuario" %}.</p>
+      <div class="row-fluid">
+        <div class="span6 stat offset3">
+            <div class="stats-pie-profile" id="stats_profile_visits_1d"></div>
+        </div>
+       </div>
+    </div>
+
+    <div class="tab-pane" id="tab_profile1w">
+      <p class="text-center">{% trans "Más del 80% de las visitas son anónimas" %} <strong>({{ visits_profile_1w.3.visits }})</strong>. {% trans "A continuación mostramos el desglose de las visitas que nos han indicado su perfil de usuario" %}.</p>
+      <div class="row-fluid">
+        <div class="span6 stat offset3">
+            <div class="stats-pie-profile" id="stats_profile_visits_1w"></div>
+        </div>
+       </div>
+    </div>
+    
+    <div class="tab-pane" id="tab_profile1m">
+      <p class="text-center">{% trans "Más del 80% de las visitas son anónimas" %} <strong>({{ visits_profile_1m.3.visits }})</strong>. {% trans "A continuación mostramos el desglose de las visitas que nos han indicado su perfil de usuario" %}.</p>
+      <div class="row-fluid">
+        <div class="span6 stat offset3">
+            <div class="stats-pie-profile" id="stats_profile_visits_1m"></div>
+        </div>
+       </div>
+    </div>
+    
+    <div class="tab-pane" id="tab_profile1y">
+      <p class="text-center">{% trans "Más del 80% de las visitas son anónimas" %} <strong>({{ visits_profile_1y.3.visits }})</strong>. {% trans "A continuación mostramos el desglose de las visitas que nos han indicado su perfil de usuario" %}.</p>
+      <div class="row-fluid">
+        <div class="span6 stat offset3">
+            <div class="stats-pie-profile" id="stats_profile_visits_1y"></div>
+        </div>
+       </div>
+    </div>
+    
+    <div class="tab-pane" id="tab_profileall">
+      <p class="text-center">{% trans "Más del 80% de las visitas son anónimas" %} <strong>({{ visits_profile_all.3.visits }})</strong>. {% trans "A continuación mostramos el desglose de las visitas que nos han indicado su perfil de usuario" %}.</p>
+      <div class="row-fluid">
+        <div class="span6 stat offset3">
+            <div class="stats-pie-profile" id="stats_profile_visits_all"></div>
+        </div>
+       </div>
+    </div>
+    
+  </div>
+</div>
+</div>
+
+<div class="container">
+<!--<div class="row-fluid">
+    <div class="risk empty-space risk-miniblock  span12"></div>
+</div>-->
+<h5 class="text-center">{% trans "Visitas por países" %}</h5>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab_country1d" data-toggle="tab">{% trans "Último día" %}</a></li>
+    <li><a href="#tab_country1w" data-toggle="tab">{% trans "Última semana" %}</a></li>
+    <li><a href="#tab_country1m" data-toggle="tab">{% trans "Último mes" %}</a></li>
+    <li><a href="#tab_country1y" data-toggle="tab">{% trans "Último año" %}</a></li>
+    <li><a href="#tab_countryall" data-toggle="tab">{% trans "Total" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab_country1d">
+      <div class="row-fluid">
+        <div class="span8">
+            <h4 class="text-center">{% trans "Mapa de visitas" %}</h4>
+        </div>
+        <div class="span4">
+            <h4 class="text-center">{% trans "Tabla de visitas" %}</h4>
+        </div>
+       </div>
+      <div class="row-fluid">
+        <div class="span8">
+            <div class="center stats-country-geo" id="stats_country_visits_1d"></div>
+        </div>
+        <div class="span4">
+            <div  id="stats_country_table_1d"></div>
+        </div>
+       </div>
+    </div>
+     
+    
+    <div class="tab-pane" id="tab_country1w">
+        <div class="row-fluid">
+            <div class="span8">
+                <h4 class="text-center">{% trans "Mapa de visitas" %}</h4>
+            </div>
+            <div class="span4">
+                <h4 class="text-center">{% trans "Tabla de visitas" %}</h4>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span8">
+                <div class="center stats-country-geo" id="stats_country_visits_1w"></div>
+            </div>
+            <div class="span4">
+                <div  id="stats_country_table_1w"></div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="tab_country1m">
+        <div class="row-fluid">
+            <div class="span8">
+                <h4 class="text-center">{% trans "Mapa de visitas" %}</h4>
+            </div>
+            <div class="span4">
+                <h4 class="text-center">{% trans "Tabla de visitas" %}</h4>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span8">
+                <div class="center stats-country-geo" id="stats_country_visits_1m"></div>
+            </div>
+            <div class="span4">
+                <div  id="stats_country_table_1m"></div>
+            </div>
+        </div>
+    
+    </div>
+    <div class="tab-pane" id="tab_country1y">
+        <div class="row-fluid">
+            <div class="span8">
+                <h4 class="text-center">{% trans "Mapa de visitas" %}</h4>
+            </div>
+            <div class="span4">
+                <h4 class="text-center">{% trans "Tabla de visitas" %}</h4>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span8">
+                <div class="center stats-country-geo" id="stats_country_visits_1y"></div>
+            </div>
+            <div class="span4">
+                <div  id="stats_country_table_1y"></div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="tab_countryall">
+        <div class="row-fluid">
+            <div class="span8">
+                <h4 class="text-center">{% trans "Mapa de visitas" %}</h4>
+            </div>
+            <div class="span4">
+                <h4 class="text-center">{% trans "Tabla de visitas" %}</h4>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span8">
+                <div class="center stats-country-geo" id="stats_country_visits_all"></div>
+            </div>
+            <div class="span4">
+                <div  id="stats_country_table_all"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row-fluid">
+    <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+
+{% endblock %}
+
+

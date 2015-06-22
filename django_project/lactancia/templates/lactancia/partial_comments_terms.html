@@ -1,0 +1,20 @@
+{% load static %} 
+{% load i18n %} 
+{# mensaje de éxito o fracaso en el envío del comentario del usuario #}    
+{% if comment_form.errors %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h5>{% trans "Error al enviar tu comentario" %}</h5>
+        <small>{% trans "No se ha enviado tu comentario porque se han detectado errores" %}.<br/>
+        <a href="#comentario">{% trans "Inténtalo de nuevo" %}</a>, {% trans "por favor" %}.</small>
+    </div>
+{% endif %}   
+{% if mostrar_exito_comentario %}
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h5>{% trans "Comentario enviado con éxito" %}</h5>
+        <small>{% trans "Muchas gracias por enviarnos tus sugerencias y opiniones" %}.<br/>
+        {% trans "Puedes" %} <a href="#comentario">{% trans "editar" %} </a> {% trans "tu comentario acerca de" %} <strong>{% if grupod %}{{grupod.nombre}} {% elif aliasp %} {{aliasp.nombre}} {% elif otra_escritura %} {{otra_escritura.nombre}} {% elif marcap %} {{marcap.nombre}} {% elif prod %} {{prod.nombre}}  {% endif %}</strong> {% trans "cuantas veces quieras" %}.</small>
+    </div>
+{% endif %}
+{# end of block of mensaje de éxito o fracaso en el envío del comentario del usuario #} 

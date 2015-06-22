@@ -1,0 +1,154 @@
+{% load i18n %}
+{% load ratings_tags %}
+
+{% if perfil %}
+<div class="row-fluid">
+    <div class="risk empty-space risk-miniblock span12"><a name="valoracion"></a></div>
+</div>
+
+    
+<div class="row-fluid">
+    {#  cajita de votar #}
+    <div class="well well-large span12">
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="row-fluid">
+                    <h3>{% trans "Tu opinión es muy importante" %}</h3>
+                    <p>{% trans "Con tu valoración sobre la calidad de la información de" %} <strong>{% if grupod %}{{grupod.nombre}} {% elif aliasp %} {{aliasp.nombre}} {% elif otra_escritura %} {{otra_escritura.nombre}} {% elif marcap %} {{marcap.nombre}} {% elif prod %} {{prod.nombre}} {% endif %}</strong>:</p>
+                    <ul>
+                        <li>{% trans "Nos ayudas a mejorar el contenido de e-lactancia" %}</li>
+                        <li>{% trans "Contribuyes a hacer visibles las opiniones de nuestra comunidad de usuarios" %}</li>
+                    </ul>    
+                </div>
+                <div class="row-fluid">
+                    <div class="accordion" id="comment_accordion" style="margin-top:62px;">
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle text-center" data-toggle="collapse" data-parent="#comment_accordion" href="#collapseOne" name="comentario">{% if desplegar_comentario %}{% trans "Tu comentario " %}{% else %}{% trans "Añade un comentario" %}{% endif %}</a>
+                            </div>
+                            <div id="collapseOne" class="accordion-body collapse {% if desplegar_comentario %}in{% endif %}">
+                                <div class="accordion-inner">  
+                            
+                                    <form action="" method="post">
+                                        <div class="field">
+                                            <span class="badge badge-important">{{ comment_form.comentario.errors }}</span>
+                                            {% if desplegar_comentario %}
+                                                {% if mostrar_exito_comentario %}
+                                                    <span class="badge badge-success">{% trans "Comentario enviado con éxito. ¡Muchas gracias!" %}</span>
+                                                {% else %}
+                                                    <span class="badge badge-info">{% trans "Puedes editar tu comentario y volver a enviarlo si lo deseas" %}</span>
+                                                {% endif %}
+                                            {% endif %}
+                                            {{ comment_form.comentario }}
+                                        </div>
+                                        <!--<div class="field">
+                                        {{ comment_form.email.errors }}
+                                        <label>{% trans "Tu e-mail (optativo. Si quieres que contactemos contigo) " %}:</label>
+                                        {{ comment_form.email }}
+                                        </div>-->
+                                        {% csrf_token %}
+                                        <input class="btn btn-info" type="submit" name="form_opinion" value="{% trans 'Enviar' %}" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
+
+
+            <div class="span6">
+                <div class="row-fluid">
+                    <h3>{% trans "Visitas y valoraciones para" %} {% if grupod %}{{grupod.nombre}} {% elif aliasp %} {{aliasp.nombre}} {% elif otra_escritura %} {{otra_escritura.nombre}} {% elif marcap %} {{marcap.nombre}} {% elif prod %} {{prod.nombre}} {% endif %}</h3>
+                </div>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>{% trans "Visitas totales" %}</h5>
+                        <h3>{{visits.0}}</h3>
+                    </div>
+                    <div class="span9">
+                        <p>{% trans "Valoraciones de usuarios con perfil" %} <strong>{{ perfil_text }}</strong>: <small> {% trans "(¿No es tu perfil?" %}<a data-toggle="modal" href="#modal_profile" > {% trans "Cambia tu perfil" %}</a>)</small></p>
+                        <div class="row-fluid">
+                            <div class="span6"> 
+                                <h5>{% trans "Tu valoración" %}:</h5>
+                
+                                {% if grupop %}
+                                    {% get_rating_form for grupop as rating_form %}
+                                {% elif prod %}
+                                    {% get_rating_form for prod as rating_form %}
+                                {% endif %}
+                                <form action="{% url 'ratings_vote' %}" method="post">
+                                    {% csrf_token %}
+                                    {{ rating_form }}
+                                    <input type="submit" class="btn btn-info" value="{% trans 'Valora' %}">
+                                </form>
+                                
+                            </div>
+                            <div class="span6">
+                                <h5>{% trans "Valoración media" %}:</h5>
+                                {% if grupop %}
+                                    {% get_rating_score for grupop as user_score %}
+                                    {% if user_score %}
+                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                            <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
+                                    {% else %}
+                                        <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ grupop.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
+                                    {% endif %}
+                                 {% elif marcap %}
+                                    {% get_rating_score for marcap as user_score %}
+                                    {% if user_score %}
+                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
+                                    {% else %}
+                                        <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ marcap.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
+                                    {% endif %}
+                                {% elif aliasp %}
+                                    {% get_rating_score for prod as user_score %}
+                                    {% if user_score %}
+                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
+                                    {% else %}
+                                        <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ aliasp.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
+                                    {% endif %}
+                                {% elif otra_escritura %}
+                                    {% get_rating_score for prod as user_score %}
+                                    {% if user_score %}
+                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
+                                    {% else %}
+                                        <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ otra_escritura.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
+                                    {% endif %}
+                                {% elif pod %}
+                                    {% get_rating_score for prop as user_score %}
+                                    {% if user_score %}
+                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
+                                    {% else %}
+                                        <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ prod.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class"row-fluid">
+                    <div class="accordion" id="rating_accordion">
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle text-center" data-toggle="collapse" data-parent="#rating_accordion" href="#collapseTwo">{% trans "Ver valoraciones y visitas por perfil de usuario" %}</a>
+                            </div>
+                            <div id="collapseTwo" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    {% include 'lactancia/partial_table_stars.html' %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>
+    </div>
+</div>  
+
+{% endif %}

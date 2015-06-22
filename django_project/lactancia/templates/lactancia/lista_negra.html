@@ -1,0 +1,93 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+
+
+{% block mainpage %}
+<h1 class="text-center">{% trans "Productos con alternativas a revisar" %}</h1>
+<p>{% trans "A continuación se muestra un listado de todos los productos que ahora mismo tienen una o más alternativas con un nivel de riesgo igual o superior al del propio producto" %}</p>
+
+<div class="row-fluid">
+
+	{# prods de NIVEL 0 #}
+	<div class="well span3">
+		<h2>Nivel 0</h2>
+		{% if blacklist_r0|length == 0 %}
+			<p>{% trans "¡Enhorabuena! Todos los productos de nivel 0 tienen alternativas coherentes" %}.</p>
+		{% else %}
+			<ul>
+ 				{% for p in blacklist_r0 %}
+ 				<li><a href="{% url 'lactancia:detalle_p' p.id %}">{{p.nombre}}:</a>
+ 					<ul>
+ 						{% for alt in p.alternativas.all|dictsort:"nombre" %}
+ 							<li><a href="{% url 'lactancia:detalle_p' alt.id %}">{{alt.nombre}}</a> ({% trans "Nivel " %} {{alt.riesgo.nivel}})</li>
+ 						{% endfor %}
+ 					</ul>
+	 			</li>
+ 				{% endfor %}
+ 			</ul>
+ 		{% endif %}
+	</div>
+
+	{# prods de NIVEL 1 #}
+	<div class="well span3">
+		<h2>Nivel 1</h2>
+		{% if blacklist_r1|length == 0 %}
+		<p>{% trans "¡Enhorabuena! Todos los productos de nivel 1 tienen alternativas coherentes" %}.</p>
+		{% else %}
+			<ul>
+ 				{% for p in blacklist_r1 %}
+ 				<li><a href="{% url 'lactancia:detalle_p' p.id %}">{{p.nombre}}:</a>
+ 					<ul>
+ 						{% for alt in p.alternativas.all|dictsort:"nombre" %}
+ 							<li><a href="{% url 'lactancia:detalle_p' alt.id %}">{{alt.nombre}}</a> ({% trans "Nivel " %} {{alt.riesgo.nivel}})</li>
+ 						{% endfor %}
+ 					</ul>
+	 			</li>
+ 				{% endfor %}
+ 			</ul>
+ 		{% endif %}
+	</div>
+
+	{# prods de NIVEL 2 #}
+	<div class="well span3">
+		<h2>Nivel 2</h2>
+		{% if blacklist_r2|length == 0 %}
+			<p>{% trans "¡Enhorabuena! Todos los productos de nivel 2 tienen alternativas coherentes" %}.</p>
+		{% else %}
+			<ul>
+ 				{% for p in blacklist_r2 %}
+	 				<li><a href="{% url 'lactancia:detalle_p' p.id %}">{{p.nombre}}</a>:
+ 						<ul>
+ 						{% for alt in p.alternativas.all|dictsort:"nombre" %}
+ 							<li><a href="{% url 'lactancia:detalle_p' alt.id %}">{{alt.nombre}}</a> ({% trans "Nivel " %} {{alt.riesgo.nivel}})</li>
+ 						{% endfor %}
+ 						</ul>
+	 				</li>
+ 				{% endfor %}
+ 			</ul>
+ 		{% endif %}
+	</div>
+
+	{# prods de NIVEL 3 #}
+	<div class="well span3">
+		<h2>Nivel 3</h2>
+		{% if blacklist_r3|length == 0 %}
+		<p>{% trans "¡Enhorabuena! Todos los productos de nivel 3 tienen alternativas coherentes" %}.</p>
+		{% else %}
+			<ul>
+ 				{% for p in blacklist_r3 %}
+ 				<li><a href="{% url 'lactancia:detalle_p' p.id %}">{{p.nombre}}:</a>
+ 					<ul>
+ 						{% for alt in p.alternativas.all|dictsort:"nombre" %}
+ 							<li><a href="{% url 'lactancia:detalle_p' alt.id %}">{{alt.nombre}}</a> ({% trans "Nivel " %} {{alt.riesgo.nivel}})</li>
+ 						{% endfor %}
+ 					</ul>
+	 			</li>
+ 				{% endfor %}
+ 			</ul>
+ 		{% endif %}
+	</div>
+
+</div>
+
+{% endblock %}

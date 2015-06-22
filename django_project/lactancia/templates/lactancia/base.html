@@ -5,7 +5,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-lactancia{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta name="description" content="{% trans 'Información sobre compatibilidad de medicamentos y otros productos con la lactancia materna, desarrollada por la Asociación para la Promoción científica y cultural de la Lactancia Materna, APILAM' %}">
     <meta name="author" content="{% trans 'e-lactancia es un proyecto de APILAM, asociación para la promoción e investigación científica y cultural de la lactancia materna' %}">
     <meta name="keywords" content="{% trans 'APILAM, Lactancia, materna, lactancia materna, leche materna, medicamentos, farmacos, plantas, infusiones, drogas, contaminantes, toxicos, enfermedades, compatibilidad, Pediatria, José María Paricio Talayero, Paricio, JM Paricio, Paricio Talayero, Leo Landa, Leonardo Landa, Leo Landa Rivera, Leonardo Landa Rivera' %}">
@@ -22,7 +22,8 @@
     <![endif]->    
 
      <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> 
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+     <!--<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> -->
      <link href="{{STATIC_URL}}css/lactancia.css" rel="stylesheet"> 
      <link href="{{STATIC_URL}}img/favicon.ico" rel="icon" type="image/x-icon">
      <div id="fb-root"></div>
@@ -65,9 +66,8 @@
                         <a class="brand" href="{% block topbar_brand_url %}{% url 'lactancia:landing' %}{% endblock %}"><img src="{{ STATIC_URL }}img/logo-peq2.png"></a>
                         {% endblock %}
                         {% block topbar_search %}
-                        <form class="navbar-search" id="search_form" action="{% block search_bar_action %}{% url 'lactancia:buscar' %}{% endblock %}">
-                          <em class="icon-search"></em>
-                          <input class="typeahead" type="text" class="search-query" id="search_input" name="q" placeholder="{% block search_bar_placeholder %}Buscar{% endblock %}" data-provide="typeahead" autocomplete="off">
+                        <form class="navbar-search form-search" id="search_form" action="{% block search_bar_action %}{% url 'lactancia:buscar' %}{% endblock %}">
+                          <input class="typeahead" placeholder="{% trans 'Buscar' %}" type="text" id="search_input" name="q" autocomplete="on"/>
                         </form>
                         {% endblock %}
                         <input type="hidden" id="term-type" name="term-type" value="">
@@ -75,7 +75,7 @@
 
                         {# bloque de la derecha #}
                         {% if alert_risk %}
-                          <a class="btn btn-mini btn-danger pull-right" id="btn_alert_risk" data-toggle="popover"><i class="icon-exclamation-sign"></i></a>
+                          <a class="btn btn-mini btn-danger pull-right" id="btn_alert_risk" data-toggle="popover"><i class="fa fa-exclamation-circle"></i></a>
                         {% endif %} 
                         
                         {% block idiomas %}
@@ -99,7 +99,7 @@
                         <div class="pull-right">
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                         <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="{% block donate_url %}4BLX2BB5A8KYY{% endblock %}">
+                        <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}4BLX2BB5A8KYY{% else %}BLSTZ4B6QGTJQ{% endif %}">
                         <input class="btn btn-warning btn-small" id="btn_donate" type="submit" value="{% trans 'DONA AHORA' %}"/>
                         </div>
                         </form>
@@ -114,10 +114,10 @@
         {% endblock %}
 
         <div class="container">
-
+                <br>
                   {% block titulo_mainpage %}
                   {% endblock %}
-                  
+                  <br>
                   {# caja de compartir top #}
                     {% block share_top %}
                     <div class="center">
@@ -159,16 +159,16 @@
       <div class="row-fluid">
         <ul class="inline text-center">
           <li><small><strong>
-            <a class="white-text" href="{% url 'lactancia:buscar' %}">{% trans 'COLABORA' %}</a>
+            <a class="white-text" href="{% url 'lactancia:donativos' %}">{% trans 'COLABORA' %}</a>
           </small></strong></li>
           <li><small><strong>
-            <a class="white-text" href="{% url 'lactancia:buscar' %}">{% trans 'ALERTAS' %}</a>
+            <a class="white-text" href="{% url 'lactancia:alerta_riesgos' %}">{% trans 'ALERTAS' %}</a>
           </small></strong></li>
           <li><small><strong>
-            <a class="white-text" href="{% url 'lactancia:buscar' %}">{% trans 'CONÓCENOS' %}</a>
+            <a class="white-text" href="{% url 'lactancia:creditos' %}">{% trans 'CONÓCENOS' %}</a>
           </small></strong></li>
           <li><small><strong>
-            <a class="white-text" href="{% url 'lactancia:buscar' %}">{% trans 'CIFRAS' %}</a>
+            <a class="white-text" href="{% url 'lactancia:estadisticas' %}">{% trans 'CIFRAS' %}</a>
           </small></strong></li>
         </ul>
       </div>
@@ -184,29 +184,29 @@
           <a href="{% block link_apilam %}http://apilam.org/{% endblock %}" target="_blank">
             <img id="apilam_logo_social" src="{{ STATIC_URL }}img/logo-peq2.png">
           </a>
-          <a class="btn btn-link nounderline social_icon" href="{% block link_apilam_blog %}http://apilamblog.blogspot.com.es/{% endblock %}" target="_blank">
-            <i class="icon-rss icon-2x"></i>
+          <a class="btn btn-link nounderline social_icon" href="{% if LANGUAGE_CODE == 'es' %}http://apilamblog.blogspot.com.es/{% else %}http://apilamblog-en.blogspot.com.es/ {% endif %}" target="_blank">
+            <i class="fa fa-rss fa-2x"></i>
           </a>
           <a class="btn btn-link nounderline social_icon" href="https://www.facebook.com/pages/Apilam/747558548604817" target="_blank">
-            <i class="icon-facebook icon-2x"></i>
+            <i class="fa fa-facebook fa-2x"></i>
           </a>
           <a class="btn btn-link nounderline social_icon" href="https://twitter.com/APILAM_" target="_blank">
-            <i class="icon-twitter icon-2x"></i>
+            <i class="fa fa-twitter fa-2x"></i>
           </a>
-          <a class="btn btn-link nounderline social_icon" href="https://plus.google.com/u/2/101241264506707366398/posts/p/pub?hl=es" target="_blank">
-            <i class="icon-google-plus icon-2x"></i>
+          <a class="btn btn-link nounderline social_icon" href="https://plus.google.com/u/2/101241264506707366398/posts/p/pub?hl={{LANGUAGE_CODE}}" target="_blank">
+            <i class="fa fa-google-plus fa-2x"></i>
           </a>
           <a class="btn btn-link nounderline social_icon" href="mailto:elactancia.org@gmail.com" target="_blank">
-            <i class="icon-envelope-alt icon-2x"></i>
+            <i class="fa fa-envelope-o fa-2x"></i>
           </a>
         </div>
       </div>  
       {#  bloque políticas#}
       <div class="row-fluid">
         <ul class="inline text-center">
-          <li><small><a class="white-text" href="{% url 'lactancia:buscar' %}">{% trans 'Aviso legal' %}</a></small></li>
-          <li><small><a class="white-text" href="{% url 'lactancia:buscar' %}">{% trans 'Política de privacidad' %}</a></small></li>
-          <li><small><a class="white-text" href="{% url 'lactancia:buscar' %}">{% trans 'Política de cookies' %}</a></small></li>
+          <li><small><a class="white-text" href="{% url 'lactancia:aviso_legal' %}">{% trans 'Aviso legal' %}</a></small></li>
+          <li><small><a class="white-text" href="{% url 'lactancia:privacidad' %}">{% trans 'Política de privacidad' %}</a></small></li>
+          <li><small><a class="white-text" href="{% url 'lactancia:cookies' %}">{% trans 'Política de cookies' %}</a></small></li>
         </ul>
       </div>
 
@@ -221,8 +221,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!--<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/typeahead.bundle.min.js"></script>
     <script type="text/javascript">var switchTo5x=true;</script>
@@ -256,18 +255,19 @@
 
         var productos = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
-            queryTokenizer: queryTokenizer,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
             limit: 5,
             local: $.map({{PRODUCTOS}}, function (name) {
                 // Normalize the name - use this for searching
                 //console.log(name.termino)
-                var normalized = normalize(name.termino);
+                term = {% if LANGUAGE_CODE == 'es' %} name.termino_es {% else %} name.termino_en {% endif %}
+                var normalized = normalize(term);
                 //console.log(normalized)
                 return {
                     termino: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
-                    displayValue: name.termino
+                    displayValue: term
                     };
                 })
         });
@@ -275,18 +275,19 @@
         var grupos = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            identify: function(obj) { return obj.termino; },
             limit: 2,
             local: $.map({{GRUPOS}}, function (name) {
                 // Normalize the name - use this for searching
                 //console.log(name.termino)
-                var normalized = normalize(name.termino);
+                term = {% if LANGUAGE_CODE == 'es' %} name.termino_es {% else %} name.termino_en {% endif %}
+                
+                var normalized = normalize(term);
                 //console.log(normalized)
                 return {
                     termino: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
-                    displayValue: name.termino
+                    displayValue: term
                     };
                 })
             
@@ -295,18 +296,19 @@
         var sinonimos = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            identify: function(obj) { return obj.termino; },
             limit: 2,
             local: $.map({{SINONIMOS}}, function (name) {
                 // Normalize the name - use this for searching
                 //console.log(name.termino)
-                var normalized = normalize(name.termino);
+                term = {% if LANGUAGE_CODE == 'es' %} name.termino_es {% else %} name.termino_en {% endif %}
+                
+                var normalized = normalize(term);
                 //console.log(normalized)
                 return {
                     termino: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
-                    displayValue: name.termino
+                    displayValue: term
                     };
                 })
             
@@ -314,7 +316,6 @@
         var escrituras = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            identify: function(obj) { return obj.termino; },
             limit: 2,
             local: $.map({{ESCRITURAS}}, function (name) {
                 // Normalize the name - use this for searching
@@ -404,55 +405,39 @@
       });
         
         
-        
-        
-/*        var names = ["santoral", "Sánchez", "arena", "Árbol", "mujer", "mújica", "Müller", "erasmus", "Ératio", "Niño", "ninot"];
-
-var normalize = function (input) {
-    $.each(charMap, function (unnormalizedChar, normalizedChar) {
-        var regex = new RegExp(unnormalizedChar, 'gi');
-        input = input.replace(regex, normalizedChar);
-    });
-    return input;
-};
-
-var queryTokenizer = function (q) {
-    var normalized = normalize(q);
-    return Bloodhound.tokenizers.whitespace(normalized);
-};
-
-var nombres = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-    queryTokenizer: queryTokenizer,
-    local: $.map(names, function (name) {
-        // Normalize the name - use this for searching
-        var normalized = normalize(name);
-        return {
-            value: normalized,
-            // Include the original name - use this for display purposes
-            displayValue: name
-        };
-    })
-});
-
-nombres.initialize();
-
-$('#search_input').typeahead({
-    minLength: 1,
-    hint: false,
-    highlight: true
-}, {
-    displayKey: 'displayValue',
-    source: nombres.ttAdapter()
-});
-        
-     */   
-        
-        
+               
         {# there is a conflict between typeahead and autofocus. This is required to manually set the autofocus without interfering with the typeaheads #}
         $(document).ready(function () {
             $('#search_input').trigger('focus');
             });
+    </script>
+    <script>
+        var width; 
+        //less than 768px
+        if ($(window).width() < 767){
+            width = $(window).width() - 150; 
+            
+        }
+        else{
+            /* Small Devices, .visible-sm-* */
+            if ($(window).width() < 991){
+                width = $(window).width() - 620;
+            }
+            else{
+                /* Medium Devices, .visible-md-* */
+                if ($(window).width() < 1199){
+                    width = $(window).width() - 700; 
+                }
+                /* Large Devices, .visible-lg-* */
+                else {
+                    width = 500; //$('#top_bar_right_menu').width; 
+                }
+            }  
+        }
+
+        $('#search_form .typeahead').css('width', width); 
+        $('#search_form .tt-query').css('width', width); 
+        $('#search_form .tt-hint').css('width', width);       
     </script>
     {% block typeahead %}
     {# this makes that the text in the search is submitted once it has been introduced (without the need of an extra and enoying enter) #}
@@ -464,9 +449,10 @@ $('#search_input').typeahead({
             placement:'bottom',
             title: '{% trans "¡Advertencia!" %}' +
                     '<button type="button" id="close" class="close" onclick="$(&quot;#btn_alert_risk&quot;).popover(&quot;hide&quot;);">&times;</button>', 
-            content: '{% trans "Se ha modificado recientemente el nivel de riesgo de al menos uno de los términos." %}' + '<br/><br/> <a href="{% url 'lactancia:buscar' %}">{% trans "Más información" %}</a>'
+            content: '{% trans "Se ha modificado recientemente el nivel de riesgo de al menos uno de los términos." %}' + '<br/><br/> <a href="{% url "lactancia:alerta_riesgos" %}">{% trans "Más información" %}</a>'
         });
     </script>
+    
 	{% endblock %}
     <script type="text/javascript" id="cookiebanner"
     src="{% get_static_prefix %}js/cookiebanner.min.js"

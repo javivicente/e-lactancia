@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-12 12:34+0200\n"
+"POT-Creation-Date: 2015-06-22 12:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,20 +25,26 @@ msgstr ""
 msgid "Español"
 msgstr ""
 
-#: django_project/settings.py:157
+#: django_project/settings.py:158
 msgid "Productos"
 msgstr ""
 
-#: django_project/settings.py:158
+#: django_project/settings.py:159
 msgid "Marcas"
 msgstr ""
 
-#: django_project/settings.py:159
+#: django_project/settings.py:160
 msgid "Riesgo, Grupos y Bibliografia"
 msgstr ""
 
-#: django_project/settings.py:160
+#: django_project/settings.py:161
 msgid "Mensajes y comentarios"
+msgstr ""
+
+#: templates/404.html:10
+msgid ""
+"Vaya, parece que algo va mal... No hemos encontrado la página que buscabas. "
+"Por favor, prueba con otra búsqueda."
 msgstr ""
 
 #: templates/admin/base.html:38
@@ -63,4 +69,8 @@ msgstr ""
 
 #: templates/admin/base.html:99
 msgid "Home"
+msgstr ""
+
+#: templates/admin/base_site.html:56
+msgid "Lista negra de productos"
 msgstr ""

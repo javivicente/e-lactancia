@@ -1,0 +1,57 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+{% block title %}{% trans 'Privacidad de e-lactancia' %}{% endblock %}
+{% block topbar_share %}  
+{% endblock %}
+
+{# share block #}
+{% block fb_url %}{% url 'lactancia:privacidad' %}{% endblock %}
+{% block fb_url_top %}{% url 'lactancia:privacidad' %}{% endblock %}
+{% block twitter_data-text %}{% trans 'Estoy leyéndome con sumo interés la política de privacidad de e-lactancia #Lactancia' %}{% endblock %}
+{% block twitter_data-text_top %}{% trans 'Estoy leyéndome con sumo interés la política de privacidad de e-lactancia #Lactancia' %}{% endblock %}
+
+
+{% block mainpage %}
+
+
+
+
+	<div class="well">
+
+		{% trans '<h2>POLÍTICA DE PRIVACIDAD</h2>' %}
+
+
+		{% trans '<h3>RESPONSABLE DEL FICHERO</h3>' %}
+		
+		{% trans '<p>La Asociación para la Promoción e Investigación científica y cultural de la Lactancia Materna, en adelante APILAM, con domicilio de contacto sito en C/Bairén 14 - 1, Gandía (Valencia) ESPAÑA y dirección de email <a href="mailto:apilam.es@gmail.com">apilam.es@gmail.com</a>, es la responsable de los ficheros en los que se incluirán los datos personales recogidos y tratados desde esta página web (en adelante <strong>e-lactancia.org</strong>). Estos ficheros se encuentran debidamente inscritos en el Registro General de Protección de Datos de la Agencia Española de Protección de Datos.</p>' %}
+
+		{% trans '<h3>RECOGIDA DE DATOS</h3>' %}
+		{% trans '<strong>e-lactancia.org</strong> únicamente recoge los datos de carácter personal que nos proporcione a través de los formularios incluidos en la página web y nuestras direcciones de correo electrónico.' %}
+
+		{% trans '<h3>Usos y Finalidades de los Datos Recogidos</h3>' %}
+
+		{% trans '<p>En <strong>e-lactancia.org</strong> se recogen los datos de carácter personal con las finalidades que se detallan a continuación, si no está conforme con alguna de ellas puede comunicarlo a la dirección de email <a href="mailto:apilam.es@gmail.com">apilam.es@gmail.com</a>. Los usos y finalidades previstos son:</p>' %}
+
+		{% trans '<h4>ENVÍO DE INFORMACIÓN</h4>' %}
+
+		{% trans '<p><strong>e-lactancia.org</strong> empleará los datos personales que nos proporcione con la finalidad de responder a las solicitudes de información que nos envíe. La información introducida en los formularios o correos electrónicos de contacto se podrá emplear, además, para enviarle información por correo electrónico sobre las novedades y promociones de nuestra página web. Los usuarios que no deseen recibir este tipo de información pueden comunicarlo a la dirección de correo electrónico a <a href="mailto:apilam.es@gmail.com">apilam.es@gmail.com</a>.</p>' %}
+
+		{% trans '<h4>COMUNICACIÓN DE DATOS A TERCEROS</h4>' %}
+		
+		{% trans '<p><strong>e-lactancia.org</strong> no tiene previsto revelar sus datos personales a terceros, salvo en los supuestos en los que una norma legal así lo establezca (administraciones públicas, autoridades administrativas o judiciales, etc)</p>' %}
+
+		{% trans '<h4>USO DE COOKIES</h4>' %}
+		{% trans '<strong>e-lactancia.org</strong> emplea cookies, que son archivos de texto ubicados en su ordenador, para mejorar la experiencia del usuario en el portal. En cumplimiento con la Normativa establecida al respecto por la Agencia Española de Protección de Datos, tiene una descripción detallada del uso de cookies en nuestra' %} 
+        <a href="{% url 'lactancia:cookies' %}">{ trans 'Política de uso de cookies'  %}</a>
+
+		{% trans '<h3>EJERCICIO DE DERECHOS</h3>' %}
+		{% trans 'En cualquier momento podrá ejercer los Derechos de acceso, rectificación, cancelación y oposición mediante el envío de la solicitud de ejercicio correspondiente junto con copia del documento oficial que le identifique (DNI, carnet de conducir o pasaporte) a la dirección de correo electrónico <a href="mailto:apilam.es@gmail.com">apilam.es@gmail.com</a>.' %}
+
+		{% trans '<h3>VERSIÓN</h3>' %}
+		{% trans 'Esta política de privacidad es de fecha 01/12/2013 y cualquier modificación de sus términos será publicada en esta página web.' %}
+
+	</div>
+
+
+
+{% endblock %}

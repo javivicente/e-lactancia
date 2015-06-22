@@ -1,0 +1,20 @@
+{% load i18n %}
+{# caja de newsletter #}
+    <div class="span6">    
+        <div class="row-fluid col-wrap"> 
+            <div class="well newsletter col span12">
+                 <p><span class="lead"><strong>{% trans "Boletín" %}</strong> </span>{% trans "Recibe información sobre lactancia y APILAM." %}</p>
+                        <form method="post" action="" id="form_subscription">
+                            {% for field in subscription_form %}
+                                {% for error in field.errors %}<em>{{ error|linebreaks }}</em>{% endfor %}
+                                {{ field }}
+                            {% endfor %}
+                            {% csrf_token %}
+                            <input id="btn_subscribe" class="btn btn-info" name="form_subscribe" type="submit" value="{% trans 'Suscríbete' %}"/>
+                        </form>
+            </div>
+        </div>
+        <div class="row-fluid base col-wrap"> 
+            <div class="well newsletter col-base span12"></div>
+        </div> 
+    </div>

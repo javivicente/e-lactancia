@@ -161,8 +161,8 @@ class Otras_escrituras_ComentariosInline(admin.TabularInline):
 
 class Otras_escriturasForm(ModelForm):
         class Meta:
-                model = Alias
-                fields= '__all__'
+                model = Otras_escrituras
+                exclude= ['idioma']
         
         
         
@@ -180,7 +180,7 @@ class Otras_escriturasAdmin(admin.ModelAdmin):
 
     fieldsets = (
                 (_(u'Otras escrituras'), {
-                        'fields': ('nombre',)
+                        'fields': ('nombre','idioma_es','idioma_en')
                 }),
                 (_(u'Nombre Principal'), {
                         'fields': ('producto_principal',)
@@ -341,7 +341,7 @@ class ProductoForm(ModelForm):
                 
                 # Get the current risk associated to the product
                 try:
-                        orig = Producto.objects.get(nombre=self.cleaned_data['nombre'])
+                        orig = Producto.objects.get(nombre_es=self.cleaned_data['nombre_es'])
                 except Producto.DoesNotExist:
                         pass
                 else:

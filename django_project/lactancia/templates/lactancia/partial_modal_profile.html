@@ -1,0 +1,23 @@
+{% load static %} 
+{% load i18n %} 
+<div class="modal hide fade"  data-keyboard="false" data-backdrop="static" id="modal_profile">
+        <div class="modal-header">
+            <a data-dismiss="modal" class="close">×</a>
+            <h3>{% trans "¿Cuál es tu perfil de usuario?" %}</h3>
+        </div>
+        <div class="modal-body">
+            {% if perfil %}
+            {% else %}
+                <p>{% trans "Indicar tu perfil te permite valorar la información de cualquier término recogido en e-lactancia." %}</p>
+            {% endif %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for radio in perfil_form.perfil %}
+                    <div class="myradio">
+                        {{radio}}
+                    </div>
+                {% endfor %}    
+                <input class="btn btn-info" type="submit" name="form_profile" value="{% trans 'Enviar' %}" />
+            </form>     
+        </div>
+</div>

@@ -251,6 +251,7 @@ class Otras_escrituras(models.Model):
 
     producto_principal= models.ForeignKey('Producto', verbose_name=_(u'Nombre principal del producto'))
     nombre = models.CharField(_(u'Producto en otras escrituras'), db_index=True, max_length=255, blank=True, null=True,)
+    idioma = models.CharField(_(u'Idioma en que está escrito el producto'), max_length=255, blank=True, null=True,)
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
         
@@ -261,11 +262,13 @@ class Otras_escrituras(models.Model):
 
     
     def visitas(self):
-        return Visita.objects.filter(alias=self.id).count()
+        return 0
+        #TO-DO
+        #return Visita.objects.filter(otra_escritura=self.id).count()
     visitas.short_description= _(u'Número de visitas')
 
     def opiniones_pendientes(self):
-        filterargs = { 'alias': self.id, 'leido': False }
+        filterargs = { 'otra_escritura': self.id, 'leido': False }
         return Comentario.objects.filter(**filterargs).count()>0
     opiniones_pendientes.boolean = True
     opiniones_pendientes.short_description= _(u'Nuevas opiniones')
@@ -524,6 +527,7 @@ class Visita(models.Model):
     user = models.ForeignKey('LactUser')
     prod = models.ForeignKey('Producto', null=True, blank=True, related_name='visita_producto')
     alias = models.ForeignKey('Alias', null=True, blank=True, related_name='visita_alias')
+    #TO-DO
     #otra_escritura = models.ForeignKey('Otras_escrituras', null=True, blank=True, related_name='visita_otras_escrituras')
     marca = models.ForeignKey('Marca', null=True, blank=True, related_name='visita_marca')
     grupo = models.ForeignKey('Grupo', null=True, blank=True, related_name='visita_grupo')
@@ -535,6 +539,7 @@ class Visita(models.Model):
             return self.prod.nombre
         elif self.alias != None:
             return self.alias.nombre
+        # TO-DO
         #elif self.otra_escritura != None:
         #    return self.otra_escritura.nombre
         elif self.marca != None:
@@ -545,9 +550,8 @@ class Visita(models.Model):
         
 
     def __unicode__(self):
-#                return u'visita!!!'
         return unicode(self.user) + u' ' + unicode(_(u'ha visitado')) + u' ' + unicode(self.item_name())  + u' ' + unicode(_date(self.time, settings.DATETIME_FORMAT))
-#                return self.user + u' visitó ' + self.item_name() + u' el ' + str(self.time)
+
 
 class Comentario(models.Model):
     user = models.ForeignKey('LactUser', null=True, blank=True)
@@ -597,7 +601,7 @@ class MyHandler(RatingHandler):
     form_class=StarVoteForm
 
     def allow_key(self, request, instance, key):
-        return key in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13')
+        return key in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14')
     
     def get_key(self, request, instance):
         key = request.session['perfil']
