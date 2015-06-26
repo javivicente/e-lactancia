@@ -181,7 +181,19 @@ def landing(request):
     
     
 def buscar(request):
-    return HttpResponse("Buscando alegremente.")
+    term = request.GET['term_type']
+    id = int(request.GET['term_id'])
+    
+    if term == 'producto':
+        print 'hola'
+        return redirect('lactancia:detalle_p', id)
+    elif term == 'grupo':
+        return redirect('lactancia:detalle_g', id)
+    elif term == 'alias':
+        return redirect('lactancia:detalle_ap', id)
+    elif term == 'otra_escritura':
+        return redirect('lactancia:detalle_oe', id)
+    
 
 
 '''dynamic calculation of the span of names of the product (alias, trademarks and groups)'''

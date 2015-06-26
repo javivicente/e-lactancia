@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
             name='Comentario',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('comentario', models.CharField(max_length=250, verbose_name='Opini\xf3n')),
+                ('comentario', models.CharField(max_length=500, verbose_name='Opini\xf3n')),
                 ('leido', models.BooleanField(default=False, verbose_name='Opini\xf3n ya le\xedda')),
                 ('lang', models.CharField(max_length=7, verbose_name='Idioma')),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),

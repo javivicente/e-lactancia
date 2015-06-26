@@ -555,7 +555,7 @@ class Visita(models.Model):
 
 class Comentario(models.Model):
     user = models.ForeignKey('LactUser', null=True, blank=True)
-    comentario = models.CharField(max_length = 250, verbose_name=_(u'Opinión'))
+    comentario = models.CharField(max_length = 500, verbose_name=_(u'Opinión'))
     leido = models.BooleanField(default=False, verbose_name=_(u'Opinión ya leída'))
     prod = models.ForeignKey('Producto', null=True, blank=True, related_name='comentario_producto')
     alias = models.ForeignKey('Alias', null=True, blank=True, related_name='comentario_alias')

@@ -208,9 +208,11 @@ class BiblioForm(ModelForm):
         # Overriding __init__ here allows us to provide initial
         # data for 'productos' field
         def __init__(self, *args, **kwargs):
+                super(BiblioForm, self).__init__(*args, **kwargs)
                 # Only in case we build the form from an instance
                 # (otherwise, 'biblio' list should be empty)
-                if 'instance' in kwargs:
+                if self.instance and self.instance.pk:
+                #if 'instance' in kwargs:
                     # We get the 'initial' keyword argument or initialize it
                     # as a dict if it didn't exist.                
                     initial = kwargs.setdefault('initial', {})
@@ -307,9 +309,11 @@ class ProductoForm(ModelForm):
         # Overriding __init__ here allows us to provide initial
         # data for 'biblio' field
         def __init__(self, *args, **kwargs):
+                super(ProductoForm, self).__init__(*args, **kwargs)
                 # Only in case we build the form from an instance
                 # (otherwise, 'biblio' list should be empty)
-                if 'instance' in kwargs:
+                if self.instance and self.instance.pk:
+                #if 'instance' in kwargs:
                     # We get the 'initial' keyword argument or initialize it
                     # as a dict if it didn't exist.                
                     initial = kwargs.setdefault('initial', {})

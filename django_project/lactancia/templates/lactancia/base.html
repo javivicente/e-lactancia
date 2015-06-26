@@ -84,7 +84,7 @@
                             <form action="{% url 'set_language' %}" method="post">
                                 {% csrf_token %}
                                 <input name="next" type="hidden" value="" />
-                                    <select id="language_top" name="language"  onchange="this.form.submit()">
+                                    <select id="language_top" name="language"  onchange="this.form.submit()" style="width: 90px;">
                                         {% get_language_info_list for LANGUAGES as languages %}
                                         {% for language in languages %}
                                     <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
@@ -400,6 +400,7 @@
      ).bind("typeahead:selected", function(obj, datum, name) {
             console.log(name);
             console.log(datum.id);
+            window.location.href='{% url "lactancia:buscar" %}?term_id='+datum.id+'&term_type='+name;
             $("#term-id").val(datum.id);
             $("#term-type").val(name);
       });
