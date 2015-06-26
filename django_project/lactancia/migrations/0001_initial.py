@@ -191,6 +191,7 @@ class Migration(migrations.Migration):
                 ('alias', models.ForeignKey(related_name='visita_alias', blank=True, to='lactancia.Alias', null=True)),
                 ('grupo', models.ForeignKey(related_name='visita_grupo', blank=True, to='lactancia.Grupo', null=True)),
                 ('marca', models.ForeignKey(related_name='visita_marca', blank=True, to='lactancia.Marca', null=True)),
+                ('otra_escritura', models.ForeignKey(related_name='visita_otras_escrituras', blank=True, to='lactancia.Otras_escrituras', null=True)),
                 ('prod', models.ForeignKey(related_name='visita_producto', blank=True, to='lactancia.Producto', null=True)),
                 ('user', models.ForeignKey(to='lactancia.LactUser')),
             ],

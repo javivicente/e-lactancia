@@ -189,9 +189,11 @@ def buscar(request):
         return redirect('lactancia:detalle_p', id)
     elif term == 'grupo':
         return redirect('lactancia:detalle_g', id)
-    elif term == 'alias':
+    elif term == 'sinonimo':
         return redirect('lactancia:detalle_ap', id)
-    elif term == 'otra_escritura':
+    elif term == 'marca':
+        return redirect('lactancia:detalle_m', id)
+    elif term == 'escritura':
         return redirect('lactancia:detalle_oe', id)
     
 
@@ -524,10 +526,8 @@ def get_visits(item):
             aux = Visita.objects.filter(alias=item.pk)
         elif iam==u'grupo':
             aux = Visita.objects.filter(grupo=item.pk)
-        # TO-DO
         elif iam==u'otra_escritura':
-            aux = Visita.objects.none()
-        #    aux = Visita.objects.filter(otra_escritura=item.pk)
+            aux = Visita.objects.filter(otra_escritura=item.pk)
 
         visits[0]=aux.count()
         visits[1]= aux.filter(user__perfil='1').count()
@@ -715,9 +715,8 @@ def save_visit(u, item):
         Visita.objects.create(user=u, marca=item, lang=get_language())
     elif item.dime_que_eres()==u'grupo':
         Visita.objects.create(user=u, grupo=item, lang=get_language())
-    #TO-DO
-    #elif item.dime_que_eres()==u'otra_escritura':
-    #    Visita.objects.create(user=u, otra_escritura=item, lang=get_language())
+    elif item.dime_que_eres()==u'otra_escritura':
+        Visita.objects.create(user=u, otra_escritura=item, lang=get_language())
 
 
     

@@ -30,11 +30,11 @@
                         <p class="help-block">
                             {% block help_landing %}
                                 Por ejemplo 
-                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=ibuprofeno">{% trans 'Ibuprofeno' %}</a>,
-                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=couldina">{% trans 'Couldina' %}</a>,
-                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=bayas de goji">{% trans 'Bayas de Goji' %}</a>,
-                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=píldora día después">{% trans 'Píldora del día después' %}</a>,
-                                <a class="white-link" href="{% url 'lactancia:buscar' %}?q=fitoterapia sistémica">{% trans 'Fitoterapia' %}</a>.<br>
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?term_id=816&term_type=producto">{% trans 'Ibuprofeno' %}</a>,
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?term_id=958&term_type=marca">{% trans 'Couldina' %}</a>,
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?term_id=544&term_type=sinonimo">{% trans 'Bayas de Goji' %}</a>,
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?term_id=655&term_type=sinonimo">{% trans 'Píldora del día después' %}</a>,
+                                <a class="white-link" href="{% url 'lactancia:buscar' %}?term_id=207&term_type=grupo">{% trans 'Fitoterapia' %}</a>.<br>
                                 {% trans 'Última actualización' %}: {{last_update|date:"DATETIME_FORMAT"}} (CET)
         
                                 <div class="center">

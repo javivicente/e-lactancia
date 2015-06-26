@@ -262,9 +262,7 @@ class Otras_escrituras(models.Model):
 
     
     def visitas(self):
-        return 0
-        #TO-DO
-        #return Visita.objects.filter(otra_escritura=self.id).count()
+        return Visita.objects.filter(otra_escritura=self.id).count()
     visitas.short_description= _(u'Número de visitas')
 
     def opiniones_pendientes(self):
@@ -527,8 +525,7 @@ class Visita(models.Model):
     user = models.ForeignKey('LactUser')
     prod = models.ForeignKey('Producto', null=True, blank=True, related_name='visita_producto')
     alias = models.ForeignKey('Alias', null=True, blank=True, related_name='visita_alias')
-    #TO-DO
-    #otra_escritura = models.ForeignKey('Otras_escrituras', null=True, blank=True, related_name='visita_otras_escrituras')
+    otra_escritura = models.ForeignKey('Otras_escrituras', null=True, blank=True, related_name='visita_otras_escrituras')
     marca = models.ForeignKey('Marca', null=True, blank=True, related_name='visita_marca')
     grupo = models.ForeignKey('Grupo', null=True, blank=True, related_name='visita_grupo')
     lang = models.CharField(u'Idioma',max_length=7)
@@ -539,9 +536,8 @@ class Visita(models.Model):
             return self.prod.nombre
         elif self.alias != None:
             return self.alias.nombre
-        # TO-DO
-        #elif self.otra_escritura != None:
-        #    return self.otra_escritura.nombre
+        elif self.otra_escritura != None:
+            return self.otra_escritura.nombre
         elif self.marca != None:
             return self.marca.nombre
         elif self.grupo != None:
