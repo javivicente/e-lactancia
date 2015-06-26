@@ -19,45 +19,47 @@ msgstr ""
 
 #: django_project/settings.py:133
 msgid "Inglés"
-msgstr ""
+msgstr "English"
 
 #: django_project/settings.py:134
 msgid "Español"
-msgstr ""
+msgstr "Spanish"
 
 #: django_project/settings.py:158
 msgid "Productos"
-msgstr ""
+msgstr "Products"
 
 #: django_project/settings.py:159
 msgid "Marcas"
-msgstr ""
+msgstr "Trade names"
 
 #: django_project/settings.py:160
 msgid "Riesgo, Grupos y Bibliografia"
-msgstr ""
+msgstr "Risk, Groups and Bibliography"
 
 #: django_project/settings.py:161
 msgid "Mensajes y comentarios"
-msgstr ""
+msgstr "Messages and comments"
 
 #: templates/404.html:10
 msgid ""
 "Vaya, parece que algo va mal... No hemos encontrado la página que buscabas. "
 "Por favor, prueba con otra búsqueda."
 msgstr ""
+"Ops, something went wrong... We did not found the page you were looking for. "
+"Please, try with another search."
 
 #: templates/admin/base.html:38
 msgid "Administración"
-msgstr ""
+msgstr "Administration"
 
 #: templates/admin/base.html:66
 msgid "Welcome,"
-msgstr ""
+msgstr "Bienvenido,"
 
 #: templates/admin/base.html:74
 msgid "Documentation"
-msgstr ""
+msgstr "Documentation"
 
 #: templates/admin/base.html:77
 msgid "Change password"
@@ -73,4 +75,4 @@ msgstr ""
 
 #: templates/admin/base_site.html:56
 msgid "Lista negra de productos"
-msgstr ""
+msgstr "Black list of products"
