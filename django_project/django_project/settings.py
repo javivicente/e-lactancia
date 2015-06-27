@@ -59,12 +59,18 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django_db_geventpool.backends.postgresql_psycopg2',
         'NAME': 'django',
         'USER': 'django',
         'PASSWORD': 'PVWCZsTKXv',
         'HOST': 'localhost',
         'PORT': '',
+        'ATOMIC_REQUESTS': False,
+        'CONN_MAX_AGE': 0,
+        'OPTIONS': {
+           'MAX_CONNS': 20
+        }
     }
 }
 

@@ -185,7 +185,6 @@ def buscar(request):
     id = int(request.GET['term_id'])
     
     if term == 'producto':
-        print 'hola'
         return redirect('lactancia:detalle_p', id)
     elif term == 'grupo':
         return redirect('lactancia:detalle_g', id)

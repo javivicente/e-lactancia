@@ -54,6 +54,7 @@ class Command(BaseCommand):
         
         '''Stats on terms updated'''
         '''We get the list of terms updated the last day, week, month, year and all'''
+        
         prods_updated_1d = prods_all.filter(fecha_modificacion__range=[day, now]).values('nombre_es', 'nombre_en','id')
         prods_updated_1w = prods_all.filter(fecha_modificacion__range=[week, now]).values('nombre_es', 'nombre_en','id')
         prods_updated_1m = prods_all.filter(fecha_modificacion__range=[month, now]).values('nombre_es', 'nombre_en','id')
@@ -82,6 +83,7 @@ class Command(BaseCommand):
         
         '''Stats on consultations from users'''
         '''We get the list of consultations the last day, week and month'''
+        
         aux = visits_all.values('prod__nombre_es', 'prod__nombre_en').annotate(n_consultations=Count('prod__id'))
         top_prods_all = aux.order_by('-n_consultations')[:150]
         data = list(top_prods_all)
@@ -119,6 +121,7 @@ class Command(BaseCommand):
         
         
         ''' Top consultations in Spain '''
+        
         aux = visits_all.filter(user__country_name='Spain').values('prod__nombre_es', 'prod__nombre_en').annotate(n_consultations=Count('prod__id'))
         top_prods_all = aux.order_by('-n_consultations')[:150]
         data = list(top_prods_all)
@@ -170,7 +173,7 @@ class Command(BaseCommand):
                 dict(zip([col[0] for col in desc], row))
                 for row in cursor.fetchall()
             ]
-       
+        
         cursor = connection.cursor()
         
         # last day
@@ -199,29 +202,29 @@ class Command(BaseCommand):
         #mysql
         #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > date_sub(curdate(),interval 1 month) group by country;''')
         #Posgresql
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 months' group by country;''')
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_country_1m.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 months' group by country;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_country_1m.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         # last year
         # MYSQL
         #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > date_sub(curdate(),interval 1 year) group by country;''')
         #Posgresql
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 year' group by country;''')
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 year' group by country;''')
         
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_country_1y.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
-
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_country_1y.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
+        
         # TOTAL
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id group by country;''')
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_country_all.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id group by country;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_country_all.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         
         # '''Visits in Spain by cities'''
@@ -250,29 +253,29 @@ class Command(BaseCommand):
         # MYSQL
         #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.city as city from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > date_sub(curdate(),interval 1 month) group by city order by visits desc, consultations desc;''')
         #Posgresql
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.city as city from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 months' group by city order by visits desc, consultations desc;''')
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.city as city from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 months' group by city order by visits desc, consultations desc;''')
         
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_cities_1m_ES.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_cities_1m_ES.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         # last year
         # MYSQL
         #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.city as city from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > date_sub(curdate(),interval 1 year) group by city order by visits desc, consultations desc;''')
         #Posgresql
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.city as city from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 year' group by city order by visits desc, consultations desc;''')
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_cities_1y_ES.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.city as city from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 year' group by city order by visits desc, consultations desc;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_cities_1y_ES.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         # # # TOTAL
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.city as city from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' group by city order by visits desc, consultations desc;''')
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_cities_all_ES.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.city as city from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' group by city order by visits desc, consultations desc;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_cities_all_ES.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         
         
@@ -298,33 +301,33 @@ class Command(BaseCommand):
         fd = open(PROJECT_PATH +"/media/stats_profile_1w.json","w")
         fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
         fd.close()
-
+        
         # last month
         # MYSQL
         #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > date_sub(curdate(),interval 1 month) group by profile;''')
         #Posgresql
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 months' group by profile;''')
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_profile_1m.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 months' group by profile;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_profile_1m.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         # last year
         # MYSQL
         #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > date_sub(curdate(),interval 1 year) group by profile;''')
         #Posgresql
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 years' group by profile;''')
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_profile_1y.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 years' group by profile;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_profile_1y.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         # TOTAL
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id group by profile;''')
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_profile_all.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id group by profile;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_profile_all.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         
         # '''Visits profile in Spain'''
@@ -353,30 +356,30 @@ class Command(BaseCommand):
         # MYSQL
         #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > date_sub(curdate(),interval 1 month) group by profile;''')
         #Posgresql
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 months' group by profile;''')
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 months' group by profile;''')
         
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_profile_1m_ES.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_profile_1m_ES.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         # last year
         # MYSQL
         #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > date_sub(curdate(),interval 1 year) group by profile;''')
         #Posgresql
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 year' group by profile;''')
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' and lactancia_visita.time > CURRENT_TIMESTAMP - interval  '1 year' group by profile;''')
         
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_profile_1y_ES.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_profile_1y_ES.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         # # TOTAL
-        #cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' group by profile;''')
-        # data = dictfetchall(cursor)
-        # fd = open(PROJECT_PATH +"/media/stats_profile_all_ES.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
-        # fd.close()
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_lactuser.country_code='ES' group by profile;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_profile_all_ES.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
         
         
         
@@ -392,6 +395,7 @@ class Command(BaseCommand):
         '''Consultations'''
         
         # "yearly consultations"
+        
         truncate_date = connection.ops.date_trunc_sql('year','time')
         visitas = Visita.objects.extra({'year':truncate_date}).values('year').annotate(n_visits=Count('user'))
         data = list(visitas)
@@ -406,15 +410,15 @@ class Command(BaseCommand):
         fd = open(PROJECT_PATH +"/media/stats_consultations_months.json","w")
         fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
         fd.close()
-
-        # # "weekly consultations"
-        # truncate_date = connection.ops.date_trunc_sql('week','time')
-        # visitas = Visita.objects.extra({'semana':'week(time)+1','year':'year(time)'}).values('semana','year').annotate(n_visits=Count('user'))
-        # data = list(visitas)
-        # fd = open(PROJECT_PATH +"/media/stats_consultations_weeks.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
-        # fd.close()
-
+        
+        # "weekly consultations"
+        #truncate_date = connection.ops.date_trunc_sql('week','time')
+        #visitas = Visita.objects.extra({'semana':'week(time)+1','year':'year(time)'}).values('semana','year').annotate(n_visits=Count('user'))
+        visitas = Visita.objects.extra({'semana':'EXTRACT(week FROM time)','year':'EXTRACT(year FROM time)'}).values('semana','year').annotate(n_visits=Count('user'))
+        data = list(visitas)
+        fd = open(PROJECT_PATH +"/media/stats_consultations_weeks.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
+        fd.close()
         # "daily consultations"
         truncate_date = connection.ops.date_trunc_sql('day','time')
         visitas = Visita.objects.extra({'dia':'date(time)'}).values('dia').annotate(n_visits=Count('user'))
@@ -442,13 +446,14 @@ class Command(BaseCommand):
         fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
         fd.close()
 
-        # # "ES weekly consultations"
-        # truncate_date = connection.ops.date_trunc_sql('week','time')
-        # visitas = Visita.objects.filter(user__country_name='Spain').extra({'semana':'week(time)+1','year':'year(time)'}).values('semana','year').annotate(n_visits=Count('user')).order_by('semana')
-        # data = list(visitas)
-        # fd = open(PROJECT_PATH +"/media/stats_consultations_weeks_ES.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
-        # fd.close()
+        # "ES weekly consultations"
+        #truncate_date = connection.ops.date_trunc_sql('week','time')
+        #visitas = Visita.objects.filter(user__country_name='Spain').extra({'semana':'week(time)+1','year':'year(time)'}).values('semana','year').annotate(n_visits=Count('user')).order_by('semana')
+        visitas = Visita.objects.filter(user__country_name='Spain').extra({'semana':'EXTRACT(week FROM time)','year':'EXTRACT(year FROM time)'}).values('semana','year').annotate(n_visits=Count('user'))
+        data = list(visitas)
+        fd = open(PROJECT_PATH +"/media/stats_consultations_weeks_ES.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
+        fd.close()
 
         # "ES daily consultations"
         truncate_date = connection.ops.date_trunc_sql('day','time')
@@ -477,13 +482,14 @@ class Command(BaseCommand):
         fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
         fd.close()
 
-        # "weekly visits"
-        # truncate_date = connection.ops.date_trunc_sql('week','time')
-        # visitas = Visita.objects.extra({'semana':'week(time)+1','year':'year(time)'}).values('semana','year').annotate(n_visits=Count('user', distinct=True))
-        # data = list(visitas)
-        # fd = open(PROJECT_PATH +"/media/stats_visits_weeks.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
-        # fd.close()
+        #"weekly visits"
+        #truncate_date = connection.ops.date_trunc_sql('week','time')
+        #visitas = Visita.objects.extra({'semana':'week(time)+1','year':'year(time)'}).values('semana','year').annotate(n_visits=Count('user', distinct=True))
+        visitas = Visita.objects.extra({'semana':'EXTRACT(week FROM time)','year':'EXTRACT(year FROM time)'}).values('semana','year').annotate(n_visits=Count('user', disctinct=True))
+        data = list(visitas)
+        fd = open(PROJECT_PATH +"/media/stats_visits_weeks.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
+        fd.close()
 
         # "daily visits"
         truncate_date = connection.ops.date_trunc_sql('day','time')
@@ -513,12 +519,13 @@ class Command(BaseCommand):
         fd.close()
 
         # "weekly visits"
-        # truncate_date = connection.ops.date_trunc_sql('week','time')
-        # visitas = Visita.objects.filter(user__country_name='Spain').extra({'semana':'week(time)+1','year':'year(time)'}).values('semana','year').annotate(n_visits=Count('user', distinct=True)).order_by('semana')
-        # data = list(visitas)
-        # fd = open(PROJECT_PATH +"/media/stats_visits_weeks_ES.json","w")
-        # fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
-        # fd.close()
+        truncate_date = connection.ops.date_trunc_sql('week','time')
+        #visitas = Visita.objects.filter(user__country_name='Spain').extra({'semana':'week(time)+1','year':'year(time)'}).values('semana','year').annotate(n_visits=Count('user', distinct=True)).order_by('semana')
+        visitas = Visita.objects.filter(user__country_name='Spain').extra({'semana':'EXTRACT(week FROM time)','year':'EXTRACT(year FROM time)'}).values('semana','year').annotate(n_visits=Count('user', disctinct=True))
+        data = list(visitas)
+        fd = open(PROJECT_PATH +"/media/stats_visits_weeks_ES.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
+        fd.close()
 
         # "daily visits"
         truncate_date = connection.ops.date_trunc_sql('day','time')
@@ -527,6 +534,6 @@ class Command(BaseCommand):
         fd = open(PROJECT_PATH +"/media/stats_visits_days_ES.json","w")
         fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
         fd.close()
-
+        
         
         self.stdout.write('Successfully written stats at ' + now.strftime("%Y-%m-%d %H:%M:%S"))
