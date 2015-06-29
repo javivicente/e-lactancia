@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 import os
 import sys
-import logging; 
+#import logging; 
 
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
 

@@ -26,6 +26,23 @@ import json
 from django.core.serializers.json import DjangoJSONEncoder
 
 timeout = 60 * 2 # Default cache timeout is 300 (5 mins) use this (1hour) for things that do not change very often
+PROJECT_PATH = '/home/django'
+
+json_data=file(PROJECT_PATH +'/media/visitas_grupos.json','r')
+visitas_grupos = json.loads(json_data.read())
+
+json_data=file(PROJECT_PATH +'/media/visitas_productos.json','r')
+visitas_productos = json.loads(json_data.read())
+
+json_data=file(PROJECT_PATH +'/media/visitas_alias.json','r')
+visitas_sinonimos = json.loads(json_data.read())
+
+json_data=file(PROJECT_PATH +'/media/visitas_escrituras.json','r')
+visitas_escrituras = json.loads(json_data.read())
+
+json_data=file(PROJECT_PATH +'/media/visitas_marcas.json','r')
+visitas_marcas = json.loads(json_data.read())
+
 
 def index(request):
     return HttpResponse("Hello, world! This is our first view.")
@@ -39,7 +56,7 @@ def typeahead_productos():
         PRODUCTOS = json.dumps(data, ensure_ascii=False).encode('utf8')
         cache.set('PRODUCTOS', PRODUCTOS)
         cache.set('N_productos', N)
-    else:
+    else: 
         N = cache.get('N_productos')
     return PRODUCTOS, N
     
@@ -294,7 +311,8 @@ def get_alert_risk_for_grupo(grupo):
     
 
 def get_context_for_product(request, prod):
-    
+    timeout = 60 * 60 # Default cache timeout is 300 (5 mins) use this (1hour) for things that do not change very often
+
     
     help_p_molecular = cache.get('help_p_molecular')
     if help_p_molecular == None:
@@ -476,8 +494,10 @@ def get_rating_hints():
     hints = _('[\'muy mala\', \'mala\', \'regular\', \'buena\', \'muy buena\']')
     return hints        
     
+'''
 def get_visits(item):
-
+    timeout = 60 * 60 # Default cache timeout is 300 (5 mins) use this (1hour) for things that do not change very often
+    
     iam = item.dime_que_eres()
     cache_key = iam + '_visits_' + str(item.pk)
 
@@ -515,7 +535,33 @@ def get_visits(item):
         cache.set(cache_key, visits, timeout)
         
     return visits
-
+'''
+def get_visits(item):
+    iam = item.dime_que_eres()
+    if iam==u'grupo':
+        for v in visitas_grupos:
+            if v['id']==item.id:
+                return v['visits']
+    elif iam==u'marca':
+        for v in visitas_marcas:
+            if v['id']==item.id:
+                return v['visits']
+    elif iam==u'alias':
+        for v in visitas_sinonimos:
+            if v['id']==item.id:
+                return v['visits']
+    elif iam==u'producto':
+        for v in visitas_productos:
+            if v['id']==item.id:
+                return v['visits']
+    elif iam==u'otra_escritura':
+        for v in visitas_escrituras:
+            if v['id']==item.id:
+                return v['visits']
+    
+    return [0]*15           
+                
+                
 def get_client_ip(request):
     ip = request.META.get('HTTP_X_REAL_IP')
     meta = 'HTTP_X_REAL_IP'
@@ -1183,8 +1229,6 @@ def lista_negra(request):
     
 ''' ESTADISTICAS '''
 def get_context_for_stats_json_v2(request):
-    import json
-    PROJECT_PATH = '/home/django'
 
     # Terms
     prods_all = Producto.objects.all()

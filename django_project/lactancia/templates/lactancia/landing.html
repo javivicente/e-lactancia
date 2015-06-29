@@ -29,7 +29,7 @@
                         <input class="btn btn-info" type="submit" value="{% trans 'Buscar' %}" style="margin-top:20px;"/>
                         <p class="help-block">
                             {% block help_landing %}
-                                Por ejemplo 
+                                {% trans 'Por ejemplo' %} 
                                 <a class="white-link" href="{% url 'lactancia:buscar' %}?term_id=816&term_type=producto">{% trans 'Ibuprofeno' %}</a>,
                                 <a class="white-link" href="{% url 'lactancia:buscar' %}?term_id=958&term_type=marca">{% trans 'Couldina' %}</a>,
                                 <a class="white-link" href="{% url 'lactancia:buscar' %}?term_id=544&term_type=sinonimo">{% trans 'Bayas de Goji' %}</a>,
