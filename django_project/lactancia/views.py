@@ -22,106 +22,79 @@ from django.utils import timezone
 import datetime
 from django.utils.translation import ugettext as _
 from django.utils.translation import get_language
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
+timeout = 60 * 2 # Default cache timeout is 300 (5 mins) use this (1hour) for things that do not change very often
 
 def index(request):
     return HttpResponse("Hello, world! This is our first view.")
     
 def typeahead_productos():
-    
-    productos = Producto.objects.all().distinct().order_by('nombre')
-    N = len(productos)
-    PRODUCTOS = '['
-    for index, p in enumerate(productos):
-        PRODUCTOS += '{ "termino_es": "'
-        PRODUCTOS += p.nombre_es
-        PRODUCTOS += '", '
-        PRODUCTOS += '"termino_en": "'
-        PRODUCTOS += p.nombre_en
-        PRODUCTOS += '", '
-        PRODUCTOS += '"id": "'
-        PRODUCTOS += str(p.id)
-        PRODUCTOS += '"}'
-        if index < len(productos)-1:
-            PRODUCTOS +=', '
-    PRODUCTOS += ']'
-    
+    PRODUCTOS = cache.get('PRODUCTOS')
+    if PRODUCTOS == None:
+        productos = Producto.objects.all().distinct().values('nombre_es', 'nombre_en', 'id').order_by('nombre')
+        N = len(productos)
+        data = list(productos)
+        PRODUCTOS = json.dumps(data, ensure_ascii=False).encode('utf8')
+        cache.set('PRODUCTOS', PRODUCTOS)
+        cache.set('N_productos', N)
+    else:
+        N = cache.get('N_productos')
     return PRODUCTOS, N
     
 def typeahead_grupos():
-    grupos = Grupo.objects.all().distinct().order_by('nombre')
-    N = len(grupos)
-    GRUPOS = '['
-    for index, p in enumerate(grupos):
-        GRUPOS += '{ "termino_es": "'
-        GRUPOS += p.nombre_es
-        GRUPOS += '", '
-        GRUPOS += '"termino_en": "'
-        GRUPOS += p.nombre_en
-        GRUPOS += '", '
-        GRUPOS += '"id": "'
-        GRUPOS += str(p.id)
-        GRUPOS += '"}'
-        if index < len(grupos)-1:
-            GRUPOS +=', '
-    GRUPOS += ']'
-    
+    GRUPOS = cache.get('GRUPOS')
+    if GRUPOS == None:
+        grupos = Grupo.objects.all().distinct().values('nombre_es', 'nombre_en', 'id').order_by('nombre')
+        N = len(grupos)
+        data = list(grupos)
+        GRUPOS = json.dumps(data, ensure_ascii=False).encode('utf8')
+        cache.set('GRUPOS', GRUPOS)
+        cache.set('N_grupos', N)
+    else:
+        N = cache.get('N_grupos')
     return GRUPOS, N
     
 def typeahead_sinonimos():
-    alias = Alias.objects.all().distinct().order_by('nombre')
-    N = len(alias)
-    SINONIMOS = '['
-    for index, p in enumerate(alias):
-        SINONIMOS += '{ "termino_es": "'
-        SINONIMOS += p.nombre_es
-        SINONIMOS += '", '
-        SINONIMOS += '"termino_en": "'
-        SINONIMOS += p.nombre_en
-        SINONIMOS += '", '
-        SINONIMOS += '"id": "'
-        SINONIMOS += str(p.id)
-        SINONIMOS += '"}'
-        if index < len(alias)-1:
-            SINONIMOS +=', '
-    SINONIMOS += ']'
-    
+    SINONIMOS = cache.get('SINONIMOS')
+    if SINONIMOS == None:
+        alias = Alias.objects.all().distinct().values('nombre_es', 'nombre_en', 'id').order_by('nombre')
+        N = len(alias)
+        data = list(alias)
+        SINONIMOS = json.dumps(data, ensure_ascii=False).encode('utf8')
+        cache.set('SINONIMOS', SINONIMOS)
+        cache.set('N_sinonimos', N)
+    else:
+        N = cache.get('N_sinonimos')
     return SINONIMOS, N
 
 def typeahead_otras_escrituras():
-    o_escrit = Otras_escrituras.objects.all().distinct().order_by('nombre')
-    N = len(o_escrit)
-    ESCRITURAS = '['
-    for index, p in enumerate(o_escrit):
-        ESCRITURAS += '{ "termino": "'
-        ESCRITURAS += p.nombre
-        ESCRITURAS += '", '
-        ESCRITURAS += '"id": "'
-        ESCRITURAS += str(p.id)
-        ESCRITURAS += '"}'
-        if index < len(o_escrit)-1:
-            ESCRITURAS +=', '
-    ESCRITURAS += ']'
-
+    ESCRITURAS = cache.get('ESCRITURAS')
+    if ESCRITURAS == None:
+        o_escrit = Otras_escrituras.objects.all().distinct().values('nombre', 'id').order_by('nombre')
+        N = len(o_escrit)
+        data = list(o_escrit)
+        ESCRITURAS = json.dumps(data, ensure_ascii=False).encode('utf8')
+        cache.set('ESCRITURAS', ESCRITURAS)
+        cache.set('N_escrituras', N)
+    else:
+        N = cache.get('N_escrituras')
     return ESCRITURAS, N
     
     
     
 def typeahead_marcas():
-    marcas = Marca.objects.all().distinct().order_by('nombre')
-    N = len(marcas)
-    MARCAS = '['
-    for index, p in enumerate(marcas):
-        MARCAS += '{ "termino": "'
-        MARCAS += p.nombre
-        MARCAS += '", '
-        MARCAS += '"id": "'
-        MARCAS += str(p.id)
-        MARCAS += '"}'
-        if index < len(marcas)-1:
-            MARCAS +=', '
-    MARCAS += ']'
-    
+    MARCAS = cache.get('MARCAS')
+    if MARCAS == None:
+        marcas = Marca.objects.all().distinct().values('nombre', 'id').order_by('nombre')
+        N = len(marcas)
+        data = list(marcas)
+        MARCAS = json.dumps(data, ensure_ascii=False).encode('utf8')
+        cache.set('MARCAS', MARCAS)
+        cache.set('N_marcas', N)
+    else:
+        N = cache.get('N_marcas')
     return MARCAS, N
     
     
@@ -129,9 +102,13 @@ def typeahead_marcas():
     (top button of the top bar)
 '''    
 def get_alert_risk(context):
-    now = timezone.now()
-    month = now - datetime.timedelta(days=30)
-    alert_risk =  Mensaje.objects.filter(fecha_modificacion__range=[month, now]).exists()    
+    alert_risk = cache.get('alert_risk')
+    if alert_risk == None:
+        now = timezone.now()
+        month = now - datetime.timedelta(days=30)
+        alert_risk =  Mensaje.objects.filter(fecha_modificacion__range=[month, now]).exists()    
+        cache.set('alert_risk', alert_risk)
+        
     context.update({ 'alert_risk': alert_risk, })
     return context
     
@@ -153,15 +130,7 @@ def load_initial_context():
     context=get_alert_risk(context)
     return context
     
-
-    
-# CACHE OF INITIAL CONTEXT
-timeout = 60 * 2 # Default cache timeout is 300 (5 mins) use this (1hour) for things that do not change very often
-initial_context = cache.get('initial_context')
-if initial_context == None:
-    initial_context = load_initial_context()
-    cache.set('initial_context', initial_context, timeout)
-
+initial_context = load_initial_context()
 
 def landing(request):
 

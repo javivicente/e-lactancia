@@ -254,17 +254,17 @@
 
 
         var productos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             limit: 5,
             local: $.map({{PRODUCTOS}}, function (name) {
                 // Normalize the name - use this for searching
-                //console.log(name.termino)
-                term = {% if LANGUAGE_CODE == 'es' %} name.termino_es {% else %} name.termino_en {% endif %}
+                //console.log(name.nombre_es)
+                term = {% if LANGUAGE_CODE == 'es' %} name.nombre_es {% else %} name.nombre_en {% endif %}
                 var normalized = normalize(term);
                 //console.log(normalized)
                 return {
-                    termino: normalized,
+                    nombre: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
                     displayValue: term
@@ -273,18 +273,18 @@
         });
         
         var grupos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             limit: 2,
             local: $.map({{GRUPOS}}, function (name) {
                 // Normalize the name - use this for searching
                 //console.log(name.termino)
-                term = {% if LANGUAGE_CODE == 'es' %} name.termino_es {% else %} name.termino_en {% endif %}
+                term = {% if LANGUAGE_CODE == 'es' %} name.nombre_es {% else %} name.nombre_en {% endif %}
                 
                 var normalized = normalize(term);
                 //console.log(normalized)
                 return {
-                    termino: normalized,
+                    nombre: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
                     displayValue: term
@@ -294,18 +294,18 @@
         });
         
         var sinonimos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             limit: 2,
             local: $.map({{SINONIMOS}}, function (name) {
                 // Normalize the name - use this for searching
                 //console.log(name.termino)
-                term = {% if LANGUAGE_CODE == 'es' %} name.termino_es {% else %} name.termino_en {% endif %}
+                term = {% if LANGUAGE_CODE == 'es' %} name.nombre_es {% else %} name.nombre_en {% endif %}
                 
                 var normalized = normalize(term);
                 //console.log(normalized)
                 return {
-                    termino: normalized,
+                    nombre: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
                     displayValue: term
@@ -314,39 +314,39 @@
             
         });
         var escrituras = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             limit: 2,
             local: $.map({{ESCRITURAS}}, function (name) {
                 // Normalize the name - use this for searching
                 //console.log(name.termino)
-                var normalized = normalize(name.termino);
+                var normalized = normalize(name.nombre);
                 //console.log(normalized)
                 return {
-                    termino: normalized,
+                    nombre: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
-                    displayValue: name.termino
+                    displayValue: name.nombre
                     };
                 })
             
         });
         
         var marcas = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('termino'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             identify: function(obj) { return obj.termino; },
             limit: 3,
             local: $.map({{MARCAS}}, function (name) {
                 // Normalize the name - use this for searching
                 //console.log(name.termino)
-                var normalized = normalize(name.termino);
+                var normalized = normalize(name.nombre);
                 //console.log(normalized)
                 return {
-                    termino: normalized,
+                    nombre: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
-                    displayValue: name.termino
+                    displayValue: name.nombre
                     };
                 })
             
@@ -398,8 +398,8 @@
             }
         }
      ).bind("typeahead:selected", function(obj, datum, name) {
-            console.log(name);
-            console.log(datum.id);
+            //console.log(name);
+            //console.log(datum.id);
             window.location.href='{% url "lactancia:buscar" %}?term_id='+datum.id+'&term_type='+name;
             $("#term-id").val(datum.id);
             $("#term-type").val(name);
@@ -416,7 +416,7 @@
         var width; 
         //less than 768px
         if ($(window).width() < 767){
-            width = $(window).width() - 150; 
+            width = $(window).width() - 250; 
             
         }
         else{
