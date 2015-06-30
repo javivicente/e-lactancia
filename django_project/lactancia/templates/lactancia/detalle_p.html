@@ -266,7 +266,7 @@
          
          {% block other_names_second %}
          {% if prod_otras_escrituras %}
-            <p><strong>{% block name_main_prod_otras_escrituras %}{{prod.nombre}}{% endblock %}</strong> {% trans "en otras escrituras:" %}</p>
+            <p><strong>{% block name_main_prod_otras_escrituras %}{{prod.nombre}}{% endblock %}</strong> {% trans "en otros idiomas o escrituras" %}:</p>
             <ul> 
                     {% for alias in prod_otras_escrituras %}
                         <li><a href="{% url 'lactancia:detalle_oe' alias.id %}"  >{{ alias.nombre }}</a> ({{alias.idioma}})</li>
