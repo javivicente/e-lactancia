@@ -184,16 +184,16 @@ def buscar(request):
 
 
 '''dynamic calculation of the span of names of the product (alias, trademarks and groups)'''
-def calcula_span_product_names(product,prod_alias):
+def calcula_span_product_names(product):
 
     # by default, there's only one column (group)...
     span='span12'
 
     # if there are alias and trademarks (there will be 3 columns)
-    if (product.hay_marcas() and prod_alias):
+    if (product.hay_marcas() and (product.hay_alias() or product.hay_escrituras())):
         span='span4'
     # if there is only trades or alias (there will be 2 columns)
-    elif (product.hay_marcas() or prod_alias):
+    elif (product.hay_marcas() or (product.hay_alias() or product.hay_escrituras())):
         span='span6'
 
     return span
@@ -403,7 +403,7 @@ def get_context_for_product(request, prod):
     else:
         prod_alias = Alias.objects.exclude(nombre_en__isnull=True).exclude(nombre_en__exact='').filter(producto_principal=prod.id).order_by('nombre')
         
-    span_names = calcula_span_product_names(prod, prod_alias)
+    span_names = calcula_span_product_names(prod)
     
     prod_otras_escrituras = Otras_escrituras.objects.filter(producto_principal=prod.id).order_by('nombre')
     

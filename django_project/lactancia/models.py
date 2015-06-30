@@ -100,6 +100,11 @@ class Producto(models.Model):
         return (self.alias_set.count() > 0)
     hay_alias.boolean=True
     hay_alias.short_description=_(u'Hay alias')
+    
+    def hay_escrituras(self):
+        return (self.otras_escrituras_set.count() > 0)
+    hay_escrituras.boolean=True
+    hay_escrituras.short_description=_(u'Hay escrituras')
 
 
     def hay_alternativas(self):

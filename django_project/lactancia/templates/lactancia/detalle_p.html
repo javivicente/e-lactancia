@@ -248,9 +248,10 @@
     <!-- alias -->
     {% if prod_alias or prod_otras_escrituras %}
         <div class="well well-large col {{span_names}}">
+            <h3>{% trans "Otros nombres" %}</h3>
         {% block other_names_first %}
         {% if prod_alias %}
-            <h3>{% trans "Otros nombres" %}</h3>
+            
             <p>{% block alias_text %}<strong>{{prod.nombre}}</strong> {% trans "también se conoce como" %}{% endblock %}</p>
             <ul> 
                 {% block listado_alias %}
@@ -259,12 +260,13 @@
                     {% endfor %}
                 {% endblock %}
             </ul>
+            <br><br>
          {% endif %}
          {% endblock %}
-         <br><br>
+         
          {% block other_names_second %}
          {% if prod_otras_escrituras %}
-            <p><strong>{% block name_main_prod_otras_escrituras %}{{prod.nombre}}{% endblock %}</strong> {% trans "se escribe en otros idiomas:" %}</p>
+            <p><strong>{% block name_main_prod_otras_escrituras %}{{prod.nombre}}{% endblock %}</strong> {% trans "en otras escrituras:" %}</p>
             <ul> 
                     {% for alias in prod_otras_escrituras %}
                         <li><a href="{% url 'lactancia:detalle_oe' alias.id %}"  >{{ alias.nombre }}</a> ({{alias.idioma}})</li>
@@ -331,12 +333,11 @@
             {% endfor %}
         </ul>
     </div> <!-- well -->
-    
 </div> <!-- row-fluid -->   
     
 
 <div class="row-fluid base col-wrap"> 
-    {% if prod_alias %}
+    {% if prod_alias or prod_otras_escrituras %}
         <div class="well well-large col-base {{span_names}}">
         </div>
     {% endif %}
