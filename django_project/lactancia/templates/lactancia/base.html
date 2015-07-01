@@ -426,36 +426,43 @@
             name: 'producto',
             displayKey: 'displayValue',
             source: productos.ttAdapter(),
-            templates: { header: '<h4 class="search-name">{% trans "Productos" %}</h4>' }
-        },
-        {
-            name: 'grupo',
-            displayKey: 'displayValue',
-            source: grupos.ttAdapter(),
-            templates: { header: '<h4 class="search-name">{% trans "Grupos" %}</h4>'
+            templates: { header: '<h4 class="search-name">{% trans "Productos" %}</h4>' ,
+                                empty: '<div class="empty-message">{% trans "No encontramos productos para tu consulta" %}</div>'
             }
         },
         {
             name: 'sinonimo',
             displayKey: 'displayValue',
             source: sinonimos.ttAdapter(),
-            templates: { header: '<h4 class="search-name">{% trans "Sinónimos de productos" %}</h4>'
-            }
-        },
-        {
-            name: 'marca',
-            displayKey: 'displayValue',
-            source: marcas.ttAdapter(),
-            templates: { header: '<h4 class="search-name">{% trans "Marcas de productos" %}</h4>'
+            templates: { header: '<h4 class="search-name">{% trans "Sinónimos de productos" %}</h4>',
+                                empty: '<div class="empty-message">{% trans "No encontramos sinónimos para tu consulta" %}</div>'
             }
         },
         {
             name: 'escritura',
             displayKey: 'displayValue',
             source: escrituras.ttAdapter(),
-            templates: { header: '<h4 class="search-name">{% trans "Productos en otras escrituras" %}</h4>'
+            templates: { header: '<h4 class="search-name">{% trans "Productos en otras escrituras" %}</h4>',
+                                 empty: '<div class="empty-message">{% trans "No encontramos resultados para tu consulta" %}</div>'
+            }
+        },
+        {
+            name: 'grupo',
+            displayKey: 'displayValue',
+            source: grupos.ttAdapter(),
+            templates: { header: '<h4 class="search-name">{% trans "Grupos" %}</h4>',
+                            empty: '<div class="empty-message">{% trans "No encontramos grupos para tu consulta" %}</div>'
+            }
+        },
+        {
+            name: 'marca',
+            displayKey: 'displayValue',
+            source: marcas.ttAdapter(),
+            templates: { header: '<h4 class="search-name">{% trans "Marcas de productos" %}</h4>', 
+                                empty: '<div class="empty-message">{% trans "No encontramos marcas para tu consulta" %}</div>'
             }
         }
+        
      ).bind("typeahead:selected", function(obj, datum, name) {
             //console.log(name);
             //console.log(datum.id);
