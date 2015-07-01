@@ -239,9 +239,11 @@
       };
 
         var normalize = function (str) {
-            $.each(charMap, function (normalized, regex) {
-                    str = str.replace(regex, normalized);
-                });
+            if (str) {
+                $.each(charMap, function (normalized, regex) {
+                        str = str.replace(regex, normalized);
+                    });
+            }
             return str;
         };
 
