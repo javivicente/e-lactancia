@@ -690,85 +690,91 @@
             title: '<strong>{{risk3_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk3_info.contenido | safe }}'
         });
-        $("#btn_biod").popover({
-            html : true,
-            placement:'right',
-            title:'Biodisponibilidad',
-            content: 'La biodisponibilidad es el porcentaje de una sustancia que alcanza la circulacion sistemica tras su administracion, absorcion y posible primera metabolizacion hepatica.
-A nivel materno, a menor biodisponibilidad, menor paso a plasma y por tanto a leche.
-A nivel del lactante, a menor biodisponibilidad oral  de las sustancias que hayan llegado a la leche, peor absorcion en el intestino del lactante, alcanzando menos su circulacion plasmatica. Los posibles efectos estaran mas limitados al intestino.'
-        }); 
+        
     </script>
-    <script>
+    
+
         {% block pharma_popovers %}
+        <script type="text/javascript">
         $("#btn_biod").popover({
-            html : true,
-            placement:'right',
-            title:'Biodisponibilidad <button type="button" id="close" class="close" onclick="$(&quot;#btn_biod&quot;).popover(&quot;hide&quot;);">&times;</button>',
-            content: 'La biodisponibilidad es el porcentaje de una sustancia que alcanza la circulacion sistemica tras su administracion, absorcion y posible primera metabolizacion hepatica. 
-A nivel materno, a menor biodisponibilidad, menor paso a plasma y por tanto a leche.
-A nivel del lactante, a menor biodisponibilidad oral  de las sustancias que hayan llegado a la leche, peor absorcion en el intestino del lactante, alcanzando menos su circulacion plasmatica. Los posibles efectos estaran mas limitados al intestino.'
-        }); 
-        /*$("#btn_biod").popover({
             html : true,
             placement:'right',
             title: '{{ help_biod.titulo | safe}}  <button type="button" id="close" class="close" onclick="$(&quot;#btn_biod&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_biod.contenido| safe}}'
-        }); */
+        }); 
+        </script>
+        <script type="text/javascript">
         $("#btn_p_molecular").popover({
             html : true,
             placement:'right',
             title: '{{ help_p_molecular.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_p_molecular&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_p_molecular.contenido}}'
         });
+        </script>
+        <script type="text/javascript">
         $("#btn_u_prot").popover({
             html : true,
             placement:'right',
             title: '{{ help_u_prot.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_u_prot&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_u_prot.contenido | safe}}'
         }); 
+        </script>
+        <script type="text/javascript">
         $("#btn_vol_dist").popover({
             html : true,
             placement:'right',
             title: '{{ help_vol_dist.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_vol_dist&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_vol_dist.contenido | safe}}'
         });
+        </script>
+        <script type="text/javascript">
         $("#btn_i_l_p").popover({
             html : true,
             placement:'right',
             title: '{{ help_i_l_p.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_i_l_p&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_i_l_p.contenido | safe}}'
         }); 
+        </script>
+        <script type="text/javascript">
         $("#btn_tmax").popover({
             html : true,
             placement:'right',
             title: '{{ help_tmax.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_tmax&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_tmax.contenido | safe}}'
         });
+        </script>
+        <script type="text/javascript">
         $("#btn_tmed").popover({
             html : true,
             placement:'right',
             title: '{{ help_tmed.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_tmed&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_tmed.contenido | safe}}'
         });
+        </script>
+        <script type="text/javascript">
         $("#btn_d_rel").popover({
             html : true,
             placement:'right',
             title: '{{ help_d_rel.titulo | safe }} <button type="button" id="close" class="close" onclick="$(&quot;#btn_d_rel&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_d_rel.contenido | safe}}'
         });
+        </script>
+        <script type="text/javascript">
         $("#btn_d_teor").popover({
             html : true,
             placement:'right',
             title: '{{ help_d_teor.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_d_teor&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_d_teor.contenido | safe}}'
         });
+        </script>
+        <script type="text/javascript">
         $("#btn_d_terap").popover({
             html : true,
             placement:'right',
             title: '{{ help_d_terap.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_d_terap&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_d_terap.contenido | safe}}'
         });   
+        </script>
          {% endblock %} 
          
 $(':not(#anything)').on('click', function (e) {
