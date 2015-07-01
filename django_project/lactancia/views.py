@@ -167,19 +167,26 @@ def landing(request):
     
     
 def buscar(request):
-    term = request.GET['term_type']
-    id = int(request.GET['term_id'])
-    
-    if term == 'producto':
-        return redirect('lactancia:detalle_p', id)
-    elif term == 'grupo':
-        return redirect('lactancia:detalle_g', id)
-    elif term == 'sinonimo':
-        return redirect('lactancia:detalle_ap', id)
-    elif term == 'marca':
-        return redirect('lactancia:detalle_m', id)
-    elif term == 'escritura':
-        return redirect('lactancia:detalle_oe', id)
+    if ('term_id' in request.GET):
+        print 'term_id exists!'
+        term = request.GET['term_type']
+        id = int(request.GET['term_id'])
+        if term == 'producto':
+            return redirect('lactancia:detalle_p', id)
+        elif term == 'grupo':
+            return redirect('lactancia:detalle_g', id)
+        elif term == 'sinonimo':
+            return redirect('lactancia:detalle_ap', id)
+        elif term == 'marca':
+            return redirect('lactancia:detalle_m', id)
+        elif term == 'escritura':
+            return redirect('lactancia:detalle_oe', id)
+    else:
+        here = request.META.get('HTTP_REFERER')
+        if here:
+            return redirect(here)
+        else:
+            return redirect('lactancia:landing')
     
 
 

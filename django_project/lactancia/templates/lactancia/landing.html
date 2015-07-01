@@ -25,7 +25,7 @@
                 <div class="center">
                     <form class="form-search" action="{% url 'lactancia:buscar' %}" style="margin-top:-25px;">
                         {% csrf_token %}
-                        <input class="typeahead input-xxlarge" placeholder="{% trans 'Escribe tu búsqueda' %}" type="text" id="search_input" name="q" autocomplete="on"/>
+                        <input class="typeahead input-xxlarge" placeholder="{% trans 'Escribe tu búsqueda' %}" type="text" id="search_input" name="q"/>
                         <input class="btn btn-info" type="submit" value="{% trans 'Buscar' %}" style="margin-top:20px;"/>
                         <p class="help-block">
                             {% block help_landing %}

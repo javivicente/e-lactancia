@@ -67,7 +67,8 @@
                         {% endblock %}
                         {% block topbar_search %}
                         <form class="navbar-search form-search" id="search_form" action="{% block search_bar_action %}{% url 'lactancia:buscar' %}{% endblock %}">
-                          <input class="typeahead" placeholder="{% trans 'Buscar' %}" type="text" id="search_input" name="q" autocomplete="on"/>
+                          <input class="typeahead" placeholder="{% trans 'Buscar' %}" type="text" id="search_input" name="q" />
+                          <input type="submit" style="visibility: hidden; position: fixed;"/>
                         </form>
                         {% endblock %}
                         <input type="hidden" id="term-type" name="term-type" value="">
@@ -228,7 +229,7 @@
     
     <script>
         
-    var charMap = {
+    /*var charMap = {
         'a': /[ÁÀÄÂáàáâ]/gi,
         'c': /[Çç]/gi,
         'e': /[ÉÈËÊèéêë]/gi,
@@ -237,27 +238,82 @@
         'u': /[ÚÙÜÛúùüû]/gi,
         'n': /[Ññ]/gi,
       };
-
-        var normalize = function (str) {
-            if (str) {
+      
+     var normalize = function (input) {
+            if (input) {
                 $.each(charMap, function (normalized, regex) {
-                        str = str.replace(regex, normalized);
+                        input = input.replace(regex, normalized);
                     });
             }
-            return str;
-        };
+            return input;
+        };*/
+     
+    /*  
+    var charMap = {
+    "à": "a",
+    "á": "a",
+    "â": "a",
+    "é": "e",
+    "è": "e",
+    "ê": "e",
+    "ë": "e",
+    "É": "e",
+    "ï": "i",
+    "î": "i",
+    "ô": "o",
+    "ö": "o",
+    "û": "u",
+    "ù": "u",
+    "ü": "u",
+    "ñ": "n"    
+    };
+    
+    var normalize = function (input) {
+        $.each(charMap, function (unnormalizedChar, normalizedChar) {
+            var regex = new RegExp(unnormalizedChar, 'gi');
+            input = input.replace(regex, normalizedChar);
+        });
+        return input;
+    };
+    */
+    
 
+        
+
+        
+     var charMap = {
+        'aAÁÀÄÂáàáâ': 'a',
+        'cCÇç': 'c',
+        'eEÉÈËÊèéêë': 'e',
+        'iIÍÌÏÎíìîï': 'i',
+        'oOÓÒÖÔóòöô': 'o',
+        'uUÚÙÜÛúùüû': 'u',
+        'nNÑñ': 'n',
+      };
+      
+      var normalize = function(str) {
+       if (str) {
+            $.each(charMap, function(chars, normalized) {
+                var regex = new RegExp('[' + chars + ']', 'gi');
+                str = str.replace(regex, normalized);
+            });
+        }
+        return str;
+    }
+        
+        
+     
         var queryTokenizer = function (q) {
             var normalized = normalize(q);
-            return Bloodhound.tokenizers.whitespace(normalized);
+            return Bloodhound.tokenizers.nonword(normalized);
         };
 
 
 
 
         var productos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
             limit: 5,
             local: $.map({{PRODUCTOS}}, function (name) {
                 // Normalize the name - use this for searching
@@ -275,8 +331,8 @@
         });
         
         var grupos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
             limit: 2,
             local: $.map({{GRUPOS}}, function (name) {
                 // Normalize the name - use this for searching
@@ -296,8 +352,8 @@
         });
         
         var sinonimos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
             limit: 2,
             local: $.map({{SINONIMOS}}, function (name) {
                 // Normalize the name - use this for searching
@@ -316,8 +372,8 @@
             
         });
         var escrituras = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
             limit: 2,
             local: $.map({{ESCRITURAS}}, function (name) {
                 // Normalize the name - use this for searching
@@ -335,8 +391,8 @@
         });
         
         var marcas = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
             identify: function(obj) { return obj.termino; },
             limit: 3,
             local: $.map({{MARCAS}}, function (name) {
@@ -363,7 +419,8 @@
         $('.typeahead').typeahead(
         {
             minLength: 1,
-            highlight: true
+            highlight: true,
+            autoselect: true
         },
         {
             name: 'producto',
@@ -406,8 +463,7 @@
             $("#term-id").val(datum.id);
             $("#term-type").val(name);
       });
-        
-        
+      
                
         {# there is a conflict between typeahead and autofocus. This is required to manually set the autofocus without interfering with the typeaheads #}
         $(document).ready(function () {
