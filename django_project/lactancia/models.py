@@ -138,10 +138,6 @@ class Producto(models.Model):
         return ";\n".join([g.nombre for g in self.grupo.all()])
     obten_grupos.short_description=_(u'Grupo(s)')
 
-    def obten_grupos_en(self):
-        return ";\n".join([g.nombre_ingles for g in self.grupo.all()])
-    obten_grupos.short_description=_(u'Grupo inglés(s)')
-
     def visitas(self):
         return Visita.objects.filter(prod=self.id).count()
     visitas.short_description= _(u'Nº visitas')

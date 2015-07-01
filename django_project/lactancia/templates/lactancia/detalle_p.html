@@ -690,22 +690,37 @@
             title: '<strong>{{risk3_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk3_info.contenido | safe }}'
         });
+        $("#btn_biod").popover({
+            html : true,
+            placement:'right',
+            title:'Biodisponibilidad',
+            content: 'La biodisponibilidad es el porcentaje de una sustancia que alcanza la circulacion sistemica tras su administracion, absorcion y posible primera metabolizacion hepatica.
+A nivel materno, a menor biodisponibilidad, menor paso a plasma y por tanto a leche.
+A nivel del lactante, a menor biodisponibilidad oral  de las sustancias que hayan llegado a la leche, peor absorcion en el intestino del lactante, alcanzando menos su circulacion plasmatica. Los posibles efectos estaran mas limitados al intestino.'
+        }); 
     </script>
     <script>
         {% block pharma_popovers %}
+        $("#btn_biod").popover({
+            html : true,
+            placement:'right',
+            title:'Biodisponibilidad <button type="button" id="close" class="close" onclick="$(&quot;#btn_biod&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: 'La biodisponibilidad es el porcentaje de una sustancia que alcanza la circulacion sistemica tras su administracion, absorcion y posible primera metabolizacion hepatica. 
+A nivel materno, a menor biodisponibilidad, menor paso a plasma y por tanto a leche.
+A nivel del lactante, a menor biodisponibilidad oral  de las sustancias que hayan llegado a la leche, peor absorcion en el intestino del lactante, alcanzando menos su circulacion plasmatica. Los posibles efectos estaran mas limitados al intestino.'
+        }); 
+        /*$("#btn_biod").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_biod.titulo | safe}}  <button type="button" id="close" class="close" onclick="$(&quot;#btn_biod&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_biod.contenido| safe}}'
+        }); */
         $("#btn_p_molecular").popover({
             html : true,
             placement:'right',
             title: '{{ help_p_molecular.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_p_molecular&quot;).popover(&quot;hide&quot;);">&times;</button>',
             content: '{{ help_p_molecular.contenido}}'
         });
-        $("#btn_biod").popover({
-            html : true,
-            placement:'right',
-            title: '{{ help_biod.titulo | safe}}  <button type="button" id="close" class="close" onclick="$(&quot;#btn_biod&quot;).popover(&quot;hide&quot;);">&times;</button>',
-            content: '{{ help_biod.contenido| safe}}'
-        }); 
-        
         $("#btn_u_prot").popover({
             html : true,
             placement:'right',
