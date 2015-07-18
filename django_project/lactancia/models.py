@@ -14,6 +14,11 @@ class Grupo(models.Model):
     fecha_modificacion = models.DateTimeField(_(u'Última modificación'), db_index=True, auto_now = True)
     relacionados = models.ManyToManyField('self', blank=True, verbose_name=_(u'grupos con los que se relaciona'))
 
+    class Meta:
+        verbose_name = _(u'Grupo')
+        verbose_name_plural = _(u'Grupos')
+        ordering=['nombre',]
+        
     def traducido_al_ingles(self):
         return self.nombre_en != self.nombre_es
 
@@ -252,12 +257,13 @@ class Otras_escrituras(models.Model):
 
     producto_principal= models.ForeignKey('Producto', verbose_name=_(u'Nombre principal del producto'))
     nombre = models.CharField(_(u'Producto en otras escrituras'), db_index=True, max_length=255, blank=True, null=True,)
-    idioma = models.CharField(_(u'Idioma en que está escrito el producto'), max_length=255, blank=True, null=True,)
+    escritura = models.ForeignKey('Idioma', verbose_name=_(u'Idioma en que está escrito el producto'), null=True, blank=True)    
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
         
 
     class Meta:
+        ordering = ['escritura__order', 'nombre']    
         verbose_name_plural = _(u'Otras escrituras del producto')
         verbose_name = _(u'Otras escrituras del producto')
 
@@ -282,6 +288,7 @@ class Otras_escrituras(models.Model):
     
 class Marca(models.Model):
     nombre = models.CharField(db_index=True, max_length=255, verbose_name=_(u'Nombre comercial'), unique=False)
+    pais = models.ForeignKey('Pais', verbose_name=_(u'País donde se comercializa'), null=True, blank=True)
     comentario = models.CharField(max_length=255, blank=True, null=True, verbose_name=_(u'País donde se comercializa'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
@@ -586,6 +593,47 @@ class Comentario(models.Model):
     def __unicode__(self):
         return unicode(self.item_name())
 
+class Idioma(models.Model):
+    nombre = models.CharField(_(u'Idioma o escritura'), max_length=100)
+    order = models.PositiveIntegerField()
+    
+    class Meta:
+        verbose_name = _(u'Idioma o escritura')
+        verbose_name_plural = _(u'Idiomas o escrituras')
+        ordering=['order']
+        
+    def productos(self):
+        return ";\n".join([p.producto_principal for p in Otras_escrituras.objects.filter(escritura=self.id)])
+    productos.short_description= _(u'Productos en este idioma')
+    
+    def num_productos(self):
+        return Otras_escrituras.objects.filter(escritura=self.id).count()
+    num_productos.short_description= _(u'Num de productos en este idioma')
+        
+    def save(self, *args, **kwargs):
+        for field_name in ['nombre', 'nombre_es', 'nombre_en']:
+            val = getattr(self, field_name, False)
+            if val:
+                setattr(self, field_name, val.strip().capitalize())
+        super(Idioma, self).save(*args, **kwargs) 
+        
+    def __unicode__(self):
+        return self.nombre
+
+class Pais(models.Model):
+    nombre = models.CharField(_(u'Nombre'), max_length=100)
+
+    class Meta:
+        verbose_name=_(u'País')
+        verbose_name_plural =_(u'Países')
+        ordering=['nombre']
+        
+    def __unicode__(self):
+        return self.nombre
+
+        
+        
+        
      
 from ratings.handlers import ratings, RatingHandler
 from ratings.forms import StarVoteForm

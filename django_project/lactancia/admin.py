@@ -2,13 +2,15 @@
 from __future__ import unicode_literals
 from django.contrib import admin
 from django.forms import ModelForm, TextInput, Textarea
-from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita
+from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma
 from django import forms
 from django.db import models
 from suit.widgets import EnclosedInput, AutosizedTextarea
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.utils.translation import ugettext_lazy as _
 import csv
+from suit.admin import SortableModelAdmin
+
 
 class GrupoComentariosInline(admin.TabularInline):
         model = Comentario
@@ -168,11 +170,12 @@ class Otras_escriturasForm(ModelForm):
         
 class Otras_escriturasAdmin(admin.ModelAdmin):
     form = Otras_escriturasForm
-    list_display = ('producto_principal','nombre',
+    
+    list_display = ('nombre', 'producto_principal', 'escritura',
                         'opiniones_pendientes','visitas', 'fecha_modificacion',)
     search_fields = ('producto_principal__nombre', 'nombre',)
-    list_filter=('fecha_modificacion',)
-    ordering = ('producto_principal__nombre',)
+    list_filter=('fecha_modificacion','escritura')
+    ordering = ('escritura__order','producto_principal__nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion','visitas',)
     
     inlines = [Otras_escrituras_ComentariosInline, ]
@@ -180,7 +183,7 @@ class Otras_escriturasAdmin(admin.ModelAdmin):
 
     fieldsets = (
                 (_(u'Otras escrituras'), {
-                        'fields': ('nombre','idioma_es','idioma_en')
+                        'fields': ('nombre','escritura',)
                 }),
                 (_(u'Nombre Principal'), {
                         'fields': ('producto_principal',)
@@ -413,6 +416,7 @@ class AliasInline(admin.TabularInline):
         
 class Otras_escriturasInline(admin.TabularInline):
         model = Otras_escrituras
+        sortable = 'order'
         form = Otras_escriturasForm
         suit_classes = 'suit-tab suit-tab-nombre'
         extra = 0
@@ -430,7 +434,7 @@ class ProductoAdmin(admin.ModelAdmin):
         
     form = ProductoForm
     list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
-    list_filter = ('fecha_modificacion', 'riesgo',)
+    list_filter = ('fecha_modificacion', 'riesgo','grupo', )
     ordering = ('nombre',)
     search_fields = ('nombre_es', 'nombre_en',)
     filter_horizontal = ('grupo','alternativas','marcas','biblio',)
@@ -535,6 +539,26 @@ class ComentarioAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Comentario, ComentarioAdmin)
+
+
+class Pais_Admin(admin.ModelAdmin):
+    model = Pais
+    list_display=( 'nombre_es', 'nombre_en',)
+    search_fields=('nombre_es', 'nombre_en',)
+    exclude = ('nombre',)
+    ordering=('nombre_es',)
+
+admin.site.register(Pais, Pais_Admin)
+
+class Idioma_Admin(SortableModelAdmin):
+    model = Idioma
+    sortable = 'order'
+    list_display=( 'nombre_es', 'nombre_en', 'productos',)
+    search_fields=('nombre_es', 'nombre_en',)
+    exclude = ('nombre',)
+    ordering=('nombre_es',)
+
+admin.site.register(Idioma, Idioma_Admin)
 
 '''
 ##class UserVisitsInline(admin.TabularInline):

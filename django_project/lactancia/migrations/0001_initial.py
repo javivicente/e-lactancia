@@ -70,6 +70,26 @@ class Migration(migrations.Migration):
                 ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n', db_index=True)),
                 ('relacionados', models.ManyToManyField(related_name='relacionados_rel_+', verbose_name='grupos con los que se relaciona', to='lactancia.Grupo', blank=True)),
             ],
+            options={
+                'ordering': ['nombre'],
+                'verbose_name': 'Grupo',
+                'verbose_name_plural': 'Grupos',
+            },
+        ),
+        migrations.CreateModel(
+            name='Idioma',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('nombre', models.CharField(max_length=100, verbose_name='Idioma o escritura')),
+                ('nombre_en', models.CharField(max_length=100, null=True, verbose_name='Idioma o escritura')),
+                ('nombre_es', models.CharField(max_length=100, null=True, verbose_name='Idioma o escritura')),
+                ('order', models.PositiveIntegerField()),
+            ],
+            options={
+                'ordering': ['order'],
+                'verbose_name': 'Idioma o escritura',
+                'verbose_name_plural': 'Idiomas o escrituras',
+            },
         ),
         migrations.CreateModel(
             name='LactUser',
@@ -127,15 +147,28 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nombre', models.CharField(db_index=True, max_length=255, null=True, verbose_name='Producto en otras escrituras', blank=True)),
-                ('idioma', models.CharField(max_length=255, null=True, verbose_name='Idioma en que est\xe1 escrito el producto', blank=True)),
-                ('idioma_en', models.CharField(max_length=255, null=True, verbose_name='Idioma en que est\xe1 escrito el producto', blank=True)),
-                ('idioma_es', models.CharField(max_length=255, null=True, verbose_name='Idioma en que est\xe1 escrito el producto', blank=True)),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
                 ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n', db_index=True)),
+                ('escritura', models.ForeignKey(verbose_name='Idioma en que est\xe1 escrito el producto', blank=True, to='lactancia.Idioma', null=True)),
             ],
             options={
+                'ordering': ['escritura__order', 'nombre'],
                 'verbose_name': 'Otras escrituras del producto',
                 'verbose_name_plural': 'Otras escrituras del producto',
+            },
+        ),
+        migrations.CreateModel(
+            name='Pais',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('nombre', models.CharField(max_length=100, verbose_name='Nombre')),
+                ('nombre_en', models.CharField(max_length=100, null=True, verbose_name='Nombre')),
+                ('nombre_es', models.CharField(max_length=100, null=True, verbose_name='Nombre')),
+            ],
+            options={
+                'ordering': ['nombre'],
+                'verbose_name': 'Pa\xeds',
+                'verbose_name_plural': 'Pa\xedses',
             },
         ),
         migrations.CreateModel(
@@ -210,6 +243,11 @@ class Migration(migrations.Migration):
             model_name='mensaje',
             name='producto',
             field=models.ForeignKey(verbose_name='Producto vinculado a este mensaje', blank=True, to='lactancia.Producto', null=True),
+        ),
+        migrations.AddField(
+            model_name='marca',
+            name='pais',
+            field=models.ForeignKey(verbose_name='Pa\xeds donde se comercializa', blank=True, to='lactancia.Pais', null=True),
         ),
         migrations.AddField(
             model_name='marca',

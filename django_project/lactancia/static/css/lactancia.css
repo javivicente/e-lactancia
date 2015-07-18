@@ -90,8 +90,16 @@ html,
   color: #888;
   }
 
+.rating {
+    color: gold;
+    font-size: 14px;
 
-      
+}
+
+.invisible {
+    display: none;
+}  
+  
       /* Wrapper for page content to push down footer */
       #wrap {
         /* padding-top: 80px; */    

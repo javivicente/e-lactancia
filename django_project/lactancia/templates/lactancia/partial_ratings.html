@@ -90,7 +90,7 @@
                                 {% if grupop %}
                                     {% get_rating_score for grupop as user_score %}
                                     {% if user_score %}
-                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <div id="star_average" class="rating" data-score="{{ user_score.average|stringformat:'f' }}"></div>
                                             <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
                                     {% else %}
                                         <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ grupop.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
@@ -98,7 +98,7 @@
                                  {% elif marcap %}
                                     {% get_rating_score for marcap as user_score %}
                                     {% if user_score %}
-                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <div id="star_average" class="rating" data-score="{{ user_score.average|stringformat:'f' }}"></div>
                                         <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
                                     {% else %}
                                         <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ marcap.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
@@ -106,7 +106,7 @@
                                 {% elif aliasp %}
                                     {% get_rating_score for prod as user_score %}
                                     {% if user_score %}
-                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <div id="star_average" class="rating" data-score="{{ user_score.average|stringformat:'f' }}"></div>
                                         <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
                                     {% else %}
                                         <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ aliasp.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
@@ -114,15 +114,15 @@
                                 {% elif otra_escritura %}
                                     {% get_rating_score for prod as user_score %}
                                     {% if user_score %}
-                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <div id="star_average" class="rating" data-score="{{ user_score.average|stringformat:'f' }}"></div>
                                         <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
                                     {% else %}
                                         <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ otra_escritura.nombre }}. {% trans "¡Sé tú el primero!" %}</p>
                                     {% endif %}
-                                {% elif pod %}
-                                    {% get_rating_score for prop as user_score %}
+                                {% elif prod %}
+                                    {% get_rating_score for prod as user_score %}
                                     {% if user_score %}
-                                        <div id="star_average" data-score="{{ user_score.average|floatformat }}"></div>
+                                        <div id="star_average" class="rating" data-score="{{ user_score.average|stringformat:'f' }}"></div>
                                         <p>{{ user_score.average|floatformat }} {% trans "de 5" %} ({{ user_score.num_votes }} {% trans "usuarios" %})</p>
                                     {% else %}
                                         <p>{% trans "Ningún usuario con perfil de" %} {{ perfil_text }} {% trans "ha valorado aún" %} {{ prod.nombre }}. {% trans "¡Sé tú el primero!" %}</p>

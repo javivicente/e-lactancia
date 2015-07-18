@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from modeltranslation.translator import translator, TranslationOptions
-from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Mensaje, LactUser, Comentario, Visita, Otras_escrituras
+from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Mensaje, LactUser, Comentario, Visita, Idioma, Pais
 
 class Grupo_TO(TranslationOptions):
     fields = ('nombre',)
@@ -23,10 +23,16 @@ class Alias_TO(TranslationOptions):
  
 translator.register(Alias, Alias_TO)
 
-class Otras_escrituras_TO(TranslationOptions):
-    fields = ('idioma',)
+class Idioma_TO(TranslationOptions):
+    fields = ('nombre',)
  
-translator.register(Otras_escrituras, Otras_escrituras_TO)
+translator.register(Idioma, Idioma_TO)
+
+class Pais_TO(TranslationOptions):
+    fields = ('nombre',)
+ 
+translator.register(Pais, Pais_TO)
+
 
 
 class Marca_TO(TranslationOptions):

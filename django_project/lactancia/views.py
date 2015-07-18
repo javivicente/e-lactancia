@@ -168,7 +168,6 @@ def landing(request):
     
 def buscar(request):
     if ('term_id' in request.GET):
-        print 'term_id exists!'
         term = request.GET['term_type']
         id = int(request.GET['term_id'])
         if term == 'producto':
@@ -221,8 +220,16 @@ def calcula_span_product_pharma_biblio(product):
 
 '''dynamic calculation of the span of the table of risk (includes risk, comment, and alternatives)'''
 def calcula_span_product_risk(product):
-
-    span = {'span_nivel': 'span4',
+    if product.no_alternativas:
+    
+        span = {'span_nivel': 'span4',
+            'span_nivel_desc': 'span4',
+            'span_alternativas': 'invisible',
+            'span_comment': 'span8'
+            }
+    
+    else:
+        span = {'span_nivel': 'span4',
             'span_nivel_desc': 'span4',
             'span_alternativas': 'span3',
             'span_comment': 'span8'
@@ -248,8 +255,18 @@ def calcula_span_marca(marca):
 
     
 '''dynamic calculation of the span of risks and related products of a group'''
-def calcula_span_block_risk():
-    span = {'span_r0': 'span9', #originalmente span9
+def calcula_span_block_risk(no_alternativas):
+    if no_alternativas:
+        span = {'span_r0': 'span12', #originalmente span9
+            'span_r1': 'span12', #originalmente span9
+            'span_r2': 'span12', #originalmente span9
+            'span_r3': 'span12', #originalmente span9
+            'span_risks': 'span12',
+            'span_related': 'span3',
+            #'span_suscribe': 'span3'
+            }
+    else:
+        span = {'span_r0': 'span9', #originalmente span9
             'span_r1': 'span9', #originalmente span9
             'span_r2': 'span9', #originalmente span9
             'span_r3': 'span9', #originalmente span9
@@ -265,7 +282,7 @@ def calcula_span_block_risk():
 '''dynamic calculation of the span of risks and related products of a group'''
 def calcula_span_grupo(grupo):
 
-    span = calcula_span_block_risk()
+    span = calcula_span_block_risk(False)
     span.update({'span_r0': 'span3',
             'span_r1': 'span3',
             'span_r2': 'span3',
@@ -364,7 +381,7 @@ def get_context_for_product(request, prod):
     hints = mark_safe(get_rating_hints())
     span_risk = calcula_span_product_risk(prod)
     span_biblio = calcula_span_product_pharma_biblio(prod)
-    span_block_risk = calcula_span_block_risk()    
+    span_block_risk = calcula_span_block_risk(prod.no_alternativas)    
 
     '''calling the messages in the page'''
     prod_disclaimer = cache.get('prod_disclaimer')
@@ -412,7 +429,7 @@ def get_context_for_product(request, prod):
         
     span_names = calcula_span_product_names(prod)
     
-    prod_otras_escrituras = Otras_escrituras.objects.filter(producto_principal=prod.id).order_by('nombre')
+    prod_otras_escrituras = Otras_escrituras.objects.filter(producto_principal=prod.id)
     
     #risk alert on top
     prod_alert = get_alert_risk_for_producto(prod)
@@ -840,7 +857,7 @@ def get_context_for_marca(request, marca):
         prod = None
     span_risk = calcula_span_product_risk(prod)
     span_marca = calcula_span_marca(marca)
-    span_block_risk = calcula_span_block_risk()
+    span_block_risk = calcula_span_block_risk(prod.no_alternativas)
     
     '''calling the messages in the page'''
     prod_disclaimer = cache.get('prod_disclaimer')

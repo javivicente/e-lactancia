@@ -165,6 +165,7 @@ SUIT_CONFIG = {
         {'label': _(u'Marcas'), 'icon':'icon-tags', 'models': ('lactancia.marca', )},
         {'label': _(u'Riesgo, Grupos y Bibliografia'), 'icon':'icon-book', 'models': ('lactancia.grupo','lactancia.bibliografia','lactancia.riesgo',)},
         {'label': _(u'Mensajes y comentarios'), 'icon':'icon-bullhorn', 'models': ('lactancia.mensaje','lactancia.comentario',)},
+        {'label': _(u'Países e idiomas'), 'icon':'icon-map-marker', 'models': ('lactancia.pais','lactancia.idioma',)},
      
      ), 
 

@@ -60,15 +60,11 @@
                                                         {% endif %}
                                                                             
                                                         {% if score %}
-                                                            <td><div id="star{{ forloop.counter }}" data-score="{{ score.average|floatformat }}"></div>{{ score.average|floatformat }} {% trans 'de 5' %}</td>
+                                                            <td><div id="star{{ forloop.counter }}" class="rating" data-score="{{ score.average|stringformat:'f' }}"></div>{{ score.average|floatformat }} {% trans 'de 5' %}</td>
                                                             <td>{{ score.num_votes }}</td>
                                                         {% else %}
-                                                            <td><div>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
+                                                            <td><div class="rating">
+                                                                    
                                                                 </div></td>
                                                             <td>0</td>
                                                         {% endif %}
@@ -124,15 +120,11 @@
                                                         {% endif %}
                                                                              
                                                         {% if score %}
-                                                            <td><div id="star{{ forloop.counter }}" data-score="{{ score.average|floatformat }}"></div>{{ score.average|floatformat }} {% trans "de 5"  %}</td>
+                                                            <td><div id="star{{ forloop.counter }}" class="rating" data-score="{{ score.average|stringformat:'f' }}"></div>{{ score.average|floatformat }} {% trans "de 5"  %}</td>
                                                             <td>{{ score.num_votes }}</td>
                                                         {% else %}
-                                                            <td><div>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
+                                                            <td><div class="rating">
+                                                                    
                                                                 </div></td>
                                                             <td>0</td>
                                                         {% endif %}
@@ -188,15 +180,11 @@
                                                         {% endif %}
                                                                              
                                                         {% if score %}
-                                                            <td><div id="star{{ forloop.counter }}" data-score="{{ score.average|floatformat }}"></div>{{ score.average|floatformat }} {% trans "de 5"  %}</td>
+                                                            <td><div id="star{{ forloop.counter }}" class="rating" data-score="{{ score.average|stringformat:'f' }}"></div>{{ score.average|floatformat }} {% trans "de 5"  %}</td>
                                                             <td>{{ score.num_votes }}</td>
                                                         {% else %}
-                                                            <td><div>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
+                                                            <td><div class="rating">
+                                                                    
                                                                 </div></td>
                                                             <td>0</td>
                                                         {% endif %}
