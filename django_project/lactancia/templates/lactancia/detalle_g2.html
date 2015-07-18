@@ -259,115 +259,24 @@
 {# javascripts and css required by StarVoteForm #}
 <script type="text/javascript" src="{{ STATIC_URL }}ratings/jquery.MetaData.js"></script>
 {% if perfil %}
-<script type="text/javascript" src="{{ STATIC_URL }}ratings/jquery.raty.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}ratings/jquery.raty-fa.js"></script>
     <script type="text/javascript">
     $(function() {
       $.fn.raty.defaults.path = '{{ STATIC_URL }}ratings';
-      $('#star_average').raty({
-        readOnly: true,
+      $('.rating').raty({
+        size: 14,
+        readOnly: true,        
+        halfShow : true,
+        starHalf : 'fa fa-fw fa-star-half-o',
+        starOff : 'fa fa-star-o fa-fw',
+        starOn  : 'fa fa-fw fa-star',
         hints: {{hints}},
         score: function() {
         return $(this).attr('data-score');
             }
-        });
-      $('#star1').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star2').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star14').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star3').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star4').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star5').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star13').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star6').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star7').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star8').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star9').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star10').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star11').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
-      $('#star12').raty({
-        readOnly: true,
-        hints: {{hints}},
-        score: function() {
-        return $(this).attr('data-score');
-            }
-        });
+      
+      });
+      
      }); 
     </script>
     <script>
