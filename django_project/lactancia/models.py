@@ -288,20 +288,26 @@ class Otras_escrituras(models.Model):
     
 class Marca(models.Model):
     nombre = models.CharField(db_index=True, max_length=255, verbose_name=_(u'Nombre comercial'), unique=False)
-    pais = models.ForeignKey('Pais', verbose_name=_(u'País donde se comercializa'), null=True, blank=True)
+    paises = models.ManyToManyField('Pais', verbose_name=_(u'Paises donde se comercializa'), blank=True)
     comentario = models.CharField(max_length=255, blank=True, null=True, verbose_name=_(u'País donde se comercializa'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
     principios_activos = models.ManyToManyField('Producto',verbose_name=_(u'Listado de principios activos'), through=Producto.marcas.through,blank=True)
 
     class Meta:
-        unique_together = (("nombre", "comentario"),)
-    
+        ordering = ['nombre']    
+        verbose_name_plural = _(u'Marcas')
+        verbose_name = _(u'Marca')
+        
     def traducido_al_ingles(self):
         return self.comentario_es != self.comentario_en
     traducido_al_ingles.boolean=True
     traducido_al_ingles.short_description= _(u'Traducido al inglés')
 
+    def en_paises(self):
+        return ";\n".join([p.nombre for p in self.paises.all()])
+    en_paises.short_description= _(u'Países')
+    
     def multiples_principios(self):
         return (self.principios_activos.count() > 1)
     multiples_principios.boolean=True

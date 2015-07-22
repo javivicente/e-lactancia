@@ -87,10 +87,10 @@ class MarcaForm(ModelForm):
           '''  
 
 class MarcaAdmin(admin.ModelAdmin):
-    list_display = ('nombre','multiples_principios','obten_principios','comentario',
+    list_display = ('nombre','multiples_principios','obten_principios','en_paises',
                         'opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     search_fields = ['nombre','principios_activos__nombre',]
-    filter_horizontal = ('principios_activos',)
+    filter_horizontal = ('principios_activos','paises',)
     form = MarcaForm
     list_filter=('fecha_modificacion',)
     ordering = ('nombre',)
@@ -101,7 +101,7 @@ class MarcaAdmin(admin.ModelAdmin):
                         'fields': ('nombre',)
                 }),
                 (_(u'Países donde se comercializa'), {
-                        'fields': ('comentario_es','comentario_en',)
+                        'fields': ('paises','comentario_es', 'comentario_en',)
                 }),
                 (_(u'Principios activos'), {
                         'fields': ('principios_activos',)

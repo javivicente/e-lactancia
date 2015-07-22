@@ -124,6 +124,11 @@ class Migration(migrations.Migration):
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
                 ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n', db_index=True)),
             ],
+            options={
+                'ordering': ['nombre'],
+                'verbose_name': 'Marca',
+                'verbose_name_plural': 'Marcas',
+            },
         ),
         migrations.CreateModel(
             name='Mensaje',
@@ -246,8 +251,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='marca',
-            name='pais',
-            field=models.ForeignKey(verbose_name='Pa\xeds donde se comercializa', blank=True, to='lactancia.Pais', null=True),
+            name='paises',
+            field=models.ManyToManyField(to='lactancia.Pais', verbose_name='Paises donde se comercializa', blank=True),
         ),
         migrations.AddField(
             model_name='marca',
@@ -293,9 +298,5 @@ class Migration(migrations.Migration):
             model_name='alias',
             name='producto_principal',
             field=models.ForeignKey(verbose_name='Nombre principal del producto', to='lactancia.Producto'),
-        ),
-        migrations.AlterUniqueTogether(
-            name='marca',
-            unique_together=set([('nombre', 'comentario')]),
         ),
     ]
