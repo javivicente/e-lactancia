@@ -38,9 +38,17 @@
 
 
 {% block comentario_content %}
-    {% if marcap.comentario %}
-        <p>{% block comentario_marca %}{% trans "Marca comercializada en " %} {{marcap.comentario}}.{% endblock %}</p>
-    {% endif %}
+    {% block comentario_marca %}
+        {% if marcap.paises.all|length > 0 %}
+            <p>{% trans "Marca comercializada en " %} 
+            {% for p in marcap.paises.all %}
+                {{p.nombre}}{% if forloop.last%}. {% else %}, {% endif %}
+            {% endfor %}
+            </p>
+        {% elif marcap.comentario %}
+            <p>{% trans "Marca comercializada en " %} {{marcap.comentario}}.</p>
+        {% endif %}
+    {% endblock %}
     
     {% if marcap.principios_activos.count > 1 %}
         <p>{% block principios_content_plural %}<strong>{{marcap.nombre}}</strong> {% trans "es una marca comercial que contiene en su composición los siguientes principios activos" %}:{% endblock %}</p>
