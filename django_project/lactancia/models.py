@@ -638,6 +638,22 @@ class Pais(models.Model):
         return self.nombre
 
         
+class Aval(models.Model):
+    entidad = models.CharField(_(u'Organismo'), max_length=500)
+    logo = models.ImageField(upload_to='images/avales', verbose_name=_(u'Logo'), blank=True, null=True)
+    pais = models.ForeignKey('Pais', null=True, blank=True)
+    extracto = models.CharField(_(u'Extracto'), help_text=_(u'Extracto de la carta de apoyo'), max_length=1000, blank=True, null=True)
+    carta = models.FileField(upload_to='papers',  blank=True, verbose_name=_(u'Documento PDF de la carta de apoyo'))
+    fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
+    fecha_modificacion = models.DateTimeField(auto_now = True, verbose_name=_(u'Última modificación'))
+
+    class Meta:
+        verbose_name=_(u'Aval')
+        verbose_name_plural =_(u'Avales')
+        ordering=['entidad']
+       
+    def __unicode__(self):
+        return self.entidad
         
         
      

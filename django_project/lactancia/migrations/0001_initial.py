@@ -29,6 +29,25 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
+            name='Aval',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('entidad', models.CharField(max_length=500, verbose_name='Organismo')),
+                ('logo', models.ImageField(upload_to=b'images/avales', null=True, verbose_name='Logo', blank=True)),
+                ('extracto', models.CharField(help_text='Extracto de la carta de apoyo', max_length=1000, null=True, verbose_name='Extracto', blank=True)),
+                ('extracto_en', models.CharField(help_text='Extracto de la carta de apoyo', max_length=1000, null=True, verbose_name='Extracto', blank=True)),
+                ('extracto_es', models.CharField(help_text='Extracto de la carta de apoyo', max_length=1000, null=True, verbose_name='Extracto', blank=True)),
+                ('carta', models.FileField(upload_to=b'papers', verbose_name='Documento PDF de la carta de apoyo', blank=True)),
+                ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+            ],
+            options={
+                'ordering': ['entidad'],
+                'verbose_name': 'Aval',
+                'verbose_name_plural': 'Avales',
+            },
+        ),
+        migrations.CreateModel(
             name='Bibliografia',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -293,6 +312,11 @@ class Migration(migrations.Migration):
             model_name='bibliografia',
             name='productos',
             field=models.ManyToManyField(to='lactancia.Producto', verbose_name='Productos que referencian este trabajo', blank=True),
+        ),
+        migrations.AddField(
+            model_name='aval',
+            name='pais',
+            field=models.ForeignKey(blank=True, to='lactancia.Pais', null=True),
         ),
         migrations.AddField(
             model_name='alias',

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.contrib import admin
 from django.forms import ModelForm, TextInput, Textarea
-from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma
+from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval
 from django import forms
 from django.db import models
 from suit.widgets import EnclosedInput, AutosizedTextarea
@@ -559,6 +559,23 @@ class Idioma_Admin(SortableModelAdmin):
     ordering=('nombre_es',)
 
 admin.site.register(Idioma, Idioma_Admin)
+
+class AvalForm(ModelForm):
+    class Meta:
+        model = Aval
+        exclude= ['extracto']
+        widgets = {
+                        'extracto_es': AutosizedTextarea(attrs={'rows': 8, 'class': 'span-12'}),
+                        'extracto_en': AutosizedTextarea(attrs={'rows': 8, 'class': 'span-12'}),
+        }
+        
+class Aval_Admin(admin.ModelAdmin):
+    form = AvalForm
+    list_display=( 'entidad', 'pais', )
+    search_fields=('entidad',)
+    ordering=('entidad',)
+
+admin.site.register(Aval, Aval_Admin)
 
 '''
 ##class UserVisitsInline(admin.TabularInline):
