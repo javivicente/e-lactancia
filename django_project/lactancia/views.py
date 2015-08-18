@@ -107,6 +107,26 @@ def typeahead_marcas():
         marcas = Marca.objects.all().distinct().values('nombre', 'id').order_by('nombre')
         N = len(marcas)
         data = list(marcas)
+        '''for i, item in enumerate(data):
+            pa_es = Marca.objects.values_list('principios_activos__nombre_es', flat=True).filter(id=data[i]['id'])
+            pa_en = Marca.objects.values_list('principios_activos__nombre_en', flat=True).filter(id=data[i]['id'])
+            pais_es = Marca.objects.values_list('paises__nombre_es', flat=True).filter(id=data[i]['id'])
+            pais_en = Marca.objects.values_list('paises__nombre_en', flat=True).filter(id=data[i]['id'])
+            
+            data[i]['nombre_es']= data[i]['nombre'] + ' (' 
+            data[i]['nombre_en']= data[i]['nombre'] + ' (' 
+            for index, princip in enumerate(pa_es):
+                if princip:
+                    data[i]['nombre_es'] += princip + ' '
+                    data[i]['nombre_en'] += pa_en[index] + ' ' 
+            data[i]['nombre_es'] += ')'
+            data[i]['nombre_en'] += ')'
+            #for index, pais in pais_es:
+            #    if pais:
+            #        data[i]['nombre_es'] += ' ' + pais
+            #        data[i]['nombre_es'] += ' ' + pais_en[index]
+                        
+        '''
         MARCAS = json.dumps(data, ensure_ascii=False).encode('utf8')
         cache.set('MARCAS', MARCAS)
         cache.set('N_marcas', N)
