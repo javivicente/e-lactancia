@@ -126,7 +126,11 @@ class AliasForm(ModelForm):
                 model = Alias
                 exclude= ('nombre',)
         
-        
+        def clean(self):
+            nombre_es = self.cleaned_data.get('nombre_es')
+            nombre_en = self.cleaned_data.get('nombre_en')
+            if not nombre_en and not nombre_es:
+                raise ValidationError(_(u"Debes indicar al menos un sinónimo (en inglés o en español)."))
         
 class AliasAdmin(admin.ModelAdmin):
     form = AliasForm
@@ -152,6 +156,16 @@ class AliasAdmin(admin.ModelAdmin):
                 }),
         )
 
+    def save_model(self, request, obj, form, change):
+        if not obj.nombre_es:
+            obj.nombre_es=''
+        obj.save()
+        
+    def delete_model(self, request, obj):
+        if not obj.nombre_es:
+            obj.nombre_es=''
+        obj.delete()
+        
 admin.site.register(Alias, AliasAdmin)
 
 
@@ -494,6 +508,22 @@ class ProductoAdmin(admin.ModelAdmin):
                           ('p_comentarios', _(u'Visitas/Opiniones'))
                           )
 
+    def save_formset(self, request, form, formset, change):
+        instances = formset.save(commit=False)
+        for obj in formset.deleted_objects:
+            if obj.dime_que_eres()==u'alias':
+                if not obj.nombre_es:
+                    obj.nombre_es=''
+            obj.delete()
+        for instance in instances:
+            if instance.dime_que_eres()==u'alias':
+                if not instance.nombre_es:
+                    instance.nombre_es=''
+                    #instance.nombre=instance.nombre_en
+            instance.save()
+        formset.save_m2m()
+    
+    
 admin.site.register(Producto, ProductoAdmin)
 
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-22 11:27+0200\n"
+"POT-Creation-Date: 2015-09-06 15:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,8 @@ msgstr ""
 msgid "Grupos relacionados"
 msgstr "Related groups"
 
-#: lactancia/admin.py:39 lactancia/admin.py:109 lactancia/admin.py:150
-#: lactancia/admin.py:191
+#: lactancia/admin.py:39 lactancia/admin.py:109 lactancia/admin.py:154
+#: lactancia/admin.py:205
 msgid "Visitas y fechas"
 msgstr "Visits and dates"
 
@@ -35,73 +35,77 @@ msgstr "Countries where is available"
 msgid "Principios activos"
 msgstr "Active ingredients"
 
-#: lactancia/admin.py:144
+#: lactancia/admin.py:133
+msgid "Debes indicar al menos un sinónimo (en inglés o en español)."
+msgstr "You need to provide at least one synonym (in English or Spanish)."
+
+#: lactancia/admin.py:148
 msgid "Alias"
 msgstr "Alias"
 
-#: lactancia/admin.py:147 lactancia/admin.py:188
+#: lactancia/admin.py:151 lactancia/admin.py:202
 msgid "Nombre Principal"
 msgstr "Main name"
 
-#: lactancia/admin.py:185
+#: lactancia/admin.py:199
 msgid "Otras escrituras"
 msgstr "Other writings"
 
-#: lactancia/admin.py:278
+#: lactancia/admin.py:292
 msgid "Enlaces"
 msgstr "Links"
 
-#: lactancia/admin.py:281
+#: lactancia/admin.py:295
 msgid "Productos que cita este trabajo"
 msgstr "Products citing this work"
 
-#: lactancia/admin.py:311
+#: lactancia/admin.py:325
 msgid "Artículos"
 msgstr "Papers"
 
-#: lactancia/admin.py:487
+#: lactancia/admin.py:501
 msgid "Nombre(s)"
 msgstr "Name(s)"
 
-#: lactancia/admin.py:488 lactancia/models.py:136 lactancia/models.py:299
+#: lactancia/admin.py:502 lactancia/models.py:136 lactancia/models.py:299
 msgid "Marcas"
 msgstr "Tradenames"
 
-#: lactancia/admin.py:489
+#: lactancia/admin.py:503
 msgid "Riesgo y Grupos"
 msgstr "Risk and groups"
 
-#: lactancia/admin.py:490 lactancia/models.py:78
+#: lactancia/admin.py:504 lactancia/models.py:78
 #: lactancia/templates/lactancia/detalle_p.html:127
 msgid "Comentario"
 msgstr "Comment"
 
-#: lactancia/admin.py:491 lactancia/models.py:140
+#: lactancia/admin.py:505 lactancia/models.py:140
 #: lactancia/templates/lactancia/detalle_p.html:150
 msgid "Alternativas"
 msgstr "Alternatives"
 
-#: lactancia/admin.py:492
+#: lactancia/admin.py:506
 msgid "Farmac"
 msgstr "Pharmacy"
 
-#: lactancia/admin.py:493 lactancia/models.py:213 lactancia/models.py:214
+#: lactancia/admin.py:507 lactancia/models.py:213 lactancia/models.py:214
 msgid "Biblio"
 msgstr "References"
 
-#: lactancia/admin.py:494
+#: lactancia/admin.py:508
 msgid "Visitas/Opiniones"
 msgstr "Visits/Opinions"
 
-#: lactancia/admin.py:529
+#: lactancia/admin.py:559
 msgid "Comentario sobre:"
 msgstr "Comment about:"
 
-#: lactancia/admin.py:532
+#: lactancia/admin.py:562
 msgid "Del usuario:"
 msgstr "From user:"
 
-#: lactancia/admin.py:535
+#: lactancia/admin.py:565
 msgid "Texto:"
 msgstr "Text:"
 
@@ -375,12 +379,13 @@ msgstr "Insert a valid e-mail"
 #: lactancia/models.py:13 lactancia/models.py:85 lactancia/models.py:185
 #: lactancia/models.py:225 lactancia/models.py:261 lactancia/models.py:293
 #: lactancia/models.py:416 lactancia/models.py:478 lactancia/models.py:577
+#: lactancia/models.py:647
 msgid "Fecha de creación"
 msgstr "Creation date"
 
 #: lactancia/models.py:14 lactancia/models.py:86 lactancia/models.py:186
 #: lactancia/models.py:226 lactancia/models.py:262 lactancia/models.py:294
-#: lactancia/models.py:417 lactancia/models.py:578
+#: lactancia/models.py:417 lactancia/models.py:578 lactancia/models.py:648
 msgid "Última modificación"
 msgstr "Last update"
 
@@ -388,12 +393,12 @@ msgstr "Last update"
 msgid "grupos con los que se relaciona"
 msgstr "related groups"
 
-#: lactancia/models.py:18 lactancia/templates/lactancia/detalle_p.html:327
+#: lactancia/models.py:18 lactancia/templates/lactancia/detalle_p.html:329
 msgid "Grupo"
 msgstr "Group"
 
 #: lactancia/models.py:19 lactancia/templates/lactancia/base.html:453
-#: lactancia/templates/lactancia/detalle_p.html:324
+#: lactancia/templates/lactancia/detalle_p.html:326
 #: lactancia/templates/lactancia/estadisticas_json_ES.html:1411
 #: lactancia/templates/lactancia/estadisticas_json_v3.html:1161
 msgid "Grupos"
@@ -898,6 +903,35 @@ msgstr "Products cin this language"
 #: lactancia/models.py:617
 msgid "Num de productos en este idioma"
 msgstr "Num of products in this language"
+
+#: lactancia/models.py:642
+msgid "Organismo"
+msgstr "Body"
+
+
+#: lactancia/models.py:643
+msgid "Logo"
+msgstr ""
+
+#: lactancia/models.py:645
+msgid "Extracto"
+msgstr "Excerpt"
+
+#: lactancia/models.py:645
+msgid "Extracto de la carta de apoyo"
+msgstr "Excerpt from the support letter"
+
+#: lactancia/models.py:646
+msgid "Documento PDF de la carta de apoyo"
+msgstr "PDF doc of the support letter"
+
+#: lactancia/models.py:651
+msgid "Aval"
+msgstr "Support"
+
+#: lactancia/models.py:652
+msgid "Avales"
+msgstr "Supports"
 
 #: lactancia/templates/lactancia/alerta_riesgos.html:3
 msgid "Alerta de riesgos"
@@ -1589,25 +1623,26 @@ msgstr "characters"
 msgid "principio activo de "
 msgstr "active ingredient of "
 
-#: lactancia/templates/lactancia/detalle_m.html:42
+#: lactancia/templates/lactancia/detalle_m.html:43
+#: lactancia/templates/lactancia/detalle_m.html:49
 msgid "Marca comercializada en "
 msgstr "Tradename comercialized in "
 
-#: lactancia/templates/lactancia/detalle_m.html:46
+#: lactancia/templates/lactancia/detalle_m.html:54
 msgid ""
 "es una marca comercial que contiene en su composición los siguientes "
 "principios activos"
 msgstr ""
 "is a tradename that contains several active ingredients in its composition"
 
-#: lactancia/templates/lactancia/detalle_m.html:49
+#: lactancia/templates/lactancia/detalle_m.html:57
 msgid ""
 "es una marca comercial que contiene en su composición el siguiente principio "
 "activo"
 msgstr ""
 "is a tradename that contains a main active ingredient in its composition"
 
-#: lactancia/templates/lactancia/detalle_m.html:66
+#: lactancia/templates/lactancia/detalle_m.html:74
 msgid ""
 "Nota: La composición de algunas marcas varía según países. Asegúrate que "
 "esta es la composición de la marca que buscas"
@@ -1615,11 +1650,11 @@ msgstr ""
 "Note: The composition of certain tradenames varies in each country. Please, "
 "make sure this is the composition of the tradename you are looking for."
 
-#: lactancia/templates/lactancia/detalle_m.html:72
+#: lactancia/templates/lactancia/detalle_m.html:80
 msgid "Alternativas de cada principio activo"
 msgstr "Alternatives for each active ingredient"
 
-#: lactancia/templates/lactancia/detalle_m.html:79
+#: lactancia/templates/lactancia/detalle_m.html:87
 #: lactancia/templates/lactancia/lista_negra.html:22
 #: lactancia/templates/lactancia/lista_negra.html:42
 #: lactancia/templates/lactancia/lista_negra.html:62
@@ -1627,11 +1662,11 @@ msgstr "Alternatives for each active ingredient"
 msgid "Nivel "
 msgstr "Level "
 
-#: lactancia/templates/lactancia/detalle_m.html:85
+#: lactancia/templates/lactancia/detalle_m.html:93
 msgid "No hay alternativas porque tiene nivel de riesgo 0"
 msgstr "There are no alternatives because it has very low rist level."
 
-#: lactancia/templates/lactancia/detalle_m.html:87
+#: lactancia/templates/lactancia/detalle_m.html:95
 #: lactancia/templates/lactancia/detalle_p.html:164
 msgid "No disponemos de alternativas para"
 msgstr "We do not have alternatives for"
@@ -1684,91 +1719,91 @@ msgstr "since it is relatively safe."
 msgid "Leyenda de riesgos"
 msgstr "Legend of risks"
 
-#: lactancia/templates/lactancia/detalle_p.html:269
+#: lactancia/templates/lactancia/detalle_p.html:271
 msgid "en otros idiomas o escrituras"
 msgstr "in other languages or writings"
 
-#: lactancia/templates/lactancia/detalle_p.html:283
+#: lactancia/templates/lactancia/detalle_p.html:285
 #: lactancia/templates/lactancia/estadisticas_json_ES.html:1411
 #: lactancia/templates/lactancia/estadisticas_json_v3.html:1161
 msgid "Marcas comerciales"
 msgstr "Tradenames"
 
-#: lactancia/templates/lactancia/detalle_p.html:286
+#: lactancia/templates/lactancia/detalle_p.html:288
 msgid "Principales marcas comerciales de diversos países que contienen"
 msgstr "Main tradenames from several countries containing"
 
-#: lactancia/templates/lactancia/detalle_p.html:286
+#: lactancia/templates/lactancia/detalle_p.html:288
 msgid "en su composición:"
 msgstr "in its composition:"
 
-#: lactancia/templates/lactancia/detalle_p.html:292
-#: lactancia/templates/lactancia/detalle_p.html:478
+#: lactancia/templates/lactancia/detalle_p.html:294
+#: lactancia/templates/lactancia/detalle_p.html:480
 msgid "Listado de"
 msgstr "List of"
 
-#: lactancia/templates/lactancia/detalle_p.html:292
+#: lactancia/templates/lactancia/detalle_p.html:294
 msgid "marcas"
 msgstr "tradenames"
 
-#: lactancia/templates/lactancia/detalle_p.html:302
+#: lactancia/templates/lactancia/detalle_p.html:304
 msgid "Contiene otros elementos aparte de"
 msgstr "Contains other elements than"
 
-#: lactancia/templates/lactancia/detalle_p.html:302
+#: lactancia/templates/lactancia/detalle_p.html:304
 msgid "en su composición"
 msgstr "in its composition"
 
-#: lactancia/templates/lactancia/detalle_p.html:325
+#: lactancia/templates/lactancia/detalle_p.html:327
 msgid "pertenece a las siguientes familias o grupos:"
 msgstr "belongs to these groups or families:"
 
-#: lactancia/templates/lactancia/detalle_p.html:328
+#: lactancia/templates/lactancia/detalle_p.html:330
 msgid "pertenece a la siguiente familia o grupo:"
 msgstr "belongs to this group or family:"
 
-#: lactancia/templates/lactancia/detalle_p.html:364
+#: lactancia/templates/lactancia/detalle_p.html:366
 msgid "Farmacocinética"
 msgstr "Pharmacokinetics"
 
-#: lactancia/templates/lactancia/detalle_p.html:369
+#: lactancia/templates/lactancia/detalle_p.html:371
 msgid "Variable"
 msgstr "Variable"
 
-#: lactancia/templates/lactancia/detalle_p.html:370
+#: lactancia/templates/lactancia/detalle_p.html:372
 msgid "Valor"
 msgstr "Value"
 
-#: lactancia/templates/lactancia/detalle_p.html:371
+#: lactancia/templates/lactancia/detalle_p.html:373
 msgid "Unidades"
 msgstr "Units"
 
-#: lactancia/templates/lactancia/detalle_p.html:417
-#: lactancia/templates/lactancia/detalle_p.html:426
+#: lactancia/templates/lactancia/detalle_p.html:419
+#: lactancia/templates/lactancia/detalle_p.html:428
 msgid "horas"
 msgstr "hours"
 
-#: lactancia/templates/lactancia/detalle_p.html:472
+#: lactancia/templates/lactancia/detalle_p.html:474
 msgid "Bibliografía"
 msgstr "References"
 
-#: lactancia/templates/lactancia/detalle_p.html:478
+#: lactancia/templates/lactancia/detalle_p.html:480
 msgid "referencias"
 msgstr "references"
 
-#: lactancia/templates/lactancia/detalle_p.html:488
+#: lactancia/templates/lactancia/detalle_p.html:490
 msgid "Resumen"
 msgstr "Abstract"
 
-#: lactancia/templates/lactancia/detalle_p.html:491
+#: lactancia/templates/lactancia/detalle_p.html:493
 msgid "Texto completo (enlace a fuente original)"
 msgstr "Full text (link to original source)"
 
-#: lactancia/templates/lactancia/detalle_p.html:494
+#: lactancia/templates/lactancia/detalle_p.html:496
 msgid "Texto completo (en nuestros servidores)"
 msgstr "Full text (in our servers)"
 
-#: lactancia/templates/lactancia/detalle_p.html:500
+#: lactancia/templates/lactancia/detalle_p.html:502
 msgid ""
 "Estamos trabajando en migrar y mejorar la ficha bibliográfica que este "
 "producto tenía en la antigua versión de e-lactancia.org. En breve estará "
@@ -1780,7 +1815,7 @@ msgstr ""
 "soon. If you wish to have access to this information, please let us know by "
 "leaving your comment in the opinion section below."
 
-#: lactancia/templates/lactancia/detalle_p.html:502
+#: lactancia/templates/lactancia/detalle_p.html:504
 msgid "No disponemos de bibliografía para este producto."
 msgstr "There are no references for this product."
 
@@ -3136,6 +3171,8 @@ msgid ""
 "<strong>e-lactancia.org</strong> hace un uso responsable de las cookies y "
 "solo las emplea con los fines descritos arriba."
 msgstr ""
+"<strong>e-lactancia.org</strong> makes a responsible use of cookies and "
+"uses them solely for the purposes described above."
 
 #: lactancia/templates/lactancia/uso_cookies.html:76
 msgid ""
@@ -3178,7 +3215,7 @@ msgstr ""
 "target='_blank'>Opera</a></li> \n"
 "</ul>\n"
 
-#: lactancia/views.py:518
+#: lactancia/views.py:538
 msgid "['muy mala', 'mala', 'regular', 'buena', 'muy buena']"
 msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
 

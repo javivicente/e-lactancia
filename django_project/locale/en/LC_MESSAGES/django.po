@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-22 11:27+0200\n"
+"POT-Creation-Date: 2015-09-06 15:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,6 +42,10 @@ msgid "Mensajes y comentarios"
 msgstr "Messages and comments"
 
 #: django_project/settings.py:168
+msgid "Avales"
+msgstr ""
+
+#: django_project/settings.py:169
 msgid "Países e idiomas"
 msgstr "Countries and languages"
 
