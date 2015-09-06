@@ -983,6 +983,8 @@ def detalle_ap(request, alias_id):
     try:
         # get the alias
         alias = Alias.objects.get(pk=alias_id)
+        if alias.nombre=='':
+            return redirect('lactancia:detalle_p', alias.producto_principal.id)
         # set the context
         context = get_context_for_alias(request, alias)
         context= update_context(request, alias, context)
