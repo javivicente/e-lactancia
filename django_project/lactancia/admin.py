@@ -383,8 +383,8 @@ class ProductoForm(ModelForm):
                                                             tipo = 'cambio_riesgo')
                                         m.titulo_es = u'<p class="text-success">Nivel de riesgo rebajado</p>'
                                         m.titulo_en = u'<p class="text-success">Decreased level of risk</p>'
-                                m.contenido_es = u'Nuevas evidencias científicas han llevado al equipo de Apilam a actualizar el nivel de riesgo asociado a este producto.<br/><strong>El nivel de riesgo anterior, de ' + str(orig.riesgo.nivel) + u', pasa a ser Nivel ' + str(self.cleaned_data['riesgo']) + u'</strong>.'
-                                m.contenido_en = u'New scientific evindences have driven the Apilam staff to update the level of risk associated to this product.<br/><strong>Former level of risk, which was ' + str(orig.riesgo.nivel) + u', is now set to Level ' + str(self.cleaned_data['riesgo']) + u'</strong>.'
+                                m.contenido_es = u'Nuevas evidencias científicas han llevado al equipo de Apilam a actualizar el nivel de riesgo asociado a este producto.<br/><strong>El nivel de riesgo anterior, ' + orig.riesgo.nombre_es + u', pasa a ser ' + new_risk.nombre_es + u'</strong>.'
+                                m.contenido_en = u'New scientific evidences have driven the Apilam staff to update the level of risk associated to this product.<br/><strong>Former level of risk, which was ' + orig.riesgo.nombre_en + u', is now set to ' + new_risk.nombre_en + u'</strong>.'
                                 m.producto = orig
                                 m.save()
                 
