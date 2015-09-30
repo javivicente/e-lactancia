@@ -609,7 +609,7 @@ class Idioma(models.Model):
         ordering=['order']
         
     def productos(self):
-        return ";\n".join([p.producto_principal for p in Otras_escrituras.objects.filter(escritura=self.id)])
+        return ";\n".join([p.producto_principal.nombre for p in Otras_escrituras.objects.filter(escritura=self.id)])
     productos.short_description= _(u'Productos en este idioma')
     
     def num_productos(self):

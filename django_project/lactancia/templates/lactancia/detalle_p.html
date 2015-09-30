@@ -299,9 +299,20 @@
                                 <ul>
                                 {% for marca in prod.marcas.all|dictsort:"nombre" %}
                                     {% if marca.principios_activos.count > 1 %}
-                                        <li><a href="{% url 'lactancia:detalle_m' marca.id %}">{{ marca.nombre }}</a>&trade;. {% if marca.comentario %}
+                                        <li><a href="{% url 'lactancia:detalle_m' marca.id %}">{{ marca.nombre }}</a>&trade;. 
+                                        {% if marca.comentario %}
                                             {{ marca.comentario.strip }}.
-                                        {% endif %} {% trans "Contiene otros elementos aparte de" %} <strong>{% block term_en_marca_composicion %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición" %}
+                                        {% endif %}
+                                        {% if marca.paises.all|length > 0 %}
+                                            {% for pais in marca.paises.all %}
+                                            {% if not forloop.last %}
+                                                {{ pais.nombre }},
+                                            {% else %}
+                                                {{ pais.nombre }}.
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        {% trans "Contiene otros elementos aparte de" %} <strong>{% block term_en_marca_composicion %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición" %}
                                         </li>
                                     {% else %}
                                         <li><a href="{% url 'lactancia:detalle_m' marca.id %}">{{ marca.nombre }}</a>&trade;
