@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             name='Aval',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('entidad', models.CharField(max_length=500, verbose_name='Organismo')),
+                ('entidad', models.URLField(null=True, verbose_name='URL', blank=True)),
                 ('logo', models.ImageField(upload_to=b'images/avales', null=True, verbose_name='Logo', blank=True)),
                 ('extracto', models.CharField(help_text='Extracto de la carta de apoyo', max_length=1000, null=True, verbose_name='Extracto', blank=True)),
                 ('extracto_en', models.CharField(help_text='Extracto de la carta de apoyo', max_length=1000, null=True, verbose_name='Extracto', blank=True)),
