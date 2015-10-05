@@ -640,8 +640,8 @@ class Pais(models.Model):
         
 class Aval(models.Model):
     entidad = models.CharField(_(u'Organismo'), max_length=500)
-    entidad = models.URLField(_(u'URL'), blank=True, null=True)
-    logo = models.ImageField(upload_to='images/avales', verbose_name=_(u'Logo'), blank=True, null=True)
+    URL = models.URLField(_(u'URL'), blank=True, null=True, default="",)
+    logo = models.ImageField(upload_to='images/avales', verbose_name=_(u'Logo'),  blank=True, null=True)
     pais = models.ForeignKey('Pais', null=True, blank=True)
     extracto = models.CharField(_(u'Extracto'), help_text=_(u'Extracto de la carta de apoyo'), max_length=1000, blank=True, null=True)
     carta = models.FileField(upload_to='papers',  blank=True, verbose_name=_(u'Documento PDF de la carta de apoyo'))
