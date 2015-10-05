@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib import admin
-from django.forms import ModelForm, TextInput, Textarea
+from django.forms import ModelForm, TextInput, Textarea, ValidationError
 from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval
 from django import forms
 from django.db import models
@@ -74,17 +74,24 @@ class MarcaForm(ModelForm):
                         }
 
         exclude = ('comentario',)
-        '''# Necesitamos replicar el nombre de la marca en castellano en el campo nombre_ingles
-        # Esto es necesario para que las búsquedas puedan hacerse correctamente tanto en inglés como en español
-        def save(self, commit=True):
-                # Get the unsave Marca instance
-                instance = forms.ModelForm.save(self, False)
-                instance.nombre_ingles = self.cleaned_data['nombre']
-                # Do we need to save all changes now?
-                if commit:
-                    instance.save()
-                return instance
-          '''  
+        
+        def clean(self):
+            nombre = self.cleaned_data.get('nombre')
+            paises = self.cleaned_data.get('paises')
+            if self.instance and self.instance.pk:
+                marcas_mismo_nombre = Marca.objects.filter(nombre=nombre).exclude(id=self.instance.pk)
+            else:
+                marcas_mismo_nombre = Marca.objects.filter(nombre=nombre)
+            if marcas_mismo_nombre>0:
+                for m in marcas_mismo_nombre:
+                    current_paises = m.paises.all()
+                    if len(current_paises)==0 and len(paises)==0: # if [] == []:
+                        raise ValidationError(_(u"Ya existe una marca con este nombre. Para poder salvarla debes especificar uno o más países de comercialización."))
+                    for c in current_paises:
+                        if c in paises:
+                            raise ValidationError(unicode(_(u'Ya existe una marca con este nombre que se comercializa en ')) + c.nombre + unicode('.'))
+        
+        
 
 class MarcaAdmin(admin.ModelAdmin):
     list_display = ('nombre','multiples_principios','obten_principios','en_paises',
@@ -340,6 +347,7 @@ class ProductoForm(ModelForm):
 
                 forms.ModelForm.__init__(self, *args, **kwargs)
 
+        
         # Overriding save allows us to process the value of 'bibliography' field    
         def save(self, commit=True):
 
