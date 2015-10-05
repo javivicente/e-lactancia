@@ -104,7 +104,7 @@ def typeahead_otras_escrituras():
 def typeahead_marcas():
     MARCAS = cache.get('MARCAS')
     if MARCAS == None:
-        marcas = Marca.objects.all().distinct().values('nombre', 'id').order_by('nombre')
+        marcas = Marca.objects.all().distinct().values('nombre_paises_es', 'nombre_paises_en', 'id').order_by('nombre')
         N = len(marcas)
         data = list(marcas)
         '''for i, item in enumerate(data):

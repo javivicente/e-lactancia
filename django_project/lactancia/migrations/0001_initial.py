@@ -138,6 +138,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nombre', models.CharField(max_length=255, verbose_name='Nombre comercial', db_index=True)),
+                ('nombre_paises', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
+                ('nombre_paises_en', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
+                ('nombre_paises_es', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
                 ('comentario', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),
                 ('comentario_en', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),
                 ('comentario_es', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),

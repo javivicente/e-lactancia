@@ -289,6 +289,7 @@ class Otras_escrituras(models.Model):
 class Marca(models.Model):
     nombre = models.CharField(db_index=True, max_length=255, verbose_name=_(u'Nombre comercial'), unique=False)
     paises = models.ManyToManyField('Pais', verbose_name=_(u'Paises donde se comercializa'), blank=True)
+    nombre_paises = models.CharField(max_length=700, verbose_name=_(u'Nombre comercial y país'), blank=True, null=True)
     comentario = models.CharField(max_length=255, blank=True, null=True, verbose_name=_(u'País donde se comercializa'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
@@ -390,8 +391,39 @@ class Marca(models.Model):
         return u'marca'
         
     def __unicode__(self):
-        return unicode(self.nombre)
+        return unicode(self.nombre_paises)
 
+    def save(self, *args, **kwargs):
+        nombre_paises= getattr(self, 'nombre', False)
+        nombre_paises_es= getattr(self, 'nombre', False)
+        nombre_paises_en= getattr(self, 'nombre', False)
+        paises = self.paises.all()
+        if len(paises)>0: 
+            
+            nombre_paises += ' ('
+            nombre_paises_en += ' ('
+            nombre_paises_es += ' ('
+                
+            for i, p in enumerate(paises):
+                
+                nombre_paises += p.nombre
+                nombre_paises_es += p.nombre_es
+                nombre_paises_en += p.nombre_en
+                
+                if i<len(paises)-1:
+                    nombre_paises += ', '
+                    nombre_paises_es += ', '
+                    nombre_paises_en += ', '
+                    
+            nombre_paises += ')'
+            nombre_paises_en += ')'
+            nombre_paises_es += ')'
+            
+        setattr(self, 'nombre_paises', nombre_paises)
+        setattr(self, 'nombre_paises_es', nombre_paises_es)
+        setattr(self, 'nombre_paises_en', nombre_paises_en)
+        super(Marca, self).save(*args, **kwargs) 
+        
 class Mensaje(models.Model):
         
     NIVEL_CHOICES = (

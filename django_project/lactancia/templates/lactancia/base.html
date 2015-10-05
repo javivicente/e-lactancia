@@ -397,16 +397,18 @@
             limit: 3,
             local: $.map({{MARCAS}}, function (name) {
                 // Normalize the name - use this for searching
-                //console.log(name.termino)
-                var normalized = normalize(name.nombre);
+                //console.log(name.nombre_es)
+                term = {% if LANGUAGE_CODE == 'es' %} name.nombre_paises_es {% else %} name.nombre_paises_en {% endif %}
+                var normalized = normalize(term);
                 //console.log(normalized)
                 return {
                     nombre: normalized,
                     id: name.id,
                     // Include the original name - use this for display purposes
-                    displayValue: name.nombre
+                    displayValue: term
                     };
                 })
+            
             
         });
         

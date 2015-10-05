@@ -41,7 +41,7 @@ translator.register(Aval, Aval_TO)
 
 
 class Marca_TO(TranslationOptions):
-    fields = ('comentario',)
+    fields = ('comentario','nombre_paises')
  
 translator.register(Marca, Marca_TO)
 
