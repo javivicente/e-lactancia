@@ -35,6 +35,7 @@ class Migration(migrations.Migration):
                 ('entidad', models.CharField(max_length=500, verbose_name='Organismo')),
                 ('URL', models.URLField(default=b'', null=True, verbose_name='URL', blank=True)),
                 ('logo', models.ImageField(upload_to=b'images/avales', null=True, verbose_name='Logo', blank=True)),
+                ('order', models.PositiveIntegerField()),
                 ('extracto', models.CharField(help_text='Extracto de la carta de apoyo', max_length=1000, null=True, verbose_name='Extracto', blank=True)),
                 ('extracto_en', models.CharField(help_text='Extracto de la carta de apoyo', max_length=1000, null=True, verbose_name='Extracto', blank=True)),
                 ('extracto_es', models.CharField(help_text='Extracto de la carta de apoyo', max_length=1000, null=True, verbose_name='Extracto', blank=True)),
@@ -68,6 +69,31 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
+            name='Cajita',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('titulo', models.CharField(max_length=100, verbose_name='Titulo')),
+                ('titulo_en', models.CharField(max_length=100, null=True, verbose_name='Titulo')),
+                ('titulo_es', models.CharField(max_length=100, null=True, verbose_name='Titulo')),
+                ('texto', models.CharField(max_length=500, verbose_name='Texto')),
+                ('texto_en', models.CharField(max_length=500, null=True, verbose_name='Texto')),
+                ('texto_es', models.CharField(max_length=500, null=True, verbose_name='Texto')),
+                ('link', models.URLField(help_text='Opcional. El link se abrir\xe1 en una nueva pesta\xf1a. Puede ser el enlace a un libro, web, post, noticia, etc.', null=True, verbose_name='Link', blank=True)),
+                ('texto_link', models.CharField(help_text='Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc', max_length=150, verbose_name='Texto del link', blank=True)),
+                ('texto_link_en', models.CharField(help_text='Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc', max_length=150, null=True, verbose_name='Texto del link', blank=True)),
+                ('texto_link_es', models.CharField(help_text='Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc', max_length=150, null=True, verbose_name='Texto del link', blank=True)),
+                ('order', models.PositiveIntegerField()),
+                ('visible', models.BooleanField(default=True, verbose_name='Visible en la p\xe1gina Landing')),
+                ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+            ],
+            options={
+                'ordering': ['titulo'],
+                'verbose_name': 'Cajita en Landing',
+                'verbose_name_plural': 'Cajitas en landing',
+            },
+        ),
+        migrations.CreateModel(
             name='Comentario',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -94,6 +120,19 @@ class Migration(migrations.Migration):
                 'ordering': ['nombre'],
                 'verbose_name': 'Grupo',
                 'verbose_name_plural': 'Grupos',
+            },
+        ),
+        migrations.CreateModel(
+            name='Icono',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('nombre', models.CharField(max_length=100, verbose_name='Nombre')),
+                ('fontawesome_nombre', models.CharField(help_text='Consulta los iconos en la web de <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a>', max_length=100, null=True, verbose_name='Nombre del icono (en Fontawesome)', blank=True)),
+            ],
+            options={
+                'ordering': ['nombre'],
+                'verbose_name': 'Icono',
+                'verbose_name_plural': 'Iconos',
             },
         ),
         migrations.CreateModel(
@@ -311,6 +350,11 @@ class Migration(migrations.Migration):
             model_name='comentario',
             name='user',
             field=models.ForeignKey(blank=True, to='lactancia.LactUser', null=True),
+        ),
+        migrations.AddField(
+            model_name='cajita',
+            name='icono',
+            field=models.ForeignKey(verbose_name='Icono', to='lactancia.Icono'),
         ),
         migrations.AddField(
             model_name='bibliografia',

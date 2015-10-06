@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.template.defaultfilters import date as _date
+from django.utils.html import mark_safe
 
 class Grupo(models.Model):
     nombre = models.CharField(_(u'Nombre'), db_index=True, max_length=255, unique=True)
@@ -675,6 +676,7 @@ class Aval(models.Model):
     URL = models.URLField(_(u'URL'), blank=True, null=True, default="",)
     logo = models.ImageField(upload_to='images/avales', verbose_name=_(u'Logo'),  blank=True, null=True)
     pais = models.ForeignKey('Pais', null=True, blank=True)
+    order = models.PositiveIntegerField()
     extracto = models.CharField(_(u'Extracto'), help_text=_(u'Extracto de la carta de apoyo'), max_length=1000, blank=True, null=True)
     carta = models.FileField(upload_to='papers',  blank=True, verbose_name=_(u'Documento PDF de la carta de apoyo'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
@@ -688,7 +690,44 @@ class Aval(models.Model):
     def __unicode__(self):
         return self.entidad
         
+class Icono(models.Model):
+    nombre = models.CharField(_(u'Nombre'), max_length=100)
+    fontawesome_nombre = models.CharField(_(u'Nombre del icono (en Fontawesome)'), help_text=mark_safe(_(u'Consulta los iconos en la web de ') + '<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a>'), max_length=100, blank=True, null=True)
+    
+    def vista_previa(self):
+        return mark_safe('<i class="fa ' + self.fontawesome_nombre + ' fa-3x"></i>')
+    vista_previa.short_description= _(u'Vista previa')
+    
+    class Meta:
+        verbose_name = _(u'Icono')
+        verbose_name_plural = _(u'Iconos')
+        ordering=['nombre']
+
+    def __unicode__(self):
+        return self.nombre
         
+class Cajita(models.Model):
+    titulo = models.CharField(_(u'Titulo'), max_length=100)
+    icono = models.ForeignKey('Icono', verbose_name=_(u'Icono'))
+    texto = models.CharField(_(u'Texto'), max_length=500)
+    link = models.URLField(_(u'Link'), help_text=_(u'Opcional. El link se abrirá en una nueva pestaña. Puede ser el enlace a un libro, web, post, noticia, etc.'), blank=True, null=True)
+    texto_link = models.CharField(_(u'Texto del link'), help_text=_(u'Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc'), max_length=150, blank=True)
+    order = models.PositiveIntegerField()
+    visible = models.BooleanField(_(u'Visible en la página Landing'), default=True)    
+    fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
+    fecha_modificacion = models.DateTimeField(auto_now = True, verbose_name=_(u'Última modificación'))
+
+    def vista_previa_icono(self):
+        return self.icono.vista_previa()
+    vista_previa_icono.short_description= _(u'Icono')
+    
+    class Meta:
+        verbose_name=_(u'Cajita en Landing')
+        verbose_name_plural =_(u'Cajitas en landing')
+        ordering=['titulo']
+       
+    def __unicode__(self):
+        return self.titulo
      
 from ratings.handlers import ratings, RatingHandler
 from ratings.forms import StarVoteForm

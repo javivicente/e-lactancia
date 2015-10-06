@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia
+from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia, Cajita
 #from lactancia.extra import Lactancia_words
 #from lactancia.extra import correct_list
 from lactancia.forms import PerfilForm, Subscription, ComentarioForm
@@ -165,7 +165,7 @@ def load_initial_context():
                   'N': N,
                 }
     context=get_alert_risk(context)
-    return context
+    return context 
     
 initial_context = load_initial_context()
 
@@ -175,9 +175,14 @@ def landing(request):
     if last_update == None:
         last_update = Producto.objects.latest('fecha_modificacion').fecha_modificacion
         cache.set('prod_last_update',last_update)
-        
+    cajitas = cache.get('cajitas')
+    if cajitas == None:
+        cajitas = Cajita.objects.filter(visible=True).order_by('order')
+        cache.set('cajitas', cajitas)
+    cajitas = cache.get('cajitas')
     context = {
                 'last_update': last_update,
+                'cajitas': cajitas,
                 }
                 
     context.update(initial_context)    
@@ -213,7 +218,7 @@ def buscar(request):
 def calcula_span_product_names(product):
 
     # by default, there's only one column (group)...
-    span='span12'
+    span='span12' 
 
     # if there are alias and trademarks (there will be 3 columns)
     if (product.hay_marcas() and (product.hay_alias() or product.hay_escrituras())):
@@ -1270,8 +1275,11 @@ def lista_negra(request):
     context.update(initial_context)    
     return render(request, 'lactancia/lista_negra.html', context)    
 
-
-    
+@staff_member_required
+def limpia_cache(request):
+    cache.clear()
+    context = load_initial_context()
+    return render(request, 'lactancia/limpiar_cache.html', context)
     
 ''' ESTADISTICAS '''
 def get_context_for_stats_json_v2(request):

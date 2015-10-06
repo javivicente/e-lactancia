@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^alertas$', views.alerta_riesgos, name='alerta_riesgos'),
     url(r'^creditos$', views.creditos, name='creditos'),
     url(r'^lista_negra$', views.lista_negra, name='lista_negra'),
+    url(r'^limpia_cache$', views.limpia_cache, name='limpia_cache'),
     url(r'^estadisticas$', views.estadisticas, name='estadisticas'),
     url(r'^estadisticas_ES$', views.estadisticas_ES, name='estadisticas_ES'),
     

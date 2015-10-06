@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.contrib import admin
 from django.forms import ModelForm, TextInput, Textarea, ValidationError
-from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval
+from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval, Cajita, Icono
 from django import forms
 from django.db import models
 from suit.widgets import EnclosedInput, AutosizedTextarea
@@ -607,13 +607,48 @@ class AvalForm(ModelForm):
                         'extracto_en': AutosizedTextarea(attrs={'rows': 8, 'class': 'span-12'}),
         }
         
-class Aval_Admin(admin.ModelAdmin):
+class Aval_Admin(SortableModelAdmin):
     form = AvalForm
+    sortable = 'order'
     list_display=( 'entidad', 'pais', )
     search_fields=('entidad',)
     ordering=('entidad',)
 
 admin.site.register(Aval, Aval_Admin)
+
+class Icono_Admin(admin.ModelAdmin):
+    model = Icono
+    list_display=( 'nombre', 'fontawesome_nombre', 'vista_previa')
+    search_fields=('nombre','fontawesome_nombre')
+    ordering=('nombre',)
+ 
+admin.site.register(Icono, Icono_Admin)
+
+
+class CajitaForm(ModelForm):
+    class Meta:
+        
+        
+        widgets = {
+                        'texto_es': AutosizedTextarea(attrs={'rows': 12, 'class': 'span-12'}),
+                        'texto_en': AutosizedTextarea(attrs={'rows': 12, 'class': 'span-12'}),
+        }
+        exclude= ('titulo', 'texto', 'texto_link', 'order',)
+
+class Cajita_Admin(SortableModelAdmin):
+    form = CajitaForm
+    sortable = 'order'
+    list_display=( 'titulo', 'vista_previa_icono', 'visible')
+    search_fields=('titulo_en','titulo_es')
+    ordering=('order',)
+
+    fieldsets = (
+                ('' , {
+                        'fields': ('titulo_es','titulo_en', 'icono', 'texto_es', 'texto_en','link','texto_link_es','texto_link_en','visible',)
+                }),
+        )
+admin.site.register(Cajita, Cajita_Admin)
+
 
 '''
 ##class UserVisitsInline(admin.TabularInline):
