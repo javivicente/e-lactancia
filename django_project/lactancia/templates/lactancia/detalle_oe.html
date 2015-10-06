@@ -22,15 +22,14 @@
 
         {% block other_names_first %}
         {% if prod_otras_escrituras %}
-            <h3>{% trans "Otros nombres" %}</h3>
-            <p><strong>{{otra_escritura.nombre}}</strong> {% trans "es" %} <a href="{% url 'lactancia:detalle_p' prod.id %}">{{prod.nombre}}</a> {% trans "en" %} {{otra_escritura.idioma}}. </p>
+            <p><strong>{{otra_escritura.nombre}}</strong> {% trans "es" %} <a href="{% url 'lactancia:detalle_p' prod.id %}">{{prod.nombre}}</a> {% trans "en" %} {{otra_escritura.escritura.nombre}}. </p>
             {% if prod_otras_escrituras|length > 1 %}
                 {% trans "Así se escribe en otros idiomas" %}:
             {% endif %}
             <ul> 
                     {% for alias in prod_otras_escrituras %}
                         {% if otra_escritura.id != alias.id %}
-                            <li><a href="{% url 'lactancia:detalle_oe' alias.id %}"  >{{ alias.nombre }}</a> ({{alias.idioma}})</li>
+                            <li><a href="{% url 'lactancia:detalle_oe' alias.id %}"  >{{ alias.nombre }}</a> ({{alias.escritura.nombre}})</li>
                         {% endif %}
                     {% endfor %}
             </ul>
