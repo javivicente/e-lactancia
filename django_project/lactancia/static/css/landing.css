@@ -44,7 +44,6 @@
     
     #hero-wrap-form { 
         position: relative; 
-
     }       
 
     .help-block {
@@ -60,7 +59,7 @@
     }
 
     #logo-moto {
-line-height:120%;
+        line-height:120%;
     }
 
 

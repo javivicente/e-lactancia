@@ -611,10 +611,7 @@
         $('#search_form .tt-query').css('width', width); 
         $('#search_form .tt-hint').css('width', width);       
     </script>
-    {% block typeahead %}
-    {# this makes that the text in the search is submitted once it has been introduced (without the need of an extra and enoying enter) #}
     
-    {% endblock %}
     <script>
         $("#btn_alert_risk").popover({
             html : true, 
@@ -632,5 +629,8 @@
     data-message="{% trans 'Usamos cookies para mejorar tu experiencia. Al continuar navegando en nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre nuestra ' %}"
     data-moreinfo="{% url 'lactancia:privacidad' %}">
     </script>
+    {% block typeahead %}
+    
+    {% endblock %}
     </body>
 </html> 
