@@ -676,6 +676,7 @@ class Aval(models.Model):
     URL = models.URLField(_(u'URL'), blank=True, null=True, default="",)
     logo = models.ImageField(upload_to='images/avales', verbose_name=_(u'Logo'),  blank=True, null=True)
     pais = models.ForeignKey('Pais', null=True, blank=True)
+    visible = models.BooleanField(_(u'Visible en la página Landing'), default=True)    
     order = models.PositiveIntegerField()
     extracto = models.CharField(_(u'Extracto'), help_text=_(u'Extracto de la carta de apoyo'), max_length=1000, blank=True, null=True)
     carta = models.FileField(upload_to='papers',  blank=True, verbose_name=_(u'Documento PDF de la carta de apoyo'))
@@ -714,6 +715,7 @@ class Cajita(models.Model):
     texto_link = models.CharField(_(u'Texto del link'), help_text=_(u'Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc'), max_length=150, blank=True)
     order = models.PositiveIntegerField()
     visible = models.BooleanField(_(u'Visible en la página Landing'), default=True)    
+    publicidad = models.BooleanField(_(u'Es publicidad'), default=False)    
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(auto_now = True, verbose_name=_(u'Última modificación'))
 

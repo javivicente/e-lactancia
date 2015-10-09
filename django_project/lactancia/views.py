@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia, Cajita
+from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia, Cajita, Aval
 #from lactancia.extra import Lactancia_words
 #from lactancia.extra import correct_list
 from lactancia.forms import PerfilForm, Subscription, ComentarioForm
@@ -175,14 +175,22 @@ def landing(request):
     if last_update == None:
         last_update = Producto.objects.latest('fecha_modificacion').fecha_modificacion
         cache.set('prod_last_update',last_update)
+    
     cajitas = cache.get('cajitas')
     if cajitas == None:
         cajitas = Cajita.objects.filter(visible=True).order_by('order')
         cache.set('cajitas', cajitas)
     cajitas = cache.get('cajitas')
+    
+    avales = cache.get('avales')
+    if avales == None:
+        avales = Aval.objects.filter(visible=True).order_by('order')
+        cache.set('avales', avales)
+    avales = cache.get('avales')
     context = {
                 'last_update': last_update,
                 'cajitas': cajitas,
+                'avales': avales,
                 }
                 
     context.update(initial_context)    
@@ -1605,7 +1613,19 @@ def get_context_for_stats_json_ES(request):
 
 
 
-
+def avales(request):
+    
+    avales = cache.get('avales')
+    if avales == None:
+        avales = Aval.objects.filter(visible=True).order_by('order')
+        cache.set('avales', avales)
+    avales = cache.get('avales')
+    context = {
+                'avales': avales,
+                }
+                
+    context.update(initial_context)    
+    return render(request, 'lactancia/avales.html', context)
     
     
 def estadisticas(request):

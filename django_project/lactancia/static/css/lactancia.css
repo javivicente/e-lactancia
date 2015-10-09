@@ -894,3 +894,9 @@ input[type='radio'], label{
     margin-top: -15px; /* cut off top portion of bottom wells */
 }
 }
+
+
+.logo{
+    height: 100px;
+    margin: 0 15px;
+}

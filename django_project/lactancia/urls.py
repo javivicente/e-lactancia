@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^cookies$', views.cookies, name='cookies'),
     url(r'^privacidad$', views.privacidad, name='privacidad'),
     url(r'^aviso_legal$', views.aviso_legal, name='aviso_legal'),
+    url(r'^avales$', views.avales, name='avales'), 
     url(r'^donativos$', views.donativos, name='donativos'), 
     url(r'^donativo_exito$', views.donativo_exito, name='donativo_exito'),
     url(r'^donativo_cancelado$', views.donativo_cancelado, name='donativo_cancelado'),

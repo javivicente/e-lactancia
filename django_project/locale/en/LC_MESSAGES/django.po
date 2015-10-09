@@ -43,7 +43,7 @@ msgstr "Messages and comments"
 
 #: django_project/settings.py:168
 msgid "Avales"
-msgstr ""
+msgstr "Supporters"
 
 #: django_project/settings.py:169
 msgid "Países e idiomas"

@@ -601,19 +601,27 @@ admin.site.register(Idioma, Idioma_Admin)
 class AvalForm(ModelForm):
     class Meta:
         model = Aval
-        exclude= ['extracto']
+        
         widgets = {
                         'extracto_es': AutosizedTextarea(attrs={'rows': 8, 'class': 'span-12'}),
                         'extracto_en': AutosizedTextarea(attrs={'rows': 8, 'class': 'span-12'}),
         }
         
+        exclude= ['extracto']
+        
+        
 class Aval_Admin(SortableModelAdmin):
     form = AvalForm
     sortable = 'order'
-    list_display=( 'entidad', 'pais', )
+    list_display=( 'entidad', 'pais', 'visible',)
     search_fields=('entidad',)
     ordering=('entidad',)
 
+    fieldsets = (
+                ('', {
+                        'fields': ('entidad','URL', 'logo', 'pais', 'visible', 'extracto_es', 'extracto_en', 'carta',)
+                }),
+        )
 admin.site.register(Aval, Aval_Admin)
 
 class Icono_Admin(admin.ModelAdmin):
@@ -638,13 +646,13 @@ class CajitaForm(ModelForm):
 class Cajita_Admin(SortableModelAdmin):
     form = CajitaForm
     sortable = 'order'
-    list_display=( 'titulo', 'vista_previa_icono', 'visible')
+    list_display=( 'titulo', 'vista_previa_icono', 'visible','publicidad')
     search_fields=('titulo_en','titulo_es')
     ordering=('order',)
 
     fieldsets = (
                 ('' , {
-                        'fields': ('titulo_es','titulo_en', 'icono', 'texto_es', 'texto_en','link','texto_link_es','texto_link_en','visible',)
+                        'fields': ('titulo_es','titulo_en', 'icono', 'texto_es', 'texto_en','link','texto_link_es','texto_link_en','publicidad', 'visible',)
                 }),
         )
 admin.site.register(Cajita, Cajita_Admin)
