@@ -683,7 +683,7 @@ class Pais(models.Model):
 class Aval(models.Model):
     entidad = models.CharField(_(u'Organismo'), max_length=500)
     URL = models.URLField(_(u'URL'), blank=True, null=True, default="",)
-    logo = models.ImageField(upload_to='images/avales', verbose_name=_(u'Logo'),  blank=True, null=True)
+    logo = models.ImageField(upload_to='images/avales', verbose_name=_(u'Logo'), default='img/apilam-grande.png')
     pais = models.ForeignKey('Pais', null=True, blank=True)
     visible = models.BooleanField(_(u'Visible en la página Landing'), default=True)    
     order = models.PositiveIntegerField()

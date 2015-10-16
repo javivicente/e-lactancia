@@ -648,7 +648,7 @@ class CajitaForm(ModelForm):
                         'texto_es': AutosizedTextarea(attrs={'rows': 12, 'class': 'span-12'}),
                         'texto_en': AutosizedTextarea(attrs={'rows': 12, 'class': 'span-12'}),
         }
-        exclude= ('titulo', 'texto', 'texto_link', 'order',)
+        exclude= ('titulo', 'texto', 'link', 'texto_link', 'order',)
 
 class Cajita_Admin(SortableModelAdmin):
     form = CajitaForm
@@ -659,7 +659,7 @@ class Cajita_Admin(SortableModelAdmin):
 
     fieldsets = (
                 ('' , {
-                        'fields': ('titulo_es','titulo_en', 'icono', 'texto_es', 'texto_en','link','texto_link_es','texto_link_en','publicidad', 'visible',)
+                        'fields': ('titulo_es','titulo_en', 'icono', 'texto_es', 'texto_en','link_es','texto_link_es','link_en','texto_link_en','publicidad', 'visible',)
                 }),
         )
 admin.site.register(Cajita, Cajita_Admin)

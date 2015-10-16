@@ -39,7 +39,7 @@ class Aval_TO(TranslationOptions):
 translator.register(Aval, Aval_TO)
 
 class Cajita_TO(TranslationOptions):
-    fields = ('titulo', 'texto', 'texto_link')
+    fields = ('titulo', 'texto', 'link', 'texto_link')
  
 translator.register(Cajita, Cajita_TO)
 
