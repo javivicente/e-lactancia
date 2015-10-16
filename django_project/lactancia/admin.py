@@ -91,7 +91,14 @@ class MarcaForm(ModelForm):
                         if c in paises:
                             raise ValidationError(unicode(_(u'Ya existe una marca con este nombre que se comercializa en ')) + c.nombre + unicode('.'))
         
-        
+        def save(self, commit=True):
+            # Get the unsave Marca instance
+            instance = forms.ModelForm.save(self, False)                   
+            #print 'salvamos instancia'
+            instance.save()
+            print 'salvamos many2many'
+            self.save_m2m()
+            return instance
 
 class MarcaAdmin(admin.ModelAdmin):
     list_display = ('nombre','multiples_principios','obten_principios','en_paises',

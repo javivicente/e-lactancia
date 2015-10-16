@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.template.defaultfilters import date as _date
 from django.utils.html import mark_safe
+from django.db.models import signals
 
 class Grupo(models.Model):
     nombre = models.CharField(_(u'Nombre'), db_index=True, max_length=255, unique=True)
@@ -285,8 +286,6 @@ class Otras_escrituras(models.Model):
     def __unicode__(self):
         return self.nombre
         
-        
-    
 class Marca(models.Model):
     nombre = models.CharField(db_index=True, max_length=255, verbose_name=_(u'Nombre comercial'), unique=False)
     paises = models.ManyToManyField('Pais', verbose_name=_(u'Paises donde se comercializa'), blank=True)
@@ -395,36 +394,46 @@ class Marca(models.Model):
         return unicode(self.nombre_paises)
 
     def save(self, *args, **kwargs):
-        nombre_paises= getattr(self, 'nombre', False)
-        nombre_paises_es= getattr(self, 'nombre', False)
-        nombre_paises_en= getattr(self, 'nombre', False)
-        paises = self.paises.all()
-        if len(paises)>0: 
-            
-            nombre_paises += ' ('
-            nombre_paises_en += ' ('
-            nombre_paises_es += ' ('
+        id = getattr(self, 'id', None)
+        print 'id de marca:'
+        print id
+        if id is not None:
+            print 'vamos a crear el campo de nombres de paises'
+            nombre_paises= getattr(self, 'nombre', False)
+            nombre_paises_es= getattr(self, 'nombre', False)
+            nombre_paises_en= getattr(self, 'nombre', False)
+            paises = self.paises.all()
+            print paises
+            if len(paises)>0: 
+                nombre_paises += ' ('
+                nombre_paises_en += ' ('
+                nombre_paises_es += ' ('
                 
-            for i, p in enumerate(paises):
-                
-                nombre_paises += p.nombre
-                nombre_paises_es += p.nombre_es
-                nombre_paises_en += p.nombre_en
-                
-                if i<len(paises)-1:
-                    nombre_paises += ', '
-                    nombre_paises_es += ', '
-                    nombre_paises_en += ', '
+                for i, p in enumerate(paises):
                     
-            nombre_paises += ')'
-            nombre_paises_en += ')'
-            nombre_paises_es += ')'
+                    nombre_paises += p.nombre
+                    nombre_paises_es += p.nombre_es
+                    nombre_paises_en += p.nombre_en
+                    
+                    if i<len(paises)-1:
+                        nombre_paises += ', '
+                        nombre_paises_es += ', '
+                        nombre_paises_en += ', '
+                        
+                nombre_paises += ')'
+                nombre_paises_en += ')'
+                nombre_paises_es += ')'
+                
+            setattr(self, 'nombre_paises', nombre_paises)
+            setattr(self, 'nombre_paises_es', nombre_paises_es)
+            setattr(self, 'nombre_paises_en', nombre_paises_en)
             
-        setattr(self, 'nombre_paises', nombre_paises)
-        setattr(self, 'nombre_paises_es', nombre_paises_es)
-        setattr(self, 'nombre_paises_en', nombre_paises_en)
         super(Marca, self).save(*args, **kwargs) 
-        
+
+
+
+    
+    
 class Mensaje(models.Model):
         
     NIVEL_CHOICES = (
