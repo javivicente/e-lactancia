@@ -20,14 +20,14 @@
 {% for aval in avales %}
 <div class="row-fluid">  
   <div class="span4">
-    <p id="{{aval.id}}" class="text-right"><a href="{{aval.URL}}" target="_blank" rel="nofollow"><img class="logo" src={{aval.logo.url}}/></a></p>
+    <p id="{{aval.id}}" class="text-right"><a href="{{aval.URL}}" target="_blank" rel="nofollow"><img class="logo" src="{{aval.logo.url}}"></a></p>
   </div>
 
   <div class="span6">
     <h2 class="h3">{{aval.entidad}} ({{aval.pais.nombre}})</h2>
     <blockquote >
-        <p class="text-justify">{{aval.extracto|linebreaks}}</p>
-        <footer><a href="{{aval.carta.url}}" target="_blank"><cite>{% trans 'Leer carta de apoyo completa' %}</cite></a></footer>
+        <p>{{aval.extracto|safe}}</p>
+        <footer><a href="{{aval.carta.url}}" target="_blank"><cite>{% trans 'Leer documento completo' %}</cite></a></footer>
     </blockquote>
   </div> {# de todos los supporters #}  
 </div>

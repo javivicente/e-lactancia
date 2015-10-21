@@ -614,7 +614,7 @@ class AvalForm(ModelForm):
                         'extracto_en': AutosizedTextarea(attrs={'rows': 8, 'class': 'span-12'}),
         }
         
-        exclude= ['extracto']
+        exclude= ['extracto', 'carta']
         
         
 class Aval_Admin(SortableModelAdmin):
@@ -626,7 +626,7 @@ class Aval_Admin(SortableModelAdmin):
 
     fieldsets = (
                 ('', {
-                        'fields': ('entidad','URL', 'logo', 'pais', 'visible', 'extracto_es', 'extracto_en', 'carta',)
+                        'fields': ('entidad','URL', 'logo', 'pais', 'visible', 'extracto_es', 'carta_es', 'extracto_en', 'carta_en')
                 }),
         )
 admin.site.register(Aval, Aval_Admin)

@@ -163,10 +163,10 @@ SUIT_CONFIG = {
          # Reorder app models
         {'label': _(u'Productos'), 'icon':'icon-heart', 'models': ('lactancia.producto', 'lactancia.alias', 'lactancia.otras_escrituras',)},
         {'label': _(u'Marcas'), 'icon':'icon-tags', 'models': ('lactancia.marca', )},
-        {'label': _(u'Riesgo, Grupos y Bibliografia'), 'icon':'icon-book', 'models': ('lactancia.grupo','lactancia.bibliografia','lactancia.riesgo',)},
-        {'label': _(u'Mensajes y comentarios'), 'icon':'icon-bullhorn', 'models': ('lactancia.mensaje','lactancia.comentario',)},
-        {'label': _(u'Landing'), 'icon':'icon-magnet', 'models': ('lactancia.cajita','lactancia.icono',)},
-        {'label': _(u'Avales'), 'icon':'icon-star', 'models': ('lactancia.aval',)},
+        {'label': _(u'Bibliografia'), 'icon':'icon-book', 'models': ('lactancia.bibliografia',)},
+        {'label': _(u'Grupos y Riesgo'), 'icon':'icon-flag', 'models': ('lactancia.grupo','lactancia.riesgo',)},
+        {'label': _(u'Comentarios y mensajes'), 'icon':'icon-bullhorn', 'models': ('lactancia.comentario','lactancia.mensaje',)},
+        {'label': _(u'Landing'), 'icon':'icon-magnet', 'models': ('lactancia.cajita','lactancia.aval','lactancia.icono',)},
         {'label': _(u'Países e idiomas'), 'icon':'icon-map-marker', 'models': ('lactancia.pais','lactancia.idioma',)},
      
      ), 

@@ -34,7 +34,7 @@ class Pais_TO(TranslationOptions):
 translator.register(Pais, Pais_TO)
 
 class Aval_TO(TranslationOptions):
-    fields = ('extracto',)
+    fields = ('extracto','carta')
  
 translator.register(Aval, Aval_TO)
 

@@ -115,9 +115,9 @@
     <h2 class="text-center">
             {% trans 'Entidades que recomiendan el uso de e-lactancia' %}
     </h2>  
-    <div class="press hidden-xs">
+    <div class="press">
         {% for aval in avales %}
-            <a href="{% url 'lactancia:avales' %}#{{aval.id}}" target="_blank"><img class="logo grayscale" src={{aval.logo.url}}/></a>
+            <a href="{% url 'lactancia:avales' %}#{{aval.id}}" target="_blank"><img class="logo grayscale" src="{{aval.logo.url}}"></a>
         {% endfor %}
     </div>
 </div>

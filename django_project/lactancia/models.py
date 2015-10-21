@@ -687,8 +687,8 @@ class Aval(models.Model):
     pais = models.ForeignKey('Pais', null=True, blank=True)
     visible = models.BooleanField(_(u'Visible en la página Landing'), default=True)    
     order = models.PositiveIntegerField()
-    extracto = models.CharField(_(u'Extracto'), help_text=_(u'Extracto de la carta de apoyo'), max_length=1000, blank=True, null=True)
-    carta = models.FileField(upload_to='papers',  blank=True, verbose_name=_(u'Documento PDF de la carta de apoyo'))
+    extracto = models.CharField(_(u'Extracto'), help_text=_(u'Extracto del documento'), max_length=1000, blank=True, null=True)
+    carta = models.FileField(upload_to='papers',  blank=True, verbose_name=_(u'Documento PDF'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(auto_now = True, verbose_name=_(u'Última modificación'))
 

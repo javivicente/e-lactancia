@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-06 15:02+0200\n"
+"POT-Creation-Date: 2015-10-21 14:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,18 +34,22 @@ msgid "Marcas"
 msgstr "Tradenames"
 
 #: django_project/settings.py:166
-msgid "Riesgo, Grupos y Bibliografia"
-msgstr "Risk, Groups and Bibliography"
+msgid "Bibliografia"
+msgstr "Bibliography"
 
 #: django_project/settings.py:167
-msgid "Mensajes y comentarios"
-msgstr "Messages and comments"
+msgid "Grupos y Riesgo"
+msgstr "Groups and Risks"
 
 #: django_project/settings.py:168
-msgid "Avales"
-msgstr "Supporters"
+msgid "Comentarios y mensajes"
+msgstr "Comments and messages"
 
 #: django_project/settings.py:169
+msgid "Landing"
+msgstr "Landing"
+
+#: django_project/settings.py:170
 msgid "Países e idiomas"
 msgstr "Countries and languages"
 
@@ -81,6 +85,19 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: templates/admin/base_site.html:56
+#: templates/admin/base_site.html:57
 msgid "Lista negra de productos"
 msgstr "Black list of products"
+
+#: templates/admin/base_site.html:58
+msgid "Limpiar caché"
+msgstr "Clean cache"
+
+#~ msgid "Riesgo, Grupos y Bibliografia"
+#~ msgstr "Risk, Groups and Bibliography"
+
+#~ msgid "Mensajes y comentarios"
+#~ msgstr "Messages and comments"
+
+#~ msgid "Avales"
+#~ msgstr "Supporters"
