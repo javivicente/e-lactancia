@@ -1,6 +1,6 @@
 {% extends "lactancia/base.html" %} 
 {% load i18n %}
-{% block title %}: {% trans "Entidades que recomiendan el uso de e-lactancia" %}{% endblock %}
+{% block title %}{% trans "Entidades que recomiendan el uso de e-lactancia" %}{% endblock %}
 
 {# share block #}
 {% block fb_url %}{% url 'lactancia:avales' %}{% endblock %}
@@ -25,8 +25,8 @@
 
   <div class="span6">
     <h2 class="h3">{{aval.entidad}} ({{aval.pais.nombre}})</h2>
-    <blockquote>
-        <p>{{aval.extracto|linebreaks}}</p>
+    <blockquote >
+        <p class="text-justify">{{aval.extracto|linebreaks}}</p>
         <footer><a href="{{aval.carta.url}}" target="_blank"><cite>{% trans 'Leer carta de apoyo completa' %}</cite></a></footer>
     </blockquote>
   </div> {# de todos los supporters #}  

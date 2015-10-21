@@ -28,12 +28,18 @@
     }    
     
 
-    #hero { 
+    /*#hero { 
         padding-top: 150px;
         width: 100%; 
         color:white;
-        } 
-
+        }*/ 
+    #hero{
+        width:100%;
+        color: white;
+        padding-top: 200px;
+        /*min-height: 300px;*/
+        background-size: cover !important;
+    }
     #hero-wrap { 
         position: relative; 
         margin-left: auto;
@@ -44,7 +50,6 @@
     
     #hero-wrap-form { 
         position: relative; 
-
     }       
 
     .help-block {
@@ -60,9 +65,56 @@
     }
 
     #logo-moto {
-line-height:120%;
+        line-height:120%;
     }
 
+.press {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e2e2e0;
+    border-bottom: 1px solid #e2e2e0;
+    width: 100%;
+    margin-top: 70px;
+}
+
+.press .logo{
+    height: 100px;
+    margin: 0 15px;
+}
+
+
+.fade {
+   opacity: 0.4;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   
+   }
+
+   .fade:hover {
+      opacity: 1;
+      }
+
+.grayscale {
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: .5s ease-in-out;
+  -moz-filter: grayscale(100%); 
+  -moz-transition: .5s ease-in-out;
+  -o-filter: grayscale(100%); 
+  -o-transition: .5s ease-in-out;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+
+}
+
+.grayscale:hover {
+  -webkit-filter: grayscale(0%);
+  -webkit-transition: .5s ease-in-out;
+  -moz-filter: grayscale(0%);
+  -moz-transition: .5s ease-in-out;
+  -o-filter: grayscale(0%);
+  -o-transition: .5s ease-in-out;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+} 
 
     /*.white-link:link {
  COLOR: white /*The color of the link*/
