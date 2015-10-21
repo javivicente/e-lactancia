@@ -42,7 +42,7 @@
 
 		{% trans '<h4>USO DE COOKIES</h4>' %}
 		{% trans '<strong>e-lactancia.org</strong> emplea cookies, que son archivos de texto ubicados en su ordenador, para mejorar la experiencia del usuario en el portal. En cumplimiento con la Normativa establecida al respecto por la Agencia Española de Protección de Datos, tiene una descripción detallada del uso de cookies en nuestra' %} 
-        <a href="{% url 'lactancia:cookies' %}">{ trans 'Política de uso de cookies'  %}</a>
+        <a href="{% url 'lactancia:cookies' %}">{% trans 'Política de uso de cookies'  %}</a>.
 
 		{% trans '<h3>EJERCICIO DE DERECHOS</h3>' %}
 		{% trans 'En cualquier momento podrá ejercer los Derechos de acceso, rectificación, cancelación y oposición mediante el envío de la solicitud de ejercicio correspondiente junto con copia del documento oficial que le identifique (DNI, carnet de conducir o pasaporte) a la dirección de correo electrónico <a href="mailto:apilam.es@gmail.com">apilam.es@gmail.com</a>.' %}
