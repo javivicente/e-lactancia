@@ -12,15 +12,18 @@
 <h1 class="center">{% block dona_header %}{% trans "Entidades que recomiendan el uso de e-lactancia" %}{% endblock%}</h1>
 {% endblock%}
 
-{% block mainpage %}
 
+
+{% block mainpage %}
 <div class="row-fluid">
         <div class="risk empty-space risk-miniblock  span12"></div>
 </div>
 {% for aval in avales %}
-<div class="row-fluid">  
-  <div class="span4">
-    <p id="{{aval.id}}" class="text-right"><a href="{{aval.URL}}" target="_blank" rel="nofollow"><img class="logo" src="{{aval.logo.url}}"></a></p>
+<div id="{{aval.id}}" style="margin-bottom:120px;"></div>
+<div class="row-fluid"> 
+  
+  <div class="span4" >
+    <p  class="text-right"><a href="{{aval.URL}}" target="_blank" rel="nofollow"><img class="logo" src="{{aval.logo.url}}"></a></p>
   </div>
 
   <div class="span6">

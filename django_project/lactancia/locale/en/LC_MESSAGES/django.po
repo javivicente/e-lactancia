@@ -1435,7 +1435,7 @@ msgstr "COLLABORATE"
 
 #: lactancia/templates/lactancia/base.html:169
 msgid "AVALES"
-msgstr ""
+msgstr "SUPPORTS" 
 
 #: lactancia/templates/lactancia/base.html:172
 msgid "ALERTAS"
