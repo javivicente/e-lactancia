@@ -14,7 +14,7 @@
 {% endblock %}
 
 
-{% block prod_header %}{{ marcap.nombre_paises }}{% if marcap.nombre == marcap.nombre_paises %}&trade;{% endif %}{% endblock %}
+{% block prod_header %}{{ marcap.nombre }}&trade;{% if marcap.nombre != marcap.nombre_paises %} {{ marcap.print_paises }}{% endif %}{% endblock %}
 {% block alternativa_no_razon %}{{marcap.nombre}}{% endblock %}
 {% block alternativa_no_sin_razon %}{{marcap.nombre}}{% endblock %}
 

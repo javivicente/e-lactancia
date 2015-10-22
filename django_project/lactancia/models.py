@@ -364,6 +364,21 @@ class Marca(models.Model):
 
         return riesgo
 
+    def print_paises(self):
+        nombre_paises=''
+        paises = self.paises.all()
+        if len(paises)>0: 
+            nombre_paises += ' ('
+                
+            for i, p in enumerate(paises):
+                nombre_paises += p.nombre
+                    
+                if i<len(paises)-1:
+                    nombre_paises += ', '
+                        
+            nombre_paises += ')'
+        return nombre_paises
+            
     def tiene_principios(self):
         return (self.principios_activos.count() > 0)
     tiene_principios.boolean=True
@@ -395,15 +410,15 @@ class Marca(models.Model):
 
     def save(self, *args, **kwargs):
         id = getattr(self, 'id', None)
-        print 'id de marca:'
-        print id
+        #print 'id de marca:'
+        #print id
         if id is not None:
-            print 'vamos a crear el campo de nombres de paises'
+            #print 'vamos a crear el campo de nombres de paises'
             nombre_paises= getattr(self, 'nombre', False)
             nombre_paises_es= getattr(self, 'nombre', False)
             nombre_paises_en= getattr(self, 'nombre', False)
             paises = self.paises.all()
-            print paises
+            #print paises
             if len(paises)>0: 
                 nombre_paises += ' ('
                 nombre_paises_en += ' ('
