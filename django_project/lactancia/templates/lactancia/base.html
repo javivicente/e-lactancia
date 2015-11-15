@@ -71,7 +71,7 @@
                         {% block topbar_search %}
                         <form class="navbar-search form-search" id="search_form" action="{% block search_bar_action %}{% url 'lactancia:buscar' %}{% endblock %}">
                           <input class="typeahead" placeholder="{% trans 'Buscar' %}" type="text" id="search_input" name="q" />
-                          <input type="submit" style="visibility: hidden; position: fixed;"/>
+                          <!--<input type="submit" style="visibility: hidden; position: fixed;"/>-->
                         </form>
                         {% endblock %}
                         <input type="hidden" id="term-type" name="term-type" value="">
