@@ -22,12 +22,14 @@ urlpatterns = [
     url(r'^limpia_cache$', views.limpia_cache, name='limpia_cache'),
     url(r'^estadisticas$', views.estadisticas, name='estadisticas'),
     url(r'^estadisticas_ES$', views.estadisticas_ES, name='estadisticas_ES'),
-    
     url(r'^producto/(?P<producto_id>\d+)$', views.detalle_p, name='detalle_p'),
     url(r'^grupo/(?P<grupo_id>\d+)$', views.detalle_g, name='detalle_g'),
     url(r'^marca/(?P<marca_id>\d+)$', views.detalle_m, name='detalle_m'),
     url(r'^sinonimo/(?P<alias_id>\d+)$', views.detalle_ap, name='detalle_ap'),
     url(r'^otra_escritura/(?P<otra_escritura_id>\d+)$', views.detalle_oe, name='detalle_oe'),
+    
+    url(r'^API/get_list_of_terms$', views.get_list_of_terms, name='get_list_of_terms'),
+    url(r'^API/get_term/(?P<prod_id>\d+)$', views.get_term, name='get_term'),
     
     
 ]

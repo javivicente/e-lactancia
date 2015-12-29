@@ -45,7 +45,7 @@
     {% endblock %}
 </head>
 <body id="body">
-<div id="fb-root"></div>
+    <div id="fb-root"></div>
     <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
@@ -58,8 +58,8 @@
    
         {# Begin page content #}
         
-{#  Part 1: Wrap all page content here #}
-<div id="wrap">        
+    {#  Part 1: Wrap all page content here #}
+    <div id="wrap">        
     
 
         <div class="navbar navbar-fixed-top" style="position:fixed"> 
@@ -97,8 +97,6 @@
                                     {% endfor %}
                                     </select>
                             </form>    
-                    
-                          
                         </div>
                         <div class="pull-right">
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -107,7 +105,7 @@
                         <input class="btn btn-warning btn-small" id="btn_donate" type="submit" value="{% trans 'DONA AHORA' %}"/>
                         </div>
                         </form>
-                        {% endblock %}                        
+                        {% endblock %}
                     </div>
                 </div>
         </div>
@@ -148,7 +146,7 @@
                 
         <div id="push"></div>
         
-</div> {# del wrap #}
+    </div> {# del wrap #}
 
                
         
@@ -638,5 +636,5 @@
     {% block typeahead %}
     
     {% endblock %}
-    </body>
+</body>
 </html> 

@@ -24,6 +24,7 @@ from django.utils.translation import ugettext as _
 from django.utils.translation import get_language
 import json
 from django.core.serializers.json import DjangoJSONEncoder
+from django.http import JsonResponse
 
 timeout = 60 * 2 # Default cache timeout is 300 (5 mins) use this (1hour) for things that do not change very often
 PROJECT_PATH = '/home/django'
@@ -169,6 +170,9 @@ def load_initial_context():
     
 initial_context = load_initial_context()
 
+
+
+    
 def landing(request):
 
     last_update = cache.get('prod_last_update')
@@ -1638,5 +1642,66 @@ def estadisticas_ES(request):
     return render(request, 'lactancia/estadisticas_json_ES.html', context)
 
     
+'''API: List of terms'''
+def get_list_of_terms(request):
+    products = initial_context['PRODUCTOS']
+    return JsonResponse({'list': products})
     
+def get_term(request, prod_id):
+
+    try:
+        # get the product
+        term = Producto.objects.values(
+            'id','nombre_es', 'nombre_en','riesgo__nivel', 'riesgo__nombre_es', 
+            'riesgo__nombre_en', 'riesgo__descripcion_es', 'riesgo__descripcion_en', 'comentario_es', 'comentario_en', 
+            'fecha_creacion', 'fecha_modificacion', 'peso_molecular', 'union_proteinas','volumen_distrib', 'indice_leche_plasma', 
+            't_maximo', 't_medio', 'biodisponibilidad', 'dosis_teorica', 'dosis_relativa', 'dosis_terapeutica').get(pk=prod_id)
+        
+        prod = Producto.objects.get(pk=prod_id)
+        
+        alternatives = prod.alternativas.all().values('id','nombre_es', 'nombre_en','riesgo__nivel')
+        group = prod.grupo.all().values('id','nombre_es', 'nombre_en')
+        biblio = prod.biblio.all().values('titulo','autores', 'publicacion', 'anyo', 'abstract_link', 'full_text_link')
+        tradenames = prod.marcas.all().values('nombre')
+        
+        
+        '''    
+        nombre = models.CharField(db_index=True, max_length=255, verbose_name=_(u'Nombre'), unique=True)
+        grupo = models.ManyToManyField('grupo')
+        riesgo = models.ForeignKey('riesgo', verbose_name=_(u'Nivel de riesgo'))
+        comentario = models.CharField(max_length = 10000, blank=True, null=True, verbose_name=_(u'Comentario'))
+        no_alternativas = models.BooleanField(default=False, verbose_name=_(u'No puede tener alternativas'), help_text=_(u'Marca esta casilla si no tiene sentido que el término tenga altenativas. Por ejemplo, una enfermedad congénita o adquirida.'))
+        alternativas = models.ManyToManyField('self', blank=True, symmetrical=False, verbose_name=_(u'Lista de productos alternativos'))
+        tiene_biblio = models.BooleanField(default=True, verbose_name=_(u'Tiene bibliografia (añadida o pendiente de añadir)'), help_text=_(u'Indica si el producto poseera referencias bibliográficas. Si no las va a tener ni ahora ni en el futuro, debe desmarcarse esta casilla. Ejemplos de productos que pueden no tener bibliografía asociada son los de Fitoterapia'))
+        biblio = models.ManyToManyField('Bibliografia',verbose_name=_(u'bibliografia'),blank=True)
+        csvfile = models.FileField(upload_to='papers/%Y/%m/', verbose_name=_(u'Importar biblio con fichero CSV'), blank=True)
+        marcas = models.ManyToManyField('Marca',verbose_name=_(u'Listado de marcas comerciales'),blank=True)
+        fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
+        fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
+        peso_molecular = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Peso molecular'))
+        union_proteinas = models.CharField(max_length=30, verbose_name=_(u'Unión proteínas'), blank=True, null=True)
+        volumen_distrib = models.CharField(max_length=30, verbose_name=_(u'Volumen de distribución'), blank=True, null=True,)
+        indice_leche_plasma = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Índice Leche/Plasma'))
+        t_maximo = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Tiempo máximo'))
+        t_medio = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Tiempo medio'))
+        biodisponibilidad = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Biodisponibilidad'))
+        dosis_teorica = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Dosis teórica del lactante'))
+        dosis_relativa = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Dosis relativa del lactante'))
+        dosis_terapeutica = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Porcentaje de la dosis terapéutica'))
+        
+        
+        # get the context for the product
+        context = get_context_for_product(request, term)
+        context= update_context(request, term, context)
+        context.update(initial_context)  
+        '''
+    
+    except Producto.DoesNotExist:
+        return  JsonResponse({'error': 'no existe producto'})
+    return JsonResponse({'product0': term, 
+                         'alternativas':list(alternatives),
+                         'grupo': list(group),
+                         'biblio': list(biblio),
+                         'marcas': list(tradenames),
+                         })
     
