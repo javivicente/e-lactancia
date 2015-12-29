@@ -1698,7 +1698,7 @@ def get_term(request, prod_id):
     
     except Producto.DoesNotExist:
         return  JsonResponse({'error': 'no existe producto'})
-    return JsonResponse({'product0': term, 
+    return JsonResponse({'producto': term, 
                          'alternativas':list(alternatives),
                          'grupo': list(group),
                          'biblio': list(biblio),
