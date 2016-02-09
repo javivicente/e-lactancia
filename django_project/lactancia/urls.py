@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^otra_escritura/(?P<otra_escritura_id>\d+)$', views.detalle_oe, name='detalle_oe'),
     
     url(r'^API/get_list_of_terms$', views.get_list_of_terms, name='get_list_of_terms'),
+    url(r'^API/get_date_last_update_list_of_terms$', views.get_date_last_update_list_of_terms, name='get_date_last_update_list_of_terms'),
     url(r'^API/get_term/(?P<prod_id>\d+)$', views.get_term, name='get_term'),
     
     

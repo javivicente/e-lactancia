@@ -1643,6 +1643,14 @@ def estadisticas_ES(request):
 
     
 '''API: List of terms'''
+def get_date_last_update_list_of_terms(request):
+    last_update = cache.get('prod_last_update')
+    if last_update == None:
+        last_update = Producto.objects.latest('fecha_modificacion').fecha_modificacion
+        cache.set('prod_last_update',last_update)
+    
+    return JsonResponse({'date_last_update': last_update})
+
 def get_list_of_terms(request):
     TERMS = cache.get('TERMS')
     if TERMS == None:
