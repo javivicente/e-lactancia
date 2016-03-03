@@ -32,8 +32,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'debug_toolbar',
     'ratings',
+    'meta',
 ) 
 
 
@@ -80,7 +82,19 @@ ALLOWED_HOSTS = ['188.166.122.21', '0.0.0.0:9000', '127.0.0.1:9000','e-lactancia
 
 LANGUAGE_CODE = 'es-ES'
 
-SITE_ID = 1 
+#################
+SITE_ID=1
+
+#################
+## Django-meta configuration
+#################
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+META_USE_GOOGLEPLUS_PROPERTIES = False
+META_SITE_NAME='e-lactancia.org'
+META_SITE_TYPE='website'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -158,7 +172,7 @@ SUIT_CONFIG = {
     # menu
      'SEARCH_URL': '/admin/lactancia/producto/',
      'MENU_OPEN_FIRST_CHILD': True,
-     'MENU_EXCLUDE': ('auth', 'sites',),
+     'MENU_EXCLUDE': ('auth','sites',),
      'MENU': (
          # Reorder app models
         {'label': _(u'Productos'), 'icon':'icon-heart', 'models': ('lactancia.producto', 'lactancia.alias', 'lactancia.otras_escrituras',)},

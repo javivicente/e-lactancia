@@ -23,6 +23,12 @@ html,
   
 }
 
+#modal-profile{
+    
+    height:85%;
+    
+}
+
 .form-search .typeahead {
   background-color: #fff;
 }

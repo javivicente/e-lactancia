@@ -25,6 +25,8 @@ from django.utils.translation import get_language
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import JsonResponse
+from meta.views import Meta
+from django.templatetags.static import static
 
 timeout = 60 * 2 # Default cache timeout is 300 (5 mins) use this (1hour) for things that do not change very often
 PROJECT_PATH = '/home/django'
@@ -135,7 +137,7 @@ def typeahead_marcas():
         N = cache.get('N_marcas')
     return MARCAS, N
     
-    
+
 '''returns the message of active alert(s) for risk level change of a product
     (top button of the top bar)
 '''    
@@ -171,7 +173,41 @@ def load_initial_context():
 initial_context = load_initial_context()
 
 
-
+def set_meta(request,producto=None,grupo=None,marca=None,otra_escritura=None,alias=None):
+    
+    title =_(u'e-lactancia.org')
+    description = _(u'Información sobre compatibilidad de medicamentos y otros productos con la lactancia materna, desarrollada por la Asociación para la Promoción científica y cultural de la Lactancia Materna, APILAM.')
+    
+    if producto:
+        title= producto.nombre + ': ' + _(u'Nivel de riesgo para la lactancia según e-lactancia.org')
+        description = producto.comentario
+        
+    if marca:
+        title= marca.nombre + ': ' + _(u'Nivel de riesgo para la lactancia según e-lactancia.org')
+        description = marca.obten_riesgo_mas_alto_descripcion()
+    
+    if alias:
+        title= alias.nombre + ': ' + _(u'Nivel de riesgo para la lactancia según e-lactancia.org')
+        description = alias.producto_principal.comentario
+        
+    if otra_escritura:
+        title= otra_escritura.nombre + ': ' + _(u'Nivel de riesgo para la lactancia según e-lactancia.org')
+        description = otra_escritura.producto_principal.comentario    
+    if grupo:
+        title= grupo.nombre + ': ' + _(u'Niveles de riesgo para la lactancia según e-lactancia.org')
+        description = _(u'Listado de la familia') + ' ' + grupo.nombre + ' ' + _(u'por nivel de riesgo según e-lactancia.org')
+    
+    
+    meta = Meta(
+        title=title,
+        description= description,
+        image=static('img/e-lactancia.jpg'),
+        url = request.build_absolute_uri(),
+        locale = get_language(),
+    )
+    
+    return meta
+    
     
 def landing(request):
 
@@ -191,10 +227,13 @@ def landing(request):
         avales = Aval.objects.filter(visible=True).order_by('order')
         cache.set('avales', avales)
     avales = cache.get('avales')
+    
+    
     context = {
                 'last_update': last_update,
                 'cajitas': cajitas,
                 'avales': avales,
+                'meta': set_meta(request),
                 }
                 
     context.update(initial_context)    
@@ -514,6 +553,7 @@ def get_context_for_product(request, prod):
                'help_d_rel': help_d_rel,
                'help_d_terap': help_d_terap,
                'visits':visits,
+               
             }
     
             
@@ -876,7 +916,9 @@ def get_context_for_alias(request, alias):
     context = get_context_for_product(request, prod)
     visits = get_visits(alias)
     context.update({'aliasp': alias,
-                   'visits': visits})
+                   'visits': visits,
+                   
+                   })
     return context
 
 def get_context_for_otra_escritura(request, otra_escritura):
@@ -884,7 +926,9 @@ def get_context_for_otra_escritura(request, otra_escritura):
     context = get_context_for_product(request, prod)
     visits = get_visits(otra_escritura)
     context.update({'otra_escritura': otra_escritura,
-                   'visits': visits})
+                   'visits': visits,
+                   
+                   })
     return context
     
 def get_context_for_marca(request, marca):
@@ -989,6 +1033,7 @@ def detalle_p(request, producto_id):
         context = get_context_for_product(request, term)
         context= update_context(request, term, context)
         context.update(initial_context)  
+        context.update({'meta': set_meta(request, producto=term)})
     except Producto.DoesNotExist:
         raise Http404
     
@@ -1006,6 +1051,7 @@ def detalle_ap(request, alias_id):
         context = get_context_for_alias(request, alias)
         context= update_context(request, alias, context)
         context.update(initial_context)  
+        context.update({'meta': set_meta(request, alias=alias)})
     except Alias.DoesNotExist:
         raise Http404
     
@@ -1019,6 +1065,7 @@ def detalle_oe(request, otra_escritura_id):
         context = get_context_for_otra_escritura(request, otra_esc)
         context= update_context(request, otra_esc, context)
         context.update(initial_context)  
+        context.update({'meta': set_meta(request, otra_escritura=otra_esc)})
     except Otras_escrituras.DoesNotExist:
         raise Http404
     
@@ -1034,6 +1081,7 @@ def detalle_m(request, marca_id):
         context = get_context_for_marca(request, marca)
         context= update_context(request, marca, context)
         context.update(initial_context)  
+        context.update({'meta': set_meta(request, marca=marca)})
     except Marca.DoesNotExist:
         raise Http404
     
@@ -1160,6 +1208,7 @@ def detalle_g(request, grupo_id):
         context = get_context_for_grupo(request, grupo)
         context= update_context(request, grupo, context)
         context.update(initial_context)  
+        context.update({'meta': set_meta(request, grupo=grupo)})
     except Grupo.DoesNotExist:
         raise Http404
     
@@ -1184,6 +1233,7 @@ def alerta_riesgos(request):
         context = {'alerts': alerts, 
                           '90_days_alerts': hay_alertas_de_90_dias()}
         context.update(initial_context)    
+        context.update({'meta': set_meta(request)})
     except Mensaje.DoesNotExist:
         raise Http404
     return render(request, 'lactancia/alerta_riesgos.html', context)
@@ -1204,9 +1254,10 @@ def creditos(request):
     context = {
                  'historia': historia,
                  'fuentes': fuentes,
-               }
+              }
                
     context.update(initial_context)    
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/creditos.html', context)
     
     
@@ -1217,17 +1268,20 @@ def creditos(request):
 def cookies(request):
 
     context = initial_context
+    context.update({'meta': set_meta(request)}),
     return render(request, 'lactancia/uso_cookies.html', context)
 
 def privacidad(request):
 
     context = initial_context
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/privacidad.html', context)
 
 
 def aviso_legal(request):
 
     context = initial_context
+    context.update({'meta': set_meta(request)}),
     return render(request, 'lactancia/aviso_legal.html', context)
 
 
@@ -1235,12 +1289,14 @@ def aviso_legal(request):
 
 def donativos(request):
     context = initial_context
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/donativos.html', context)
 
 
 def donativo_exito(request):
     
     context = initial_context
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/donativo_exito.html', context)
 
 
@@ -1248,12 +1304,14 @@ def donativo_exito(request):
 def donativo_cancelado(request):
     
     context = initial_context
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/donativo_fallo.html', context)
 
 
 def boletin_error(request):
     
     context = initial_context
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/boletin_error.html', context)
 
 
@@ -1285,6 +1343,7 @@ def lista_negra(request):
                 'blacklist_r3': blacklist_r3,
                 }
     context.update(initial_context)    
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/lista_negra.html', context)    
 
 @staff_member_required
@@ -1446,7 +1505,8 @@ def get_context_for_stats_json_v2(request):
                  'daily': daily,
                  'weekly': weekly,
                  'monthly': monthly,
-                 'yearly' : yearly
+                 'yearly' : yearly,
+    
             }
     
     context.update(initial_context)    
@@ -1607,7 +1667,8 @@ def get_context_for_stats_json_ES(request):
                  'daily': daily,
                  'weekly': weekly,
                  'monthly': monthly,
-                 'yearly' : yearly
+                 'yearly' : yearly,
+    
             }
             
     context.update(initial_context)
@@ -1629,16 +1690,19 @@ def avales(request):
                 }
                 
     context.update(initial_context)    
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/avales.html', context)
     
     
 def estadisticas(request):
     context = get_context_for_stats_json_v2(request)
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/estadisticas_json_v3.html', context)
 
 
 def estadisticas_ES(request):
     context = get_context_for_stats_json_ES(request)
+    context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/estadisticas_json_ES.html', context)
 
     

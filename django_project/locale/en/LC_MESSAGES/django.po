@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-21 14:22+0200\n"
+"POT-Creation-Date: 2016-03-03 14:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: django_project/settings.py:139
+#: django_project/settings.py:153
 msgid "Inglés"
 msgstr "English"
 
-#: django_project/settings.py:140
+#: django_project/settings.py:154
 msgid "Español"
 msgstr "Spanish"
 
-#: django_project/settings.py:164
+#: django_project/settings.py:178
 msgid "Productos"
 msgstr "Products"
 
-#: django_project/settings.py:165
+#: django_project/settings.py:179
 msgid "Marcas"
 msgstr "Tradenames"
 
-#: django_project/settings.py:166
+#: django_project/settings.py:180
 msgid "Bibliografia"
 msgstr "Bibliography"
 
-#: django_project/settings.py:167
+#: django_project/settings.py:181
 msgid "Grupos y Riesgo"
 msgstr "Groups and Risks"
 
-#: django_project/settings.py:168
+#: django_project/settings.py:182
 msgid "Comentarios y mensajes"
 msgstr "Comments and messages"
 
-#: django_project/settings.py:169
+#: django_project/settings.py:183
 msgid "Landing"
 msgstr "Landing"
 
-#: django_project/settings.py:170
+#: django_project/settings.py:184
 msgid "Países e idiomas"
 msgstr "Countries and languages"
 
