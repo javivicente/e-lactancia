@@ -18,6 +18,16 @@ class Command(BaseCommand):
         
         PROJECT_PATH = '/home/django'
         
+        def dictfetchall(cursor):
+            'Returns all rows from a cursor as a dict'
+            desc = cursor.description
+            return [
+                dict(zip([col[0] for col in desc], row))
+                for row in cursor.fetchall()
+            ]
+        
+        cursor = connection.cursor()
+        
         #biblio_all = Bibliografia.objects.all().order_by('-anyo')
         visits_all = Visita.objects.all().order_by('-time')
     
@@ -51,6 +61,35 @@ class Command(BaseCommand):
         month = now - datetime.timedelta(days=30)
         year = now - datetime.timedelta(days=365)
 
+        """
+        '''STATS FOR 2015'''
+        INIT_2015 = timezone.localtime(timezone.now()).replace(year=2015, month=1, day=01,hour=0, minute=0, second=0, microsecond=0)
+        END_2015 = timezone.localtime(timezone.now()).replace(year=2016, month=1, day=01,hour=0, minute=0, second=0, microsecond=0)
+    
+        # ranking consultations 2015
+        aux = visits_all.filter(time__range=[INIT_2015,END_2015]).values('prod__nombre_es', 'prod__nombre_en').annotate(n_consultations=Count('prod__id'))
+        top_prods_2015 = aux.order_by('-n_consultations')[:150]
+        data = list(top_prods_2015)
+        fd = open(PROJECT_PATH +"/media/stats_prods_top_2015.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
+        
+        # visits by profile 2015
+        #Posgresql
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.perfil as profile from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time between '2015-01-01' and '2016-01-01' group by profile;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_profile_2015.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
+        
+        # visits by country 2015 
+        # Posgresql
+        cursor.execute('''select count(lactancia_lactuser.ip_address) as consultations, count(distinct lactancia_lactuser.ip_address) as visits, lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time between '2015-01-01' and '2016-01-01' group by country;''')
+        data = dictfetchall(cursor)
+        fd = open(PROJECT_PATH +"/media/stats_country_2015.json","w")
+        fd.write(json.dumps(data, ensure_ascii=False, indent=4).encode('utf8'))
+        fd.close()
+        """
         
         '''Stats on terms updated'''
         '''We get the list of terms updated the last day, week, month, year and all'''
@@ -80,6 +119,8 @@ class Command(BaseCommand):
         fd.write(json.dumps(data, ensure_ascii=False, cls=DjangoJSONEncoder, indent=4).encode('utf8'))
         fd.close()
         
+        
+
         
         '''Stats on consultations from users'''
         '''We get the list of consultations the last day, week and month'''
@@ -166,15 +207,7 @@ class Command(BaseCommand):
         lactancia_lactuser.country_name as country from lactancia_lactuser, lactancia_visita 
         where lactancia_visita.user_id=lactancia_lactuser.session_id and lactancia_visita.time > date_sub(curdate(),interval 1 day) group by country;'''
         
-        def dictfetchall(cursor):
-            'Returns all rows from a cursor as a dict'
-            desc = cursor.description
-            return [
-                dict(zip([col[0] for col in desc], row))
-                for row in cursor.fetchall()
-            ]
         
-        cursor = connection.cursor()
         
         # last day
         
