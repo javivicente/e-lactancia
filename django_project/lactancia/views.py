@@ -575,7 +575,7 @@ def update_context_profile(request, context, u):
     # this is for storing the text (not the value) of the perfil
     perfil_text = dict(perfil_form.fields['perfil'].choices)[u.perfil]
     context.update({'perfil_text': perfil_text})
-
+    
     return context
 
 def update_context_comment(request, context, u, item):
@@ -733,7 +733,7 @@ def get_user_profile(request):
                 u.country_name = g.city(user_ip)['country_name']
                 u.country_code = g.city(user_ip)['country_code']
                 u.country_code3 = g.city(user_ip)['country_code3']
-                print >>sys.stderr, '(from ' + u.country_name + ')'
+            #    print >>sys.stderr, '(from ' + u.country_name + ')'
             u.save()
     except LactUser.DoesNotExist:
         return None
@@ -853,10 +853,11 @@ def update_context_comment(request, context, u, item):
     
 def update_context(request, item, context):
 
+    perfil_form = PerfilForm()
+    context.update({'perfil_form': perfil_form})
     
     if request.method == 'POST':
-
-        if "form_profile" in request.POST:
+        if "perfil" in request.POST:
             perfil = request.POST['perfil']
             u, u_created = set_user_profile(request, perfil)
             lang = get_language()
@@ -887,14 +888,17 @@ def update_context(request, item, context):
                 context.update({'user_email': mail})
                 context.update({'user_fname': fullname})
                 update_context_comment(request, context, u, item)
+        else:
+            u = get_user_profile(request)
+            news_form = Subscription()
         context.update({'subscription_form': news_form})
         update_context_profile(request, context, u)
 
     if request.method == 'GET':
         u = get_user_profile(request)
+        
         if u == None:
-            perfil_form = PerfilForm()
-            context.update({'perfil_form': perfil_form})
+            
             # we create a user with an anonymous profile (12) and save the visit:
             u, u_created = set_user_profile(request, '12')
         else:            
@@ -907,7 +911,7 @@ def update_context(request, item, context):
         
         news_form = Subscription()
         context.update({'subscription_form': news_form})
-
+        
     return context
 
     

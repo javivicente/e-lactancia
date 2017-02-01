@@ -10,14 +10,17 @@
             {% else %}
                 <p>{% trans "Indicar tu perfil te permite valorar la información de cualquier término recogido en e-lactancia." %}</p>
             {% endif %}
-            <form action="" method="post">
+            <form action="" name="form_profile" id="form_profile" method="post">
                 {% csrf_token %}
+                
                 {% for radio in perfil_form.perfil %}
                     <div class="myradio">
                         {{radio}}
                     </div>
-                {% endfor %}    
-                <input class="btn btn-info" type="submit" name="form_profile" value="{% trans 'Enviar' %}" />
+                {% endfor %}  
+                
+               {#<input class="btn btn-info" type="submit" name="form_profile" value="{% trans 'Enviar' %}" />#}
             </form>     
         </div>
+        <script>$(function() { $('#form_profile').change(function() { this.submit(); }) });</script>
 </div>

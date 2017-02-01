@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.forms import Form, ChoiceField, CharField, Textarea, TextInput, RadioSelect, EmailField, ValidationError
+from django.forms import Form, ChoiceField, CharField, Textarea, TextInput, Select, RadioSelect, EmailField, ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import ugettext_lazy as _
 
@@ -22,6 +22,8 @@ PROFILE_CHOICES = (
 
 class PerfilForm(Form):
     perfil = ChoiceField(widget=RadioSelect, choices=PROFILE_CHOICES)
+    #perfil = ChoiceField(widget=Select(attrs={'onchange': 'this.form.submit();'}), choices=PROFILE_CHOICES, )
+    #perfil = ChoiceField(widget=RadioSelect(attrs={'onchange': 'this.form.submit();'}), choices=PROFILE_CHOICES, )
 
 class ComentarioForm(Form):
     comentario = CharField(widget=Textarea(attrs={'class': 'span12', 'rows': 4, 'id':"opinion", 'maxlength':250,  'placeholder': _(u"Espacio para opinión o sugerencia. Para consultas: elactancia.org@gmail.com")}))
