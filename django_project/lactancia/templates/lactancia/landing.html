@@ -116,15 +116,11 @@
             {% trans 'Entidades que recomiendan el uso de e-lactancia' %}
     </h2>  
     <div class="row press">
-        <div class="span1"></div>
-        <div class="span10">
-            {% for aval in avales %}
-            <div class="span2">
-                <a href="{% url 'lactancia:avales' %}#{{aval.id}}" data-content="{{aval.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover" class="aval" target="_blank"><img class="logo " src="{{aval.logo.url}}"></a>
+        {% for aval in avales %}
+            <div class="span4 aval" data-content="{{aval.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover">
+                <a href="{% url 'lactancia:avales' %}#{{aval.id}}"  target="_blank"><img class="logo grayscale" src="{{aval.logo.url}}"></a>
             </div>
-            {% endfor %}
-        </div>
-        <div class="span1"></div>
+        {% endfor %}
     </div>
 </div>
 {% endif %} 
@@ -139,8 +135,9 @@
 
     {% block typeahead %}
     <script>
-    $(function() {
-    $('.aval').popover();
+    $('.aval').popover({
+    placement: 'bottom',
+    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h2 class="popover-title"></h2><div class="popover-content"></div></div>'
     });
     </script>
     {#  script for the image background #}

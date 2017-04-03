@@ -80,9 +80,18 @@
 .press .logo{
     max-width: 90%;
     max-height: 100px;
-    margin: 15px 0px;
+    margin: 70px 0px 0px 0px; 
+    height: auto;
 }
 
+/* eliminar el margen izquierdo de los span para que quepan los span en una fila */
+.press [class*="span"]{float:left;min-height:1px;margin-left:0px;}
+
+/* alinear las imágenes verticalmente */
+.press > [class*="span"] {
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
 
 .fade {
    opacity: 0.4;
