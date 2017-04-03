@@ -104,7 +104,7 @@
     </div>
 
     
-
+{% if avales %}
 <div class="container">
     <div class="row-fluid">
         <div class="risk empty-space risk-miniblock  span12"></div>
@@ -115,15 +115,22 @@
     <h2 class="text-center">
             {% trans 'Entidades que recomiendan el uso de e-lactancia' %}
     </h2>  
-    <div class="row-fluid press">
-        {% for aval in avales %}
-        <div class="span3">
-            <a href="{% url 'lactancia:avales' %}#{{aval.id}}" target="_blank"><img class="logo grayscale" src="{{aval.logo.url}}"></a>
+    <div class="row press">
+        <div class="span1"></div>
+        <div class="span10">
+            {% for aval in avales %}
+            <div class="span3">
+                <a href="{% url 'lactancia:avales' %}#{{aval.id}}" data-content="{{aval.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover" class="aval" target="_blank"><img class="logo grayscale" src="{{aval.logo.url}}"></a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        <div class="span1"></div>
     </div>
 </div>
+{% endif %} 
 
+
+ 
     
 {% endblock %}
 
@@ -131,7 +138,11 @@
 {% endblock %}
 
     {% block typeahead %}
-    
+    <script>
+    $(function() {
+    $('.aval').popover();
+    });
+    </script>
     {#  script for the image background #}
     <!--<script src="{{ STATIC_URL }}js/jquery.backstretch.min.js"></script>
     <script>

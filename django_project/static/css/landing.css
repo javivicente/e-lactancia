@@ -78,9 +78,11 @@
 }
 
 .press .logo{
-    height: 100px;
-    margin: 0 15px;
+    max-height: 100px;
+    max-width: 90%;
+    height: auto;
 }
+
 
 
 .fade {
