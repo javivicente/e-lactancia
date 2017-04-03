@@ -119,7 +119,7 @@
         <div class="span1"></div>
         <div class="span10">
             {% for aval in avales %}
-            <div class="span3">
+            <div class="span2">
                 <a href="{% url 'lactancia:avales' %}#{{aval.id}}" data-content="{{aval.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover" class="aval" target="_blank"><img class="logo " src="{{aval.logo.url}}"></a>
             </div>
             {% endfor %}
