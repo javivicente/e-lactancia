@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.contrib import admin
 from django.forms import ModelForm, TextInput, Textarea, ValidationError
-from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval, Cajita, Icono
+from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval, Patrocinador, Cajita, Icono
 from django import forms
 from django.db import models
 from suit.widgets import EnclosedInput, AutosizedTextarea
@@ -630,6 +630,36 @@ class Aval_Admin(SortableModelAdmin):
                 }),
         )
 admin.site.register(Aval, Aval_Admin)
+
+
+
+class PatrocinadorForm(ModelForm):
+    class Meta:
+        model = Aval
+        
+        widgets = {
+                        'descripcion_es': AutosizedTextarea(attrs={'rows': 8, 'class': 'span-12'}),
+                        'descripcion_en': AutosizedTextarea(attrs={'rows': 8, 'class': 'span-12'}),
+        }
+        
+        exclude= ['descripcion',]
+        
+        
+class Patrocinador_Admin(SortableModelAdmin):
+    form = PatrocinadorForm
+    sortable = 'order'
+    list_display=( 'entidad', 'pais', 'visible',)
+    search_fields=('entidad',)
+    ordering=('entidad',)
+
+    fieldsets = (
+                ('', {
+                        'fields': ('entidad','URL', 'logo', 'pais', 'visible', 'descripcion_es', 'descripcion_en')
+                }),
+        )
+admin.site.register(Patrocinador, Patrocinador_Admin)
+
+
 
 class Icono_Admin(admin.ModelAdmin):
     model = Icono

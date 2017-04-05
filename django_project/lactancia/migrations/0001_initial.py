@@ -245,6 +245,28 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
+            name='Patrocinador',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('entidad', models.CharField(max_length=500, verbose_name='Organismo')),
+                ('URL', models.URLField(default=b'', null=True, verbose_name='URL', blank=True)),
+                ('logo', models.ImageField(default=b'img/apilam-grande.png', upload_to=b'images/avales', verbose_name='Logo')),
+                ('visible', models.BooleanField(default=True, verbose_name='Visible en la p\xe1gina Landing')),
+                ('order', models.PositiveIntegerField()),
+                ('descripcion', models.CharField(help_text='Breve texto describiendo el patrocinio', max_length=1000, null=True, verbose_name='Descripci\xf3n', blank=True)),
+                ('descripcion_en', models.CharField(help_text='Breve texto describiendo el patrocinio', max_length=1000, null=True, verbose_name='Descripci\xf3n', blank=True)),
+                ('descripcion_es', models.CharField(help_text='Breve texto describiendo el patrocinio', max_length=1000, null=True, verbose_name='Descripci\xf3n', blank=True)),
+                ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('pais', models.ForeignKey(blank=True, to='lactancia.Pais', null=True)),
+            ],
+            options={
+                'ordering': ['entidad'],
+                'verbose_name': 'Patrocinador',
+                'verbose_name_plural': 'Patrocinadores',
+            },
+        ),
+        migrations.CreateModel(
             name='Producto',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),

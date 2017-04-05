@@ -180,7 +180,7 @@ SUIT_CONFIG = {
         {'label': _(u'Bibliografia'), 'icon':'icon-book', 'models': ('lactancia.bibliografia',)},
         {'label': _(u'Grupos y Riesgo'), 'icon':'icon-flag', 'models': ('lactancia.grupo','lactancia.riesgo',)},
         {'label': _(u'Comentarios y mensajes'), 'icon':'icon-bullhorn', 'models': ('lactancia.comentario','lactancia.mensaje',)},
-        {'label': _(u'Landing'), 'icon':'icon-magnet', 'models': ('lactancia.cajita','lactancia.aval','lactancia.icono',)},
+        {'label': _(u'Landing'), 'icon':'icon-magnet', 'models': ('lactancia.cajita','lactancia.patrocinador','lactancia.aval','lactancia.icono',)},
         {'label': _(u'Países e idiomas'), 'icon':'icon-map-marker', 'models': ('lactancia.pais','lactancia.idioma',)},
      
      ), 

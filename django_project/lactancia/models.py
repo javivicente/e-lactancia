@@ -714,6 +714,28 @@ class Aval(models.Model):
        
     def __unicode__(self):
         return self.entidad
+
+class Patrocinador(models.Model):
+    entidad = models.CharField(_(u'Organismo'), max_length=500)
+    URL = models.URLField(_(u'URL'), blank=True, null=True, default="",)
+    logo = models.ImageField(upload_to='images/avales', verbose_name=_(u'Logo'), default='img/apilam-grande.png')
+    pais = models.ForeignKey('Pais', null=True, blank=True)
+    visible = models.BooleanField(_(u'Visible en la página Landing'), default=True)    
+    order = models.PositiveIntegerField()
+    descripcion = models.CharField(_(u'Descripción'), help_text=_(u'Breve texto describiendo el patrocinio'), max_length=1000, blank=True, null=True)
+    fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
+    fecha_modificacion = models.DateTimeField(auto_now = True, verbose_name=_(u'Última modificación'))
+
+    class Meta:
+        verbose_name=_(u'Patrocinador')
+        verbose_name_plural =_(u'Patrocinadores')
+        ordering=['entidad']
+       
+    def __unicode__(self):
+        return self.entidad
+
+
+
         
 class Icono(models.Model):
     nombre = models.CharField(_(u'Nombre'), max_length=100)
