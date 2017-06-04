@@ -16,7 +16,192 @@
 
 <br/>
 <div class="row-fluid">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span4">
+    
+                <div class="row-fluid col-wrap"> 
+            
+                    {# transfiereme tu pasta #}
+                    <div class="well col span12">
+                        <p>{% trans "Puedes realizar un donativo a través de transferencia bancaria" %}:</p>
+                          <address style="margin-bottom:9px;"><small>
+                            {% trans "Entidad bancaria" %}: <strong>La Caixa</strong><br/><br/>
+                            {% trans "Número de cuenta" %}: <strong>2100 6086 23 02 00043629</strong><br><br/>
+                            {% trans "IBAN" %}: <strong>ES58 2100 6086 2302 0004 3629</strong><br><br/>
+                            {% trans "Titular" %}: <strong>APILAM</strong><br/><br/>
+                            {% trans "Concepto" %}: <strong>{% trans "Donativo " %}</strong></small>
+                          </address>
+                    </div>
+                </div>
+                
+                <div class="row-fluid base col-wrap"> 
+                    <div class="well col-base span12"></div>
+                </div>
+            </div>
+            
+            <div class="span8">
+    
+                <div class="row-fluid col-wrap"> 
+            
+                    {# dame 100 euros #}
+                    <div class="well col span4">
+                        <div class="row-fluid">
+                          <div class="span4">
+                            <i class="fa fa-book fa-4x text-info"></i>
+                          </div>
+                          <div class="span8">
+                            <p style="height:175px;">{% blocktrans with percent="%" %}100€ financian el 10{{percent}} anual de la compra de libros y suscripciones a revistas imprescindibles para tener e-lactancia actualizada{% endblocktrans %}</p>
+                            {% block 100eur_extra_space %}{% endblock %}
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                              <input type="hidden" name="cmd" value="_s-xclick">
+                              <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}DLATQLGLM5LAS{% else %}Y8RJDSS4UKSSA{% endif %}">
+                              <input class="btn btn-info btn-large" type="submit" value="{% trans 'Donar' %} 100 €"/>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+                    
+                    {# dame 40 euros #}
+                    <div class="well col span4">
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <i class="fa fa-file-text-o fa-4x text-info"></i>
+                            </div>
+                            <div class="span8">
+                                <p style="height:175px;">{% trans "40€ compran un artículo científico sobre lactancia y medicamentos. Son necesarios unos 100 artículos anuales para mantener e-lactancia actualizada" %}</p>
+                                {% block 40eur_extra_space %}{% endblock %}
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}3UNJ5EAM6DSG4{% else %}QWJ4QRZ5TBBEC{% endif %}">
+                                    <input class="btn btn-info btn-large" type="submit" value="{% trans 'Donar' %} 40 €"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    
+
+                    {# dame 20 euros #}
+                    <div class="well col span4">
+                        <div class="row-fluid">
+                          <div class="span4">
+                            <i class="fa fa-leaf fa-4x text-info"></i>
+                          </div>
+                          <div class="span8">
+                            <p style="height:175px;">{% trans "20€ sufragan dos terceras partes de la suscripción anual a" %} <a href="http://www.fitoterapia.net/" target="_blank">Fitoterapia.net</a>, {% trans "nuestra principal fuente de consulta sobre plantas medicinales" %}</p>
+                            {% block 20eur_extra_space %}{% endblock %}
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                              <input type="hidden" name="cmd" value="_s-xclick">
+                              <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}FTNAEJJV38QC2{% else %}GDZARBS52X4JE{% endif %}">
+                              <input class="btn btn-info btn-large" type="submit" value="{% trans 'Donar' %} 20 €"/>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+                     
+                    
+                </div>     
+                
+                <div class="row-fluid base col-wrap"> 
+                    <div class="well col-base span4"></div>
+                    <div class="well col-base span4"></div>
+                    <div class="well col-base span4"></div>
+                </div>   
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span4">
+            {% if textos %}
+            {% for t in textos %}
+            {{ t.content|safe|linebreaks}}
+            {% endfor %}
+            {% endif%}
+            </div>
+            <div class="span8">
+                <div class="row-fluid col-wrap"> 
+                    
+                    
+                    {# DONA LO QUE PUEDAS #}
+                    <div class="well col span4">
+                        <div class="row-fluid">
+                          <div class="span4">
+                            <i class="fa fa-smile-o fa-4x text-info"></i>
+                          </div>
+                          <div class="span8">
+                              <p style="height:175px;">{% trans "Haz un donativo por la cantidad que prefieras" %}</p>
+                              
+                              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}4BLX2BB5A8KYY{% else %}BLSTZ4B6QGTJQ{% endif %}">
+                                <input class="btn btn-info btn-large" type="submit" value="{% trans 'Donar' %}"/>
+                              </form>
+                          </div>
+                        </div>
+                    </div>
+
+                    {# dame 5 euros #}
+                    <div class="well col span4">
+                        <div class="row-fluid">
+                          <div class="span4">
+                            <i class="fa fa-pencil fa-4x text-info"></i>
+                          </div>
+                          <div class="span8">
+                            <p style="height:175px;">{% trans "5€ cubren una décima parte de lo que cuesta realizar una ficha de compatibilidad de un producto con la lactancia materna" %}</p>
+                            {% block 5eur_extra_space %}{% endblock %}
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                              <input type="hidden" name="cmd" value="_s-xclick">
+                              <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}QALZKG66BWP5G{% else %}QMHKZMCWG8X88{% endif %}">
+                              <input class="btn btn-info btn-large" type="submit" value="{% trans 'Donar' %} 5 €"/>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+                      
+                    {# dame 10 euros #}
+                    <div class="well col span4">
+                        <div class="row-fluid">
+                          <div class="span4">
+                            <i class="fa fa-comments fa-4x text-info"></i>
+                          </div>
+                          <div class="span8">
+                              <p style="height:175px;">{% trans "10€ costean una hora de respuestas por correo electrónico a usuarios con dudas sobre la compatibilidad de la lactancia." %}</p>
+                              {% block 10eur_extra_space %}{% endblock %}
+                              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}NQHGCC2GNRU9A{% else %}XYVRRDTNWQBF8{% endif %}">
+                                <input class="btn btn-info btn-large" type="submit" value="{% trans 'Donar' %} 10 €"/>
+                              </form>
+                          </div>
+                        </div>
+                    </div>
+
+                    
+                     
+                     
+                </div>     
+                <div class="row-fluid base col-wrap"> 
+                    <div class="well col-base span4"></div>
+                    <div class="well col-base span4"></div>
+                    <div class="well col-base span4"></div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
   <div class="span5">
+    
+    
+    
+    {% comment %}
     <p>{% trans "e-lactancia es un servicio gratuito de promoción y protección de la lactancia materna ofrecido por la asociación sin ánimo de lucro" %} <a href="http://apilam.org/" target="_blank">APILAM</a>.</p>
   
     <p>{% trans "e-lactancia, con una base de datos propia de" %} {{N}} {% trans "fichas, recibe anualmente un millón y medio de visitas y responde por correo electrónico alrededor de 5.000 consultas." %}</p>
@@ -24,12 +209,13 @@
     <p>{% trans "El funcionamiento, mantenimiento, actualización e independencia de e-lactancia son posibles gracias a las subvenciones y donaciones de particulares e instituciones." %}</p>
     <p>{% trans "Si crees en las bondades y belleza de la lactancia, si has consultado e-lactancia y te ha sido de ayuda, puedes colaborar aportando un donativo por el importe que desees." %}</p>
     <p>{% trans "Ayúdanos a seguir ofreciendo lo mejor de nosotros." %}</p>
+    {% endcomment %}
   </div>
 
   <div class="span7">
-
+    {% comment %}  
     <div class="row-fluid col-wrap"> 
-
+      
       {# dame 3 euro #}
       <div class="well col span6">
         <div class="row-fluid">
@@ -73,7 +259,7 @@
       <div class="well col-base span6"></div>
     </div>   
     {# fin de la primera fila #}
-
+    
 
     <div class="row-fluid col-wrap"> 
 
@@ -119,7 +305,7 @@
       <div class="well col-base span6"></div>
     </div>   
     {# fin de la segunda fila #}
-
+    
 
     <div class="row-fluid col-wrap"> 
 
@@ -140,24 +326,8 @@
           </div>
         </div>
       </div>
-
-      {# dame 100 euros #}
-      <div class="well col span6">
-        <div class="row-fluid">
-          <div class="span4">
-            <i class="fa fa-book fa-4x text-info"></i>
-          </div>
-          <div class="span8">
-            <p>{% trans "100€ financian el 10% anual de la compra de libros y suscripciones a revistas imprescindibles para tener e-lactancia actualizada" %}</p>
-            {% block 100eur_extra_space %}{% endblock %}
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-              <input type="hidden" name="cmd" value="_s-xclick">
-              <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}DLATQLGLM5LAS{% else %}Y8RJDSS4UKSSA{% endif %}">
-              <input class="btn btn-info btn-large" type="submit" value="{% trans 'Donar' %} 100 €"/>
-            </form>
-          </div>
-        </div>
-      </div>
+    
+      
     </div>
 
     
@@ -187,17 +357,7 @@
         </div>
       </div>
 
-      {# transfiereme tu pasta #}
-      <div class="well col span6">
-        <p>{% trans "También puedes realizar un donativo a través de transferencia bancaria" %}:</p>
-          <address><small>
-            {% trans "Entidad bancaria" %}: <strong>La Caixa</strong><br>
-            {% trans "Número de cuenta" %}: <strong>2100 6086 23 02 00043629</strong><br>
-            {% trans "IBAN" %}: <strong>ES58 2100 6086 2302 0004 3629</strong><br>
-            {% trans "Titular" %}: <strong>APILAM</strong><br>
-            {% trans "Concepto" %}: <strong>{% trans "Donativo " %}</strong></small>
-          </address>
-      </div>
+      
     </div>
 
     <div class="row-fluid base col-wrap"> 
@@ -209,7 +369,7 @@
     {# fin de la tercera fila #}
 
   </div> {# de todas las cajas de donativos #}
-
+  {% endcomment %}
 </div>
 
 {% endblock %}

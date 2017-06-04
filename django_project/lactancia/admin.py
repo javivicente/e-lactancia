@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.contrib import admin
 from django.forms import ModelForm, TextInput, Textarea, ValidationError
-from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval, Patrocinador, Cajita, Icono
+from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval, Patrocinador, Cajita, Icono, Docs
 from django import forms
 from django.db import models
 from suit.widgets import EnclosedInput, AutosizedTextarea
@@ -462,13 +462,17 @@ class ProdComentariosInline(admin.TabularInline):
 class ProductoAdmin(admin.ModelAdmin):
         
     form = ProductoForm
-    list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
+    #list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
+    list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'num_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes', 'fecha_modificacion','traducido_al_ingles',)
     list_filter = ('fecha_modificacion', 'riesgo','grupo', )
     ordering = ('nombre',)
     search_fields = ('nombre_es', 'nombre_en',)
-    filter_horizontal = ('grupo','alternativas','marcas','biblio',)
-    readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas',)
+    #filter_horizontal = ('grupo','alternativas','marcas','biblio',)
+    filter_horizontal = ('grupo','alternativas','biblio',)
+    #readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas',)
+    readonly_fields = ('fecha_creacion','fecha_modificacion', )
     inlines = [Otras_escriturasInline, AliasInline, ProdComentariosInline, ]
+    date_hierarchy = 'fecha_modificacion'
         
     fieldsets = [
                 (None, {
@@ -478,10 +482,10 @@ class ProductoAdmin(admin.ModelAdmin):
                 ('Nombre principal', {
                         'fields': ('nombre_es','nombre_en')
                 }),
-                (None, {
-                        'classes': ('suit-tab suit-tab-marcas',),
-                        'fields': ['marcas']
-                }),
+                #(None, {
+                #        'classes': ('suit-tab suit-tab-marcas',),
+                #        'fields': ['marcas']
+                #}),
                 (None, {
                         'classes': ('suit-tab suit-tab-r_y_g',),
                         'fields': ['riesgo','grupo']
@@ -509,18 +513,18 @@ class ProductoAdmin(admin.ModelAdmin):
                 }),
                 (None, {
                         'classes': ('suit-tab suit-tab-p_comentarios',),
-                        'fields': (('fecha_creacion','fecha_modificacion'), 'visitas')
+                        'fields': (('fecha_creacion','fecha_modificacion'),)
                 }),
         ]
 
     suit_form_tabs = (('nombre', _(u'Nombre(s)')),
-                          ('marcas', _(u'Marcas')),
+                          #('marcas', _(u'Marcas')),
                           ('r_y_g', _(u'Riesgo y Grupos')),
                           ('comentarios',_(u'Comentario')),
                           ('alternativas', _(u'Alternativas')),
                           ('farma', _(u'Farmac')),
                           ('biblio', _(u'Biblio')),
-                          ('p_comentarios', _(u'Visitas/Opiniones'))
+                          ('p_comentarios', _(u'Opiniones'))
                           )
 
     def save_formset(self, request, form, formset, change):
@@ -693,6 +697,32 @@ class Cajita_Admin(SortableModelAdmin):
                 }),
         )
 admin.site.register(Cajita, Cajita_Admin)
+
+
+class DocsForm(ModelForm):
+    class Meta:
+        
+        
+        widgets = {
+                        'content_es': AutosizedTextarea(attrs={'rows': 12, 'class': 'span-12'}),
+                        'content_en': AutosizedTextarea(attrs={'rows': 12, 'class': 'span-12'}),
+        }
+        exclude= ('title', 'content',)
+
+class Docs_Admin(admin.ModelAdmin):
+    form = DocsForm
+    list_display=('title', 'order', 'type',)
+    list_filter = ('type', )
+    search_fields=('titulo_en','titulo_es',)
+    ordering=('type','order',)
+
+    fieldsets = (
+                ('' , {
+                        'fields': ('type', 'order','title_es','title_en', 'content_es', 'content_en',)
+                }),
+        )
+admin.site.register(Docs, Docs_Admin)
+
 
 
 '''

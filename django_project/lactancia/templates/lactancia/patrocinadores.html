@@ -1,0 +1,56 @@
+{% extends "lactancia/base.html" %} 
+{% load i18n %}
+{% block title %}{% trans "Entidades que patrocinan e-lactancia" %}{% endblock %}
+
+{# share block #}
+{% block fb_url %}{% url 'lactancia:patrocinadores' %}{% endblock %}
+{% block fb_url_top %}{% url 'lactancia:patrocinadores' %}{% endblock %}
+{% block twitter_data-text %}{% trans "e-lactancia.org está patrocinada por importantes entidades que recomiendan la lactancia. Tú también puedes donar y promocionar la #Lactancia" %}{% endblock %}
+{% block twitter_data-text_top %}{% trans "e-lactancia.org está patrocinada por importantes entidades que recomiendan la lactancia. Tú también puedes donar y promocionar la #Lactancia" %}{% endblock %}
+
+{% block titulo_mainpage %}
+<h1 class="center">{% block dona_header %}{% trans "Entidades que patrocinan e-lactancia" %}{% endblock%}</h1>
+{% endblock%}
+
+
+
+{% block mainpage %}
+<div class="row-fluid">
+        <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+{% for entidad in entidades %}
+<div id="{{entidad.id}}" style="margin-bottom:120px;"></div>
+<div class="row-fluid"> 
+  
+  <div class="span4" >
+    <p class="text-right"><img class="logo" src="{{entidad.logo.url}}"></p>
+    <p  class="text-right">{{entidad.URL}}</p>
+  </div>
+
+  <div class="span6">
+    <h3>{{entidad.entidad}} ({{entidad.pais.nombre}})</h3>
+    {% if entidad.descripcion %}
+    <blockquote >
+        <p>{{entidad.descripcion|safe}}</p>
+    </blockquote>
+    {% endif %}
+  </div> {# de todos los supporters #}  
+</div>
+<div class="row-fluid">
+        <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+{% endfor %}
+
+{% for t in textos %}
+<div class="row"> 
+   <div class="span6 offset3">
+        <h2 class="text-center">{{t.title}}</h2>
+        {{ t.content|safe|linebreaks}}
+   </div>
+</div>
+{% endfor %}
+<div class="row-fluid">
+        <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+
+{% endblock %}

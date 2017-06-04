@@ -87,15 +87,15 @@ class Producto(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
     peso_molecular = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Peso molecular'))
-    union_proteinas = models.CharField(max_length=30, verbose_name=_(u'Unión proteínas'), blank=True, null=True)
+    union_proteinas = models.CharField(max_length=30, verbose_name=_(u'Unión a proteínas'), blank=True, null=True)
     volumen_distrib = models.CharField(max_length=30, verbose_name=_(u'Volumen de distribución'), blank=True, null=True,)
     indice_leche_plasma = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Índice Leche/Plasma'))
-    t_maximo = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Tiempo máximo'))
-    t_medio = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Tiempo medio'))
+    t_maximo = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Tiempo máximo, Tmax'))
+    t_medio = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Semivida de eliminación, Tiempo medio, T1/2'))
     biodisponibilidad = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Biodisponibilidad'))
-    dosis_teorica = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Dosis teórica del lactante'))
-    dosis_relativa = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Dosis relativa del lactante'))
-    dosis_terapeutica = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Porcentaje de la dosis terapéutica'))
+    dosis_teorica = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Dosis teórica'))
+    dosis_relativa = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Dosis relativa'))
+    dosis_terapeutica = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Dosis relativa pediátrica'))
     
     def traducido_al_ingles(self):
         return self.nombre_es != self.nombre_en and self.comentario_es != self.comentario_en
@@ -137,6 +137,10 @@ class Producto(models.Model):
         return ";\n".join([m.nombre for m in self.marcas.all()])
     obten_marcas.short_description=_(u'Marcas')
 
+    def num_marcas(self):
+        return (self.marcas.count())
+    num_marcas.short_description=_(u'Nº marcas')
+    
     def obten_alternativas(self):
         return ";\n".join([s.nombre for s in self.alternativas.all()])
     obten_alternativas.short_description=_(u'Alternativas')
@@ -776,6 +780,37 @@ class Cajita(models.Model):
        
     def __unicode__(self):
         return self.titulo
+     
+     
+class Docs(models.Model):
+        
+    CREDITS = 'c'
+    SPONSORS = 's'
+    DONATIONS= 'd'
+
+    
+    DOCUMENT_TYPE = (
+            (CREDITS, _(u'Créditos')),
+            (SPONSORS, _(u'Patrocinadores')),
+            (DONATIONS, _(u'Donativos')),
+    )
+    
+    type = models.CharField(_(u'Tipo de documento'), help_text=_(u'Indica en qué página aparecerá el texto.'), max_length=1, choices=DOCUMENT_TYPE, default='c')
+    order = models.PositiveSmallIntegerField(_(u'Order'), help_text=_(u'Indica, si aplica, el orden de la sección/subsección de este documento. Ejemplo: "1";  "2"'),  null=True, blank=True)
+    title = models.CharField(_(u'Título'), help_text=_(u'Ejemplo: Nuestra misión.'), max_length=255, unique=True)
+    content = models.CharField(_(u'Contenido'), max_length=15000, blank=True, null=True)
+    fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
+    fecha_modificacion = models.DateTimeField(auto_now = True, verbose_name=_(u'Última modificación'))
+
+    class Meta:
+        verbose_name = _(u'Documento')
+        verbose_name_plural = _(u'Documentos')
+        ordering=['type', 'order',]
+        
+        
+    def __unicode__(self):
+        return self.title
+        
      
 from ratings.handlers import ratings, RatingHandler
 from ratings.forms import StarVoteForm

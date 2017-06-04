@@ -102,6 +102,37 @@
         </div>
         {% endfor %}
     </div>
+    
+    
+{# PATROCINADORES EN UNA FILA #}
+{% if patrocinadores %}
+<div class="container">
+    <div class="row-fluid">
+        <div class="risk empty-space risk-miniblock  span12"></div>
+    </div>
+    <div class="row-fluid">
+        <div class="risk empty-space risk-miniblock  span12"></div>
+    </div>
+    <h2 class="text-center">
+            {% trans 'Entidades que patrocinan e-lactancia' %}
+    </h2>  
+    <div class="row press">
+        <div class="span4"></div>
+        {% for pat in patrocinadores %}
+            <div class="span4 aval" data-content="{{pat.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover">
+                <a href="{% url 'lactancia:patrocinadores' %}#{{pat.id}}" target="_blank"><img class="logo grayscale" src="{{pat.logo.url}}"></a>
+            </div>
+        {% endfor %}
+        
+    </div>
+    <div class="row-fluid">
+        <div class="risk empty-space risk-miniblock  span12"></div>
+    </div>
+    {#<p style="text-align: center;">{% trans "Si desea que su empresa conste como patrocinadora, póngase en contacto con nosotros." %}</p>#}
+</div>
+{% endif %}      
+    
+    
 {% comment %}
 {# AVALES EN BLOQUES DE 3 LOGOS #}    
 {% if avales %}
@@ -217,6 +248,12 @@
 </div>
 {% endif %}  
 {% endcomment %} 
+    
+    
+
+    
+    
+    
     
 {% endblock %}
 

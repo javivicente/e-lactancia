@@ -22,7 +22,7 @@
   <div class="well credit-well col span4">
     <img class="img-rounded" data-src="holder.js/200x300" src="/static/img/01jm.jpg">
     <h4>{% trans "Creador y coordinador " %}</h4>
-    <p class="white-text"><strong>Jose María Paricio Talayero</strong><br> {% trans "Doctor en Pediatría" %}</p>
+    <p class="white-text"><strong>Jose María Paricio Talayero</strong><br> {% trans "Pediatra Doctor en Medicina" %}</p>
   </div>
 
   <div class="well credit-well col span4">
@@ -74,27 +74,22 @@
 
 <div class="row-fluid col-wrap">
 
-  {% if historia %}
+  {% if textos %}
+  {% for t in textos %}
   <div class="well col span6">
-    <h2>{{historia.titulo}}</h2>
-      {{ historia.contenido|linebreaks }}
+    <h2>{{t.title}}</h2>
+      {{ t.content|safe|linebreaks}}
   </div>
+  {% endfor %}
   {% endif%}
-
-  {% if fuentes %}
-  <div class="well col span6">
-    <h2>{{fuentes.titulo}}</h2>
-     {{ fuentes.contenido|safe }}
-  </div>
-  {% endif %}  
+ 
 </div>
 
 <div class="row-fluid base col-wrap">
-  {% if historia %}
+  {% if textos %}
+  {% for t in textos %}
   <div class="well col-base span6"></div>
-  {% endif %}
-  {% if fuentes %}
-  <div class="well col-base span6"></div>
+  {% endfor %}
   {% endif %}
 </div>
   

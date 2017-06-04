@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia, Cajita, Aval
+from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia, Cajita, Aval, Patrocinador, Docs
 #from lactancia.extra import Lactancia_words
 #from lactancia.extra import correct_list
 from lactancia.forms import PerfilForm, Subscription, ComentarioForm
@@ -228,11 +228,17 @@ def landing(request):
         cache.set('avales', avales)
     avales = cache.get('avales')
     
+    patrocinadores = cache.get('patrocinadores')
+    if patrocinadores == None:
+        patrocinadores = Patrocinador.objects.filter(visible=True).order_by('order')
+        cache.set('patrocinadores', patrocinadores)
+    patrocinadores = cache.get('patrocinadores')
     
     context = {
                 'last_update': last_update,
                 'cajitas': cajitas,
                 'avales': avales,
+                'patrocinadores': patrocinadores,
                 'meta': set_meta(request),
                 }
                 
@@ -1242,22 +1248,17 @@ def alerta_riesgos(request):
         raise Http404
     return render(request, 'lactancia/alerta_riesgos.html', context)
 
-
+ 
 
 def creditos(request):
     try:
-        historia = Mensaje.objects.get(nombre__icontains='creditos_historia')
-    except Mensaje.DoesNotExist:
-        historia = None
+        textos = Docs.objects.filter(type='c').order_by('order')
+    except Docs.DoesNotExist:
+        textos = None
 
-    try:
-        fuentes = Mensaje.objects.get(nombre__icontains='creditos_fuentes')
-    except Mensaje.DoesNotExist:
-        fuentes = None
 
     context = {
-                 'historia': historia,
-                 'fuentes': fuentes,
+                 'textos': textos,
               }
                
     context.update(initial_context)    
@@ -1293,7 +1294,8 @@ def aviso_legal(request):
 
 def donativos(request):
     context = initial_context
-    context.update({'meta': set_meta(request)})
+    textos = Docs.objects.filter(type='d').order_by('order')
+    context.update({'meta': set_meta(request), 'textos':textos,})
     return render(request, 'lactancia/donativos.html', context)
 
 
@@ -1680,6 +1682,20 @@ def get_context_for_stats_json_ES(request):
     return context
     
 
+def patrocinadores(request):
+    
+    patrocinadores = cache.get('patrocinadores')
+    if patrocinadores == None:
+        patrocinadores = Patrocinador.objects.filter(visible=True).order_by('order')
+        cache.set('patrocinadores', patrocinadores)
+    patrocinadores = cache.get('patrocinadores')
+    context = {
+                'entidades': patrocinadores,
+                }
+    textos = Docs.objects.filter(type='s').order_by('order')
+    context.update(initial_context)    
+    context.update({'meta': set_meta(request), 'textos':textos,})
+    return render(request, 'lactancia/patrocinadores.html', context)
 
 
 def avales(request):

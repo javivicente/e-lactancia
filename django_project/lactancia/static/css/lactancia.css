@@ -524,6 +524,13 @@ background-color: #b94a48;
 border-color: #b94a48;
 }
 
+.risk-alt {
+color: #e5e5e5;
+background-color: #ffffff;
+border-color: #e5e5e5;
+}
+
+
 #btn_risk0 {
     color: #ffffff;
     -webkit-text-shadow: none;
