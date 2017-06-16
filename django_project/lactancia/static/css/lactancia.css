@@ -401,7 +401,12 @@ background-color: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8
   background-color: #57bcda; /* Old browsers */
   }
 
-
+.disclaimer-text {
+    font-size: 85%;
+    line-height: 16px;
+    
+}
+  
 /* the risk colors */
 .risk {
 /*padding-left: 8px 35px 8px 14px;
@@ -441,9 +446,9 @@ line-height: 18px;
 }*/
 
 .risk-alt {
-color: #000000 !important;
+color: #333333 !important;
 background-color: #ffffff;
-border-color: #000000 !important;
+border-color: #333333 !important;
 /*border-radius: 4px;*/
 /*margin-left: -50px;*/
 }

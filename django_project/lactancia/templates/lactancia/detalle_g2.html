@@ -100,7 +100,13 @@
 
 {% block risks %}
 <h3>{% trans "Riesgo para la lactancia" %}</h3>
-<p><small>{{ prod_disclaimer.contenido | safe }}</small></p>
+<div class="row-fluid">
+    <div class="span9">
+        <p class="disclaimer-text">{{ prod_disclaimer.contenido | safe }}</p>
+    </div>
+    <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
+{#<p><small>{{ prod_disclaimer.contenido | safe }}</small></p>#}
 
 <div class="row-fluid">
 <p>{% trans "Lista de los" %} {{ grupop.num_productos }} {% trans "productos de la familia o grupo" %} <strong>{{ grupop.nombre }}</strong> {% trans "por nivel de riesgo" %}:</p>
