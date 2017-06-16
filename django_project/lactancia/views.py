@@ -448,6 +448,10 @@ def get_context_for_product(request, prod):
     if help_biod == None:
         help_biod = Mensaje.objects.get(nombre__icontains='biodisponibilidad')
         cache.set('help_biod',help_biod,timeout)
+    help_pka = cache.get('help_pka')
+    if help_pka == None:
+        help_pka = Mensaje.objects.get(nombre__icontains='pka')
+        cache.set('help_pka',help_pka,timeout)
     help_d_teor = cache.get('help_d_teor')
     if help_d_teor == None:
         help_d_teor = Mensaje.objects.get(nombre__icontains='dosis_teorica')
@@ -548,13 +552,14 @@ def get_context_for_product(request, prod):
                'risk1_leyenda': risk1_leyenda,
                'risk2_leyenda': risk2_leyenda,
                'risk3_leyenda': risk3_leyenda,
+               'help_biod': help_biod,
                'help_p_molecular': help_p_molecular,
                'help_u_prot': help_u_prot,
                'help_vol_dist': help_vol_dist,
-               'help_i_l_p': help_i_l_p,
+               'help_pka': help_pka,
                'help_tmax': help_tmax,
                'help_tmed': help_tmed,
-               'help_biod': help_biod,
+               'help_i_l_p': help_i_l_p,
                'help_d_teor': help_d_teor,
                'help_d_rel': help_d_rel,
                'help_d_terap': help_d_terap,
