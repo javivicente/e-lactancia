@@ -787,11 +787,12 @@ class Docs(models.Model):
     CREDITS = 'c'
     SPONSORS = 's'
     DONATIONS= 'd'
-
+    SUPPORTERS = 'a'
     
     DOCUMENT_TYPE = (
             (CREDITS, _(u'Créditos')),
             (SPONSORS, _(u'Patrocinadores')),
+            (SUPPORTERS, _(u'Avales')),
             (DONATIONS, _(u'Donativos')),
     )
     
@@ -799,6 +800,7 @@ class Docs(models.Model):
     order = models.PositiveSmallIntegerField(_(u'Order'), help_text=_(u'Indica, si aplica, el orden de la sección/subsección de este documento. Ejemplo: "1";  "2"'),  null=True, blank=True)
     title = models.CharField(_(u'Título'), help_text=_(u'Ejemplo: Nuestra misión.'), max_length=255, unique=True)
     content = models.CharField(_(u'Contenido'), max_length=15000, blank=True, null=True)
+    visible = models.BooleanField(default=False, verbose_name=_(u'Visible en web'), help_text=_(u'Marca esta casilla cuando el texto esté listo para que se muestre en la web. Mientras NO esté marcada, NO será visible en la web.'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(auto_now = True, verbose_name=_(u'Última modificación'))
 

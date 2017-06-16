@@ -75,21 +75,25 @@
 <div class="row-fluid col-wrap">
 
   {% if textos %}
-  {% for t in textos %}
-  <div class="well col span6">
-    <h2>{{t.title}}</h2>
-      {{ t.content|safe|linebreaks}}
-  </div>
-  {% endfor %}
+      {% for t in textos %}
+        {% if t.visible %}
+          <div class="well col span6">
+            <h2>{{t.title}}</h2>
+              {{ t.content|safe|linebreaks}}
+          </div>
+        {% endif %}
+      {% endfor %}
   {% endif%}
  
 </div>
 
 <div class="row-fluid base col-wrap">
   {% if textos %}
-  {% for t in textos %}
-  <div class="well col-base span6"></div>
-  {% endfor %}
+      {% for t in textos %}
+        {% if t.visible %}
+        <div class="well col-base span6"></div>
+        {% endif %}
+      {% endfor %}
   {% endif %}
 </div>
   

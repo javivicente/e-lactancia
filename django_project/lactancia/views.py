@@ -1709,8 +1709,9 @@ def avales(request):
                 'avales': avales,
                 }
                 
+    textos = Docs.objects.filter(type='a').order_by('order')
     context.update(initial_context)    
-    context.update({'meta': set_meta(request)})
+    context.update({'meta': set_meta(request), 'textos':textos,})
     return render(request, 'lactancia/avales.html', context)
     
     

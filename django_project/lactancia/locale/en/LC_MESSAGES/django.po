@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-24 05:46+0200\n"
+"POT-Creation-Date: 2017-06-16 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,44 +73,44 @@ msgstr "Products citing this work"
 msgid "Artículos"
 msgstr "Papers"
 
-#: admin.py:519
+#: admin.py:520
 msgid "Nombre(s)"
 msgstr "Name(s)"
 
-#: admin.py:521
+#: admin.py:522
 msgid "Riesgo y Grupos"
 msgstr "Risk and groups"
 
-#: admin.py:522 models.py:80 templates/lactancia/detalle_p.html:127
+#: admin.py:523 models.py:80 templates/lactancia/detalle_p.html:127
 msgid "Comentario"
 msgstr "Comment"
 
-#: admin.py:523 models.py:146 templates/lactancia/detalle_p.html:150
+#: admin.py:524 models.py:146 templates/lactancia/detalle_p.html:141
 msgid "Alternativas"
 msgstr "Alternatives"
 
-#: admin.py:524
+#: admin.py:525
 msgid "Farmac"
 msgstr "Pharmacy"
 
-#: admin.py:525 models.py:219 models.py:220
+#: admin.py:526 models.py:219 models.py:220
 msgid "Biblio"
 msgstr "References"
 
 # mark to review!
-#: admin.py:526
+#: admin.py:527
 msgid "Opiniones"
 msgstr "Opinions"
 
-#: admin.py:577
+#: admin.py:578
 msgid "Comentario sobre:"
 msgstr "Comment about:"
 
-#: admin.py:580
+#: admin.py:581
 msgid "Del usuario:"
 msgstr "From user:"
 
-#: admin.py:583
+#: admin.py:584
 msgid "Texto:"
 msgstr "Text:"
 
@@ -381,13 +381,13 @@ msgstr "Insert a valid e-mail"
 
 #: models.py:15 models.py:87 models.py:191 models.py:231 models.py:267
 #: models.py:298 models.py:477 models.py:539 models.py:638 models.py:711
-#: models.py:730 models.py:769 models.py:802
+#: models.py:730 models.py:769 models.py:804
 msgid "Fecha de creación"
 msgstr "Creation date"
 
 #: models.py:16 models.py:88 models.py:192 models.py:232 models.py:268
 #: models.py:299 models.py:478 models.py:639 models.py:712 models.py:731
-#: models.py:770 models.py:803
+#: models.py:770 models.py:805
 msgid "Última modificación"
 msgstr "Last update"
 
@@ -395,12 +395,12 @@ msgstr "Last update"
 msgid "grupos con los que se relaciona"
 msgstr "related groups"
 
-#: models.py:20 templates/lactancia/detalle_p.html:340
+#: models.py:20 templates/lactancia/detalle_p.html:330
 msgid "Grupo"
 msgstr "Group"
 
 #: models.py:21 templates/lactancia/base.html:564
-#: templates/lactancia/detalle_p.html:337
+#: templates/lactancia/detalle_p.html:327
 #: templates/lactancia/estadisticas_json_ES.html:1411
 #: templates/lactancia/estadisticas_json_v3.html:1161
 msgid "Grupos"
@@ -498,8 +498,6 @@ msgid "Índice Leche/Plasma"
 msgstr "Milk/Plasma ratio"
 
 #: models.py:93
-#, fuzzy
-#| msgid "Tiempo máximo"
 msgid "Tiempo máximo, Tmax"
 msgstr "Time to max, Tmax"
 
@@ -563,7 +561,7 @@ msgstr "Group(s)"
 msgid "Tiene Farmac."
 msgstr "It has Pharmacokinetics"
 
-#: models.py:183 models.py:800
+#: models.py:183 models.py:801
 msgid "Título"
 msgstr "Title"
 
@@ -944,7 +942,7 @@ msgstr "Excerpt from the document"
 msgid "Aval"
 msgstr "Support"
 
-#: models.py:716
+#: models.py:716 models.py:795
 msgid "Avales"
 msgstr "Supporters"
 
@@ -1026,41 +1024,51 @@ msgstr "Boxes in landing"
 msgid "Créditos"
 msgstr "Credits"
 
-#: models.py:795
+#: models.py:796
 msgid "Donativos"
 msgstr "Donations"
 
-#: models.py:798
+#: models.py:799
 msgid "Tipo de documento"
 msgstr "Type of document"
 
-#: models.py:798
+#: models.py:799
 msgid "Indica en qué página aparecerá el texto."
 msgstr "Indicates which page will hold the text."
 
-#: models.py:799
+#: models.py:800
 msgid "Order"
 msgstr "Order"
 
-#: models.py:799
+#: models.py:800
 msgid ""
 "Indica, si aplica, el orden de la sección/subsección de este documento. "
 "Ejemplo: \"1\";  \"2\""
 msgstr ""
 
-#: models.py:800
+#: models.py:801
 msgid "Ejemplo: Nuestra misión."
 msgstr "Example: Our mission."
 
-#: models.py:801
+#: models.py:802
 msgid "Contenido"
 msgstr "Content"
 
-#: models.py:806
+#: models.py:803
+msgid "Visible en web"
+msgstr "Visible on the web"
+
+#: models.py:803
+msgid ""
+"Marca esta casilla cuando el texto esté listo para que se muestre en la web. "
+"Mientras NO esté marcada, NO será visible en la web."
+msgstr "Check if the text is ready to be published on the Web. The text will NOT be shown unless you check this."
+
+#: models.py:808
 msgid "Documento"
 msgstr "Document"
 
-#: models.py:807
+#: models.py:809
 msgid "Documentos"
 msgstr "Documents"
 
@@ -1702,12 +1710,12 @@ msgid "para"
 msgstr "for"
 
 #: templates/lactancia/detalle_g2.html:209
-#: templates/lactancia/detalle_p.html:219
+#: templates/lactancia/detalle_p.html:209
 msgid "HAZ UN DONATIVO"
 msgstr "MAKE A DONATION"
 
 #: templates/lactancia/detalle_g2.html:210
-#: templates/lactancia/detalle_p.html:220
+#: templates/lactancia/detalle_p.html:210
 msgid "Si esta información te ha sido de ayuda"
 msgstr "If you find this information helpful"
 
@@ -1778,7 +1786,7 @@ msgid "No hay alternativas porque tiene nivel de riesgo 0"
 msgstr "There are no alternatives because it has very low rist level."
 
 #: templates/lactancia/detalle_m.html:95
-#: templates/lactancia/detalle_p.html:164
+#: templates/lactancia/detalle_p.html:155
 msgid "No disponemos de alternativas para"
 msgstr "We do not have alternatives for"
 
@@ -1797,7 +1805,7 @@ msgstr "Is written in other languages"
 
 # mark to review!
 #: templates/lactancia/detalle_oe.html:42
-#: templates/lactancia/detalle_p.html:255
+#: templates/lactancia/detalle_p.html:245
 msgid "también se conoce como"
 msgstr "is also known as"
 
@@ -1809,111 +1817,111 @@ msgstr "Last update:"
 msgid "Estamos habilitando un comentario para este producto."
 msgstr "We are working on a comment for this product."
 
-#: templates/lactancia/detalle_p.html:160
+#: templates/lactancia/detalle_p.html:151
 msgid "No hay"
 msgstr "There are not"
 
-#: templates/lactancia/detalle_p.html:162
+#: templates/lactancia/detalle_p.html:153
 msgid "No se muestran alternativas porque"
 msgstr "We do not have alternatives for"
 
-#: templates/lactancia/detalle_p.html:162
+#: templates/lactancia/detalle_p.html:153
 msgid "tiene un nivel de riesgo muy bajo."
 msgstr "since it is relatively safe."
 
-#: templates/lactancia/detalle_p.html:194
+#: templates/lactancia/detalle_p.html:184
 msgid "Leyenda de riesgos"
 msgstr "Legend of risks"
 
-#: templates/lactancia/detalle_p.html:251
+#: templates/lactancia/detalle_p.html:241
 msgid "Otros nombres"
 msgstr "Other names"
 
-#: templates/lactancia/detalle_p.html:271
+#: templates/lactancia/detalle_p.html:261
 msgid "en otros idiomas o escrituras"
 msgstr "in other languages or writings"
 
-#: templates/lactancia/detalle_p.html:285
+#: templates/lactancia/detalle_p.html:275
 #: templates/lactancia/estadisticas_json_ES.html:1411
 #: templates/lactancia/estadisticas_json_v3.html:1161
 msgid "Marcas comerciales"
 msgstr "Tradenames"
 
-#: templates/lactancia/detalle_p.html:288
+#: templates/lactancia/detalle_p.html:278
 msgid "Principales marcas comerciales de diversos países que contienen"
 msgstr "Main tradenames from several countries containing"
 
-#: templates/lactancia/detalle_p.html:288
+#: templates/lactancia/detalle_p.html:278
 msgid "en su composición:"
 msgstr "in its composition:"
 
-#: templates/lactancia/detalle_p.html:294
-#: templates/lactancia/detalle_p.html:491
+#: templates/lactancia/detalle_p.html:284
+#: templates/lactancia/detalle_p.html:481
 msgid "Listado de"
 msgstr "List of"
 
-#: templates/lactancia/detalle_p.html:294
+#: templates/lactancia/detalle_p.html:284
 msgid "marcas"
 msgstr "tradenames"
 
-#: templates/lactancia/detalle_p.html:315
+#: templates/lactancia/detalle_p.html:305
 msgid "Contiene otros elementos aparte de"
 msgstr "Contains other elements than"
 
-#: templates/lactancia/detalle_p.html:315
+#: templates/lactancia/detalle_p.html:305
 msgid "en su composición"
 msgstr "in its composition"
 
-#: templates/lactancia/detalle_p.html:338
+#: templates/lactancia/detalle_p.html:328
 msgid "pertenece a las siguientes familias o grupos:"
 msgstr "belongs to these groups or families:"
 
-#: templates/lactancia/detalle_p.html:341
+#: templates/lactancia/detalle_p.html:331
 msgid "pertenece a la siguiente familia o grupo:"
 msgstr "belongs to this group or family:"
 
-#: templates/lactancia/detalle_p.html:377
+#: templates/lactancia/detalle_p.html:367
 msgid "Farmacocinética"
 msgstr "Pharmacokinetics"
 
-#: templates/lactancia/detalle_p.html:382
+#: templates/lactancia/detalle_p.html:372
 msgid "Variable"
 msgstr "Variable"
 
-#: templates/lactancia/detalle_p.html:383
+#: templates/lactancia/detalle_p.html:373
 msgid "Valor"
 msgstr "Value"
 
-#: templates/lactancia/detalle_p.html:384
+#: templates/lactancia/detalle_p.html:374
 msgid "Unidades"
 msgstr "Units"
 
-#: templates/lactancia/detalle_p.html:430
-#: templates/lactancia/detalle_p.html:439
+#: templates/lactancia/detalle_p.html:420
+#: templates/lactancia/detalle_p.html:429
 msgid "horas"
 msgstr "hours"
 
-#: templates/lactancia/detalle_p.html:485
+#: templates/lactancia/detalle_p.html:475
 msgid "Bibliografía"
 msgstr "References"
 
-#: templates/lactancia/detalle_p.html:491
+#: templates/lactancia/detalle_p.html:481
 msgid "referencias"
 msgstr "references"
 
-#: templates/lactancia/detalle_p.html:501
+#: templates/lactancia/detalle_p.html:491
 msgid "Resumen"
 msgstr "Abstract"
 
-#: templates/lactancia/detalle_p.html:504
+#: templates/lactancia/detalle_p.html:494
 msgid "Texto completo (enlace a fuente original)"
 msgstr "Full text (link to original source)"
 
-#: templates/lactancia/detalle_p.html:507
+#: templates/lactancia/detalle_p.html:497
 msgid "Texto completo (en nuestros servidores)"
 msgstr "Full text (in our servers)"
 
-#: templates/lactancia/detalle_p.html:513
+#: templates/lactancia/detalle_p.html:503
 msgid ""
 "Estamos trabajando en migrar y mejorar la ficha bibliográfica que este "
 "producto tenía en la antigua versión de e-lactancia.org. En breve estará "
@@ -1925,7 +1933,7 @@ msgstr ""
 "soon. If you wish to have access to this information, please let us know by "
 "leaving your comment in the opinion section below."
 
-#: templates/lactancia/detalle_p.html:515
+#: templates/lactancia/detalle_p.html:505
 msgid "No disponemos de bibliografía para este producto."
 msgstr "There are no references for this product."
 
@@ -2027,9 +2035,9 @@ msgstr ""
 
 #: templates/lactancia/donativos.html:59 templates/lactancia/donativos.html:77
 #: templates/lactancia/donativos.html:97
-#: templates/lactancia/donativos.html:143
-#: templates/lactancia/donativos.html:161
-#: templates/lactancia/donativos.html:179
+#: templates/lactancia/donativos.html:145
+#: templates/lactancia/donativos.html:163
+#: templates/lactancia/donativos.html:181
 msgid "Donar"
 msgstr "Donate"
 
@@ -2049,11 +2057,11 @@ msgstr "€20 defray two-thirds of the annual subscription to "
 msgid "nuestra principal fuente de consulta sobre plantas medicinales"
 msgstr "our main resource on medicinal plants"
 
-#: templates/lactancia/donativos.html:138
+#: templates/lactancia/donativos.html:140
 msgid "Haz un donativo por la cantidad que prefieras"
 msgstr "Donate the amount you prefer"
 
-#: templates/lactancia/donativos.html:156
+#: templates/lactancia/donativos.html:158
 msgid ""
 "5€ cubren una décima parte de lo que cuesta realizar una ficha de "
 "compatibilidad de un producto con la lactancia materna"
@@ -2061,7 +2069,7 @@ msgstr ""
 "€5 cover a tenth of what it takes to make a record of product compatibility "
 "with breastfeeding"
 
-#: templates/lactancia/donativos.html:174
+#: templates/lactancia/donativos.html:176
 msgid ""
 "10€ costean una hora de respuestas por correo electrónico a usuarios con "
 "dudas sobre la compatibilidad de la lactancia."

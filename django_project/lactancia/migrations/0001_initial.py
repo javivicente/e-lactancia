@@ -115,7 +115,7 @@ class Migration(migrations.Migration):
             name='Docs',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('type', models.CharField(default=b'c', help_text='Indica en qu\xe9 p\xe1gina aparecer\xe1 el texto.', max_length=1, verbose_name='Tipo de documento', choices=[(b'c', 'Cr\xe9ditos'), (b's', 'Patrocinadores'), (b'd', 'Donativos')])),
+                ('type', models.CharField(default=b'c', help_text='Indica en qu\xe9 p\xe1gina aparecer\xe1 el texto.', max_length=1, verbose_name='Tipo de documento', choices=[(b'c', 'Cr\xe9ditos'), (b's', 'Patrocinadores'), (b'a', 'Avales'), (b'd', 'Donativos')])),
                 ('order', models.PositiveSmallIntegerField(help_text='Indica, si aplica, el orden de la secci\xf3n/subsecci\xf3n de este documento. Ejemplo: "1";  "2"', null=True, verbose_name='Order', blank=True)),
                 ('title', models.CharField(help_text='Ejemplo: Nuestra misi\xf3n.', unique=True, max_length=255, verbose_name='T\xedtulo')),
                 ('title_en', models.CharField(help_text='Ejemplo: Nuestra misi\xf3n.', max_length=255, unique=True, null=True, verbose_name='T\xedtulo')),
@@ -123,6 +123,7 @@ class Migration(migrations.Migration):
                 ('content', models.CharField(max_length=15000, null=True, verbose_name='Contenido', blank=True)),
                 ('content_en', models.CharField(max_length=15000, null=True, verbose_name='Contenido', blank=True)),
                 ('content_es', models.CharField(max_length=15000, null=True, verbose_name='Contenido', blank=True)),
+                ('visible', models.BooleanField(default=False, help_text='Marca esta casilla cuando el texto est\xe9 listo para que se muestre en la web. Mientras NO est\xe9 marcada, NO ser\xe1 visible en la web.', verbose_name='Visible en web')),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
                 ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
             ],

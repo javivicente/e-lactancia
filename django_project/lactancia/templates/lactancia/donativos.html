@@ -1,6 +1,6 @@
 {% extends "lactancia/base.html" %} 
 {% load i18n %}
-{% block title %}: {% trans "Colabora con e-lactancia" %}{% endblock %}
+{% block title %} {% trans "Colabora con e-lactancia" %}{% endblock %}
 
 {# share block #}
 {% block fb_url %}{% url 'lactancia:donativos' %}{% endblock %}
@@ -119,9 +119,11 @@
         <div class="row-fluid">
             <div class="span4">
             {% if textos %}
-            {% for t in textos %}
-            {{ t.content|safe|linebreaks}}
-            {% endfor %}
+                {% for t in textos %}
+                    {% if t.visible %}
+                        {{ t.content|safe|linebreaks}}
+                    {% endif %}
+                {% endfor %}
             {% endif%}
             </div>
             <div class="span8">

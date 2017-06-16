@@ -711,14 +711,14 @@ class DocsForm(ModelForm):
 
 class Docs_Admin(admin.ModelAdmin):
     form = DocsForm
-    list_display=('title', 'order', 'type',)
+    list_display=('title', 'order', 'type','visible',)
     list_filter = ('type', )
     search_fields=('titulo_en','titulo_es',)
     ordering=('type','order',)
 
     fieldsets = (
                 ('' , {
-                        'fields': ('type', 'order','title_es','title_en', 'content_es', 'content_en',)
+                        'fields': ('type', 'order','visible', 'title_es','title_en', 'content_es', 'content_en',)
                 }),
         )
 admin.site.register(Docs, Docs_Admin)
