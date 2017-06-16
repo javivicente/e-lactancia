@@ -440,13 +440,20 @@ top: -2px;
 line-height: 18px;
 }*/
 
-
+.risk-alt {
+color: #000000 !important;
+background-color: #ffffff;
+border-color: #000000 !important;
+/*border-radius: 4px;*/
+/*margin-left: -50px;*/
+}
 
 .risk-level0 {
 color: #ffffff;
 background-color: #73ae42;
 border-color: #73ae42;
 }
+
 
 .risk-level0-alt {
 color: #73ae42;
@@ -457,9 +464,7 @@ border-color: #73ae42;
 }
 
 .risk-level0-prods {
-color: #73ae42;
-background-color: #ffffff;
-border-color: #73ae42;
+color: #73ae42 !important;
 }
 
 .risk-level0-legend {
@@ -481,6 +486,10 @@ background-color: #ffffff;
 border-color: #db9e27;
 }
 
+.risk-level1-prods {
+color: #db9e27 !important;
+}
+
 .risk-level1-legend {
 color: #db9e27;
 background-color: #db9e27;
@@ -500,6 +509,10 @@ background-color: #ffffff;
 border-color: #d07327;
 }
 
+.risk-level2-prods {
+color: #d07327 !important;
+}
+
 .risk-level2-legend {
 color: #d07327;
 background-color: #d07327;
@@ -516,6 +529,10 @@ border-color: #b94a48;
 color: #b94a48;
 background-color: #ffffff;
 border-color: #b94a48;
+}
+
+.risk-level3-prods {
+color: #b94a48 !important;
 }
 
 .risk-level3-legend {

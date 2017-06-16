@@ -135,32 +135,24 @@
                     </div>
                 </div>
 
-            {# caja de alternativas #}
-
-            {% if prod.riesgo.nivel == 3 %}
-                <div class="well risk-level3-alt col {{span_risk.span_alternativas}}">
-            {% elif prod.riesgo.nivel == 2 %}
-                <div class="well risk-level2-alt col {{span_risk.span_alternativas}}">
-            {% elif prod.riesgo.nivel == 1 %}
-                <div class="well risk-level1-alt col {{span_risk.span_alternativas}}">
-            {% elif prod.riesgo.nivel == 0 %}
-                <div class="well risk-level0-alt col {{span_risk.span_alternativas}}">
-            {% endif %}
+                {# caja de alternativas #}
+                <div class="well risk-alt col {{span_risk.span_alternativas}}">
+            
                         <h3>{% trans "Alternativas" %}</h3>
                         {% block alternativas %}
                         {% if prod.hay_alternativas %}
                             <ul><!--  class="nav nav-pills nav-stacked" -->
                                 {% for alt in prod.alternativas.all %}
-                                    <li><a href="{% url 'lactancia:detalle_p' alt.id %}"  >{{ alt.nombre }}</a> ({{alt.riesgo.nombre}})</li>
+                                    <li class="risk-level{{alt.riesgo.nivel}}-prods" ><a href="{% url 'lactancia:detalle_p' alt.id %}"  >{{ alt.nombre }}</a> ({{alt.riesgo.nombre}})</li>
                                 {% endfor %}
                             </ul>
                         {% else %}
                             {% if prod.no_alternativas %}
                                 <p>{% trans "No hay" %}</p>
                             {% elif prod.riesgo.nivel == 0 %}
-                                <p>{% trans "No se muestran alternativas porque" %} <strong>{% block alternativa_no_razon %}{{prod.nombre}}{% endblock %}</strong> {% trans "tiene un nivel de riesgo muy bajo." %}</p>
+                                <p>{% trans "No se muestran alternativas porque" %} <strong class="risk-level0-prods" >{% block alternativa_no_razon %}{{prod.nombre}}{% endblock %}</strong> {% trans "tiene un nivel de riesgo muy bajo." %}</p>
                             {% else %}
-                                <p>{% trans "No disponemos de alternativas para" %} <strong>{% block alternativa_no_sin_razon %}{{prod.nombre}}{% endblock %}</strong>.</p>
+                                <p class="risk-level{{prod.riesgo.nivel}}-prods">{% trans "No disponemos de alternativas para" %} <strong>{% block alternativa_no_sin_razon %}{{prod.nombre}}{% endblock %}</strong>.</p>
                             {% endif %}
                         {% endif %}
                         {% endblock %}
@@ -170,19 +162,18 @@
 
     {# cierre de cajas de riesgo y alternativas #}
     <div class="row-fluid base col-wrap"> 
+        
         {% if prod.riesgo.nivel == 3 %}
             <div class="well risk-level3 col-base {{span_block_risk.span_r3}}"></div>
-            <div class="well risk-level3-alt col-base {{span_risk.span_alternativas}}"></div>
         {% elif prod.riesgo.nivel == 2 %}
             <div class="well risk-level2 col-base {{span_block_risk.span_r2}}"></div>
-            <div class="well risk-level2-alt col-base {{span_risk.span_alternativas}}"></div>
         {% elif prod.riesgo.nivel == 1 %}
             <div class="well risk-level1 col-base {{span_block_risk.span_r1}}"></div>
-            <div class="well risk-level1-alt col-base {{span_risk.span_alternativas}}"></div>
         {% elif prod.riesgo.nivel == 0 %}
             <div class="well risk-level0 col-base {{span_block_risk.span_r0}}"></div>
-            <div class="well risk-level0-alt col-base {{span_risk.span_alternativas}}"></div>
         {% endif %}
+        
+            <div class="well risk-alt col-base {{span_risk.span_alternativas}}"></div>
     </div>    
 </div> {# row-fluid para riesgos, grupos relacionados y newsletter #} 
 
