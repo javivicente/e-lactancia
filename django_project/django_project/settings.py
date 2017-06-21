@@ -183,6 +183,8 @@ SUIT_CONFIG = {
         {'label': _(u'Landing'), 'icon':'icon-magnet', 'models': ('lactancia.cajita','lactancia.icono',)},
         {'label': _(u'Páginas estáticas'), 'icon':'icon-edit', 'models': ('lactancia.docs','lactancia.patrocinador','lactancia.aval',)},
         {'label': _(u'Países e idiomas'), 'icon':'icon-map-marker', 'models': ('lactancia.pais','lactancia.idioma',)},
+        {'label': _(u'Visitas Totales'), 'icon':'icon-signal', 'models': ('lactancia.visita_producto_total','lactancia.visita_grupo_total','lactancia.visita_alias_total','lactancia.visita_otras_escrituras_total','lactancia.visita_marca_total',)},
+        {'label': _(u'Visitas por Perfil'), 'icon':'icon-user', 'models': ('lactancia.visita_producto_perfil','lactancia.visita_grupo_perfil','lactancia.visita_alias_perfil','lactancia.visita_otras_escrituras_perfil','lactancia.visita_marca_perfil',)},
      
      ), 
 

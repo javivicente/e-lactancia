@@ -647,7 +647,7 @@ class Visita_grupo_total(models.Model):
     grupo = models.ForeignKey('Grupo', null=True, blank=True, related_name='visita_grupo_total')
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
         verbose_name = _(u'Visitas total a grupo')
@@ -662,7 +662,7 @@ class Visita_grupo_perfil(models.Model):
     perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
         verbose_name = _(u'Visitas a grupo por perfil')
@@ -676,7 +676,7 @@ class Visita_producto_total(models.Model):
     producto = models.ForeignKey('Producto', null=True, blank=True, related_name='visita_producto_total')
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
         verbose_name = _(u'Visitas total a producto')
@@ -691,7 +691,7 @@ class Visita_producto_perfil(models.Model):
     perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
         verbose_name = _(u'Visitas a producto por perfil')
@@ -705,11 +705,11 @@ class Visita_alias_total(models.Model):
     alias = models.ForeignKey('Alias', null=True, blank=True, related_name='visita_alias_total')
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
-        verbose_name = _(u'Visitas total a alias')
-        verbose_name_plural = _(u'Visitas totales a alias')
+        verbose_name = _(u'Visitas total a sinónimos')
+        verbose_name_plural = _(u'Visitas totales a sinónimos')
 
     def __unicode__(self):
         return unicode(self.alias.nombre) + u': ' + unicode(str(self.visitas)) + u' ' + unicode(_(u'visitas'))
@@ -720,11 +720,11 @@ class Visita_alias_perfil(models.Model):
     perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
-        verbose_name = _(u'Visitas a alias por perfil')
-        verbose_name_plural = _(u'Visitas a alias por perfil')
+        verbose_name = _(u'Visitas a sinónimos por perfil')
+        verbose_name_plural = _(u'Visitas a sinónimos por perfil')
 
     def __unicode__(self):
         return unicode(self.get_perfil_display()) + u' ' + unicode(_(u'han visitado')) + ' ' + unicode(self.alias.nombre) + u' ' +  unicode(str(self.visitas)) + u' ' + unicode(_(u'veces'))
@@ -734,7 +734,7 @@ class Visita_marca_total(models.Model):
     marca = models.ForeignKey('Marca', null=True, blank=True, related_name='visita_marca_total')
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
         verbose_name = _(u'Visitas total a marca')
@@ -749,7 +749,7 @@ class Visita_marca_perfil(models.Model):
     perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
         verbose_name = _(u'Visitas a marca por perfil')
@@ -762,7 +762,7 @@ class Visita_otras_escrituras_total(models.Model):
     otras_escrituras = models.ForeignKey('Otras_escrituras', null=True, blank=True, related_name='visita_otras_escrituras_total')
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
         verbose_name = _(u'Visitas total a otra escritura')
@@ -777,7 +777,7 @@ class Visita_otras_escrituras_perfil(models.Model):
     perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
     visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
-    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    fecha_modificacion = models.DateTimeField(_(u'Último cálculo'), auto_now = True)
     
     class Meta:
         verbose_name = _(u'Visitas a otra escritura por perfil')

@@ -355,12 +355,12 @@ class Migration(migrations.Migration):
                 ('perfil', models.CharField(max_length=2, verbose_name='Tipo de usuario (perfil)', choices=[(b'1', 'Pediatra'), (b'2', 'Ginec\xf3loga/o'), (b'14', 'M\xe9dico de familia'), (b'3', 'Otra especialidad m\xe9dica'), (b'4', 'Matrona'), (b'5', 'Enfermera/o'), (b'13', 'Farmac\xe9utico/a'), (b'6', 'Otro sanitario'), (b'7', 'Consultora lactancia (IBCLC, OMS)'), (b'8', 'Grupo de apoyo'), (b'9', 'Doula'), (b'10', 'Madre/Padre'), (b'11', 'Otro'), (b'12', 'An\xf3nimo')])),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('alias', models.ForeignKey(related_name='visita_alias_perfil', blank=True, to='lactancia.Alias', null=True)),
             ],
             options={
-                'verbose_name': 'Visitas a alias por perfil',
-                'verbose_name_plural': 'Visitas a alias por perfil',
+                'verbose_name': 'Visitas a sin\xf3nimos por perfil',
+                'verbose_name_plural': 'Visitas a sin\xf3nimos por perfil',
             },
         ),
         migrations.CreateModel(
@@ -369,12 +369,12 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('alias', models.ForeignKey(related_name='visita_alias_total', blank=True, to='lactancia.Alias', null=True)),
             ],
             options={
-                'verbose_name': 'Visitas total a alias',
-                'verbose_name_plural': 'Visitas totales a alias',
+                'verbose_name': 'Visitas total a sin\xf3nimos',
+                'verbose_name_plural': 'Visitas totales a sin\xf3nimos',
             },
         ),
         migrations.CreateModel(
@@ -384,7 +384,7 @@ class Migration(migrations.Migration):
                 ('perfil', models.CharField(max_length=2, verbose_name='Tipo de usuario (perfil)', choices=[(b'1', 'Pediatra'), (b'2', 'Ginec\xf3loga/o'), (b'14', 'M\xe9dico de familia'), (b'3', 'Otra especialidad m\xe9dica'), (b'4', 'Matrona'), (b'5', 'Enfermera/o'), (b'13', 'Farmac\xe9utico/a'), (b'6', 'Otro sanitario'), (b'7', 'Consultora lactancia (IBCLC, OMS)'), (b'8', 'Grupo de apoyo'), (b'9', 'Doula'), (b'10', 'Madre/Padre'), (b'11', 'Otro'), (b'12', 'An\xf3nimo')])),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('grupo', models.ForeignKey(related_name='visita_grupo_perfil', blank=True, to='lactancia.Grupo', null=True)),
             ],
             options={
@@ -398,7 +398,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('grupo', models.ForeignKey(related_name='visita_grupo_total', blank=True, to='lactancia.Grupo', null=True)),
             ],
             options={
@@ -413,7 +413,7 @@ class Migration(migrations.Migration):
                 ('perfil', models.CharField(max_length=2, verbose_name='Tipo de usuario (perfil)', choices=[(b'1', 'Pediatra'), (b'2', 'Ginec\xf3loga/o'), (b'14', 'M\xe9dico de familia'), (b'3', 'Otra especialidad m\xe9dica'), (b'4', 'Matrona'), (b'5', 'Enfermera/o'), (b'13', 'Farmac\xe9utico/a'), (b'6', 'Otro sanitario'), (b'7', 'Consultora lactancia (IBCLC, OMS)'), (b'8', 'Grupo de apoyo'), (b'9', 'Doula'), (b'10', 'Madre/Padre'), (b'11', 'Otro'), (b'12', 'An\xf3nimo')])),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('marca', models.ForeignKey(related_name='visita_marca_perfil', blank=True, to='lactancia.Marca', null=True)),
             ],
             options={
@@ -427,7 +427,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('marca', models.ForeignKey(related_name='visita_marca_total', blank=True, to='lactancia.Marca', null=True)),
             ],
             options={
@@ -442,7 +442,7 @@ class Migration(migrations.Migration):
                 ('perfil', models.CharField(max_length=2, verbose_name='Tipo de usuario (perfil)', choices=[(b'1', 'Pediatra'), (b'2', 'Ginec\xf3loga/o'), (b'14', 'M\xe9dico de familia'), (b'3', 'Otra especialidad m\xe9dica'), (b'4', 'Matrona'), (b'5', 'Enfermera/o'), (b'13', 'Farmac\xe9utico/a'), (b'6', 'Otro sanitario'), (b'7', 'Consultora lactancia (IBCLC, OMS)'), (b'8', 'Grupo de apoyo'), (b'9', 'Doula'), (b'10', 'Madre/Padre'), (b'11', 'Otro'), (b'12', 'An\xf3nimo')])),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('otras_escrituras', models.ForeignKey(related_name='visita_otras_escrituras_perfil', blank=True, to='lactancia.Otras_escrituras', null=True)),
             ],
             options={
@@ -456,7 +456,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('otras_escrituras', models.ForeignKey(related_name='visita_otras_escrituras_total', blank=True, to='lactancia.Otras_escrituras', null=True)),
             ],
             options={
@@ -471,7 +471,7 @@ class Migration(migrations.Migration):
                 ('perfil', models.CharField(max_length=2, verbose_name='Tipo de usuario (perfil)', choices=[(b'1', 'Pediatra'), (b'2', 'Ginec\xf3loga/o'), (b'14', 'M\xe9dico de familia'), (b'3', 'Otra especialidad m\xe9dica'), (b'4', 'Matrona'), (b'5', 'Enfermera/o'), (b'13', 'Farmac\xe9utico/a'), (b'6', 'Otro sanitario'), (b'7', 'Consultora lactancia (IBCLC, OMS)'), (b'8', 'Grupo de apoyo'), (b'9', 'Doula'), (b'10', 'Madre/Padre'), (b'11', 'Otro'), (b'12', 'An\xf3nimo')])),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('producto', models.ForeignKey(related_name='visita_producto_perfil', blank=True, to='lactancia.Producto', null=True)),
             ],
             options={
@@ -485,7 +485,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('visitas', models.IntegerField(default=0, verbose_name=b'Visitas', validators=[django.core.validators.MinValueValidator(0)])),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
-                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n')),
+                ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltimo c\xe1lculo')),
                 ('producto', models.ForeignKey(related_name='visita_producto_total', blank=True, to='lactancia.Producto', null=True)),
             ],
             options={

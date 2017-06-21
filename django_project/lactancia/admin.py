@@ -740,6 +740,172 @@ admin.site.register(Docs, Docs_Admin)
 
 
 
+class Visita_grupo_total_Admin(admin.ModelAdmin):
+    model = Visita_grupo_total
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('grupo', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('grupo', 'visitas', 'fecha_modificacion',)
+    search_fields = ( 'grupo__nombre_es', 'grupo__nombre_en',)
+    
+    def ultima_modificacion_termino(self, obj):
+        return obj.grupo.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición grupo')
+
+
+admin.site.register(Visita_grupo_total, Visita_grupo_total_Admin)
+
+
+class Visita_producto_total_Admin(admin.ModelAdmin):
+    model = Visita_producto_total
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('producto', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('producto', 'visitas', 'fecha_modificacion',)
+    search_fields = ( 'producto__nombre_es', 'producto__nombre_en',)
+    
+    def ultima_modificacion_termino(self, obj):
+        return obj.producto.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición producto')
+
+
+admin.site.register(Visita_producto_total, Visita_producto_total_Admin)
+
+class Visita_alias_total_Admin(admin.ModelAdmin):
+    model = Visita_alias_total
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('alias', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('alias', 'visitas', 'fecha_modificacion',)
+    search_fields = ( 'alias__nombre_es', 'alias__nombre_en',)
+    
+    def ultima_modificacion_termino(self, obj):
+        return obj.alias.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición sinónimo')
+
+admin.site.register(Visita_alias_total, Visita_alias_total_Admin)
+
+class Visita_marca_total_Admin(admin.ModelAdmin):
+    model = Visita_marca_total
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('marca', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('marca', 'visitas', 'fecha_modificacion',)
+    search_fields = ( 'marca__nombre',)
+    
+    def ultima_modificacion_termino(self, obj):
+        return obj.marca.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición marca')
+
+
+admin.site.register(Visita_marca_total, Visita_marca_total_Admin)
+
+
+class Visita_otras_escrituras_total_Admin(admin.ModelAdmin):
+    model = Visita_otras_escrituras_total
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('otras_escrituras', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('otras_escrituras', 'visitas', 'fecha_modificacion',)
+    search_fields = ( 'otras_escrituras__nombre',)
+    
+    def ultima_modificacion_termino(self, obj):
+        return obj.otras_escrituras.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición otra escritura')
+
+
+admin.site.register(Visita_otras_escrituras_total, Visita_otras_escrituras_total_Admin)
+
+class Visita_grupo_perfil_Admin(admin.ModelAdmin):
+    model = Visita_grupo_perfil
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('grupo', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('grupo', 'perfil','visitas', 'fecha_modificacion',)
+    search_fields = ( 'grupo__nombre_es', 'grupo__nombre_en',)
+    list_filter = ('perfil',)
+    def ultima_modificacion_termino(self, obj):
+        return obj.grupo.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición grupo')
+
+
+admin.site.register(Visita_grupo_perfil, Visita_grupo_perfil_Admin)
+
+
+class Visita_producto_perfil_Admin(admin.ModelAdmin):
+    model = Visita_producto_perfil
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('producto', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('producto', 'perfil','visitas', 'fecha_modificacion',)
+    search_fields = ( 'producto__nombre_es', 'producto__nombre_en',)
+    list_filter = ('perfil',)
+    def ultima_modificacion_termino(self, obj):
+        return obj.producto.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición producto')
+
+
+admin.site.register(Visita_producto_perfil, Visita_producto_perfil_Admin)
+
+
+class Visita_alias_perfil_Admin(admin.ModelAdmin):
+    model = Visita_alias_perfil
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('alias', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('alias', 'perfil','visitas', 'fecha_modificacion',)
+    search_fields = ( 'alias__nombre_es', 'alias__nombre_en',)
+    list_filter = ('perfil',)
+    def ultima_modificacion_termino(self, obj):
+        return obj.alias.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición sinónimo')
+
+
+admin.site.register(Visita_alias_perfil, Visita_alias_perfil_Admin)
+
+
+class Visita_marca_perfil_Admin(admin.ModelAdmin):
+    model = Visita_marca_perfil
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('marca', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('marca', 'perfil','visitas', 'fecha_modificacion',)
+    search_fields = ( 'alias__nombre',)
+    list_filter = ('perfil',)
+    def ultima_modificacion_termino(self, obj):
+        return obj.marca.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición marca')
+
+
+admin.site.register(Visita_marca_perfil, Visita_marca_perfil_Admin)
+
+
+class Visita_otras_escrituras_perfil_Admin(admin.ModelAdmin):
+    model = Visita_otras_escrituras_perfil
+    ordering=('-visitas',)
+    list_select_related = True
+    list_display=('otras_escrituras', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    readonly_fields=('otras_escrituras', 'perfil','visitas', 'fecha_modificacion',)
+    search_fields = ( 'otras_escrituras__nombre',)
+    list_filter = ('perfil',)
+    def ultima_modificacion_termino(self, obj):
+        return obj.otras_escrituras.fecha_modificacion
+    ultima_modificacion_termino.allow_tags = True
+    ultima_modificacion_termino.short_description = _(u'Última edición otra escritura')
+
+
+admin.site.register(Visita_otras_escrituras_perfil, Visita_otras_escrituras_perfil_Admin)
+
+
 '''
 ##class UserVisitsInline(admin.TabularInline):
 ##        model = Visita
