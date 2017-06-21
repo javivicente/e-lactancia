@@ -9,6 +9,24 @@ from django.conf import settings
 from django.template.defaultfilters import date as _date
 from django.utils.html import mark_safe
 from django.db.models import signals
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+PROFILE_CHOICES = (
+                ('1', _(u'Pediatra')),
+                ('2', _(u'Ginecóloga/o')),
+                ('14', _(u'Médico de familia')),
+                ('3', _(u'Otra especialidad médica')),
+                ('4', _(u'Matrona')),
+                ('5', _(u'Enfermera/o')),
+                ('13', _(u'Farmacéutico/a')),
+                ('6', _(u'Otro sanitario')),
+                ('7', _(u'Consultora lactancia (IBCLC, OMS)')),
+                ('8', _(u'Grupo de apoyo')),
+                ('9', _(u'Doula')),
+                ('10', _(u'Madre/Padre')),
+                ('11', _(u'Otro')),
+                ('12', _(u'Anónimo')),
+                )
 
 class Grupo(models.Model):
     nombre = models.CharField(_(u'Nombre'), db_index=True, max_length=255, unique=True)
@@ -42,7 +60,10 @@ class Grupo(models.Model):
     num_productos.short_description= _(u'Nº productos')
 
     def visitas(self):
-        return Visita.objects.filter(grupo=self.id).count()
+        aux = Visita_grupo_total.objects.filter(grupo=self.id)
+        if len(aux) > 0:
+            return aux[0].visitas
+        return None
     visitas.short_description= _(u'Nº visitas')
 
     def opiniones_pendientes(self):
@@ -151,7 +172,10 @@ class Producto(models.Model):
     obten_grupos.short_description=_(u'Grupo(s)')
 
     def visitas(self):
-        return Visita.objects.filter(prod=self.id).count()
+        aux = Visita_producto_total.objects.filter(producto=self.id)
+        if len(aux) > 0:
+            return aux[0].visitas
+        return None
     visitas.short_description= _(u'Nº visitas')
 
     def opiniones_pendientes(self):
@@ -170,6 +194,7 @@ class Producto(models.Model):
                         bool(self.indice_leche_plasma) or
                         bool(self.t_maximo) or
                         bool(self.t_medio) or
+                        bool(self.pka) or
                         bool(self.biodisponibilidad) or
                         bool(self.dosis_teorica) or
                         bool(self.dosis_relativa) or
@@ -243,8 +268,11 @@ class Alias(models.Model):
     en_ambos_idiomas.short_description= _(u'En inglés y español')
 
     def visitas(self):
-        return Visita.objects.filter(alias=self.id).count()
-    visitas.short_description= _(u'Número de visitas')
+        aux = Visita_alias_total.objects.filter(alias=self.id)
+        if len(aux) > 0:
+            return aux[0].visitas
+        return None
+    visitas.short_description= _(u'Nº visitas')
 
     def opiniones_pendientes(self):
         filterargs = { 'alias': self.id, 'leido': False }
@@ -276,8 +304,11 @@ class Otras_escrituras(models.Model):
 
     
     def visitas(self):
-        return Visita.objects.filter(otra_escritura=self.id).count()
-    visitas.short_description= _(u'Número de visitas')
+        aux = Visita_otras_escrituras_total.objects.filter(otras_escrituras=self.id)
+        if len(aux) > 0:
+            return aux[0].visitas
+        return None
+    visitas.short_description= _(u'Nº visitas')
 
     def opiniones_pendientes(self):
         filterargs = { 'otra_escritura': self.id, 'leido': False }
@@ -398,7 +429,11 @@ class Marca(models.Model):
     obten_principios_en.short_description= _(u'Principios Activos inglés')
 
     def visitas(self):
-        return Visita.objects.filter(marca=self.id).count()
+        aux = Visita_marca_total.objects.filter(marca=self.id)
+        if len(aux) > 0:
+            return aux[0].visitas
+        return None
+        
     visitas.short_description= _(u'Número de visitas')
 
     def opiniones_pendientes(self):
@@ -506,23 +541,7 @@ class Mensaje(models.Model):
 
 
 class LactUser(models.Model):
-    PROFILE_CHOICES = (
-                ('1', _(u'Pediatra')),
-                ('2', _(u'Ginecóloga/o')),
-                ('14', _(u'Médico de familia')),
-                ('3', _(u'Otra especialidad médica')),
-                ('4', _(u'Matrona')),
-                ('5', _(u'Enfermera/o')),
-                ('13', _(u'Farmacéutico/a')),
-                ('6', _(u'Otro sanitario')),
-                ('7', _(u'Consultora lactancia (IBCLC, OMS)')),
-                ('8', _(u'Grupo de apoyo')),
-                ('9', _(u'Doula')),
-                ('10', _(u'Madre/Padre')),
-                ('11', _(u'Otro')),
-                ('12', _(u'Anónimo')),
-                )
-
+    
     
 
     session= models.OneToOneField(Session, primary_key=True)
@@ -619,12 +638,158 @@ class Visita(models.Model):
         elif self.grupo != None:
             return self.grupo.nombre
         item_name.short_description = _(u'Término visitado')
-        
-
+    
+    
     def __unicode__(self):
         return unicode(self.user) + u' ' + unicode(_(u'ha visitado')) + u' ' + unicode(self.item_name())  + u' ' + unicode(_date(self.time, settings.DATETIME_FORMAT))
 
+class Visita_grupo_total(models.Model):
+    grupo = models.ForeignKey('Grupo', null=True, blank=True, related_name='visita_grupo_total')
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas total a grupo')
+        verbose_name_plural = _(u'Visitas totales a grupos')
 
+    def __unicode__(self):
+        return unicode(self.grupo.nombre) + u': ' + unicode(str(self.visitas)) + u' ' + unicode(_(u'visitas'))
+
+
+class Visita_grupo_perfil(models.Model):
+    grupo = models.ForeignKey('Grupo', null=True, blank=True, related_name='visita_grupo_perfil')
+    perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas a grupo por perfil')
+        verbose_name_plural = _(u'Visitas a grupos por perfil')
+
+    def __unicode__(self):
+        return unicode(self.get_perfil_display()) + u' ' + unicode(_(u'han visitado')) + ' ' + unicode(self.grupo.nombre) + u' ' +  unicode(str(self.visitas)) + u' ' + unicode(_(u'veces'))
+
+
+class Visita_producto_total(models.Model):
+    producto = models.ForeignKey('Producto', null=True, blank=True, related_name='visita_producto_total')
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas total a producto')
+        verbose_name_plural = _(u'Visitas totales a productos')
+
+    def __unicode__(self):
+        return unicode(self.producto.nombre) + u': ' + unicode(str(self.visitas)) + u' ' + unicode(_(u'visitas'))
+
+
+class Visita_producto_perfil(models.Model):
+    producto = models.ForeignKey('Producto', null=True, blank=True, related_name='visita_producto_perfil')
+    perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas a producto por perfil')
+        verbose_name_plural = _(u'Visitas a productos por perfil')
+
+    def __unicode__(self):
+        return unicode(self.get_perfil_display()) + u' ' + unicode(_(u'han visitado')) + ' ' + unicode(self.producto.nombre) + u' ' +  unicode(str(self.visitas)) + u' ' + unicode(_(u'veces'))
+
+
+class Visita_alias_total(models.Model):
+    alias = models.ForeignKey('Alias', null=True, blank=True, related_name='visita_alias_total')
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas total a alias')
+        verbose_name_plural = _(u'Visitas totales a alias')
+
+    def __unicode__(self):
+        return unicode(self.alias.nombre) + u': ' + unicode(str(self.visitas)) + u' ' + unicode(_(u'visitas'))
+
+
+class Visita_alias_perfil(models.Model):
+    alias = models.ForeignKey('Alias', null=True, blank=True, related_name='visita_alias_perfil')
+    perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas a alias por perfil')
+        verbose_name_plural = _(u'Visitas a alias por perfil')
+
+    def __unicode__(self):
+        return unicode(self.get_perfil_display()) + u' ' + unicode(_(u'han visitado')) + ' ' + unicode(self.alias.nombre) + u' ' +  unicode(str(self.visitas)) + u' ' + unicode(_(u'veces'))
+
+
+class Visita_marca_total(models.Model):
+    marca = models.ForeignKey('Marca', null=True, blank=True, related_name='visita_marca_total')
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas total a marca')
+        verbose_name_plural = _(u'Visitas totales a marcas')
+
+    def __unicode__(self):
+        return unicode(self.marca.nombre) + u': ' + unicode(str(self.visitas)) + u' ' + unicode(_(u'visitas'))
+
+
+class Visita_marca_perfil(models.Model):
+    marca = models.ForeignKey('Marca', null=True, blank=True, related_name='visita_marca_perfil')
+    perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas a marca por perfil')
+        verbose_name_plural = _(u'Visitas a marcas por perfil')
+
+    def __unicode__(self):
+        return unicode(self.get_perfil_display()) + u' ' + unicode(_(u'han visitado')) + ' ' + unicode(self.marca.nombre) + u' ' +  unicode(str(self.visitas)) + u' ' + unicode(_(u'veces'))
+
+class Visita_otras_escrituras_total(models.Model):
+    otras_escrituras = models.ForeignKey('Otras_escrituras', null=True, blank=True, related_name='visita_otras_escrituras_total')
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas total a otra escritura')
+        verbose_name_plural = _(u'Visitas totales a otras escrituras')
+
+    def __unicode__(self):
+        return unicode(self.otras_escrituras.nombre) + u': ' + unicode(str(self.visitas)) + u' ' + unicode(_(u'visitas'))
+
+
+class Visita_otras_escrituras_perfil(models.Model):
+    otras_escrituras = models.ForeignKey('Otras_escrituras', null=True, blank=True, related_name='visita_otras_escrituras_perfil')
+    perfil = models.CharField(_(u'Tipo de usuario (perfil)'), max_length=2, choices=PROFILE_CHOICES)
+    visitas = models.IntegerField('Visitas', validators = [MinValueValidator(0),], default=0)
+    fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
+    fecha_modificacion = models.DateTimeField(_(u'Última modificación'), auto_now = True)
+    
+    class Meta:
+        verbose_name = _(u'Visitas a otra escritura por perfil')
+        verbose_name_plural = _(u'Visitas a otras escrituras por perfil')
+
+    def __unicode__(self):
+        return unicode(self.get_perfil_display()) + u' ' + unicode(_(u'han visitado')) + ' ' + unicode(self.otra_escritura.nombre) + u' ' +  unicode(str(self.visitas)) + u' ' + unicode(_(u'veces'))
+
+
+
+        
+        
 class Comentario(models.Model):
     user = models.ForeignKey('LactUser', null=True, blank=True)
     comentario = models.CharField(max_length = 500, verbose_name=_(u'Opinión'))

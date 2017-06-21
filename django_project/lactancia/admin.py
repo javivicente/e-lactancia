@@ -3,6 +3,11 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from django.forms import ModelForm, TextInput, Textarea, ValidationError
 from lactancia.models import Grupo, Riesgo, Marca, Producto, Alias, Otras_escrituras, Bibliografia, Mensaje, LactUser, Comentario, Visita, Pais, Idioma, Aval, Patrocinador, Cajita, Icono, Docs
+from lactancia.models import Visita_grupo_total, Visita_grupo_perfil
+from lactancia.models import Visita_producto_total, Visita_producto_perfil
+from lactancia.models import Visita_alias_total, Visita_alias_perfil
+from lactancia.models import Visita_otras_escrituras_total, Visita_otras_escrituras_perfil
+from lactancia.models import Visita_marca_total, Visita_marca_perfil
 from django import forms
 from django.db import models
 from suit.widgets import EnclosedInput, AutosizedTextarea
@@ -22,13 +27,15 @@ class GrupoComentariosInline(admin.TabularInline):
         
 class GrupoAdmin(admin.ModelAdmin):
     list_display = ('nombre','num_productos','obten_relacionados','opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
-    list_filter=('fecha_modificacion',)
     ordering = ('nombre',)
     search_fields = ('nombre_es','nombre_en')
     filter_horizontal = ('relacionados',)
     readonly_fields = ('fecha_creacion', 'fecha_modificacion','visitas',)
-    inlines = [GrupoComentariosInline, ]
-    fieldsets = (
+    inlines = [GrupoComentariosInline,]
+    date_hierarchy = 'fecha_modificacion'
+    
+    
+    fieldsets = [
                 (None, {
                         'classes': ('wide',),
                         'fields': ('nombre_es','nombre_en')
@@ -39,8 +46,9 @@ class GrupoAdmin(admin.ModelAdmin):
                 (_('Visitas y fechas'), {
                         'fields': (('fecha_creacion','fecha_modificacion'), 'visitas')
                 }),
-        )
-
+                
+        ]
+    
 admin.site.register(Grupo, GrupoAdmin)
 
 class RiesgoForm(ModelForm):
@@ -101,15 +109,17 @@ class MarcaForm(ModelForm):
             return instance
 
 class MarcaAdmin(admin.ModelAdmin):
+    save_as = True
     list_display = ('nombre','multiples_principios','obten_principios','en_paises',
                         'opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     search_fields = ['nombre','principios_activos__nombre',]
     filter_horizontal = ('principios_activos','paises',)
     form = MarcaForm
-    list_filter=('fecha_modificacion',)
     ordering = ('nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas',)
     inlines = [MarcaComentariosInline, ]
+    date_hierarchy = 'fecha_modificacion'
+    
     fieldsets = (
                 (None, {
                         'fields': ('nombre',)
@@ -151,12 +161,11 @@ class AliasAdmin(admin.ModelAdmin):
     list_display = ('producto_principal','nombre_es', 'nombre_en',
                         'opiniones_pendientes','visitas', 'fecha_modificacion','en_ambos_idiomas')
     search_fields = ('producto_principal__nombre', 'nombre_es','nombre_en',)
-    list_filter=('fecha_modificacion',)
     ordering = ('producto_principal__nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion','visitas',)
     
     inlines = [AliasComentariosInline, ]
-    
+    date_hierarchy = 'fecha_modificacion'
 
     fieldsets = (
                 (_(u'Alias'), {
@@ -202,12 +211,12 @@ class Otras_escriturasAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'producto_principal', 'escritura',
                         'opiniones_pendientes','visitas', 'fecha_modificacion',)
     search_fields = ('producto_principal__nombre', 'nombre',)
-    list_filter=('fecha_modificacion','escritura')
+    list_filter=('escritura',)
     ordering = ('escritura__order','producto_principal__nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion','visitas',)
     
     inlines = [Otras_escrituras_ComentariosInline, ]
-    
+    date_hierarchy = 'fecha_modificacion'
 
     fieldsets = (
                 (_(u'Otras escrituras'), {
@@ -463,15 +472,15 @@ class ProdComentariosInline(admin.TabularInline):
 class ProductoAdmin(admin.ModelAdmin):
         
     form = ProductoForm
-    #list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
-    list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'num_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes', 'fecha_modificacion','traducido_al_ingles',)
-    list_filter = ('fecha_modificacion', 'riesgo','grupo', )
+    list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
+    #list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'num_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes', 'fecha_modificacion','traducido_al_ingles',)
+    list_filter = ( 'riesgo','grupo', )
     ordering = ('nombre',)
     search_fields = ('nombre_es', 'nombre_en',)
     #filter_horizontal = ('grupo','alternativas','marcas','biblio',)
     filter_horizontal = ('grupo','alternativas','biblio',)
-    #readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas',)
-    readonly_fields = ('fecha_creacion','fecha_modificacion', )
+    readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas',)
+    #readonly_fields = ('fecha_creacion','fecha_modificacion', )
     inlines = [Otras_escriturasInline, AliasInline, ProdComentariosInline, ]
     date_hierarchy = 'fecha_modificacion'
         
@@ -519,7 +528,7 @@ class ProductoAdmin(admin.ModelAdmin):
                 }),
                 (None, {
                         'classes': ('suit-tab suit-tab-p_comentarios',),
-                        'fields': (('fecha_creacion','fecha_modificacion'),)
+                        'fields': (('fecha_creacion','fecha_modificacion'),'visitas',)
                 }),
         ]
 

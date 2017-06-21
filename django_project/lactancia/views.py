@@ -7,6 +7,8 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia, Cajita, Aval, Patrocinador, Docs
+from lactancia.models import Visita_grupo_total, Visita_grupo_perfil, Visita_producto_total, Visita_producto_perfil, Visita_marca_total, Visita_marca_perfil
+from lactancia.models import Visita_alias_total, Visita_alias_perfil, Visita_otras_escrituras_total, Visita_otras_escrituras_perfil
 #from lactancia.extra import Lactancia_words
 #from lactancia.extra import correct_list
 from lactancia.forms import PerfilForm, Subscription, ComentarioForm
@@ -1362,6 +1364,93 @@ def limpia_cache(request):
     cache.clear()
     context = load_initial_context()
     return render(request, 'lactancia/limpiar_cache.html', context)
+    
+''' CALCULO DE VISITAS '''
+def calculate_visits():
+    
+    grupos_all = Grupo.objects.all().order_by('id')
+    for p in grupos_all:
+    
+        aux = Visita.objects.filter(grupo=p.pk)
+        
+        # salvamos el número de visitas total a este término
+        visita, created = Visita_grupo_total.objects.get_or_create(grupo=p)
+        visita.visitas = aux.count()
+        visita.save()
+        
+        # salvamos en número de visitas total por perfil de usuario:
+        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
+            visita, created = Visita_grupo_perfil.objects.get_or_create(grupo=p,perfil=i)
+            visita.visitas = aux.filter(user__perfil=i).count()
+            visita.save()
+    
+    productos_all = Producto.objects.all().order_by('id')
+    for p in productos_all:
+    
+        aux = Visita.objects.filter(prod=p.pk)
+        
+        # salvamos el número de visitas total a este término
+        visita, created = Visita_producto_total.objects.get_or_create(producto=p)
+        visita.visitas = aux.count()
+        visita.save()
+        
+        # salvamos en número de visitas total por perfil de usuario:
+        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
+            visita, created = Visita_producto_perfil.objects.get_or_create(producto=p,perfil=i)
+            visita.visitas = aux.filter(user__perfil=i).count()
+            visita.save()
+            
+    otras_escrituras_all = Otras_escrituras.objects.all().order_by('id')
+    for p in otras_escrituras_all:
+    
+        aux = Visita.objects.filter(otra_escritura=p.pk)
+        
+        # salvamos el número de visitas total a este término
+        visita, created = Visita_otras_escrituras_total.objects.get_or_create(otras_escrituras=p)
+        visita.visitas = aux.count()
+        visita.save()
+        
+        # salvamos en número de visitas total por perfil de usuario:
+        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
+            visita, created = Visita_otras_escrituras_perfil.objects.get_or_create(otras_escrituras=p,perfil=i)
+            visita.visitas = aux.filter(user__perfil=i).count()
+            visita.save()
+    
+    alias_all = Alias.objects.all().order_by('id')
+    for p in alias_all:
+    
+        aux = Visita.objects.filter(alias=p.pk)
+        
+        # salvamos el número de visitas total a este término
+        visita, created = Visita_alias_total.objects.get_or_create(alias=p)
+        visita.visitas = aux.count()
+        visita.save()
+        
+        # salvamos en número de visitas total por perfil de usuario:
+        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
+            visita, created = Visita_alias_perfil.objects.get_or_create(alias=p,perfil=i)
+            visita.visitas = aux.filter(user__perfil=i).count()
+            visita.save()
+            
+            
+    
+    marcas_all = Marca.objects.all().order_by('id')
+    for p in marcas_all:
+    
+        aux = Visita.objects.filter(marca=p.pk)
+        
+        # salvamos el número de visitas total a este término
+        visita, created = Visita_marca_total.objects.get_or_create(marca=p)
+        visita.visitas = aux.count()
+        visita.save()
+        
+        # salvamos en número de visitas total por perfil de usuario:
+        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
+            visita, created = Visita_marca_perfil.objects.get_or_create(marca=p,perfil=i)
+            visita.visitas = aux.filter(user__perfil=i).count()
+            visita.save()
+    
+    return 0
     
 ''' ESTADISTICAS '''
 def get_context_for_stats_json_v2(request):

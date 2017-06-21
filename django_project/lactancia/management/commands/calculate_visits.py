@@ -1,23 +1,24 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
-from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia
-from django.db.models import Count, Avg, Max, Q
-from django.utils import timezone
-import datetime
-import json
-from django.core.serializers.json import DjangoJSONEncoder
-from django.db import connection
+from lactancia.views import calculate_visits
+#from lactancia.models import Riesgo, Producto, Alias, Marca, Otras_escrituras, Grupo, Mensaje, LactUser, Visita, Comentario, Bibliografia
+#from django.db.models import Count, Avg, Max, Q
+#from django.utils import timezone
+#import datetime
+#import json
+#from django.core.serializers.json import DjangoJSONEncoder
+#from django.db import connection
         
 class Command(BaseCommand):
     args = 'None'
-    help = 'Calculates visits per term of e-lactancia and saves them in text files'
+    help = 'Calculates visits per term of e-lactancia and saves them in auxiliary tables'
 
     
     def handle(self, *args, **options):
 
-        
+        calculate_visits()
+        '''
         PROJECT_PATH = '/home/django'
-        
         
         grupos_all = Grupo.objects.all().order_by('id')
         kk =[]
@@ -148,4 +149,5 @@ class Command(BaseCommand):
         fd = open(PROJECT_PATH+"/media/visitas_marcas.json","w")
         fd.write(json.dumps(kk, ensure_ascii=False).encode('utf8'))
         fd.close()
+        '''
         
