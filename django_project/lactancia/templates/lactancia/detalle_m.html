@@ -84,13 +84,13 @@
                 {% if p.hay_alternativas %}
                     <ul>
                         {% for alt in p.alternativas.all %}
-                            <li>{% block alter_content %}<a href="{% url 'lactancia:detalle_p' alt.id %}"  >{{ alt.nombre }}</a> ({% trans "Nivel " %} {{alt.riesgo.nivel}}){% endblock %}</li>
+                            <li class="risk-level{{alt.riesgo.nivel}}-prods" >{% block alter_content %}<a href="{% url 'lactancia:detalle_p' alt.id %}"  >{{ alt.nombre }}</a> ({{alt.riesgo.nombre}}){% endblock %}</li>
                         {% endfor %}
                     </ul>
                 {% else %}
 
                     {% if p.riesgo.nivel == 0 %}
-                        <p>{% block alter_no0_marca %}{% trans "No hay alternativas porque tiene nivel de riesgo 0" %}.{% endblock %}</p>
+                        <p class="risk-level0-prods">{% block alter_no0_marca %}{% trans "No hay alternativas porque tiene nivel de riesgo muy bajo" %}.{% endblock %}</p>
                     {% else %}
                         <p>{% block alter_no %}{% trans "No disponemos de alternativas para" %} <strong>{{p.nombre}}</strong>.{% endblock %}</p>
                     {% endif %}

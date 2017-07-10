@@ -136,7 +136,7 @@
                 </div>
 
                 {# caja de alternativas #}
-                <div class="well risk-alt col {{span_risk.span_alternativas}}">
+                <div class="well  col {{span_risk.span_alternativas}}">
             
                         <h3>{% trans "Alternativas" %}</h3>
                         {% block alternativas %}
@@ -173,7 +173,7 @@
             <div class="well risk-level0 col-base {{span_block_risk.span_r0}}"></div>
         {% endif %}
         
-            <div class="well risk-alt col-base {{span_risk.span_alternativas}}"></div>
+            <div class="well  col-base {{span_risk.span_alternativas}}"></div>
     </div>    
 </div> {# row-fluid para riesgos, grupos relacionados y newsletter #} 
 
@@ -379,8 +379,9 @@
             <tbody>
                 {% if prod.biodisponibilidad  %}
                     <tr>
-                        <td>{{ help_biod.titulo | safe}}
-                            <a class="btn btn-link nounderline" style="float:right;" id="btn_biod" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        <td>
+                        <a class="btn btn-link nounderline" id="btn_biod" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        {{ help_biod.titulo | safe}}    
                         </td>
                         <td>{{prod.biodisponibilidad}}</td>
                         <td>%</td>
@@ -388,8 +389,9 @@
                 {% endif %}
                 {% if prod.peso_molecular  %}
                     <tr>
-                        <td>{{ help_p_molecular.titulo | safe}} 
-                            <a class="btn btn-link nounderline" style="float:right;" id="btn_p_molecular" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        <td>
+                        <a class="btn btn-link nounderline" id="btn_p_molecular" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        {{ help_p_molecular.titulo | safe}} 
                         </td>
                         <td>{{prod.peso_molecular}}</td>
                         <td>daltons</td>
@@ -397,8 +399,9 @@
                 {% endif %}
                 {% if prod.union_proteinas %}
                     <tr>
-                        <td>{{ help_u_prot.titulo | safe}}
-                            <a class="btn btn-link nounderline" style="float:right;" id="btn_u_prot" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        <td>
+                        <a class="btn btn-link nounderline" id="btn_u_prot" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        {{ help_u_prot.titulo | safe}}
                         </td>
                         <td>{{prod.union_proteinas}}</td>   
                         <td>%</td>
@@ -406,8 +409,9 @@
                 {% endif %}
                 {% if prod.volumen_distrib %}
                     <tr>
-                        <td>{{ help_vol_dist.titulo | safe}}
-                            <a class="btn btn-link nounderline" style="float:right;" id="btn_vol_dist" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        <td>
+                        <a class="btn btn-link nounderline" id="btn_vol_dist" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        {{ help_vol_dist.titulo | safe}}
                         </td>
                         <td>{{prod.volumen_distrib}}</td>   
                         <td>l/Kg</td>
@@ -415,8 +419,9 @@
                 {% endif %}
                 {% if prod.pka %}
                     <tr>
-                        <td>{{ help_pka.titulo | safe}}
-                            <a class="btn btn-link nounderline" style="float:right;"id="btn_pka" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        <td>
+                            <a class="btn btn-link nounderline" id="btn_pka" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            {{ help_pka.titulo | safe}}
                         </td>
                         <td>{{prod.pka}}</td>   
                         <td>-</td>
@@ -424,8 +429,9 @@
                 {% endif %}
                 {% if prod.t_maximo  %}
                     <tr>
-                        <td>{{ help_tmax.titulo | safe}}
-                            <a class="btn btn-link nounderline" style="float:right;" id="btn_tmax" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        <td>
+                            <a class="btn btn-link nounderline" id="btn_tmax" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            {{ help_tmax.titulo | safe}}
                         </td>
                         <td>{{prod.t_maximo}}</td>
                         <td>{% trans "horas" %}</td>
@@ -433,8 +439,9 @@
                 {% endif %}
                 {% if prod.t_medio  %}
                     <tr>
-                        <td>{{ help_tmed.titulo | safe}}
-                            <a class="btn btn-link nounderline" style="float:right;" id="btn_tmed" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        <td>
+                            <a class="btn btn-link nounderline"  id="btn_tmed" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            {{ help_tmed.titulo | safe}}
                         </td>
                         <td>{{prod.t_medio}}</td>
                         <td>{% trans "horas" %}</td>
@@ -442,8 +449,9 @@
                 {% endif %}
                 {% if prod.indice_leche_plasma  %}
                     <tr>
-                        <td>{{ help_i_l_p.titulo | safe}}
-                            <a class="btn btn-link nounderline" style="float:right;" id="btn_i_l_p" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        <td>
+                            <a class="btn btn-link nounderline"  id="btn_i_l_p" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            {{ help_i_l_p.titulo | safe}}
                         </td>
                         <td>{{prod.indice_leche_plasma}}</td>
                         <td>-</td>
@@ -452,8 +460,9 @@
                 
                 {% if prod.dosis_teorica  %}
                         <tr>
-                            <td>{{ help_d_teor.titulo | safe}}
-                                <a class="btn btn-link nounderline" style="float:right;" id="btn_d_teor" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            <td>
+                                <a class="btn btn-link nounderline" id="btn_d_teor" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                                {{ help_d_teor.titulo | safe}}
                             </td>
                             <td>{{prod.dosis_teorica}}</td>
                             <td>mg/Kg/d</td>
@@ -461,8 +470,9 @@
                 {% endif %}
                 {% if prod.dosis_relativa  %}
                        <tr>
-                           <td>{{ help_d_rel.titulo | safe }}
-                             <a class="btn btn-link nounderline" style="float:right;" id="btn_d_rel" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                           <td>
+                             <a class="btn btn-link nounderline" id="btn_d_rel" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                             {{ help_d_rel.titulo | safe }}
                             </td>
                             <td>{{prod.dosis_relativa}}</td>
                             <td>%</td>
@@ -470,8 +480,9 @@
                 {% endif %}
                 {% if prod.dosis_terapeutica  %}
                         <tr>
-                            <td>{{ help_d_terap.titulo | safe}}
-                                <a class="btn btn-link nounderline" style="float:right;" id="btn_d_terap" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            <td>
+                                <a class="btn btn-link nounderline" id="btn_d_terap" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                                {{ help_d_terap.titulo | safe}}
                             </td>
                             <td>{{prod.dosis_terapeutica}}</td>
                             <td>%</td>
