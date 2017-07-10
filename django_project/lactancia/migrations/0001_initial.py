@@ -85,7 +85,7 @@ class Migration(migrations.Migration):
                 ('link', models.URLField(help_text='Opcional. El link se abrir\xe1 en una nueva pesta\xf1a. Puede ser el enlace a un libro, web, post, noticia, etc.', null=True, verbose_name='Link', blank=True)),
                 ('link_en', models.URLField(help_text='Opcional. El link se abrir\xe1 en una nueva pesta\xf1a. Puede ser el enlace a un libro, web, post, noticia, etc.', null=True, verbose_name='Link', blank=True)),
                 ('link_es', models.URLField(help_text='Opcional. El link se abrir\xe1 en una nueva pesta\xf1a. Puede ser el enlace a un libro, web, post, noticia, etc.', null=True, verbose_name='Link', blank=True)),
-                ('texto_link', models.CharField(help_text='Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc', max_length=150, verbose_name='Texto del link', blank=True)),
+                ('texto_link', models.CharField(help_text='Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc', max_length=150, null=True, verbose_name='Texto del link', blank=True)),
                 ('texto_link_en', models.CharField(help_text='Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc', max_length=150, null=True, verbose_name='Texto del link', blank=True)),
                 ('texto_link_es', models.CharField(help_text='Texto del link. Ejemplo: "Compar libro"; "Leer noticia"; "Ir a post"; etc', max_length=150, null=True, verbose_name='Texto del link', blank=True)),
                 ('order', models.PositiveIntegerField()),
@@ -319,6 +319,7 @@ class Migration(migrations.Migration):
                 ('biblio', models.ManyToManyField(to='lactancia.Bibliografia', verbose_name='bibliografia', blank=True)),
                 ('grupo', models.ManyToManyField(to='lactancia.Grupo')),
                 ('marcas', models.ManyToManyField(to='lactancia.Marca', verbose_name='Listado de marcas comerciales', blank=True)),
+                ('referencia_otros_productos', models.ManyToManyField(help_text='Aparecer\xe1 un enlace a las fichas de estos productos en la caja de comentario.', related_name='referenciados', verbose_name='Referencia a otros productos', to='lactancia.Producto', blank=True)),
             ],
         ),
         migrations.CreateModel(

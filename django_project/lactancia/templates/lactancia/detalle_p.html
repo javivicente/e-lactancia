@@ -128,6 +128,32 @@
                         {% block comentario_content %}
                             {% if prod.comentario %}
                                 {{ prod.comentario|linebreaks }}
+                                {% if prod.referencia_otros_productos.count > 0 %}
+                                <br/>
+                                    {% if prod.referencia_otros_productos.count == 1 %}
+                                        {% trans "Véase también la información de este producto:" %}
+                                    {% else %}
+                                        {% trans "Véase también la información de estos productos:" %}
+                                    {% endif %}
+                                    <br/><br/>
+                                    <ul class="inline">
+                                    {% for ref in prod.referencia_otros_productos.all|dictsort:"nombre" %}
+                                        <li ><a 
+                                            {% if prod.riesgo.nivel == 0 %}
+                                            class="link_r0" 
+                                            {% elif prod.riesgo.nivel == 1 %}
+                                            class="link_r1"
+                                            {% elif prod.riesgo.nivel == 2 %}
+                                            class="link_r2"
+                                            {% elif prod.riesgo.nivel == 3 %}
+                                            class="link_r3"
+                                            {% endif %} 
+                                            href="{% url 'lactancia:detalle_p' ref.id %}" target="_blank"><strong>{{ ref.nombre }}</strong></a> ({{ref.riesgo.nombre}})</li>
+                                    {% endfor%}
+                                    </ul>
+                                    
+                                {% endif %}
+                                
                             {% else %}
                                 <p>{% trans "Estamos habilitando un comentario para este producto." %}</p>
                             {% endif %}
