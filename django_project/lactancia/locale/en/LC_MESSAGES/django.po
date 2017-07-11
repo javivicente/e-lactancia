@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-10 12:07+0200\n"
+"POT-Creation-Date: 2017-07-11 10:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1244,7 +1244,7 @@ msgstr ""
 "have been registered during the last 3 months."
 
 #: templates/lactancia/avales.html:3 templates/lactancia/avales.html.py:12
-#: templates/lactancia/landing.html:208
+#: templates/lactancia/landing.html:207
 msgid "Entidades que recomiendan el uso de e-lactancia"
 msgstr "Institutions that recommend the use of e-lactancia"
 
@@ -1938,12 +1938,12 @@ msgid "Última actualización:"
 msgstr "Last update:"
 
 #: templates/lactancia/detalle_p.html:134
-msgid "Véase también la información de este producto:"
-msgstr "See also the information of this product:"
+msgid "Puede consultar la información de este producto aquí:"
+msgstr "See the information of this product here:"
 
 #: templates/lactancia/detalle_p.html:136
-msgid "Véase también la información de estos productos:"
-msgstr "See also the information of these products:"
+msgid "Puede consultar la información de estos productos aquí:"
+msgstr "See the information of these products here:"
 
 #: templates/lactancia/detalle_p.html:158
 msgid "Estamos habilitando un comentario para este producto."

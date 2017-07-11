@@ -28,7 +28,7 @@
   </div>
 
   <div class="span6">
-    <h2 class="h3">{{aval.entidad}} ({{aval.pais.nombre}})</h2>
+    <h2 class="h3">{{aval.entidad}} {% if aval.pais %}({{aval.pais.nombre}}){% endif %}</h2>
     <blockquote >
         <p>{{aval.extracto|safe}}</p>
         <footer><a href="{{aval.carta.url}}" target="_blank"><cite>{% trans 'Leer documento completo' %}</cite></a></footer>

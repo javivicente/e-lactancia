@@ -28,7 +28,7 @@
   </div>
 
   <div class="span6">
-    <h3>{{entidad.entidad}} ({{entidad.pais.nombre}})</h3>
+    <h3>{{entidad.entidad}} {% if entidad.pais %} ({{entidad.pais.nombre}}) {% endif %}</h3>
     {% if entidad.descripcion %}
     <blockquote >
         <p>{{entidad.descripcion|safe}}</p>

@@ -117,7 +117,6 @@
             {% trans 'Entidades que patrocinan e-lactancia' %}
     </h2>  
     <div class="row press">
-        <div class="span4"></div>
         {% for pat in patrocinadores %}
             <div class="span4 aval" data-content="{{pat.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover">
                 <a href="{% url 'lactancia:patrocinadores' %}#{{pat.id}}" target="_blank"><img class="logo grayscale" src="{{pat.logo.url}}"></a>
