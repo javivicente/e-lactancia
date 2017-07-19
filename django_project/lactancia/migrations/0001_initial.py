@@ -319,6 +319,7 @@ class Migration(migrations.Migration):
                 ('biblio', models.ManyToManyField(to='lactancia.Bibliografia', verbose_name='bibliografia', blank=True)),
                 ('grupo', models.ManyToManyField(to='lactancia.Grupo')),
                 ('marcas', models.ManyToManyField(to='lactancia.Marca', verbose_name='Listado de marcas comerciales', blank=True)),
+                ('referencia_grupos', models.ManyToManyField(help_text='Aparecer\xe1 un enlace a las fichas de estos grupos en la caja de comentario.', related_name='grupos_referenciados', verbose_name='Referencia a grupos de productos', to='lactancia.Grupo', blank=True)),
                 ('referencia_otros_productos', models.ManyToManyField(help_text='Aparecer\xe1 un enlace a las fichas de estos productos en la caja de comentario.', related_name='referenciados', verbose_name='Referencia a otros productos', to='lactancia.Producto', blank=True)),
             ],
         ),

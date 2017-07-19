@@ -102,6 +102,7 @@ class Producto(models.Model):
     no_alternativas = models.BooleanField(default=False, verbose_name=_(u'No puede tener alternativas'), help_text=_(u'Marca esta casilla si no tiene sentido que el término tenga altenativas. Por ejemplo, una enfermedad congénita o adquirida.'))
     alternativas = models.ManyToManyField('self', blank=True, symmetrical=False, verbose_name=_(u'Lista de productos alternativos'))
     referencia_otros_productos = models.ManyToManyField('self', blank=True, symmetrical=False, verbose_name=_(u'Referencia a otros productos'), help_text=_(u'Aparecerá un enlace a las fichas de estos productos en la caja de comentario.'), related_name='referenciados')
+    referencia_grupos = models.ManyToManyField('grupo', blank=True, symmetrical=False, verbose_name=_(u'Referencia a grupos de productos'), help_text=_(u'Aparecerá un enlace a las fichas de estos grupos en la caja de comentario.'), related_name='grupos_referenciados')
     tiene_biblio = models.BooleanField(default=True, verbose_name=_(u'Tiene bibliografia (añadida o pendiente de añadir)'), help_text=_(u'Indica si el producto poseera referencias bibliográficas. Si no las va a tener ni ahora ni en el futuro, debe desmarcarse esta casilla. Ejemplos de productos que pueden no tener bibliografía asociada son los de Fitoterapia'))
     biblio = models.ManyToManyField('Bibliografia',verbose_name=_(u'bibliografia'),blank=True)
     csvfile = models.FileField(upload_to='papers/%Y/%m/', verbose_name=_(u'Importar biblio con fichero CSV'), blank=True)

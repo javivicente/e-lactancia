@@ -128,12 +128,13 @@
                         {% block comentario_content %}
                             {% if prod.comentario %}
                                 {{ prod.comentario|linebreaks }}
+                                {# Referencias a otros productos #}
                                 {% if prod.referencia_otros_productos.count > 0 %}
                                 <br/>
                                     {% if prod.referencia_otros_productos.count == 1 %}
-                                        {% trans "Puede consultar la información de este producto aquí:" %}
+                                        {% trans "Puede consultar abajo la información de este producto relacionado:" %}
                                     {% else %}
-                                        {% trans "Puede consultar la información de estos productos aquí:" %}
+                                        {% trans "Puede consultar abajo la información de estos productos relacionados:" %}
                                     {% endif %}
                                     <br/><br/>
                                     <ul class="inline">
@@ -149,6 +150,34 @@
                                             class="link_r3"
                                             {% endif %} 
                                             href="{% url 'lactancia:detalle_p' ref.id %}" target="_blank"><strong>{{ ref.nombre }}</strong></a> ({{ref.riesgo.nombre}})</li>
+                                    {% endfor%}
+                                    </ul>
+                                    
+                                {% endif %}
+                                
+                                {# Referencias a otros grupos #}
+                                {% if prod.referencia_grupos.count > 0 %}
+                                <br/>
+                                    {% if prod.referencia_grupos.count == 1 %}
+                                        {% trans "Puede consultar abajo la información de este grupo relacionado:" %}
+                                    {% else %}
+                                        {% trans "Puede consultar abajo la información de estos grupos relacionados:" %}
+                                    {% endif %}
+                                    <br/><br/>
+                                    <ul class="inline">
+                                    {% for ref in prod.referencia_grupos.all|dictsort:"nombre" %}
+                                        <li ><a 
+                                            {% if prod.riesgo.nivel == 0 %}
+                                            class="link_r0" 
+                                            {% elif prod.riesgo.nivel == 1 %}
+                                            class="link_r1"
+                                            {% elif prod.riesgo.nivel == 2 %}
+                                            class="link_r2"
+                                            {% elif prod.riesgo.nivel == 3 %}
+                                            class="link_r3"
+                                            {% endif %} 
+                                            href="{% url 'lactancia:detalle_g' ref.id %}" target="_blank"><strong>{{ ref.nombre }}</strong></a>
+                                        </li>
                                     {% endfor%}
                                     </ul>
                                     

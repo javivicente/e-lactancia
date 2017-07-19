@@ -478,7 +478,7 @@ class ProductoAdmin(admin.ModelAdmin):
     ordering = ('nombre',)
     search_fields = ('nombre_es', 'nombre_en',)
     #filter_horizontal = ('grupo','alternativas','marcas','biblio',)
-    filter_horizontal = ('grupo','alternativas','referencia_otros_productos','biblio',)
+    filter_horizontal = ('grupo','alternativas','referencia_otros_productos','referencia_grupos','biblio',)
     readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas',)
     #readonly_fields = ('fecha_creacion','fecha_modificacion', )
     inlines = [Otras_escriturasInline, AliasInline, ProdComentariosInline, ]
@@ -502,7 +502,7 @@ class ProductoAdmin(admin.ModelAdmin):
                 }),        
                 (None, {
                         'classes': ('suit-tab suit-tab-comentarios',),
-                        'fields': ['comentario_es','comentario_en','referencia_otros_productos',]
+                        'fields': ['comentario_es','comentario_en','referencia_otros_productos','referencia_grupos',]
                 }),
                 (None, {
                         'classes': ('suit-tab suit-tab-alternativas',),
