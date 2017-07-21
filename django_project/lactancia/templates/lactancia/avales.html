@@ -39,11 +39,13 @@
         <div class="risk empty-space risk-miniblock  span12"></div>
 </div>
 {% endfor %}
-
+<div class="row-fluid">
+        <div class="risk empty-space risk-miniblock  span12"></div>
+</div>
 {% for t in textos %}
     {% if t.visible %}
     <div class="row"> 
-       <div class="span6 offset3">
+       <div class="span8 offset2">
             <h2 class="text-center">{{t.title}}</h2>
             {{ t.content|safe|linebreaks}}
        </div>

@@ -777,14 +777,19 @@ class Visita_alias_total_Admin(admin.ModelAdmin):
     model = Visita_alias_total
     ordering=('-visitas',)
     list_select_related = True
-    list_display=('alias', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    list_display=('alias', 'visitas', 'fecha_modificacion','ultima_modificacion_alias','ultima_modificacion_producto')
     readonly_fields=('alias', 'visitas', 'fecha_modificacion',)
     search_fields = ( 'alias__nombre_es', 'alias__nombre_en',)
     
-    def ultima_modificacion_termino(self, obj):
+    def ultima_modificacion_alias(self, obj):
         return obj.alias.fecha_modificacion
-    ultima_modificacion_termino.allow_tags = True
-    ultima_modificacion_termino.short_description = _(u'Última edición sinónimo')
+    ultima_modificacion_alias.allow_tags = True
+    ultima_modificacion_alias.short_description = _(u'Última edición sinónimo')
+    
+    def ultima_modificacion_producto(self, obj):
+        return obj.alias.producto_principal.fecha_modificacion
+    ultima_modificacion_producto.allow_tags = True
+    ultima_modificacion_producto.short_description = _(u'Última edición producto')
 
 admin.site.register(Visita_alias_total, Visita_alias_total_Admin)
 
@@ -809,7 +814,7 @@ class Visita_otras_escrituras_total_Admin(admin.ModelAdmin):
     model = Visita_otras_escrituras_total
     ordering=('-visitas',)
     list_select_related = True
-    list_display=('otras_escrituras', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
+    list_display=('otras_escrituras', 'visitas', 'fecha_modificacion','ultima_modificacion_termino','ultima_modificacion_producto',)
     readonly_fields=('otras_escrituras', 'visitas', 'fecha_modificacion',)
     search_fields = ( 'otras_escrituras__nombre',)
     
@@ -818,6 +823,10 @@ class Visita_otras_escrituras_total_Admin(admin.ModelAdmin):
     ultima_modificacion_termino.allow_tags = True
     ultima_modificacion_termino.short_description = _(u'Última edición otra escritura')
 
+    def ultima_modificacion_producto(self, obj):
+        return obj.otras_escrituras.producto_principal.fecha_modificacion
+    ultima_modificacion_producto.allow_tags = True
+    ultima_modificacion_producto.short_description = _(u'Última edición producto')
 
 admin.site.register(Visita_otras_escrituras_total, Visita_otras_escrituras_total_Admin)
 

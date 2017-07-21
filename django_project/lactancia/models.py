@@ -122,7 +122,7 @@ class Producto(models.Model):
     dosis_terapeutica = models.CharField(max_length=30, blank=True, null=True, verbose_name=_(u'Dosis relativa pediátrica'))
     
     def traducido_al_ingles(self):
-        return self.nombre_es != self.nombre_en and self.comentario_es != self.comentario_en
+        return self.comentario_es != self.comentario_en
     traducido_al_ingles.boolean = True
     traducido_al_ingles.admin_order_field = 'nombre'
     traducido_al_ingles.short_description=_(u'Traducido')

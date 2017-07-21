@@ -21,7 +21,7 @@
 
 
 {% block alias_text %}
-	<strong>{{aliasp.nombre}}</strong> {% trans "es más comúnmente conocido como" %} <a href="{% url 'lactancia:detalle_p' prod.id %}">{{prod.nombre}}</a>. 
+	<strong>{{aliasp.nombre}}</strong> {% trans "también se conoce como" %} <a href="{% url 'lactancia:detalle_p' prod.id %}">{{prod.nombre}}</a>. 
 	{% if prod_alias|length > 1 %}
 		{% trans "Esta es una lista de otros posibles nombres" %}:
 	{% endif %}
