@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-19 12:00+0200\n"
+"POT-Creation-Date: 2017-07-25 19:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,23 +114,23 @@ msgstr "From user:"
 msgid "Texto:"
 msgstr "Text:"
 
-#: admin.py:754 admin.py:835
+#: admin.py:754 admin.py:844
 msgid "Última edición grupo"
 msgstr "Last edit of group"
 
-#: admin.py:771 admin.py:852
+#: admin.py:771 admin.py:792 admin.py:829 admin.py:861
 msgid "Última edición producto"
 msgstr "Last edit of product"
 
-#: admin.py:787 admin.py:869
+#: admin.py:787 admin.py:878
 msgid "Última edición sinónimo"
 msgstr "Last edit of synonym"
 
-#: admin.py:802 admin.py:886
+#: admin.py:807 admin.py:895
 msgid "Última edición marca"
 msgstr "Last edit of tradename"
 
-#: admin.py:819 admin.py:903
+#: admin.py:824 admin.py:912
 msgid "Última edición otra escritura"
 msgstr "Las edit of other writings"
 
@@ -483,7 +483,8 @@ msgstr "Reference to other products"
 #: models.py:104
 msgid ""
 "Aparecerá un enlace a las fichas de estos productos en la caja de comentario."
-msgstr "A link to the page of these products will be posted in the comment box."
+msgstr ""
+"A link to the page of these products will be posted in the comment box."
 
 #: models.py:105
 msgid "Referencia a grupos de productos"
@@ -1803,9 +1804,12 @@ msgstr "with breastfeeding"
 msgid "con la #lactancia"
 msgstr "with #breastfeeding"
 
+# mark to review!
 #: templates/lactancia/detalle_ap.html:24
-msgid "es más comúnmente conocido como"
-msgstr "is commonly known as"
+#: templates/lactancia/detalle_oe.html:42
+#: templates/lactancia/detalle_p.html:302
+msgid "también se conoce como"
+msgstr "is also known as"
 
 #: templates/lactancia/detalle_ap.html:26
 msgid "Esta es una lista de otros posibles nombres"
@@ -1935,12 +1939,6 @@ msgstr "in"
 #: templates/lactancia/detalle_oe.html:27
 msgid "Así se escribe en otros idiomas"
 msgstr "Is written in other languages"
-
-# mark to review!
-#: templates/lactancia/detalle_oe.html:42
-#: templates/lactancia/detalle_p.html:302
-msgid "también se conoce como"
-msgstr "is also known as"
 
 #: templates/lactancia/detalle_p.html:61
 msgid "Última actualización:"
@@ -2072,13 +2070,12 @@ msgstr "Full text (in our servers)"
 
 #: templates/lactancia/detalle_p.html:581
 msgid ""
-"Estamos trabajando en migrar y mejorar la ficha bibliográfica que este "
-"producto tenía en la antigua versión de e-lactancia.org. En breve estará "
-"disponible. Si desea tener acceso a esta información, por favor, háganoslo "
-"saber con un comentario en el apartado de opinión."
+"Estamos trabajando en poner las citas bibliográficas de este producto. En "
+"breve estará disponible. Si desea tener acceso a esta información, por "
+"favor, háganoslo saber con un comentario en el apartado de opinión."
 msgstr ""
-"We are working to migrate and improve the scientific references of this "
-"product from the former version of e-lactancia.org. It will be available "
+"We are working to add the scientific references of this "
+"product. It will be available "
 "soon. If you wish to have access to this information, please let us know by "
 "leaving your comment in the opinion section below."
 
@@ -3467,6 +3464,9 @@ msgstr "by level of risk according e-lactancia.org"
 #: views.py:608
 msgid "['muy mala', 'mala', 'regular', 'buena', 'muy buena']"
 msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
+
+#~ msgid "es más comúnmente conocido como"
+#~ msgstr "is commonly known as"
 
 #~ msgid "Visitas/Opiniones"
 #~ msgstr "Visits/Opinions"
