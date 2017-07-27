@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-25 19:23+0200\n"
+"POT-Creation-Date: 2017-07-27 13:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1254,7 +1254,6 @@ msgstr ""
 "have been registered during the last 3 months."
 
 #: templates/lactancia/avales.html:3 templates/lactancia/avales.html.py:12
-#: templates/lactancia/landing.html:207
 msgid "Entidades que recomiendan el uso de e-lactancia"
 msgstr "Institutions that recommend the use of e-lactancia"
 
@@ -2074,10 +2073,9 @@ msgid ""
 "breve estará disponible. Si desea tener acceso a esta información, por "
 "favor, háganoslo saber con un comentario en el apartado de opinión."
 msgstr ""
-"We are working to add the scientific references of this "
-"product. It will be available "
-"soon. If you wish to have access to this information, please let us know by "
-"leaving your comment in the opinion section below."
+"We are working to add the scientific references of this product. It will be "
+"available soon. If you wish to have access to this information, please let "
+"us know by leaving your comment in the opinion section below."
 
 #: templates/lactancia/detalle_p.html:583
 msgid "No disponemos de bibliografía para este producto."
@@ -2660,10 +2658,12 @@ msgid "Publicidad"
 msgstr "Advertisement"
 
 #: templates/lactancia/landing.html:117
-#: templates/lactancia/patrocinadores.html:3
-#: templates/lactancia/patrocinadores.html:12
-msgid "Entidades que patrocinan e-lactancia"
-msgstr "Institutions sponsoring e-lactancia"
+msgid "Patrocinan e-lactancia"
+msgstr "Sponsors of e-lactancia"
+
+#: templates/lactancia/landing.html:207
+msgid "Recomiendan el uso de e-lactancia"
+msgstr "Recommenders of e-lactancia"
 
 #: templates/lactancia/limpiar_cache.html:6
 msgid "Limpieza de la Caché de e-lactancia"
@@ -2994,6 +2994,11 @@ msgstr "Average evaluation"
 #: templates/lactancia/partial_table_stars.html:9
 msgid "Nº usuarios"
 msgstr "No. of users"
+
+#: templates/lactancia/patrocinadores.html:3
+#: templates/lactancia/patrocinadores.html:12
+msgid "Entidades que patrocinan e-lactancia"
+msgstr "Institutions sponsoring e-lactancia"
 
 #: templates/lactancia/patrocinadores.html:8
 #: templates/lactancia/patrocinadores.html:9
