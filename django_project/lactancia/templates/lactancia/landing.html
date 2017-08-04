@@ -118,7 +118,7 @@
     </h2>  
     <div class="row press">
         {% for pat in patrocinadores %}
-            <div class="span4 aval" data-content="{{pat.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover">
+            <div class="span3 aval" data-content="{{pat.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover">
                 <a href="{% url 'lactancia:patrocinadores' %}#{{pat.id}}" target="_blank"><img class="logo grayscale" src="{{pat.logo.url}}"></a>
             </div>
         {% endfor %}
