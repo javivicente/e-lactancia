@@ -844,14 +844,16 @@ class Idioma(models.Model):
     def num_productos(self):
         return Otras_escrituras.objects.filter(escritura=self.id).count()
     num_productos.short_description= _(u'Num de productos en este idioma')
-        
+    
+    '''    
     def save(self, *args, **kwargs):
         for field_name in ['nombre', 'nombre_es', 'nombre_en']:
             val = getattr(self, field_name, False)
             if val:
                 setattr(self, field_name, val.strip().capitalize())
         super(Idioma, self).save(*args, **kwargs) 
-        
+    '''
+    
     def __unicode__(self):
         return self.nombre
 
