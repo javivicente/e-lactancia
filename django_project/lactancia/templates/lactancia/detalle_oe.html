@@ -43,7 +43,7 @@
             <ul> 
                 {% block listado_alias %}
                     {% for alias in prod_alias %}
-                        <li><a href="{% url 'lactancia:detalle_ap' alias.id %}"  >{{ alias.nombre }}</a></li>
+                        <li><a href="{% url 'lactancia:ficha_alias' alias.slug %}"  >{{ alias.nombre }}</a></li>
                     {% endfor %}
                 {% endblock %}
             </ul>

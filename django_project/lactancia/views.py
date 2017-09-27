@@ -1045,7 +1045,7 @@ def detalle_p(request, producto_id):
 
     try:
         # get the product
-        term = Producto.objects.prefetch_related('grupo','alternativas','marcas','biblio').get(pk=producto_id)
+        term = Producto.objects.get(pk=producto_id)
         return redirect(term, permanent=True)
     except Producto.DoesNotExist:
         raise Http404    
@@ -1067,12 +1067,22 @@ def ficha_producto(request, slug):
     
     return render(request, 'lactancia/detalle_p.html', context)
 
+    
 def detalle_ap(request, alias_id):
+
+    try:
+        # get the product
+        term = Alias.objects.get(pk=alias_id)
+        return redirect(term, permanent=True)
+    except Producto.DoesNotExist:
+        raise Http404        
+    
+def ficha_alias(request, slug):
     try:
         # get the alias
-        alias = Alias.objects.get(pk=alias_id)
+        alias = Alias.objects.get(slug=slug)
         if alias.nombre=='':
-            return redirect('lactancia:detalle_p', alias.producto_principal.id)
+            return redirect(alias.producto_principal)
         # set the context
         context = get_context_for_alias(request, alias)
         context= update_context(request, alias, context)
@@ -1229,7 +1239,7 @@ def get_context_for_grupo(request, grupo):
 def detalle_g(request, grupo_id):
     try:
         # get the grupo
-        grupo = Grupo.objects.prefetch_related('relacionados').get(pk=grupo_id)
+        grupo = Grupo.objects.get(pk=grupo_id)
         return redirect(grupo, permanent=True)
     except Grupo.DoesNotExist:
         raise Http404
@@ -2137,6 +2147,22 @@ def slugify_products():
         i.save()
         slug = slugify(i.nombre_en)[0:93]
         duplicated_slug = Producto.objects.filter(slug=slug).count()
+        if duplicated_slug>0:
+            slug = slug + '-' + str(duplicated_slug + 1)
+        i.slug = slug
+        i.save()
+        
+def slugify_alias():
+    items = Alias.objects.all()
+    
+    for i in items:
+        i.slug='kk'
+        i.save()
+        if i.nombre_en:
+            slug = slugify(i.nombre_en)[0:93]
+        else:
+            slug = slugify(i.nombre_es)[0:93]
+        duplicated_slug = Alias.objects.filter(slug=slug).count()
         if duplicated_slug>0:
             slug = slug + '-' + str(duplicated_slug + 1)
         i.slug = slug

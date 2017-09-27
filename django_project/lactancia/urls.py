@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^breastfeeding/(?P<slug>[\w-]+)/group/$', views.ficha_grupo, name='ficha_grupo'),
     url(r'^marca/(?P<marca_id>\d+)/$', views.detalle_m, name='detalle_m'),
     url(r'^sinonimo/(?P<alias_id>\d+)/$', views.detalle_ap, name='detalle_ap'),
+    url(r'^breastfeeding/(?P<slug>[\w-]+)/synonym/$', views.ficha_alias, name='ficha_alias'),
     url(r'^otra_escritura/(?P<otra_escritura_id>\d+)/$', views.detalle_oe, name='detalle_oe'),
     url(r'^download-citation/$', views.download_citation, name='download_citation'),
     url(r'^API/get_list_of_terms$', views.get_list_of_terms, name='get_list_of_terms'),

@@ -159,6 +159,11 @@ class AliasComentariosInline(admin.TabularInline):
 class AliasForm(ModelForm):
         class Meta:
                 model = Alias
+                widgets = {
+                        'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
+                        'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
+                }
                 exclude= ('nombre',)
         
         def clean(self):
@@ -174,13 +179,13 @@ class AliasAdmin(admin.ModelAdmin):
     search_fields = ('producto_principal__nombre', 'nombre_es','nombre_en',)
     ordering = ('producto_principal__nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion','visitas',)
-    
+    prepopulated_fields = {'slug': ('nombre_en',)}
     inlines = [AliasComentariosInline, ]
     date_hierarchy = 'fecha_modificacion'
 
     fieldsets = (
                 (_(u'Alias'), {
-                        'fields': ('nombre_es','nombre_en',)
+                        'fields': ('nombre_es','nombre_en','slug',)
                 }),
                 (_(u'Nombre Principal'), {
                         'fields': ('producto_principal',)

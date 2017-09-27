@@ -266,6 +266,7 @@ class Alias(models.Model):
 
     producto_principal= models.ForeignKey('Producto', verbose_name=_(u'Nombre principal del producto'))
     nombre = models.CharField(_(u'Sinónimo del producto'), db_index=True, max_length=255, blank=True, null=True, help_text=_(u'Nombre en español. Si tiene traducción al inglés, ponla en el campo del nombre en inglés. Sino, deja el campo del nombre en inglés vacío.'))
+    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Debe ir en inglés. Ejemplo: emergency-contraceptive-pills-3-days para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days. Un buen slug favorece aparecer en los primeros resultados de búsquedas en Google.'), unique= True)
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
         
@@ -295,9 +296,9 @@ class Alias(models.Model):
     def dime_que_eres(self):
         return u'alias'
     
-    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    # returns Absolute url. Example: http://e-lactancia.org/breastfeeding/contraceptive-pills-3-days/product/
     def get_absolute_url(self):
-        return "/sinonimo/%s/" % str(self.id)
+        return "/breastfeeding/%s/synonym/" % self.slug
         
     def __unicode__(self):
         return self.nombre
