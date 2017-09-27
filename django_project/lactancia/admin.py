@@ -24,21 +24,32 @@ class GrupoComentariosInline(admin.TabularInline):
         exclude = ('alias','marca','otra_escritura','prod','mensaje','lang',)
         extra = 0
 
-        
+class GrupoForm(ModelForm):
+        class Meta:
+                widgets = {
+                       'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-xlarge'}),
+                       'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-xlarge'}),
+                       'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        }
+                        
+                exclude= ('nombre',)
+                
+                
 class GrupoAdmin(admin.ModelAdmin):
     list_display = ('nombre','num_productos','obten_relacionados','opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     ordering = ('nombre',)
     search_fields = ('nombre_es','nombre_en')
     filter_horizontal = ('relacionados',)
+    prepopulated_fields = {'slug': ('nombre_en',)}
     readonly_fields = ('fecha_creacion', 'fecha_modificacion','visitas',)
     inlines = [GrupoComentariosInline,]
     date_hierarchy = 'fecha_modificacion'
-    
+    form = GrupoForm
     
     fieldsets = [
                 (None, {
                         'classes': ('wide',),
-                        'fields': ('nombre_es','nombre_en')
+                        'fields': ('nombre_es','nombre_en','slug')
                 }),
                 (_(u'Grupos relacionados'), {
                         'fields': ('relacionados',)
@@ -330,8 +341,11 @@ class ProductoForm(ModelForm):
         class Meta:
                 model = Producto
                 widgets = {
-                        'comentario_es': AutosizedTextarea(attrs={'rows': 15, 'class': 'span-12'}),
-                        'comentario_en': AutosizedTextarea(attrs={'rows': 15, 'class': 'span-12'}),
+                        'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
+                        'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
+                        'comentario_es': AutosizedTextarea(attrs={'rows': 15, 'class': 'span12'}),
+                        'comentario_en': AutosizedTextarea(attrs={'rows': 15, 'class': 'span12'}),
                         'biodisponibilidad': EnclosedInput(append='%'),
                         'peso_molecular': EnclosedInput(append='daltons'),
                         'union_proteinas': EnclosedInput(append='%'),
@@ -474,6 +488,7 @@ class ProductoAdmin(admin.ModelAdmin):
     form = ProductoForm
     list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
     #list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'num_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes', 'fecha_modificacion','traducido_al_ingles',)
+    prepopulated_fields = {'slug': ('nombre_en',)}
     list_filter = ( 'riesgo','grupo', )
     ordering = ('nombre',)
     search_fields = ('nombre_es', 'nombre_en',)
@@ -490,7 +505,7 @@ class ProductoAdmin(admin.ModelAdmin):
                         'fields': []
                 }),
                 ('Nombre principal', {
-                        'fields': ('nombre_es','nombre_en')
+                        'fields': ('nombre_es','nombre_en', 'slug',)
                 }),
                 #(None, {
                 #        'classes': ('suit-tab suit-tab-marcas',),

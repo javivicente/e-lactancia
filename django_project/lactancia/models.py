@@ -30,6 +30,7 @@ PROFILE_CHOICES = (
 
 class Grupo(models.Model):
     nombre = models.CharField(_(u'Nombre'), db_index=True, max_length=255, unique=True)
+    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Debe ir en inglés. Ejemplo: emergency-contraceptive-pills-3-days para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days. Un buen slug favorece aparecer en los primeros resultados de búsquedas en Google.'), unique=True)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
     fecha_modificacion = models.DateTimeField(_(u'Última modificación'), db_index=True, auto_now = True)
     relacionados = models.ManyToManyField('self', blank=True, verbose_name=_(u'grupos con los que se relaciona'))
@@ -75,9 +76,9 @@ class Grupo(models.Model):
     def dime_que_eres(self):
         return u'grupo'
 
-    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    # returns Absolute url. Example: http://e-lactancia.org/breastfeeding/contraceptive-pills-3-days/product/
     def get_absolute_url(self):
-        return "/grupo/%s/" % str(self.id)
+        return "/breastfeeding/%s/group/" % self.slug
     
     def __unicode__(self):
         return self.nombre
@@ -100,6 +101,7 @@ class Riesgo(models.Model):
 
 class Producto(models.Model):
     nombre = models.CharField(db_index=True, max_length=255, verbose_name=_(u'Nombre'), unique=True)
+    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Debe ir en inglés. Ejemplo: emergency-contraceptive-pills-3-days para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days. Un buen slug favorece aparecer en los primeros resultados de búsquedas en Google.'), unique= True)
     grupo = models.ManyToManyField('grupo')
     riesgo = models.ForeignKey('riesgo', verbose_name=_(u'Nivel de riesgo'))
     comentario = models.CharField(max_length = 10000, blank=True, null=True, verbose_name=_(u'Comentario'))
@@ -208,9 +210,9 @@ class Producto(models.Model):
     es_principio_activo.boolean = True
     es_principio_activo.short_description = _(u'Tiene Farmac.')
     
-    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    # returns Absolute url. Example: http://e-lactancia.org/breastfeeding/contraceptive-pills-3-days/product/
     def get_absolute_url(self):
-        return "/producto/%s/" % str(self.id)
+        return "/breastfeeding/%s/product/" % self.slug
     
     def __unicode__(self):
         return unicode(self.nombre)

@@ -22,7 +22,7 @@
 
         {% block other_names_first %}
         {% if prod_otras_escrituras %}
-            <p><strong>{{otra_escritura.nombre}}</strong> {% trans "es" %} <a href="{% url 'lactancia:detalle_p' prod.id %}">{{prod.nombre}}</a> {% trans "en" %} {{otra_escritura.escritura.nombre}}. </p>
+            <p><strong>{{otra_escritura.nombre}}</strong> {% trans "es" %} <a href="{% url 'lactancia:ficha_producto' prod.slug %}">{{prod.nombre}}</a> {% trans "en" %} {{otra_escritura.escritura.nombre}}. </p>
             {% if prod_otras_escrituras|length > 1 %}
                 {% trans "Así se escribe en otros idiomas" %}:
             {% endif %}

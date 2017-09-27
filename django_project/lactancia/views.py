@@ -1046,6 +1046,17 @@ def detalle_p(request, producto_id):
     try:
         # get the product
         term = Producto.objects.prefetch_related('grupo','alternativas','marcas','biblio').get(pk=producto_id)
+        return redirect(term, permanent=True)
+    except Producto.DoesNotExist:
+        raise Http404    
+    
+
+        
+def ficha_producto(request, slug):
+
+    try:
+        # get the product
+        term = Producto.objects.prefetch_related('grupo','alternativas','marcas','biblio').get(slug=slug)
         # get the context for the product
         context = get_context_for_product(request, term)
         context= update_context(request, term, context)
@@ -1055,8 +1066,6 @@ def detalle_p(request, producto_id):
         raise Http404
     
     return render(request, 'lactancia/detalle_p.html', context)
-    
-
 
 def detalle_ap(request, alias_id):
     try:
@@ -1221,6 +1230,15 @@ def detalle_g(request, grupo_id):
     try:
         # get the grupo
         grupo = Grupo.objects.prefetch_related('relacionados').get(pk=grupo_id)
+        return redirect(grupo, permanent=True)
+    except Grupo.DoesNotExist:
+        raise Http404
+    
+
+def ficha_grupo(request, slug):
+    try:
+        # get the grupo
+        grupo = Grupo.objects.prefetch_related('relacionados').get(slug=slug)
         # set the context
         context = get_context_for_grupo(request, grupo)
         context= update_context(request, grupo, context)
@@ -1230,7 +1248,6 @@ def detalle_g(request, grupo_id):
         raise Http404
     
     return render(request, 'lactancia/detalle_g2.html', context)
-
     
     
 def hay_alertas_de_90_dias():
@@ -2087,3 +2104,40 @@ def download_citation(request):
     
     return HttpResponse(result)       
     
+    
+'''
+URLS restructure
+'''
+import re
+import unidecode
+
+
+def slugify(text):
+    text = unidecode.unidecode(text).lower()
+    return re.sub(r'\W+', '-', text)
+    
+def slugify_groups():
+    grupos = Grupo.objects.all()
+    
+    for g in grupos:
+        g.slug='kk'
+        g.save()
+        slug = slugify(g.nombre_en)[0:93]
+        duplicated_slug = Grupo.objects.filter(slug=slug).count()
+        if duplicated_slug>0:
+            slug = slug + '-' + str(duplicated_slug + 1)
+        g.slug = slug
+        g.save()
+        
+def slugify_products():
+    items = Producto.objects.all()
+    
+    for i in items:
+        i.slug='kk'
+        i.save()
+        slug = slugify(i.nombre_en)[0:93]
+        duplicated_slug = Producto.objects.filter(slug=slug).count()
+        if duplicated_slug>0:
+            slug = slug + '-' + str(duplicated_slug + 1)
+        i.slug = slug
+        i.save()
