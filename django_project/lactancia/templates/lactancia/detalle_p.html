@@ -318,7 +318,7 @@
             <p><strong>{% block name_main_prod_otras_escrituras %}{{prod.nombre}}{% endblock %}</strong> {% trans "en otros idiomas o escrituras" %}:</p>
             <ul> 
                     {% for alias in prod_otras_escrituras %}
-                        <li><a href="{% url 'lactancia:detalle_oe' alias.id %}"  >{{ alias.nombre }}</a> ({{alias.escritura.nombre}})</li>
+                        <li><a href="{% url 'lactancia:ficha_otra_escritura' alias.slug %}"  >{{ alias.nombre }}</a> ({{alias.escritura.nombre}})</li>
                     {% endfor %}
             </ul>
         {% endif %}

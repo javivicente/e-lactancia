@@ -1074,7 +1074,7 @@ def detalle_ap(request, alias_id):
         # get the product
         term = Alias.objects.get(pk=alias_id)
         return redirect(term, permanent=True)
-    except Producto.DoesNotExist:
+    except Alias.DoesNotExist:
         raise Http404        
     
 def ficha_alias(request, slug):
@@ -1094,9 +1094,18 @@ def ficha_alias(request, slug):
     return render(request, 'lactancia/detalle_ap.html', context)
 
 def detalle_oe(request, otra_escritura_id):
+
+    try:
+        # get the product
+        term = Otras_escrituras.objects.get(pk=otra_escritura_id)
+        return redirect(term, permanent=True)
+    except Otras_escrituras.DoesNotExist:
+        raise Http404            
+    
+def ficha_otra_escritura(request, slug):
     try:
         # get the alias
-        otra_esc = Otras_escrituras.objects.get(pk=otra_escritura_id)
+        otra_esc = Otras_escrituras.objects.get(slug=slug)
         # set the context
         context = get_context_for_otra_escritura(request, otra_esc)
         context= update_context(request, otra_esc, context)
@@ -2163,6 +2172,20 @@ def slugify_alias():
         else:
             slug = slugify(i.nombre_es)[0:93]
         duplicated_slug = Alias.objects.filter(slug=slug).count()
+        if duplicated_slug>0:
+            slug = slug + '-' + str(duplicated_slug + 1)
+        i.slug = slug
+        i.save()
+        
+def slugify_escrituras():
+    items = Otras_escrituras.objects.all()
+    
+    for i in items:
+        i.slug='kk'
+        i.save()
+        
+        slug = slugify(i.nombre)[0:93]
+        duplicated_slug = Otras_escrituras.objects.filter(slug=slug).count()
         if duplicated_slug>0:
             slug = slug + '-' + str(duplicated_slug + 1)
         i.slug = slug

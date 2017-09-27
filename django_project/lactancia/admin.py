@@ -217,6 +217,10 @@ class Otras_escrituras_ComentariosInline(admin.TabularInline):
 class Otras_escriturasForm(ModelForm):
         class Meta:
                 model = Otras_escrituras
+                widgets = {
+                        'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        'nombre': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
+                }
                 exclude= ['idioma']
         
         
@@ -228,6 +232,7 @@ class Otras_escriturasAdmin(admin.ModelAdmin):
                         'opiniones_pendientes','visitas', 'fecha_modificacion',)
     search_fields = ('producto_principal__nombre', 'nombre',)
     list_filter=('escritura',)
+    prepopulated_fields = {'slug': ('nombre',)}
     ordering = ('escritura__order','producto_principal__nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion','visitas',)
     
@@ -236,7 +241,7 @@ class Otras_escriturasAdmin(admin.ModelAdmin):
 
     fieldsets = (
                 (_(u'Otras escrituras'), {
-                        'fields': ('nombre','escritura',)
+                        'fields': ('nombre','slug','escritura',)
                 }),
                 (_(u'Nombre Principal'), {
                         'fields': ('producto_principal',)
