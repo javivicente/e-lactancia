@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-27 13:12+0200\n"
+"POT-Creation-Date: 2017-09-27 10:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,11 +81,11 @@ msgstr "Name(s)"
 msgid "Riesgo y Grupos"
 msgstr "Risk and groups"
 
-#: admin.py:538 models.py:101 templates/lactancia/detalle_p.html:127
+#: admin.py:538 models.py:105 templates/lactancia/detalle_p.html:127
 msgid "Comentario"
 msgstr "Comment"
 
-#: admin.py:539 models.py:170 templates/lactancia/detalle_p.html:196
+#: admin.py:539 models.py:174 templates/lactancia/detalle_p.html:196
 msgid "Alternativas"
 msgstr "Alternatives"
 
@@ -93,7 +93,7 @@ msgstr "Alternatives"
 msgid "Farmac"
 msgstr "Pharmacy"
 
-#: admin.py:541 models.py:247 models.py:248
+#: admin.py:541 models.py:255 models.py:256
 msgid "Biblio"
 msgstr "References"
 
@@ -134,7 +134,7 @@ msgstr "Last edit of tradename"
 msgid "Última edición otra escritura"
 msgstr "Las edit of other writings"
 
-#: forms.py:7 models.py:15 models.py:593
+#: forms.py:7 models.py:15 models.py:613
 #: templates/lactancia/estadisticas_json_ES.html:469
 #: templates/lactancia/estadisticas_json_ES.html:517
 #: templates/lactancia/estadisticas_json_ES.html:568
@@ -153,7 +153,7 @@ msgstr "Las edit of other writings"
 msgid "Pediatra"
 msgstr "Pediatrician"
 
-#: forms.py:8 models.py:16 models.py:595
+#: forms.py:8 models.py:16 models.py:615
 #: templates/lactancia/estadisticas_json_ES.html:470
 #: templates/lactancia/estadisticas_json_ES.html:518
 #: templates/lactancia/estadisticas_json_ES.html:569
@@ -172,7 +172,7 @@ msgstr "Pediatrician"
 msgid "Ginecóloga/o"
 msgstr "Gynecologist"
 
-#: forms.py:9 models.py:17 models.py:599
+#: forms.py:9 models.py:17 models.py:619
 #: templates/lactancia/estadisticas_json_ES.html:481
 #: templates/lactancia/estadisticas_json_ES.html:529
 #: templates/lactancia/estadisticas_json_ES.html:580
@@ -209,7 +209,7 @@ msgstr "General practitioner"
 msgid "Otra especialidad médica"
 msgstr "Other medical specialty"
 
-#: forms.py:11 models.py:19 models.py:601
+#: forms.py:11 models.py:19 models.py:621
 #: templates/lactancia/estadisticas_json_ES.html:472
 #: templates/lactancia/estadisticas_json_ES.html:520
 #: templates/lactancia/estadisticas_json_ES.html:571
@@ -228,7 +228,7 @@ msgstr "Other medical specialty"
 msgid "Matrona"
 msgstr "Midwife"
 
-#: forms.py:12 models.py:20 models.py:603
+#: forms.py:12 models.py:20 models.py:623
 #: templates/lactancia/estadisticas_json_ES.html:473
 #: templates/lactancia/estadisticas_json_ES.html:521
 #: templates/lactancia/estadisticas_json_ES.html:572
@@ -247,11 +247,11 @@ msgstr "Midwife"
 msgid "Enfermera/o"
 msgstr "Nurse"
 
-#: forms.py:13 models.py:21 models.py:605
+#: forms.py:13 models.py:21 models.py:625
 msgid "Farmacéutico/a"
 msgstr "Pharmacist"
 
-#: forms.py:14 models.py:22 models.py:607
+#: forms.py:14 models.py:22 models.py:627
 #: templates/lactancia/estadisticas_json_ES.html:474
 #: templates/lactancia/estadisticas_json_ES.html:522
 #: templates/lactancia/estadisticas_json_ES.html:573
@@ -270,7 +270,7 @@ msgstr "Pharmacist"
 msgid "Otro sanitario"
 msgstr "Other health professional"
 
-#: forms.py:15 models.py:23 models.py:609
+#: forms.py:15 models.py:23 models.py:629
 #: templates/lactancia/estadisticas_json_ES.html:475
 #: templates/lactancia/estadisticas_json_ES.html:523
 #: templates/lactancia/estadisticas_json_ES.html:574
@@ -289,7 +289,7 @@ msgstr "Other health professional"
 msgid "Consultora lactancia (IBCLC, OMS)"
 msgstr "Breastfeeding councellor (IBCLC, WHO)"
 
-#: forms.py:16 models.py:24 models.py:611
+#: forms.py:16 models.py:24 models.py:631
 #: templates/lactancia/estadisticas_json_ES.html:476
 #: templates/lactancia/estadisticas_json_ES.html:524
 #: templates/lactancia/estadisticas_json_ES.html:575
@@ -308,7 +308,7 @@ msgstr "Breastfeeding councellor (IBCLC, WHO)"
 msgid "Grupo de apoyo"
 msgstr "Support group"
 
-#: forms.py:17 models.py:25 models.py:613
+#: forms.py:17 models.py:25 models.py:633
 #: templates/lactancia/estadisticas_json_ES.html:477
 #: templates/lactancia/estadisticas_json_ES.html:525
 #: templates/lactancia/estadisticas_json_ES.html:576
@@ -327,7 +327,7 @@ msgstr "Support group"
 msgid "Doula"
 msgstr "Doula"
 
-#: forms.py:18 models.py:26 models.py:615
+#: forms.py:18 models.py:26 models.py:635
 #: templates/lactancia/estadisticas_json_ES.html:478
 #: templates/lactancia/estadisticas_json_ES.html:526
 #: templates/lactancia/estadisticas_json_ES.html:577
@@ -346,7 +346,7 @@ msgstr "Doula"
 msgid "Madre/Padre"
 msgstr "Mother/Father"
 
-#: forms.py:19 models.py:27 models.py:617
+#: forms.py:19 models.py:27 models.py:637
 #: templates/lactancia/estadisticas_json_ES.html:479
 #: templates/lactancia/estadisticas_json_ES.html:527
 #: templates/lactancia/estadisticas_json_ES.html:578
@@ -365,7 +365,7 @@ msgstr "Mother/Father"
 msgid "Otro"
 msgstr "Other"
 
-#: forms.py:20 models.py:28 models.py:619
+#: forms.py:20 models.py:28 models.py:639
 msgid "Anónimo"
 msgstr "Anonymous"
 
@@ -378,8 +378,8 @@ msgstr "For opinion or suggestions. For questions: elactancia.org@gmail.com"
 msgid "No hay suficiente texto"
 msgstr "There is not enough text"
 
-#: forms.py:41 models.py:32 models.py:83 models.py:98 models.py:509
-#: models.py:550 models.py:553 models.py:859 models.py:913
+#: forms.py:41 models.py:32 models.py:87 models.py:102 models.py:529
+#: models.py:570 models.py:573 models.py:881 models.py:935
 msgid "Nombre"
 msgstr "Name"
 
@@ -399,17 +399,17 @@ msgstr "Text too long"
 msgid "Introduzca una dirección de correo válida"
 msgstr "Insert a valid e-mail"
 
-#: models.py:33 models.py:110 models.py:219 models.py:259 models.py:298
-#: models.py:332 models.py:515 models.py:561 models.py:651 models.py:666
-#: models.py:680 models.py:695 models.py:709 models.py:724 models.py:738
-#: models.py:753 models.py:766 models.py:781 models.py:806 models.py:879
-#: models.py:898 models.py:937 models.py:972
+#: models.py:33 models.py:114 models.py:227 models.py:267 models.py:310
+#: models.py:348 models.py:535 models.py:581 models.py:671 models.py:686
+#: models.py:700 models.py:715 models.py:729 models.py:744 models.py:758
+#: models.py:773 models.py:786 models.py:801 models.py:826 models.py:901
+#: models.py:920 models.py:959 models.py:994
 msgid "Fecha de creación"
 msgstr "Creation date"
 
-#: models.py:34 models.py:111 models.py:220 models.py:260 models.py:299
-#: models.py:333 models.py:516 models.py:807 models.py:880 models.py:899
-#: models.py:938 models.py:973
+#: models.py:34 models.py:115 models.py:228 models.py:268 models.py:311
+#: models.py:349 models.py:536 models.py:827 models.py:902 models.py:921
+#: models.py:960 models.py:995
 msgid "Última modificación"
 msgstr "Last update"
 
@@ -428,7 +428,7 @@ msgstr "Group"
 msgid "Grupos"
 msgstr "Groups"
 
-#: models.py:47 models.py:128
+#: models.py:47 models.py:132
 msgid "Traducido"
 msgstr "Translated"
 
@@ -440,31 +440,31 @@ msgstr "There are related groups"
 msgid "Nº productos"
 msgstr "Number of products"
 
-#: models.py:67 models.py:181 models.py:277 models.py:313
+#: models.py:67 models.py:185 models.py:285 models.py:325
 msgid "Nº visitas"
 msgstr "Number of visits"
 
-#: models.py:73 models.py:187 models.py:283 models.py:319 models.py:445
+#: models.py:73 models.py:191 models.py:291 models.py:331 models.py:461
 msgid "Nuevas opiniones"
 msgstr "New opinions"
 
-#: models.py:84 models.py:897
+#: models.py:88 models.py:919
 msgid "Descripción"
 msgstr "Description"
 
-#: models.py:88
+#: models.py:92
 msgid "Número de productos"
 msgstr "Number of products"
 
-#: models.py:100
+#: models.py:104
 msgid "Nivel de riesgo"
 msgstr "Risk level"
 
-#: models.py:102
+#: models.py:106
 msgid "No puede tener alternativas"
 msgstr "It cannot have alternatives"
 
-#: models.py:102
+#: models.py:106
 msgid ""
 "Marca esta casilla si no tiene sentido que el término tenga altenativas. Por "
 "ejemplo, una enfermedad congénita o adquirida."
@@ -472,34 +472,34 @@ msgstr ""
 "Check this is the term cannot have alternatives. For example, a congenic or "
 "acquired disease."
 
-#: models.py:103
+#: models.py:107
 msgid "Lista de productos alternativos"
 msgstr "List of alternative products"
 
-#: models.py:104
+#: models.py:108
 msgid "Referencia a otros productos"
 msgstr "Reference to other products"
 
-#: models.py:104
+#: models.py:108
 msgid ""
 "Aparecerá un enlace a las fichas de estos productos en la caja de comentario."
 msgstr ""
 "A link to the page of these products will be posted in the comment box."
 
-#: models.py:105
+#: models.py:109
 msgid "Referencia a grupos de productos"
 msgstr "Reference to gropus of products"
 
-#: models.py:105
+#: models.py:109
 msgid ""
 "Aparecerá un enlace a las fichas de estos grupos en la caja de comentario."
 msgstr "A link to the page of these gropus will be posted in the comment box"
 
-#: models.py:106
+#: models.py:110
 msgid "Tiene bibliografia (añadida o pendiente de añadir)"
 msgstr "Has references (added or pending to add)"
 
-#: models.py:106
+#: models.py:110
 msgid ""
 "Indica si el producto poseera referencias bibliográficas. Si no las va a "
 "tener ni ahora ni en el futuro, debe desmarcarse esta casilla. Ejemplos de "
@@ -509,133 +509,133 @@ msgstr ""
 "please uncheck this. Examples of products that might probably never have "
 "bibliography are those on Phytotherapy"
 
-#: models.py:107
+#: models.py:111
 msgid "bibliografia"
 msgstr "references"
 
-#: models.py:108
+#: models.py:112
 msgid "Importar biblio con fichero CSV"
 msgstr "Import references with CSV file"
 
 # mark to review!
-#: models.py:109
+#: models.py:113
 msgid "Listado de marcas comerciales"
 msgstr "List of tradenames"
 
-#: models.py:112
+#: models.py:116
 msgid "Biodisponibilidad"
 msgstr "Bioavailability"
 
-#: models.py:113
+#: models.py:117
 msgid "Peso molecular"
 msgstr "Molecular weight"
 
-#: models.py:114
+#: models.py:118
 msgid "Unión a proteínas"
 msgstr "Proteins Binding"
 
-#: models.py:115
+#: models.py:119
 msgid "Volumen de distribución"
 msgstr "Distribution Volume"
 
-#: models.py:116
+#: models.py:120
 msgid "pKa"
 msgstr ""
 
-#: models.py:117
+#: models.py:121
 msgid "Tiempo máximo, Tmax"
 msgstr "Time to max, Tmax"
 
-#: models.py:118
+#: models.py:122
 msgid "Semivida de eliminación, Tiempo medio, T1/2"
 msgstr "Elimination half-life, T1/2"
 
-#: models.py:119
+#: models.py:123
 msgid "Índice Leche/Plasma"
 msgstr "Milk/Plasma ratio"
 
-#: models.py:120
+#: models.py:124
 msgid "Dosis teórica"
 msgstr "Theoretical Dose"
 
-#: models.py:121
+#: models.py:125
 msgid "Dosis relativa"
 msgstr "Relative Dose"
 
-#: models.py:122
+#: models.py:126
 msgid "Dosis relativa pediátrica"
 msgstr "Relative Pediatric Dose"
 
-#: models.py:133
+#: models.py:137
 msgid "Hay alias"
 msgstr "There are alias"
 
-#: models.py:138
+#: models.py:142
 msgid "Hay escrituras"
 msgstr "There are other writings"
 
-#: models.py:144
+#: models.py:148
 msgid "Hay alternativas"
 msgstr "There are alternatives"
 
-#: models.py:149
+#: models.py:153
 msgid "Tiene biblio"
 msgstr "It has references"
 
-#: models.py:153
+#: models.py:157
 msgid "Nº refs. bibliográficas"
 msgstr "Number references"
 
-#: models.py:158
+#: models.py:162
 msgid "Hay marcas"
 msgstr "There are tradenames"
 
-#: models.py:162 models.py:338
+#: models.py:166 models.py:354
 msgid "Marcas"
 msgstr "Tradenames"
 
-#: models.py:166
+#: models.py:170
 msgid "Nº marcas"
 msgstr "Num of tradenames"
 
-#: models.py:174
+#: models.py:178
 msgid "Grupo(s)"
 msgstr "Group(s)"
 
-#: models.py:205
+#: models.py:209
 msgid "Tiene Farmac."
 msgstr "It has Pharmacokinetics"
 
-#: models.py:211 models.py:969
+#: models.py:219 models.py:991
 msgid "Título"
 msgstr "Title"
 
-#: models.py:212
+#: models.py:220
 msgid "Autores"
 msgstr "Authors"
 
-#: models.py:213
+#: models.py:221
 msgid "Revista"
 msgstr "Review"
 
-#: models.py:214 templates/lactancia/estadisticas_json_ES.html:265
+#: models.py:222 templates/lactancia/estadisticas_json_ES.html:265
 #: templates/lactancia/estadisticas_json_v3.html:264
 msgid "Año"
 msgstr "Year"
 
-#: models.py:215
+#: models.py:223
 msgid "Enlace al abstract del artículo"
 msgstr "Link to abstract"
 
-#: models.py:216
+#: models.py:224
 msgid "Enlace al texto completo del artículo"
 msgstr "Link to full text"
 
-#: models.py:217 models.py:878
+#: models.py:225 models.py:900
 msgid "Documento PDF"
 msgstr "PDF file"
 
-#: models.py:217
+#: models.py:225
 msgid ""
 "Sube el pdf del artículo únicamente si no está disponible en ningún enlace "
 "externo. De lo contrario, usa los campos de enlaces al abstract o al texto "
@@ -644,35 +644,35 @@ msgstr ""
 "Upload the pdf document only if it is not available in other external link. "
 "Otherwise, use the links fields to abstract or complete text."
 
-#: models.py:218
+#: models.py:226
 msgid "Productos que referencian este trabajo"
 msgstr "Products refered by this paper"
 
-#: models.py:230
+#: models.py:238
 msgid "Hay productos que lo referencian"
 msgstr "There are products refering to this paper"
 
-#: models.py:236
+#: models.py:244
 msgid "PDF adjunto"
 msgstr "Attached PDF"
 
-#: models.py:240
+#: models.py:248
 msgid "Referencia en"
 msgstr "Reference on"
 
-#: models.py:252
+#: models.py:260
 msgid "Publicada en"
 msgstr "Published on"
 
-#: models.py:257 models.py:295
+#: models.py:265 models.py:307
 msgid "Nombre principal del producto"
 msgstr "Product main name"
 
-#: models.py:258
+#: models.py:266
 msgid "Sinónimo del producto"
 msgstr "Product synonym"
 
-#: models.py:258
+#: models.py:266
 msgid ""
 "Nombre en español. Si tiene traducción al inglés, ponla en el campo del "
 "nombre en inglés. Sino, deja el campo del nombre en inglés vacío."
@@ -680,161 +680,161 @@ msgstr ""
 "Name in Spanish. If it has English translation, please, set it in the "
 "Nombre_en field. Otherwise, leave it empty."
 
-#: models.py:264 templates/lactancia/base.html:548
+#: models.py:272 templates/lactancia/base.html:548
 msgid "Sinónimos de productos"
 msgstr "Products synonyms"
 
-#: models.py:265
+#: models.py:273
 msgid "Sinónimo de producto"
 msgstr "Product synonym"
 
-#: models.py:270
+#: models.py:278
 msgid "En inglés y español"
 msgstr "In English and Spanish"
 
-#: models.py:296
+#: models.py:308
 msgid "Producto en otras escrituras"
 msgstr "Product in other writings"
 
-#: models.py:297
+#: models.py:309
 msgid "Idioma en que está escrito el producto"
 msgstr "Language of product writing"
 
-#: models.py:304 models.py:305
+#: models.py:316 models.py:317
 msgid "Otras escrituras del producto"
 msgstr "Other writings for the product"
 
-#: models.py:328
+#: models.py:344
 msgid "Nombre comercial"
 msgstr "Tradename"
 
-#: models.py:329
+#: models.py:345
 msgid "Paises donde se comercializa"
 msgstr "Countries where is available"
 
-#: models.py:330
+#: models.py:346
 msgid "Nombre comercial y país"
 msgstr "Tradename and country"
 
-#: models.py:331
+#: models.py:347
 msgid "País donde se comercializa"
 msgstr "Country where is sell"
 
-#: models.py:334
+#: models.py:350
 msgid "Listado de principios activos"
 msgstr "List of active ingredients"
 
-#: models.py:339
+#: models.py:355
 msgid "Marca"
 msgstr "Tradename"
 
-#: models.py:344 models.py:522
+#: models.py:360 models.py:542
 msgid "Traducido al inglés"
 msgstr "Translated to English"
 
-#: models.py:348 models.py:863
+#: models.py:364 models.py:885
 msgid "Países"
 msgstr "Countries"
 
-#: models.py:353
+#: models.py:369
 msgid "Compuesto"
 msgstr "Compound"
 
-#: models.py:423
+#: models.py:439
 msgid "Tiene principios"
 msgstr "It has active ingredients"
 
-#: models.py:427
+#: models.py:443
 msgid "Principios Activos"
 msgstr "Active ingredients"
 
-#: models.py:431
+#: models.py:447
 msgid "Principios Activos inglés"
 msgstr "Active ingredients English"
 
-#: models.py:439
+#: models.py:455
 msgid "Número de visitas"
 msgstr "Visits number"
 
-#: models.py:497
+#: models.py:517
 msgid "información"
 msgstr "information"
 
-#: models.py:498
+#: models.py:518
 msgid "éxito"
 msgstr "success"
 
-#: models.py:499
+#: models.py:519
 msgid "alerta"
 msgstr "alert"
 
-#: models.py:500
+#: models.py:520
 msgid "peligro"
 msgstr "danger"
 
-#: models.py:503
+#: models.py:523
 msgid "cambio en nivel del riesgo"
 msgstr "change in level risk"
 
-#: models.py:504
+#: models.py:524
 msgid "mensaje en variable farmacocinética"
 msgstr "message in pharmacokinetics variable"
 
-#: models.py:505
+#: models.py:525
 msgid "mensaje sobre copyrigh de marcas"
 msgstr "message about tradenames copyright"
 
-#: models.py:506
+#: models.py:526
 msgid "mensaje sobre el uso de e-lactancia"
 msgstr "message about e-lactancia use"
 
-#: models.py:507
+#: models.py:527
 msgid "comentario de usuarios"
 msgstr "users comment"
 
-#: models.py:510
+#: models.py:530
 msgid "Nivel del mensaje"
 msgstr "Message level"
 
-#: models.py:511
+#: models.py:531
 msgid "Tipo de mensaje (nivel)"
 msgstr "Message type"
 
-#: models.py:512
+#: models.py:532
 msgid "Título mensaje"
 msgstr "Message title"
 
-#: models.py:513
+#: models.py:533
 msgid "Cuerpo del mensaje"
 msgstr "Message body"
 
-#: models.py:514
+#: models.py:534
 msgid "Producto vinculado a este mensaje"
 msgstr "Product linked to this message"
 
-#: models.py:532
+#: models.py:552
 msgid "Alerta 1 mes"
 msgstr "1 month alert"
 
 # mark to review!
-#: models.py:539
+#: models.py:559
 msgid "Alerta 3 meses"
 msgstr "3 months alert"
 
-#: models.py:551
+#: models.py:571
 msgid "Dirección IP"
 msgstr "IP address"
 
-#: models.py:552
+#: models.py:572
 msgid "e-Mail"
 msgstr "e-mail"
 
-#: models.py:554 models.py:664 models.py:693 models.py:722 models.py:751
-#: models.py:779
+#: models.py:574 models.py:684 models.py:713 models.py:742 models.py:771
+#: models.py:799
 msgid "Tipo de usuario (perfil)"
 msgstr "Type of user (profile)"
 
-#: models.py:555 templates/lactancia/estadisticas_json_ES.html:965
+#: models.py:575 templates/lactancia/estadisticas_json_ES.html:965
 #: templates/lactancia/estadisticas_json_ES.html:1001
 #: templates/lactancia/estadisticas_json_ES.html:1050
 #: templates/lactancia/estadisticas_json_ES.html:1086
@@ -847,15 +847,15 @@ msgstr "Type of user (profile)"
 msgid "Ciudad"
 msgstr "City"
 
-#: models.py:556
+#: models.py:576
 msgid "Longitud"
 msgstr "Longitude"
 
-#: models.py:557
+#: models.py:577
 msgid "Latitud"
 msgstr "Latitude"
 
-#: models.py:558 models.py:862
+#: models.py:578 models.py:884
 #: templates/lactancia/estadisticas_json_v3.html:719
 #: templates/lactancia/estadisticas_json_v3.html:755
 #: templates/lactancia/estadisticas_json_v3.html:803
@@ -869,16 +869,16 @@ msgstr "Latitude"
 msgid "País"
 msgstr "Country"
 
-#: models.py:559
+#: models.py:579
 msgid "Código país"
 msgstr "Country code"
 
 # mark to review!
-#: models.py:560
+#: models.py:580
 msgid "Código país 3"
 msgstr "Country code 3"
 
-#: models.py:566 templates/lactancia/estadisticas_json_ES.html:466
+#: models.py:586 templates/lactancia/estadisticas_json_ES.html:466
 #: templates/lactancia/estadisticas_json_ES.html:565
 #: templates/lactancia/estadisticas_json_ES.html:666
 #: templates/lactancia/estadisticas_json_ES.html:764
@@ -897,240 +897,240 @@ msgstr "Country code 3"
 msgid "Visitas"
 msgstr "Visits"
 
-#: models.py:572
+#: models.py:592
 msgid "Última visita"
 msgstr "Last visit"
 
-#: models.py:577
+#: models.py:597
 msgid "Comentarios"
 msgstr "Comments"
 
-#: models.py:583
+#: models.py:603
 msgid "Visitante"
 msgstr "Visitor"
 
-#: models.py:584
+#: models.py:604
 msgid "Visitantes"
 msgstr "Visitors"
 
-#: models.py:597
+#: models.py:617
 msgid "Otra especialidad medica"
 msgstr "Other medical specialty"
 
-#: models.py:642
+#: models.py:662
 msgid "Término visitado"
 msgstr "Visited term"
 
 # mark to review!
-#: models.py:646
+#: models.py:666
 msgid "ha visitado"
 msgstr "has visited"
 
-#: models.py:652 models.py:667 models.py:681 models.py:696 models.py:710
-#: models.py:725 models.py:739 models.py:754 models.py:767 models.py:782
+#: models.py:672 models.py:687 models.py:701 models.py:716 models.py:730
+#: models.py:745 models.py:759 models.py:774 models.py:787 models.py:802
 msgid "Último cálculo"
 msgstr "Last calculation"
 
-#: models.py:655
+#: models.py:675
 msgid "Visitas total a grupo"
 msgstr "Total visits to group"
 
-#: models.py:656
+#: models.py:676
 msgid "Visitas totales a grupos"
 msgstr "Total visits to groups"
 
-#: models.py:659 models.py:688 models.py:717 models.py:746 models.py:774
+#: models.py:679 models.py:708 models.py:737 models.py:766 models.py:794
 msgid "visitas"
 msgstr "visits"
 
-#: models.py:670
+#: models.py:690
 msgid "Visitas a grupo por perfil"
 msgstr "Visits to group by user profile"
 
-#: models.py:671
+#: models.py:691
 msgid "Visitas a grupos por perfil"
 msgstr "Visits to group by user profile"
 
 # mark to review!
-#: models.py:674 models.py:703 models.py:732 models.py:761 models.py:789
+#: models.py:694 models.py:723 models.py:752 models.py:781 models.py:809
 msgid "han visitado"
 msgstr "have visited"
 
-#: models.py:674 models.py:703 models.py:732 models.py:761 models.py:789
+#: models.py:694 models.py:723 models.py:752 models.py:781 models.py:809
 msgid "veces"
 msgstr "times"
 
-#: models.py:684
+#: models.py:704
 msgid "Visitas total a producto"
 msgstr "Total visits to product"
 
-#: models.py:685
+#: models.py:705
 msgid "Visitas totales a productos"
 msgstr "Total visits to products"
 
-#: models.py:699
+#: models.py:719
 msgid "Visitas a producto por perfil"
 msgstr "Visits to product by user profile"
 
-#: models.py:700
+#: models.py:720
 msgid "Visitas a productos por perfil"
 msgstr "Visits to product by user profile"
 
-#: models.py:713
+#: models.py:733
 msgid "Visitas total a sinónimos"
 msgstr "Total visits to synonyms"
 
-#: models.py:714
+#: models.py:734
 msgid "Visitas totales a sinónimos"
 msgstr "Total visits to synonyms"
 
-#: models.py:728 models.py:729
+#: models.py:748 models.py:749
 msgid "Visitas a sinónimos por perfil"
 msgstr "Visits to synonyms by user profile"
 
-#: models.py:742
+#: models.py:762
 msgid "Visitas total a marca"
 msgstr "Total visits to tradename"
 
-#: models.py:743
+#: models.py:763
 msgid "Visitas totales a marcas"
 msgstr "Total visits to tradenames"
 
-#: models.py:757
+#: models.py:777
 msgid "Visitas a marca por perfil"
 msgstr "Visits to tradename by user profile"
 
-#: models.py:758
+#: models.py:778
 msgid "Visitas a marcas por perfil"
 msgstr "Visits to tradenames by user profile"
 
-#: models.py:770
+#: models.py:790
 msgid "Visitas total a otra escritura"
 msgstr "Total visits to other writing"
 
-#: models.py:771
+#: models.py:791
 msgid "Visitas totales a otras escrituras"
 msgstr "Total visits to other writings"
 
-#: models.py:785
+#: models.py:805
 msgid "Visitas a otra escritura por perfil"
 msgstr "Visits to other writings by user profile"
 
-#: models.py:786
+#: models.py:806
 msgid "Visitas a otras escrituras por perfil"
 msgstr "Visits to other writings by user profile"
 
 # mark to review!
-#: models.py:797
+#: models.py:817
 msgid "Opinión"
 msgstr "Opinion"
 
-#: models.py:798
+#: models.py:818
 msgid "Opinión ya leída"
 msgstr "Readed opinion"
 
 # mark to review!
-#: models.py:805
+#: models.py:825
 msgid "Idioma"
 msgstr "Language"
 
-#: models.py:822
+#: models.py:842
 msgid "Término"
 msgstr "Term"
 
-#: models.py:832 models.py:836
+#: models.py:852 models.py:856
 msgid "Idioma o escritura"
 msgstr "Language or writing"
 
-#: models.py:837
+#: models.py:857
 msgid "Idiomas o escrituras"
 msgstr "Languages or writings"
 
-#: models.py:842
+#: models.py:862
 msgid "Productos en este idioma"
 msgstr "Products cin this language"
 
-#: models.py:846
+#: models.py:866
 msgid "Num de productos en este idioma"
 msgstr "Num of products in this language"
 
-#: models.py:871 models.py:891
+#: models.py:893 models.py:913
 msgid "Organismo"
 msgstr "Body"
 
-#: models.py:872 models.py:892
+#: models.py:894 models.py:914
 msgid "URL"
 msgstr ""
 
-#: models.py:873 models.py:893
+#: models.py:895 models.py:915
 msgid "Logo"
 msgstr ""
 
-#: models.py:875 models.py:895 models.py:935
+#: models.py:897 models.py:917 models.py:957
 msgid "Visible en la página Landing"
 msgstr "Visible in Landing page"
 
-#: models.py:877
+#: models.py:899
 msgid "Extracto"
 msgstr "Excerpt"
 
-#: models.py:877
+#: models.py:899
 msgid "Extracto del documento"
 msgstr "Excerpt from the document"
 
-#: models.py:883
+#: models.py:905
 msgid "Aval"
 msgstr "Support"
 
-#: models.py:884 models.py:963
+#: models.py:906 models.py:985
 msgid "Avales"
 msgstr "Supporters"
 
-#: models.py:897
+#: models.py:919
 msgid "Breve texto describiendo el patrocinio"
 msgstr "Short text describing the sponsorship"
 
-#: models.py:902
+#: models.py:924
 msgid "Patrocinador"
 msgstr "Sponsor"
 
-#: models.py:903 models.py:962
+#: models.py:925 models.py:984
 msgid "Patrocinadores"
 msgstr "Sponsors"
 
-#: models.py:914
+#: models.py:936
 msgid "Nombre del icono (en Fontawesome)"
 msgstr "Icon name (in Fontawesome)"
 
-#: models.py:914
+#: models.py:936
 msgid "Consulta los iconos en la web de "
 msgstr "Have a look to the icons on the website of "
 
-#: models.py:918
+#: models.py:940
 msgid "Vista previa"
 msgstr "Preview"
 
-#: models.py:921 models.py:930 models.py:942
+#: models.py:943 models.py:952 models.py:964
 msgid "Icono"
 msgstr "Icon"
 
-#: models.py:922
+#: models.py:944
 msgid "Iconos"
 msgstr "Icons"
 
-#: models.py:929
+#: models.py:951
 msgid "Titulo"
 msgstr "Title"
 
-#: models.py:931
+#: models.py:953
 msgid "Texto"
 msgstr "Text"
 
-#: models.py:932
+#: models.py:954
 msgid "Link"
 msgstr ""
 
-#: models.py:932
+#: models.py:954
 msgid ""
 "Opcional. El link se abrirá en una nueva pestaña. Puede ser el enlace a un "
 "libro, web, post, noticia, etc."
@@ -1138,67 +1138,67 @@ msgstr ""
 "Optional. The link will be opened in a new window/tab. It can be the link to "
 "a  book, web, post, new, ..."
 
-#: models.py:933
+#: models.py:955
 msgid "Texto del link"
 msgstr "Text of link"
 
-#: models.py:933
+#: models.py:955
 msgid ""
 "Texto del link. Ejemplo: \"Compar libro\"; \"Leer noticia\"; \"Ir a post\"; "
 "etc"
 msgstr "Text of link. Example: \"Buy book\"; \"Read new\"; \"Go to post\"; ..."
 
-#: models.py:936
+#: models.py:958
 msgid "Es publicidad"
 msgstr "Is advertisement"
 
-#: models.py:945
+#: models.py:967
 msgid "Cajita en Landing"
 msgstr "Box in Landing"
 
-#: models.py:946
+#: models.py:968
 msgid "Cajitas en landing"
 msgstr "Boxes in landing"
 
-#: models.py:961
+#: models.py:983
 msgid "Créditos"
 msgstr "Credits"
 
-#: models.py:964
+#: models.py:986
 msgid "Donativos"
 msgstr "Donations"
 
-#: models.py:967
+#: models.py:989
 msgid "Tipo de documento"
 msgstr "Type of document"
 
-#: models.py:967
+#: models.py:989
 msgid "Indica en qué página aparecerá el texto."
 msgstr "Indicates which page will hold the text."
 
-#: models.py:968
+#: models.py:990
 msgid "Order"
 msgstr "Order"
 
-#: models.py:968
+#: models.py:990
 msgid ""
 "Indica, si aplica, el orden de la sección/subsección de este documento. "
 "Ejemplo: \"1\";  \"2\""
 msgstr ""
 
-#: models.py:969
+#: models.py:991
 msgid "Ejemplo: Nuestra misión."
 msgstr "Example: Our mission."
 
-#: models.py:970
+#: models.py:992
 msgid "Contenido"
 msgstr "Content"
 
-#: models.py:971
+#: models.py:993
 msgid "Visible en web"
 msgstr "Visible on the web"
 
-#: models.py:971
+#: models.py:993
 msgid ""
 "Marca esta casilla cuando el texto esté listo para que se muestre en la web. "
 "Mientras NO esté marcada, NO será visible en la web."
@@ -1206,11 +1206,11 @@ msgstr ""
 "Check if the text is ready to be published on the Web. The text will NOT be "
 "shown unless you check this."
 
-#: models.py:976
+#: models.py:998
 msgid "Documento"
 msgstr "Document"
 
-#: models.py:977
+#: models.py:999
 msgid "Documentos"
 msgstr "Documents"
 
@@ -1782,6 +1782,39 @@ msgstr "Communication"
 msgid "Licenciada en Periodismo"
 msgstr "Degree in Journalism"
 
+#: templates/lactancia/creditos.html:102
+msgid "Cómo citar esta web"
+msgstr ""
+
+#: templates/lactancia/creditos.html:103
+msgid ""
+"Puedes citar esta web para tus trabajos científicos. Encontrarás este mismo "
+"desplegable en cada ficha de la web para que puedas hacer citas "
+"bibliográficas de términos concretos."
+msgstr ""
+"You can cite this web for your scientific work. You will find this same "
+"drop down in each file of the web so you can make "
+"bibliographical citations to specific products and terms."
+
+
+#: templates/lactancia/creditos.html:105
+msgid ""
+"Si necesitas citar la web de e-lactancia, abajo puedes encontrar varios "
+"formatos de cita, según tus necesidades."
+msgstr ""
+"If you need to cite the e-lactation website, below you can find several "
+"citation formats, according to your needs."
+
+
+#: templates/lactancia/creditos.html:106
+#: templates/lactancia/partial_citation.html:8
+msgid ""
+"Elige el formato de cita bibliográfica que prefieras. Puedes copiar el texto "
+"de la cita y también descargarlo en tu equipo presionando el botón"
+msgstr ""
+"Choose the bibliographic citation format you prefer. You can copy the citation text "
+"below and also download it on your computer by pressing the button"
+
 #: templates/lactancia/detalle_ap.html:3
 #: templates/lactancia/detalle_g2.html:43 templates/lactancia/detalle_m.html:3
 #: templates/lactancia/detalle_oe.html:3 templates/lactancia/detalle_p.html:44
@@ -1871,15 +1904,15 @@ msgstr "List of groups related with"
 msgid "productos"
 msgstr "products"
 
-#: templates/lactancia/detalle_g2.html:295
+#: templates/lactancia/detalle_g2.html:298
 msgid "de"
 msgstr "of"
 
-#: templates/lactancia/detalle_g2.html:296
+#: templates/lactancia/detalle_g2.html:299
 msgid "Llevas"
 msgstr "Written"
 
-#: templates/lactancia/detalle_g2.html:297
+#: templates/lactancia/detalle_g2.html:300
 msgid "caracteres"
 msgstr "characters"
 
@@ -2718,6 +2751,10 @@ msgid ""
 "¡Enhorabuena! Todos los productos de nivel 3 tienen alternativas coherentes"
 msgstr "Congratulations! All level 2 products have coherent alternatives"
 
+#: templates/lactancia/partial_citation.html:7
+msgid "Cómo citar esta ficha"
+msgstr "How to cite this file"
+
 #: templates/lactancia/partial_comments_terms.html:7
 msgid "Error al enviar tu comentario"
 msgstr "Error sending your comment"
@@ -3436,11 +3473,11 @@ msgstr ""
 "target='_blank'>Opera</a></li> \n"
 "</ul>\n"
 
-#: views.py:180
+#: views.py:181
 msgid "e-lactancia.org"
 msgstr "e-lactancia.org"
 
-#: views.py:181
+#: views.py:182
 msgid ""
 "Información sobre compatibilidad de medicamentos y otros productos con la "
 "lactancia materna, desarrollada por la Asociación para la Promoción "
@@ -3450,25 +3487,85 @@ msgstr ""
 "prescriptions and other products developed by the Association for Promotion "
 "and Cultural and Scientific Research of Breastfeeding, APILAM"
 
-#: views.py:184 views.py:188 views.py:192 views.py:196
+#: views.py:185 views.py:189 views.py:193 views.py:197
 msgid "Nivel de riesgo para la lactancia según e-lactancia.org"
 msgstr "Level of risk for breastfeeding according to e-lactancia.org"
 
-#: views.py:199
+#: views.py:200
 msgid "Niveles de riesgo para la lactancia según e-lactancia.org"
 msgstr "Levels of risk for breastfeeding according to e-lactancia.org"
 
-#: views.py:200
+#: views.py:201
 msgid "Listado de la familia"
 msgstr "List of elements from "
 
-#: views.py:200
+#: views.py:201
 msgid "por nivel de riesgo según e-lactancia.org"
 msgstr "by level of risk according e-lactancia.org"
 
 #: views.py:608
 msgid "['muy mala', 'mala', 'regular', 'buena', 'muy buena']"
 msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
+
+#: views.py:1874 views.py:1881 views.py:1905 views.py:1914 views.py:1938
+#: views.py:1946
+msgid ""
+"Asociación para la Promoción científica y cultural de la Lactancia Materna"
+msgstr ""
+"Association for promotion and cultural "
+"and scientific research of breastfeeding"
+
+#: views.py:1961
+msgid "En e-lactancia.org."
+msgstr "In e-lactancia.org"
+
+#: views.py:1961 views.py:1963
+msgid "Recuperado"
+msgstr "Retrieved"
+
+#: views.py:1961 views.py:1963
+msgid "a partir de"
+msgstr "from"
+
+#: views.py:1963 views.py:1992 views.py:1994
+msgid ""
+"APILAM (Asociación para la promoción e investigación científica y cultural "
+"de la lactancia materna)"
+msgstr ""
+"APILAM (Association for promotion and cultural "
+"and scientific research of breastfeeding)"
+
+#: views.py:1973
+msgid "En"
+msgstr "In"
+
+#: views.py:1973 views.py:1981
+msgid ""
+"APILAM: Asociación para la promoción e investigación científica y cultural "
+"de la lactancia materna"
+msgstr ""
+"APILAM: association for promotion and cultural "
+"and scientific research of breastfeeding"
+
+#: views.py:1973 views.py:1981
+msgid "actualizado"
+msgstr "updated"
+
+#: views.py:1973 views.py:1981
+msgid "citado"
+msgstr "cited"
+
+#: views.py:1973 views.py:1981
+msgid "Disponible en"
+msgstr "Available from"
+
+#: views.py:1992 views.py:1994
+msgid "accedido el"
+msgstr "accessed"
+
+#: views.py:2084
+msgid "Descargar cita bibliográfica en fichero"
+msgstr "Download citation reference file"
 
 #~ msgid "es más comúnmente conocido como"
 #~ msgstr "is commonly known as"
@@ -3530,13 +3627,6 @@ msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
 #~ "Si desea que su empresa conste como patrocinadora, póngase en contacto "
 #~ "con nosotros."
 #~ msgstr "If you wish to become a sponsor, get in contact with us."
-
-#~ msgid ""
-#~ "e-lactancia es un proyecto de APILAM, asociación para la promoción e "
-#~ "investigación científica y cultural de la lactancia materna"
-#~ msgstr ""
-#~ "e-lactancia is a project of APILAM, association for promotion and "
-#~ "cultural and scientific research of breastfeeding"
 
 #~ msgid "Documento PDF de la carta de apoyo"
 #~ msgstr "PDF doc of the support letter"

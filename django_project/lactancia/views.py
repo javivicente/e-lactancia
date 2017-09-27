@@ -22,6 +22,7 @@ from django.core.cache import cache
 import sys
 from django.utils import timezone
 import datetime
+from django.template.defaultfilters import date as _date
 from django.utils.translation import ugettext as _
 from django.utils.translation import get_language
 import json
@@ -523,7 +524,6 @@ def get_context_for_product(request, prod):
     prod_alert = get_alert_risk_for_producto(prod)
 
     visits=get_visits(prod)
-    
     
     context = {'prod': prod,
                'prod_alias': prod_alias,
@@ -1863,4 +1863,227 @@ def get_term(request, prod_id):
                          'biblio': list(biblio),
                          'marcas': list(tradenames),
                          })
+    
+    
+''' BIBLIOGRAPHIC REFERENCE OF WEBSITE '''
+
+def get_bibtex_reference(item=None):
+    now = timezone.localtime(timezone.now())
+    if item:
+        result =    u'@misc{ e-lactancia, '
+        result +=   u' author = "APILAM{,} ' + _(u'Asociación para la Promoción científica y cultural de la Lactancia Materna') + '", '
+        result +=   u' title = "' + item.nombre + u' --- e-lactancia.org", '
+        result +=   u' year = "' + item.fecha_modificacion.strftime("%d-%m-%Y") + u'", '
+        result +=   u' url = "http://e-lactancia.org' + item.get_absolute_url() + u'", '
+        result +=   u' note = "[Online; accessed ' + _date(now, "d F, Y") + u']" }'
+    else:
+        result =    u'@misc{ e-lactancia, ' 
+        result +=   u' author = "APILAM\{,\} ' + _(u'Asociación para la Promoción científica y cultural de la Lactancia Materna') + u'", ' 
+        result +=   u' title = " e-lactancia.org", ' 
+        result +=   u' year = "2002", ' 
+        result +=   u' url = "http://e-lactancia.org", ' 
+        result +=   u' note = "[Online; accessed ' + _date(now, "d F, Y") + u']" }'
+    return unicode(result)
+    
+
+def get_RIS_reference(item=None):
+    '''
+    from https://en.wikipedia.org/wiki/RIS_(file_format)
+    TY - ELEC
+    AU - APILAM, Asociación para la Promoción científica y cultural de la Lactancia Materna
+    Y1 - 2002
+    Y2 - fecha acceso
+    TI - E-Lactancia (o nombre del término)
+    T2 - e-lactancia.org
+    UR - http://e-lactancia.org
+    ER - 
+    '''    
+    now = timezone.localtime(timezone.now())    
+
+    if item:
+        result =    u'TY - ELEC\n'
+        result +=   u'AU - APILAM, ' + _(u'Asociación para la Promoción científica y cultural de la Lactancia Materna') + '\n'
+        result +=   u'Y1 - ' + _date(item.fecha_modificacion, "d F, Y") + '\n'
+        result +=   u'Y2 - ' + _date(now, "d F, Y") + '\n'
+        result +=   u'TI - ' + item.nombre + '\n'
+        result +=   u'T2 - e-lactancia.org' + '\n'
+        result +=   u'UR - http://e-lactancia.org' + item.get_absolute_url() + '\n'
+        result +=   u'ER -' + '\n'
+    else:
+        result =    u'TY - ELEC'+ '\n'
+        result +=   u'AU - APILAM, ' + _(u'Asociación para la Promoción científica y cultural de la Lactancia Materna') + '\n'
+        result +=   u'Y1 - 2002' + '\n'
+        result +=   u'Y2 - ' + _date(now, "d F, Y") + '\n'
+        result +=   u'TI - E-lactancia' + '\n'
+        result +=   u'UR - http://e-lactancia.org' + '\n'
+        result +=   u'ER -' + '\n'
+    return unicode(result)
+ 
+def get_enw_reference(item=None):
+    '''
+    from https://en.wikipedia.org/wiki/EndNote#Tags_and_fields
+    %0 Web Page
+    %A APILAM, Asociación para la Promoción científica y cultural de la Lactancia Materna
+    %D 2002
+    %T E-Lactancia (o nombre del término)
+    %[  fecha acceso
+    %B e-lactancia.org
+    %U http://e-lactancia.org
+    '''    
+
+    now = timezone.localtime(timezone.now())    
+
+    if item:
+        result =    u'%0 Web Page\n'
+        result +=   u'%A APILAM, ' + _(u'Asociación para la Promoción científica y cultural de la Lactancia Materna') + '\n'
+        result +=   u'%D ' + _date(item.fecha_modificacion, "Y") + '\n'
+        result +=   u'%[ ' + _date(now, "d F, Y") + '\n'
+        result +=   u'%T ' + item.nombre + '\n'
+        result +=   u'%B e-lactancia.org' + '\n'
+        result +=   u'%U http://e-lactancia.org' + item.get_absolute_url() + '\n'
+    else:
+        result =    u'%0 Web Page\n'
+        result +=   u'%A APILAM, ' + _(u'Asociación para la Promoción científica y cultural de la Lactancia Materna') + '\n'
+        result +=   u'%D 2002' + '\n'
+        result +=   u'%[ ' + _date(now, "d F, Y") + '\n'
+        result +=   u'%B e-lactancia.org' + '\n'
+        result +=   u'%U http://e-lactancia.org' + '\n'
+    return unicode(result)
+    
+    
+def get_APA_reference(item=None):
+    now = timezone.localtime(timezone.now())
+    # followed instructions in https://en.wikipedia.org/wiki/Wikipedia:Citing_Wikipedia
+    # APILAM (Asociación para la promoción e investigación científica y cultural de la lactancia materna). (2002). e-lactancia. Recuperado -aquí el ordenador debe poner la fecha-, a partir de http://e-lactancia.org/
+    # Plagiarism. (n.d.). In Wikipedia. Retrieved August 10, 2004, from https://en.wikipedia.org/wiki/Plagiarism
+    
+    if item:
+        result = item.nombre + '. ' + _(u'En e-lactancia.org.') + ' ' + _(u'Recuperado') + ' ' + _date(now, "d F, Y") + ' ' + _(u'a partir de') + ' http://e-lactancia.org' + item.get_absolute_url()
+    else:
+        result = _(u'APILAM (Asociación para la promoción e investigación científica y cultural de la lactancia materna)') + '. (2002). e-lactancia. ' + _(u'Recuperado') + ' ' + _date(now, "d F, Y") + ' ' + _(u'a partir de') + ' http://e-lactancia.org'
+    
+    return unicode(result)
+
+def get_vancouver_reference(item=None):
+    now = timezone.localtime(timezone.now())
+    # followed instructions in https://en.wikipedia.org/wiki/Vancouver_system
+    # Drug-interactions.com [homepage on the Internet]. Indianapolis: Indiana University Department of Medicine; 2003 [updated 17 May 2006; cited 30 May 2006]. Available from: http://medicine.iupui.edu/flockhart/
+    
+    if item:
+        result = 'APILAM. ' + item.nombre + '. ' + _(u'En') + ': ' + 'e-lactancia.org. ' + _(u'APILAM: Asociación para la promoción e investigación científica y cultural de la lactancia materna') + '; 2002 ' + _(u'actualizado') + ' ' + _date(item.fecha_modificacion, "d b Y") + '; ' + _(u'citado') + ' ' + _date(now, "d b Y") + '. ' + _(u'Disponible en') + ' http://e-lactancia.org' + item.get_absolute_url()
+    else:
+    
+        last_update = cache.get('prod_last_update')
+        if last_update == None:
+            last_update = Producto.objects.latest('fecha_modificacion').fecha_modificacion
+            cache.set('prod_last_update',last_update)
+        
+        result = 'e-lactancia.org. ' + _(u'APILAM: Asociación para la promoción e investigación científica y cultural de la lactancia materna') + '; 2002 ' + _(u'actualizado') + ' ' + _date(last_update, "d b Y") + '; ' + _(u'citado') + ' ' + _date(now, "d F, Y") + '. ' + _(u'Disponible en') + ' http://e-lactancia.org'
+    
+    return unicode(result)
+    
+def get_chicago_reference(item=None):
+    now = timezone.localtime(timezone.now())
+    # followed instructions in https://en.wikipedia.org/wiki/Wikipedia:Citing_Wikipedia#Chicago_style
+    # APILAM (Asociación para la promoción e investigación científica y cultural de la lactancia materna). 2002. "E-Lactancia". http://e-lactancia.org/.
+    # Wikipedia, The Free Encyclopedia, s.v. "Plagiarism," (accessed August 10, 2004), https://en.wikipedia.org/w/index.php?title=Plagiarism&oldid=5139350
+    
+    if item:
+        result = _(u'APILAM (Asociación para la promoción e investigación científica y cultural de la lactancia materna)') + '. (2002). "' + item.nombre + '," (' + _(u'accedido el') + ' ' + _date(now, "d F, Y") + '), http://e-lactancia.org' + item.get_absolute_url()
+    else:
+        result = _(u'APILAM (Asociación para la promoción e investigación científica y cultural de la lactancia materna)') + '. (2002). "e-lactancia," (' + _(u'accedido el') + ' ' + _date(now, "d F, Y") + '), http://e-lactancia.org'
+        
+    return unicode(result)
+    
+    
+    
+import codecs
+def generate_citation_link(item=None, citation='bibtex'):
+
+    MEDIA_ROOT = '/home/django/media/'
+    MEDIA_URL = '/media/'
+
+    # create a unique filename based on current time
+    now = timezone.localtime(timezone.now())
+    filename = 'ref-e-lactancia-' + now.strftime("%Y%m%d%H%M%S")
+    
+    # add file extension according to type of citation file
+    if citation == 'bibtext':
+        filename += '.bib'
+    elif citation == 'RIS':
+        filename += '.ris'
+    elif citation == 'enw':
+        filename += '.enw'
+    else:
+        filename += '.txt'
+    
+    # create the file
+    handle=codecs.open(MEDIA_ROOT+filename,'w','utf-8')
+    
+    # write citation in file
+    if citation == 'bibtex':
+        handle.write(get_bibtex_reference(item))
+    if citation == 'RIS':
+        handle.write(get_RIS_reference(item))
+    if citation == 'enw':
+        handle.write(get_enw_reference(item))
+    if citation == 'APA':
+        handle.write(get_APA_reference(item))
+    if citation == 'vancouver':
+        handle.write(get_vancouver_reference(item))
+    if citation == 'chicago':
+        handle.write(get_chicago_reference(item))
+    # close the file
+    handle.close()
+    
+    # return relative url where the file is
+    return MEDIA_URL+filename
+    
+def generate_citation_text(item=None, citation='APA'):
+    result = ''
+    if citation == 'bibtex':
+        result = get_bibtex_reference(item)
+    if citation == 'RIS':
+        result = get_RIS_reference(item)
+    if citation == 'enw':
+        result = get_enw_reference(item)
+    if citation == 'APA':
+        result = get_APA_reference(item)
+    if citation == 'vancouver':
+        result = get_vancouver_reference(item)
+    if citation == 'chicago':
+        result = get_chicago_reference(item)
+
+    return result
+    
+    
+    
+'''get the citation when button pressed'''
+def download_citation(request):
+
+    term = None
+    id = None
+    item = None
+    citation = None
+    if ('citation_type' in request.GET):
+        term = request.GET.get('term_type', None)
+        if ('term_id' in request.GET):
+            id = int(request.GET.get('term_id', 0))
+        citation = request.GET.get('citation_type', 'APA')
+        if term == 'producto':
+            item = Producto.objects.get(id=id)
+        elif term == 'grupo':
+            item = Grupo.objects.get(id=id)
+        elif term == 'alias':
+            item = Alias.objects.get(id=id)
+        elif term == 'marca':
+            item = Marca.objects.get(id=id)
+        elif term == 'otra_escritura':
+            item = Otras_escrituras.objects.get(id=id)
+    result = ''
+    result += '<div class="span6">' + '<a href="'+ generate_citation_link(item, citation) + '" download class="btn btn-info">' + _(u'Descargar cita bibliográfica en fichero') + '</a>' + '</div>'
+    result += '<div class="span12"><blockquote>' + generate_citation_text(item,citation) + '</blockquote></div>'
+    #result += '<a href="'+ generate_citation_link(item, citation) + '" download class="btn btn-info">' + _(u'Descargar cita bibliográfica en fichero') + '</a>'
+    
+    return HttpResponse(result)       
     

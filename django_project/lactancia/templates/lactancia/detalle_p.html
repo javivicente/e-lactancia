@@ -596,9 +596,12 @@
 
 </div> {# end of containner for names and biblio#}
 
+
 {% endblock  %} {# block of names and biblio #}
 
-
+{% block citation %}
+{% include 'lactancia/partial_citation.html' %}
+{% endblock %}
 
 {% block ratings %}
 {% include 'lactancia/partial_ratings.html' %}
@@ -614,6 +617,7 @@
 
 {% block js %}
 {{ block.super }}
+
 {# javascripts and css required by StarVoteForm #}
 <script type="text/javascript" src="{{ STATIC_URL }}ratings/jquery.MetaData.js"></script>
 {% if perfil %}

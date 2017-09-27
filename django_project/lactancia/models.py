@@ -75,6 +75,10 @@ class Grupo(models.Model):
     def dime_que_eres(self):
         return u'grupo'
 
+    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    def get_absolute_url(self):
+        return "/grupo/%s/" % str(self.id)
+    
     def __unicode__(self):
         return self.nombre
 
@@ -203,7 +207,11 @@ class Producto(models.Model):
                         bool(self.dosis_terapeutica))
     es_principio_activo.boolean = True
     es_principio_activo.short_description = _(u'Tiene Farmac.')
-       
+    
+    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    def get_absolute_url(self):
+        return "/producto/%s/" % str(self.id)
+    
     def __unicode__(self):
         return unicode(self.nombre)
 
@@ -284,6 +292,10 @@ class Alias(models.Model):
 
     def dime_que_eres(self):
         return u'alias'
+    
+    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    def get_absolute_url(self):
+        return "/sinonimo/%s/" % str(self.id)
         
     def __unicode__(self):
         return self.nombre
@@ -320,6 +332,10 @@ class Otras_escrituras(models.Model):
 
     def dime_que_eres(self):
         return u'otra_escritura'
+    
+    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    def get_absolute_url(self):
+        return "/otra_escritura/%s/" % str(self.id)
         
     def __unicode__(self):
         return self.nombre
@@ -446,7 +462,11 @@ class Marca(models.Model):
 
     def dime_que_eres(self):
         return u'marca'
-        
+    
+    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    def get_absolute_url(self):
+        return "/marca/%s/" % str(self.id)
+    
     def __unicode__(self):
         return unicode(self.nombre_paises)
 

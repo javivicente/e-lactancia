@@ -14,7 +14,7 @@
             <div class="span6">
                 <div class="row-fluid">
                     <h3>{% trans "Tu opinión es muy importante" %}</h3>
-                    <p>{% trans "Con tu valoración sobre la calidad de la información de" %} <strong>{% if grupod %}{{grupod.nombre}} {% elif aliasp %} {{aliasp.nombre}} {% elif otra_escritura %} {{otra_escritura.nombre}} {% elif marcap %} {{marcap.nombre}} {% elif prod %} {{prod.nombre}} {% endif %}</strong>:</p>
+                    <p>{% trans "Con tu valoración sobre la calidad de la información de" %} <strong>{% if grupop %}{{grupop.nombre}} {% elif aliasp %} {{aliasp.nombre}} {% elif otra_escritura %} {{otra_escritura.nombre}} {% elif marcap %} {{marcap.nombre}} {% elif prod %} {{prod.nombre}} {% endif %}</strong>:</p>
                     <ul>
                         <li>{% trans "Nos ayudas a mejorar el contenido de e-lactancia" %}</li>
                         <li>{% trans "Contribuyes a hacer visibles las opiniones de nuestra comunidad de usuarios" %}</li>
@@ -60,7 +60,7 @@
 
             <div class="span6">
                 <div class="row-fluid">
-                    <h3>{% trans "Visitas y valoraciones para" %} {% if grupod %}{{grupod.nombre}} {% elif aliasp %} {{aliasp.nombre}} {% elif otra_escritura %} {{otra_escritura.nombre}} {% elif marcap %} {{marcap.nombre}} {% elif prod %} {{prod.nombre}} {% endif %}</h3>
+                    <h3>{% trans "Visitas y valoraciones para" %} {% if grupop %}{{grupop.nombre}} {% elif aliasp %} {{aliasp.nombre}} {% elif otra_escritura %} {{otra_escritura.nombre}} {% elif marcap %} {{marcap.nombre}} {% elif prod %} {{prod.nombre}} {% endif %}</h3>
                 </div>
                 <div class="row-fluid">
                     <div class="span3">
