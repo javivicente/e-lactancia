@@ -130,7 +130,7 @@ class MarcaAdmin(admin.ModelAdmin):
     
     fieldsets = (
                 (None, {
-                        'fields': ('nombre',)
+                        'fields': ('nombre','slug',)
                 }),
                 (_(u'Países donde se comercializa'), {
                         'fields': ('paises',)
@@ -139,7 +139,7 @@ class MarcaAdmin(admin.ModelAdmin):
                         'fields': ('principios_activos',)
                 }),
                 (_(u'Visitas y fechas'), {
-                        'fields': (('fecha_creacion','fecha_modificacion'), 'visitas','slug',)
+                        'fields': (('fecha_creacion','fecha_modificacion'), 'visitas',)
                 }),
         )
         
@@ -161,7 +161,7 @@ class AliasForm(ModelForm):
                         'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
                         'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
                 }
-                exclude= ('nombre',)
+                exclude= ('nombre','slug',)
         
         def clean(self):
             nombre_es = self.cleaned_data.get('nombre_es')
@@ -181,13 +181,13 @@ class AliasAdmin(admin.ModelAdmin):
 
     fieldsets = (
                 (_(u'Alias'), {
-                        'fields': ('nombre_es','nombre_en',)
+                        'fields': ('nombre_es','nombre_en','slug',)
                 }),
                 (_(u'Nombre Principal'), {
                         'fields': ('producto_principal',)
                 }),
                 (_(u'Visitas y fechas'), {
-                        'fields': ('slug',('fecha_creacion','fecha_modificacion',), 'visitas',)
+                        'fields': (('fecha_creacion','fecha_modificacion',), 'visitas',)
                 }),
         )
 
@@ -217,7 +217,7 @@ class Otras_escriturasForm(ModelForm):
                         #'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
                         'nombre': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
                 }
-                exclude= ['idioma']
+                exclude= ['idioma', 'slug',]
         
         
         
@@ -237,13 +237,13 @@ class Otras_escriturasAdmin(admin.ModelAdmin):
 
     fieldsets = (
                 (_(u'Otras escrituras'), {
-                        'fields': ('nombre','slug','escritura',)
+                        'fields': ('nombre','escritura','slug',)
                 }),
                 (_(u'Nombre Principal'), {
                         'fields': ('producto_principal',)
                 }),
                 (_(u'Visitas y fechas'), {
-                        'fields': ('slug',('fecha_creacion','fecha_modificacion',), 'visitas',)
+                        'fields': (('fecha_creacion','fecha_modificacion',), 'visitas',)
                 }),
         )
 
@@ -347,7 +347,7 @@ class ProductoForm(ModelForm):
         class Meta:
                 model = Producto
                 widgets = {
-                        'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        #'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
                         'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
                         'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
                         'comentario_es': AutosizedTextarea(attrs={'rows': 15, 'class': 'span12'}),
@@ -494,13 +494,12 @@ class ProductoAdmin(admin.ModelAdmin):
     form = ProductoForm
     list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
     #list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'num_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes', 'fecha_modificacion','traducido_al_ingles',)
-    prepopulated_fields = {'slug': ('nombre_en',)}
     list_filter = ( 'riesgo','grupo', )
     ordering = ('nombre',)
     search_fields = ('nombre_es', 'nombre_en',)
     #filter_horizontal = ('grupo','alternativas','marcas','biblio',)
     filter_horizontal = ('grupo','alternativas','referencia_otros_productos','referencia_grupos','biblio',)
-    readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas',)
+    readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas','slug',)
     #readonly_fields = ('fecha_creacion','fecha_modificacion', )
     inlines = [Otras_escriturasInline, AliasInline, ProdComentariosInline, ]
     date_hierarchy = 'fecha_modificacion'
@@ -511,7 +510,7 @@ class ProductoAdmin(admin.ModelAdmin):
                         'fields': []
                 }),
                 ('Nombre principal', {
-                        'fields': ('nombre_es','nombre_en', 'slug',)
+                        'fields': ('nombre_es','nombre_en','slug',)
                 }),
                 #(None, {
                 #        'classes': ('suit-tab suit-tab-marcas',),

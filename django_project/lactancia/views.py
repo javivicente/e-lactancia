@@ -2161,12 +2161,14 @@ def slugify_products():
     for i in items:
         i.slug='kk'
         i.save()
+        '''
         slug = slugify(i.nombre_en)[0:93]
         duplicated_slug = Producto.objects.filter(slug=slug).count()
         if duplicated_slug>0:
             slug = slug + '-' + str(duplicated_slug + 1)
         i.slug = slug
         i.save()
+        '''
         
 def slugify_alias():
     items = Alias.objects.all()
