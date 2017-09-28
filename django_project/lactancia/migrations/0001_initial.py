@@ -211,6 +211,7 @@ class Migration(migrations.Migration):
                 ('nombre_paises', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
                 ('nombre_paises_en', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
                 ('nombre_paises_es', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
+                ('slug', models.SlugField(help_text='Es parte de la URL. Se crea autom\xe1ticamente a partir del nombre de la marca y el/los pa\xeds(es) donde se comercializa. El sistema se asegurar\xe1 de que sea \xfanico. Ejemplo:  Stadium (Mexico, Netherlands) -> stadium-mexico-netherlands para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days.', max_length=100, verbose_name='Slug')),
                 ('comentario', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),
                 ('comentario_en', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),
                 ('comentario_es', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),

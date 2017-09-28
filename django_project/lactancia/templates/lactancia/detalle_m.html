@@ -45,8 +45,6 @@
                 {{p.nombre}}{% if forloop.last%}. {% else %}, {% endif %}
             {% endfor %}
             </p>
-        {% elif marcap.comentario %}
-            <p>{% trans "Marca comercializada en " %} {{marcap.comentario}}.</p>
         {% endif %}
     {% endblock %}
     

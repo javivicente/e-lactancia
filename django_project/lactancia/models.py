@@ -10,6 +10,13 @@ from django.template.defaultfilters import date as _date
 from django.utils.html import mark_safe
 from django.db.models import signals
 from django.core.validators import MaxValueValidator, MinValueValidator
+import re
+import unidecode
+
+def slugify(text):
+    text = unidecode.unidecode(text).lower()
+    text = re.sub(r'\W+', ' ', text).strip()
+    return re.sub(r'\W+', '-', text)
 
 PROFILE_CHOICES = (
                 ('1', _(u'Pediatra')),
@@ -348,6 +355,7 @@ class Marca(models.Model):
     nombre = models.CharField(db_index=True, max_length=255, verbose_name=_(u'Nombre comercial'), unique=False)
     paises = models.ManyToManyField('Pais', verbose_name=_(u'Paises donde se comercializa'), blank=True)
     nombre_paises = models.CharField(max_length=700, verbose_name=_(u'Nombre comercial y país'), blank=True, null=True)
+    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Se crea automáticamente a partir del nombre de la marca y el/los país(es) donde se comercializa. El sistema se asegurará de que sea único. Ejemplo:  Stadium (Mexico, Netherlands) -> stadium-mexico-netherlands para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days.'), unique= False)
     comentario = models.CharField(max_length=255, blank=True, null=True, verbose_name=_(u'País donde se comercializa'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
@@ -467,9 +475,9 @@ class Marca(models.Model):
     def dime_que_eres(self):
         return u'marca'
     
-    # returns Absolute url. Example: http://e-lactancia.org/producto/ibuprofeno/
+    # returns Absolute url. Example: http://e-lactancia.org/breastfeeding/contraceptive-pills-3-days/product/
     def get_absolute_url(self):
-        return "/marca/%s/" % str(self.id)
+        return "/breastfeeding/%s/tradename/" % self.slug
     
     def __unicode__(self):
         return unicode(self.nombre_paises)
@@ -508,6 +516,14 @@ class Marca(models.Model):
             setattr(self, 'nombre_paises', nombre_paises)
             setattr(self, 'nombre_paises_es', nombre_paises_es)
             setattr(self, 'nombre_paises_en', nombre_paises_en)
+            
+            ### Estos pasos son necesarios para garantizar que el slug sea único para cada marca:
+            slug = slugify(getattr(self, 'nombre_paises_en', nombre_paises_en))[0:93]
+            duplicated_slug = Marca.objects.filter(slug=slug).exclude(id=id).count()
+            if duplicated_slug>0:
+                slug = slug + '-' + str(duplicated_slug + 1)
+                
+            setattr(self, 'slug', slug)
             
         super(Marca, self).save(*args, **kwargs) 
 

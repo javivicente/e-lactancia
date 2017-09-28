@@ -1116,12 +1116,18 @@ def ficha_otra_escritura(request, slug):
     
     return render(request, 'lactancia/detalle_oe.html', context)
 
-    
-    
 def detalle_m(request, marca_id):
     try:
         # get the marca
-        marca = Marca.objects.get(pk=marca_id)
+        term = Marca.objects.get(pk=marca_id)
+        return redirect(term, permanent=True)
+    except Marca.DoesNotExist:
+        raise Http404
+    
+def ficha_marca(request, slug):
+    try:
+        # get the marca
+        marca = Marca.objects.get(slug=slug)
         # set the context
         context = get_context_for_marca(request, marca)
         context= update_context(request, marca, context)
@@ -2129,10 +2135,11 @@ URLS restructure
 '''
 import re
 import unidecode
+from django.utils.text import slugify
 
-
-def slugify(text):
+def slugify_javivi(text):
     text = unidecode.unidecode(text).lower()
+    text = re.sub(r'\W+', ' ', text).strip()
     return re.sub(r'\W+', '-', text)
     
 def slugify_groups():
@@ -2190,3 +2197,27 @@ def slugify_escrituras():
             slug = slug + '-' + str(duplicated_slug + 1)
         i.slug = slug
         i.save()
+
+def compare_slugifies():
+    items = Otras_escrituras.objects.all()
+    
+    for i in items:
+        print i.slug
+        print 'vs.'
+        print slugify(i.nombre)
+        print '--------------------------'
+        
+def slugify_marcas():
+    items = Marca.objects.all()
+    
+    for i in items:
+        i.slug='kk'
+        i.save()
+        '''
+        slug = slugify_javivi(i.nombre_paises_en)[0:93]
+        duplicated_slug = Marca.objects.filter(slug=slug).exclude(id=i.id).count()
+        if duplicated_slug>0:
+            slug = slug + '-' + str(duplicated_slug + 1)
+        i.slug = slug
+        i.save()
+        '''

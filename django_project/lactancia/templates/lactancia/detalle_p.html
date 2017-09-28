@@ -47,8 +47,8 @@
 
 
 {# share block #}
-{% block fb_url %}{% url 'lactancia:ficha_producto' prod.slug %}{% endblock %}
-{% block fb_url_top %}{% url 'lactancia:ficha_producto' prod.slug %}{% endblock %}
+{% block fb_url %}{% url 'lactancia:detalle_p' prod.id %}{% endblock %}
+{% block fb_url_top %}{% url 'lactancia:detalle_p' prod.id %}{% endblock %}
 {% block twitter_text %}{% trans "Comprueba la compatibilidad de" %} {{prod.nombre}} {% trans "con la #lactancia" %}{% endblock %}
 {% block twitter_text_top %}{% trans "Comprueba la compatibilidad de" %} {{prod.nombre}} {% trans "con la #lactancia" %}{% endblock %}
 
@@ -346,10 +346,8 @@
                                 <ul>
                                 {% for marca in prod.marcas.all|dictsort:"nombre" %}
                                     {% if marca.principios_activos.count > 1 %}
-                                        <li><a href="{% url 'lactancia:detalle_m' marca.id %}">{{ marca.nombre }}</a>&trade;. 
-                                        {% if marca.comentario %}
-                                            {{ marca.comentario.strip }}.
-                                        {% endif %}
+                                        <li><a href="{% url 'lactancia:ficha_marca' marca.slug %}">{{ marca.nombre_paises }}</a>&trade;. 
+                                        {% comment %}
                                         {% if marca.paises.all|length > 0 %}
                                             {% for pais in marca.paises.all %}
                                             {% if not forloop.last %}
@@ -359,13 +357,22 @@
                                             {% endif %}
                                             {% endfor %}
                                         {% endif %}
+                                        {% endcomment %}
                                         {% trans "Contiene otros elementos aparte de" %} <strong>{% block term_en_marca_composicion %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición" %}
                                         </li>
                                     {% else %}
-                                        <li><a href="{% url 'lactancia:detalle_m' marca.id %}">{{ marca.nombre }}</a>&trade;
-                                        {% if marca.comentario %}
-                                            {{ marca.comentario.strip }}
+                                        <li><a href="{% url 'lactancia:ficha_marca' marca.slug %}">{{ marca.nombre_paises }}</a>&trade;
+                                        {% comment %}
+                                        {% if marca.paises.all|length > 0 %}
+                                            {% for pais in marca.paises.all %}
+                                            {% if not forloop.last %}
+                                                {{ pais.nombre }},
+                                            {% else %}
+                                                {{ pais.nombre }}.
+                                            {% endif %}
+                                            {% endfor %}
                                         {% endif %}
+                                        {% endcomment %}
                                         </li>
                                     {% endif %}
                                 {% endfor %}

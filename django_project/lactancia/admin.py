@@ -86,13 +86,10 @@ class MarcaComentariosInline(admin.TabularInline):
         extra = 0
         
 class MarcaForm(ModelForm):
-        class Meta:
-                widgets = {
-                        'comentario_es': AutosizedTextarea(attrs={'rows': 3, 'class': 'input-xlarge'}),
-                        'comentario_en': AutosizedTextarea(attrs={'rows': 3, 'class': 'input-xlarge'}),
-                        }
+        #class Meta:
+        #        widgets = {
+        #                }
 
-        exclude = ('comentario',)
         
         def clean(self):
             nombre = self.cleaned_data.get('nombre')
@@ -115,19 +112,19 @@ class MarcaForm(ModelForm):
             instance = forms.ModelForm.save(self, False)                   
             #print 'salvamos instancia'
             instance.save()
-            print 'salvamos many2many'
+            #print 'salvamos many2many'
             self.save_m2m()
             return instance
 
 class MarcaAdmin(admin.ModelAdmin):
     save_as = True
-    list_display = ('nombre','multiples_principios','obten_principios','en_paises',
+    list_display = ('nombre','slug','multiples_principios','obten_principios','en_paises',
                         'opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     search_fields = ['nombre','principios_activos__nombre',]
     filter_horizontal = ('principios_activos','paises',)
     form = MarcaForm
     ordering = ('nombre',)
-    readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas',)
+    readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas','slug')
     inlines = [MarcaComentariosInline, ]
     date_hierarchy = 'fecha_modificacion'
     
@@ -136,13 +133,13 @@ class MarcaAdmin(admin.ModelAdmin):
                         'fields': ('nombre',)
                 }),
                 (_(u'Países donde se comercializa'), {
-                        'fields': ('paises','comentario_es', 'comentario_en',)
+                        'fields': ('paises',)
                 }),
                 (_(u'Principios activos'), {
                         'fields': ('principios_activos',)
                 }),
                 (_(u'Visitas y fechas'), {
-                        'fields': (('fecha_creacion','fecha_modificacion'), 'visitas',)
+                        'fields': (('fecha_creacion','fecha_modificacion'), 'visitas','slug',)
                 }),
         )
         
