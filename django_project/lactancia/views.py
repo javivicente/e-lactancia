@@ -332,9 +332,9 @@ def calcula_span_marca(marca):
             'span_disclaimer': 'span6'
             }
 
-    if marca.comentario != '':
-        span.update({'span_comentario': 'span3'})
-        span.update({'span_principios': 'span3'})
+    #if marca.comentario != '':
+    #    span.update({'span_comentario': 'span3'})
+    #    span.update({'span_principios': 'span3'})
     return span
 
 

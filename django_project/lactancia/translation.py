@@ -54,7 +54,7 @@ class Docs_TO(TranslationOptions):
 translator.register(Docs, Docs_TO)
 
 class Marca_TO(TranslationOptions):
-    fields = ('comentario','nombre_paises')
+    fields = ('nombre_paises',)
  
 translator.register(Marca, Marca_TO)
 

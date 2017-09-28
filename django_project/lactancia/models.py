@@ -387,7 +387,7 @@ class Marca(models.Model):
     paises = models.ManyToManyField('Pais', verbose_name=_(u'Paises donde se comercializa'), blank=True)
     nombre_paises = models.CharField(max_length=700, verbose_name=_(u'Nombre comercial y país'), blank=True, null=True)
     slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Se crea automáticamente a partir del nombre de la marca y el/los país(es) donde se comercializa. El sistema se asegurará de que sea único. Ejemplo:  Stadium (Mexico, Netherlands) -> stadium-mexico-netherlands para http://e-lactancia/breastfeeding/stadium-mexico-netherlands/tradename.'), unique= False)
-    comentario = models.CharField(max_length=255, blank=True, null=True, verbose_name=_(u'País donde se comercializa'))
+    #comentario = models.CharField(max_length=255, blank=True, null=True, verbose_name=_(u'País donde se comercializa'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
     principios_activos = models.ManyToManyField('Producto',verbose_name=_(u'Listado de principios activos'), through=Producto.marcas.through,blank=True)
