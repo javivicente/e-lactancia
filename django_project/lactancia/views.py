@@ -2190,14 +2190,15 @@ def slugify_escrituras():
     for i in items:
         i.slug='kk'
         i.save()
-        
+        '''
         slug = slugify(i.nombre)[0:93]
         duplicated_slug = Otras_escrituras.objects.filter(slug=slug).count()
         if duplicated_slug>0:
             slug = slug + '-' + str(duplicated_slug + 1)
         i.slug = slug
         i.save()
-
+        '''
+        
 def compare_slugifies():
     items = Otras_escrituras.objects.all()
     

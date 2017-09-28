@@ -118,7 +118,7 @@ class MarcaForm(ModelForm):
 
 class MarcaAdmin(admin.ModelAdmin):
     save_as = True
-    list_display = ('nombre','slug','multiples_principios','obten_principios','en_paises',
+    list_display = ('nombre','multiples_principios','slug', 'obten_principios','en_paises',
                         'opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     search_fields = ['nombre','principios_activos__nombre',]
     filter_horizontal = ('principios_activos','paises',)
@@ -215,7 +215,7 @@ class Otras_escriturasForm(ModelForm):
         class Meta:
                 model = Otras_escrituras
                 widgets = {
-                        'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        #'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
                         'nombre': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
                 }
                 exclude= ['idioma']
@@ -225,13 +225,13 @@ class Otras_escriturasForm(ModelForm):
 class Otras_escriturasAdmin(admin.ModelAdmin):
     form = Otras_escriturasForm
     
-    list_display = ('nombre', 'producto_principal', 'escritura',
+    list_display = ('nombre', 'producto_principal', 'slug', 'escritura',
                         'opiniones_pendientes','visitas', 'fecha_modificacion',)
     search_fields = ('producto_principal__nombre', 'nombre',)
     list_filter=('escritura',)
-    prepopulated_fields = {'slug': ('nombre',)}
+    #prepopulated_fields = {'slug': ('nombre',)}
     ordering = ('escritura__order','producto_principal__nombre',)
-    readonly_fields = ('fecha_creacion','fecha_modificacion','visitas',)
+    readonly_fields = ('fecha_creacion','fecha_modificacion','visitas','slug')
     
     inlines = [Otras_escrituras_ComentariosInline, ]
     date_hierarchy = 'fecha_modificacion'
@@ -244,7 +244,7 @@ class Otras_escriturasAdmin(admin.ModelAdmin):
                         'fields': ('producto_principal',)
                 }),
                 (_(u'Visitas y fechas'), {
-                        'fields': (('fecha_creacion','fecha_modificacion',), 'visitas',)
+                        'fields': ('slug',('fecha_creacion','fecha_modificacion',), 'visitas',)
                 }),
         )
 

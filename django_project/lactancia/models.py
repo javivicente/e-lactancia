@@ -317,7 +317,7 @@ class Otras_escrituras(models.Model):
     producto_principal= models.ForeignKey('Producto', verbose_name=_(u'Nombre principal del producto'))
     nombre = models.CharField(_(u'Producto en otras escrituras'), db_index=True, max_length=255, blank=True, null=True,)
     escritura = models.ForeignKey('Idioma', verbose_name=_(u'Idioma en que está escrito el producto'), null=True, blank=True)    
-    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Debe ir en inglés. Ejemplo: emergency-contraceptive-pills-3-days para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days. Un buen slug favorece aparecer en los primeros resultados de búsquedas en Google.'), unique= True)
+    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Se crea automáticamente a partir del nombre de la versión "latinizada" del nombre. Ideal para aprender a produnciar chino, japonés, coreano o ruso. El sistema se asegurará de que sea único. Ejemplo:  アシクロビル -> ashikurobiru para http://e-lactancia/breastfeeding/ashikurobiru/writing.'), unique= False)
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
         
@@ -350,12 +350,28 @@ class Otras_escrituras(models.Model):
         
     def __unicode__(self):
         return self.nombre
+    
+    def save(self, *args, **kwargs):
+        nombre = getattr(self, 'nombre', None)
+        #print 'id de marca:'
+        #print id
+        if nombre is not None:
+            ### Estos pasos son necesarios para garantizar que el slug sea único para cada término:
+            slug = slugify(nombre)[0:93]
+            id = getattr(self, 'id', None)
+            duplicated_slug = Otras_escrituras.objects.filter(slug=slug).exclude(id=id).count()
+            if duplicated_slug>0:
+                slug = slug + '-' + str(duplicated_slug + 1)
+                
+            setattr(self, 'slug', slug)
+            
+        super(Otras_escrituras, self).save(*args, **kwargs) 
         
 class Marca(models.Model):
     nombre = models.CharField(db_index=True, max_length=255, verbose_name=_(u'Nombre comercial'), unique=False)
     paises = models.ManyToManyField('Pais', verbose_name=_(u'Paises donde se comercializa'), blank=True)
     nombre_paises = models.CharField(max_length=700, verbose_name=_(u'Nombre comercial y país'), blank=True, null=True)
-    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Se crea automáticamente a partir del nombre de la marca y el/los país(es) donde se comercializa. El sistema se asegurará de que sea único. Ejemplo:  Stadium (Mexico, Netherlands) -> stadium-mexico-netherlands para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days.'), unique= False)
+    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Se crea automáticamente a partir del nombre de la marca y el/los país(es) donde se comercializa. El sistema se asegurará de que sea único. Ejemplo:  Stadium (Mexico, Netherlands) -> stadium-mexico-netherlands para http://e-lactancia/breastfeeding/stadium-mexico-netherlands/tradename.'), unique= False)
     comentario = models.CharField(max_length=255, blank=True, null=True, verbose_name=_(u'País donde se comercializa'))
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))

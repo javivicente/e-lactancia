@@ -211,7 +211,7 @@ class Migration(migrations.Migration):
                 ('nombre_paises', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
                 ('nombre_paises_en', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
                 ('nombre_paises_es', models.CharField(max_length=700, null=True, verbose_name='Nombre comercial y pa\xeds', blank=True)),
-                ('slug', models.SlugField(help_text='Es parte de la URL. Se crea autom\xe1ticamente a partir del nombre de la marca y el/los pa\xeds(es) donde se comercializa. El sistema se asegurar\xe1 de que sea \xfanico. Ejemplo:  Stadium (Mexico, Netherlands) -> stadium-mexico-netherlands para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days.', max_length=100, verbose_name='Slug')),
+                ('slug', models.SlugField(help_text='Es parte de la URL. Se crea autom\xe1ticamente a partir del nombre de la marca y el/los pa\xeds(es) donde se comercializa. El sistema se asegurar\xe1 de que sea \xfanico. Ejemplo:  Stadium (Mexico, Netherlands) -> stadium-mexico-netherlands para http://e-lactancia/breastfeeding/stadium-mexico-netherlands/tradename.', max_length=100, verbose_name='Slug')),
                 ('comentario', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),
                 ('comentario_en', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),
                 ('comentario_es', models.CharField(max_length=255, null=True, verbose_name='Pa\xeds donde se comercializa', blank=True)),
@@ -246,7 +246,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nombre', models.CharField(db_index=True, max_length=255, null=True, verbose_name='Producto en otras escrituras', blank=True)),
-                ('slug', models.SlugField(help_text='Es parte de la URL. Debe ir en ingl\xe9s. Ejemplo: emergency-contraceptive-pills-3-days para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days. Un buen slug favorece aparecer en los primeros resultados de b\xfasquedas en Google.', unique=True, max_length=100, verbose_name='Slug')),
+                ('slug', models.SlugField(help_text='Es parte de la URL. Se crea autom\xe1ticamente a partir del nombre de la versi\xf3n "latinizada" del nombre. Ideal para aprender a produnciar chino, japon\xe9s, coreano o ruso. El sistema se asegurar\xe1 de que sea \xfanico. Ejemplo:  \u30a2\u30b7\u30af\u30ed\u30d3\u30eb -> ashikurobiru para http://e-lactancia/breastfeeding/ashikurobiru/writing.', max_length=100, verbose_name='Slug')),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
                 ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n', db_index=True)),
                 ('escritura', models.ForeignKey(verbose_name='Idioma en que est\xe1 escrito el producto', blank=True, to='lactancia.Idioma', null=True)),
