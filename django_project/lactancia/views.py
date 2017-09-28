@@ -2148,13 +2148,13 @@ def slugify_groups():
     for g in grupos:
         g.slug='kk'
         g.save()
-        slug = slugify(g.nombre_en)[0:93]
+        '''slug = slugify(g.nombre_en)[0:93]
         duplicated_slug = Grupo.objects.filter(slug=slug).count()
         if duplicated_slug>0:
             slug = slug + '-' + str(duplicated_slug + 1)
         g.slug = slug
         g.save()
-        
+        '''
 def slugify_products():
     items = Producto.objects.all()
     

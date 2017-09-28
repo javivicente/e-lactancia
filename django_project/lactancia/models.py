@@ -37,7 +37,7 @@ PROFILE_CHOICES = (
 
 class Grupo(models.Model):
     nombre = models.CharField(_(u'Nombre'), db_index=True, max_length=255, unique=True)
-    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Debe ir en inglés. Ejemplo: emergency-contraceptive-pills-3-days para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days. Un buen slug favorece aparecer en los primeros resultados de búsquedas en Google.'), unique=True)
+    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Se crea automáticamente a partir del nombre del grupo en inglés. El sistema se asegurará de que sea único. Ejemplo: Anti-dementia Drug -> anti-dementia-drug  http://e-lactancia/breastfeeding/anti-dementia-drug/group/.'), unique= False)
     fecha_creacion = models.DateTimeField(_(u'Fecha de creación'),auto_now_add = True)
     fecha_modificacion = models.DateTimeField(_(u'Última modificación'), db_index=True, auto_now = True)
     relacionados = models.ManyToManyField('self', blank=True, verbose_name=_(u'grupos con los que se relaciona'))
@@ -90,6 +90,25 @@ class Grupo(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    def save(self, *args, **kwargs):
+        nombre = getattr(self, 'nombre_en', None)
+        if nombre is None or nombre == u'':
+            nombre = getattr(self, 'nombre_es', None)
+        
+        if nombre is not None:
+            ### Estos pasos son necesarios para garantizar que el slug sea único para cada término:
+            slug = slugify(nombre)[0:93]
+            id = getattr(self, 'id', None)
+            duplicated_slug = Grupo.objects.filter(slug=slug).exclude(id=id).count()
+            if duplicated_slug>0:
+                slug = slug + '-' + str(duplicated_slug + 1)
+                
+            setattr(self, 'slug', slug)
+            
+        super(Grupo, self).save(*args, **kwargs)   
+        
+        
+        
 class Riesgo(models.Model):
     nivel = models.IntegerField(unique=True)
     nombre = models.CharField(_(u'Nombre'), max_length=200)

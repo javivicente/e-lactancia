@@ -27,21 +27,20 @@ class GrupoComentariosInline(admin.TabularInline):
 class GrupoForm(ModelForm):
         class Meta:
                 widgets = {
-                       'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-xlarge'}),
-                       'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-xlarge'}),
-                       'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                       'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span6'}),
+                       'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span6'}),
+                       #'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
                         }
                         
-                exclude= ('nombre',)
+                exclude= ('nombre','slug',)
                 
                 
 class GrupoAdmin(admin.ModelAdmin):
-    list_display = ('nombre','num_productos','obten_relacionados','opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
+    list_display = ('nombre','slug', 'num_productos','obten_relacionados','opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     ordering = ('nombre',)
     search_fields = ('nombre_es','nombre_en')
     filter_horizontal = ('relacionados',)
-    prepopulated_fields = {'slug': ('nombre_en',)}
-    readonly_fields = ('fecha_creacion', 'fecha_modificacion','visitas',)
+    readonly_fields = ('fecha_creacion', 'fecha_modificacion','visitas','slug',)
     inlines = [GrupoComentariosInline,]
     date_hierarchy = 'fecha_modificacion'
     form = GrupoForm

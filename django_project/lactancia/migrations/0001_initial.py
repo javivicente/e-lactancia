@@ -142,7 +142,7 @@ class Migration(migrations.Migration):
                 ('nombre', models.CharField(unique=True, max_length=255, verbose_name='Nombre', db_index=True)),
                 ('nombre_en', models.CharField(max_length=255, unique=True, null=True, verbose_name='Nombre', db_index=True)),
                 ('nombre_es', models.CharField(max_length=255, unique=True, null=True, verbose_name='Nombre', db_index=True)),
-                ('slug', models.SlugField(help_text='Es parte de la URL. Debe ir en ingl\xe9s. Ejemplo: emergency-contraceptive-pills-3-days para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days. Un buen slug favorece aparecer en los primeros resultados de b\xfasquedas en Google.', unique=True, max_length=100, verbose_name='Slug')),
+                ('slug', models.SlugField(help_text='Es parte de la URL. Se crea autom\xe1ticamente a partir del nombre del grupo en ingl\xe9s. El sistema se asegurar\xe1 de que sea \xfanico. Ejemplo: Anti-dementia Drug -> anti-dementia-drug  http://e-lactancia/breastfeeding/anti-dementia-drug/group/.', max_length=100, verbose_name='Slug')),
                 ('fecha_creacion', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaci\xf3n')),
                 ('fecha_modificacion', models.DateTimeField(auto_now=True, verbose_name='\xdaltima modificaci\xf3n', db_index=True)),
                 ('relacionados', models.ManyToManyField(related_name='relacionados_rel_+', verbose_name='grupos con los que se relaciona', to='lactancia.Grupo', blank=True)),
