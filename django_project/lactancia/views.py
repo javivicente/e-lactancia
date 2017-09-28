@@ -2174,6 +2174,7 @@ def slugify_alias():
     for i in items:
         i.slug='kk'
         i.save()
+        '''
         if i.nombre_en:
             slug = slugify(i.nombre_en)[0:93]
         else:
@@ -2183,6 +2184,7 @@ def slugify_alias():
             slug = slug + '-' + str(duplicated_slug + 1)
         i.slug = slug
         i.save()
+        '''
         
 def slugify_escrituras():
     items = Otras_escrituras.objects.all()

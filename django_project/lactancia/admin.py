@@ -157,7 +157,7 @@ class AliasForm(ModelForm):
         class Meta:
                 model = Alias
                 widgets = {
-                        'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        #'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
                         'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
                         'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
                 }
@@ -171,24 +171,23 @@ class AliasForm(ModelForm):
         
 class AliasAdmin(admin.ModelAdmin):
     form = AliasForm
-    list_display = ('producto_principal','nombre_es', 'nombre_en',
+    list_display = ('producto_principal','nombre_es', 'nombre_en', 'slug',
                         'opiniones_pendientes','visitas', 'fecha_modificacion','en_ambos_idiomas')
     search_fields = ('producto_principal__nombre', 'nombre_es','nombre_en',)
     ordering = ('producto_principal__nombre',)
-    readonly_fields = ('fecha_creacion','fecha_modificacion','visitas',)
-    prepopulated_fields = {'slug': ('nombre_en',)}
+    readonly_fields = ('fecha_creacion','fecha_modificacion','visitas','slug',)
     inlines = [AliasComentariosInline, ]
     date_hierarchy = 'fecha_modificacion'
 
     fieldsets = (
                 (_(u'Alias'), {
-                        'fields': ('nombre_es','nombre_en','slug',)
+                        'fields': ('nombre_es','nombre_en',)
                 }),
                 (_(u'Nombre Principal'), {
                         'fields': ('producto_principal',)
                 }),
                 (_(u'Visitas y fechas'), {
-                        'fields': (('fecha_creacion','fecha_modificacion',), 'visitas',)
+                        'fields': ('slug',('fecha_creacion','fecha_modificacion',), 'visitas',)
                 }),
         )
 

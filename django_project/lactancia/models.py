@@ -273,7 +273,7 @@ class Alias(models.Model):
 
     producto_principal= models.ForeignKey('Producto', verbose_name=_(u'Nombre principal del producto'))
     nombre = models.CharField(_(u'Sinónimo del producto'), db_index=True, max_length=255, blank=True, null=True, help_text=_(u'Nombre en español. Si tiene traducción al inglés, ponla en el campo del nombre en inglés. Sino, deja el campo del nombre en inglés vacío.'))
-    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Debe ir en inglés. Ejemplo: emergency-contraceptive-pills-3-days para http://e-lactancia/breastfeeding/emergency-contraceptive-pills-3-days. Un buen slug favorece aparecer en los primeros resultados de búsquedas en Google.'), unique= True)
+    slug = models.SlugField(max_length=100, verbose_name=_(u'Slug'), help_text=_(u'Es parte de la URL. Se crea automáticamente a partir del nombre en inglés. Si no lo hay, se creará a partir de la versión en español. El sistema se asegurará de que sea único. Ejemplo: Epinephrine -> epinephrine para http://e-lactancia/breastfeeding/epinephrine/writing.'), unique= False)
     fecha_creacion = models.DateTimeField(auto_now_add = True, verbose_name=_(u'Fecha de creación'))
     fecha_modificacion = models.DateTimeField(db_index=True, auto_now = True, verbose_name=_(u'Última modificación'))
         
@@ -310,7 +310,22 @@ class Alias(models.Model):
     def __unicode__(self):
         return self.nombre
 
-
+    def save(self, *args, **kwargs):
+        nombre = getattr(self, 'nombre_en', None)
+        if nombre is None or nombre == u'':
+            nombre = getattr(self, 'nombre_es', None)
+        
+        if nombre is not None:
+            ### Estos pasos son necesarios para garantizar que el slug sea único para cada término:
+            slug = slugify(nombre)[0:93]
+            id = getattr(self, 'id', None)
+            duplicated_slug = Alias.objects.filter(slug=slug).exclude(id=id).count()
+            if duplicated_slug>0:
+                slug = slug + '-' + str(duplicated_slug + 1)
+                
+            setattr(self, 'slug', slug)
+            
+        super(Alias, self).save(*args, **kwargs) 
 
 class Otras_escrituras(models.Model):
 
