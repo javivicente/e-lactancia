@@ -436,7 +436,7 @@ class Marca(models.Model):
         verbose_name = _(u'Marca')
         
     def traducido_al_ingles(self):
-        return self.comentario_es != self.comentario_en
+        return True
     traducido_al_ingles.boolean=True
     traducido_al_ingles.short_description= _(u'Traducido al inglés')
 

@@ -23,6 +23,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = (
+    'import_export',
     'modeltranslation',
     'lactancia',
     'suit',
@@ -35,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'debug_toolbar',
     'ratings',
+    'django_select2',
     'meta',
 ) 
 
@@ -193,4 +195,31 @@ SUIT_CONFIG = {
      'LIST_PER_PAGE': 20
 }
 
+CACHES = {
 
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    },
+    
+    'select2': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'select2_cache_table_dev',
+    }
+}
+
+if DEBUG:
+    CACHES = {
+
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        },
+        
+        'select2': {
+            'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+            'LOCATION': 'select2_cache_table_dev',
+        }
+    }
+    
+# set the cache backend to select2
+SELECT2_CACHE_BACKEND= 'select2'

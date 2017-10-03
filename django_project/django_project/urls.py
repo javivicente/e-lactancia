@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^', include('lactancia.urls', namespace="lactancia")),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^', include('ratings.urls')),
+    url(r'^select2/', include('django_select2.urls')),
 )
 
     

@@ -15,8 +15,25 @@ from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.utils.translation import ugettext_lazy as _
 import csv
 from suit.admin import SortableModelAdmin
+from django_select2.forms import Select2Widget, Select2MultipleWidget, ModelSelect2Widget, ModelSelect2MultipleWidget, ModelSelect2TagWidget
 
 
+### SELECT2 WIDGETS ###
+
+class GrupoSimpleWidget(ModelSelect2Widget):
+    search_fields = ['nombre__icontains',]
+
+class GrupoMultipleWidget(ModelSelect2MultipleWidget):
+    search_fields = ['nombre_es__icontains',]
+
+class PaisesWidget(ModelSelect2MultipleWidget):
+    search_fields = ['nombre__icontains', ]
+    
+
+class IngredientesActivosWidget(ModelSelect2MultipleWidget):
+    search_fields = ['nombre__icontains', ]
+    
+    
 class GrupoComentariosInline(admin.TabularInline):
         model = Comentario
         #suit_classes = 'suit-tab suit-tab-g_comentarios'
@@ -85,11 +102,14 @@ class MarcaComentariosInline(admin.TabularInline):
         extra = 0
         
 class MarcaForm(ModelForm):
-        #class Meta:
-        #        widgets = {
-        #                }
+        class Meta:
+                widgets = {
+                            'guest': Select2Widget,
+                            'paises': Select2MultipleWidget(attrs={'class':'span8'}),
+                            'principios_activos': Select2MultipleWidget(attrs={'class':'span8'}),
+                        }
 
-        
+       
         def clean(self):
             nombre = self.cleaned_data.get('nombre')
             paises = self.cleaned_data.get('paises')
