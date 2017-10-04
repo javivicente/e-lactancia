@@ -195,7 +195,7 @@ SUIT_CONFIG = {
      'LIST_PER_PAGE': 20
 }
 
-CACHES = {
+'''CACHES = {
 
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
@@ -207,6 +207,7 @@ CACHES = {
         'LOCATION': 'select2_cache_table_dev',
     }
 }
+'''
  
 if DEBUG:
     CACHES = {
