@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'debug_toolbar',
     'ratings',
-    'django_select2',
+    #'django_select2',
     'meta',
 ) 
 
