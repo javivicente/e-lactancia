@@ -447,16 +447,53 @@ class BiblioForm(ModelForm):
 
                 return instance
         
-
-class BibliografiaAdmin(admin.ModelAdmin):
-        form = BiblioForm
+class BiblioResource(resources.ModelResource):
+    productos = fields.Field()
+    pdf_link = fields.Field()
+    
+    class Meta: 
+        model = Bibliografia
+        fields = ( 'titulo',
+                   'autores',
+                   'publicacion',
+                   'anyo',
+                   'productos',
+                   'abstract_link',
+                   'full_text_link',
+                   'pdf_link',
+                   'fecha_modificacion',
+                    )
+        export_order = ( 'titulo',
+                   'autores',
+                   'publicacion',
+                   'anyo',
+                   'productos',
+                   'abstract_link',
+                   'full_text_link',
+                   'pdf_link',
+                   'fecha_modificacion',
+                   )
+    
+    def dehydrate_paises(self, object):
+        return unicode(object.en_paises())
         
+    def dehydrate_pdf_link(self, obj):
+        if obj.pdf:
+            return unicode('http://www.e-lactancia.org' + obj.pdf.url)
+        return ''
+    
+    def dehydrate_visitas(self, obj):
+        return unicode(obj.visitas())
+        
+class BibliografiaAdmin(ExportMixin, admin.ModelAdmin):
+        form = BiblioForm
+        resource_class = BiblioResource
         list_display = ('titulo', 'anyo', 'publicacion', 'autores', 'obten_productos', 'tiene_pdf','fecha_modificacion',)
         search_fields = ('publicacion', 'titulo', 'autores','productos__nombre')
         ordering = ('-anyo',)
         readonly_fields = ('fecha_creacion','fecha_modificacion',)
         #filter_horizontal = ('productos',)
-        list_filter = ('fecha_modificacion',)
+        list_filter = ('productos','fecha_modificacion',)
         
         
 
@@ -1004,6 +1041,7 @@ admin.site.register(Visita_grupo_total, Visita_grupo_total_Admin)
 class Visita_producto_total_Admin(admin.ModelAdmin):
     model = Visita_producto_total
     ordering=('-visitas',)
+    list_filter = ('producto__nombre','producto__grupo',)
     list_select_related = True
     list_display=('producto', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
     readonly_fields=('producto', 'visitas', 'fecha_modificacion',)
@@ -1021,6 +1059,7 @@ class Visita_alias_total_Admin(admin.ModelAdmin):
     model = Visita_alias_total
     ordering=('-visitas',)
     list_select_related = True
+    list_filter = ('alias__producto_principal',)
     list_display=('alias', 'visitas', 'fecha_modificacion','ultima_modificacion_alias','ultima_modificacion_producto')
     readonly_fields=('alias', 'visitas', 'fecha_modificacion',)
     search_fields = ( 'alias__nombre_es', 'alias__nombre_en',)
@@ -1040,6 +1079,7 @@ admin.site.register(Visita_alias_total, Visita_alias_total_Admin)
 class Visita_marca_total_Admin(admin.ModelAdmin):
     model = Visita_marca_total
     ordering=('-visitas',)
+    list_filter = ('marca__principios_activos',)
     list_select_related = True
     list_display=('marca', 'visitas', 'fecha_modificacion','ultima_modificacion_termino',)
     readonly_fields=('marca', 'visitas', 'fecha_modificacion',)
@@ -1058,6 +1098,7 @@ class Visita_otras_escrituras_total_Admin(admin.ModelAdmin):
     model = Visita_otras_escrituras_total
     ordering=('-visitas',)
     list_select_related = True
+    list_filter = ('otras_escrituras__producto_principal',)
     list_display=('otras_escrituras', 'visitas', 'fecha_modificacion','ultima_modificacion_termino','ultima_modificacion_producto',)
     readonly_fields=('otras_escrituras', 'visitas', 'fecha_modificacion',)
     search_fields = ( 'otras_escrituras__nombre',)
@@ -1098,7 +1139,7 @@ class Visita_producto_perfil_Admin(admin.ModelAdmin):
     list_display=('producto', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
     readonly_fields=('producto', 'perfil','visitas', 'fecha_modificacion',)
     search_fields = ( 'producto__nombre_es', 'producto__nombre_en',)
-    list_filter = ('perfil',)
+    list_filter = ('producto__nombre','producto__grupo','perfil',)
     def ultima_modificacion_termino(self, obj):
         return obj.producto.fecha_modificacion
     ultima_modificacion_termino.allow_tags = True
@@ -1115,7 +1156,7 @@ class Visita_alias_perfil_Admin(admin.ModelAdmin):
     list_display=('alias', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
     readonly_fields=('alias', 'perfil','visitas', 'fecha_modificacion',)
     search_fields = ( 'alias__nombre_es', 'alias__nombre_en',)
-    list_filter = ('perfil',)
+    list_filter = ('alias__producto_principal','perfil',)
     def ultima_modificacion_termino(self, obj):
         return obj.alias.fecha_modificacion
     ultima_modificacion_termino.allow_tags = True
@@ -1132,7 +1173,7 @@ class Visita_marca_perfil_Admin(admin.ModelAdmin):
     list_display=('marca', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
     readonly_fields=('marca', 'perfil','visitas', 'fecha_modificacion',)
     search_fields = ( 'alias__nombre',)
-    list_filter = ('perfil',)
+    list_filter = ('marca__principios_activos','perfil',)
     def ultima_modificacion_termino(self, obj):
         return obj.marca.fecha_modificacion
     ultima_modificacion_termino.allow_tags = True
@@ -1149,7 +1190,7 @@ class Visita_otras_escrituras_perfil_Admin(admin.ModelAdmin):
     list_display=('otras_escrituras', 'perfil','visitas', 'fecha_modificacion','ultima_modificacion_termino',)
     readonly_fields=('otras_escrituras', 'perfil','visitas', 'fecha_modificacion',)
     search_fields = ( 'otras_escrituras__nombre',)
-    list_filter = ('perfil',)
+    list_filter = ('otras_escrituras__producto_principal','perfil',)
     def ultima_modificacion_termino(self, obj):
         return obj.otras_escrituras.fecha_modificacion
     ultima_modificacion_termino.allow_tags = True
