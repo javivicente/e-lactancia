@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'debug_toolbar',
     'ratings',
-    #'django_select2',
+    'django_select2',
     'meta',
 ) 
 
@@ -195,11 +195,10 @@ SUIT_CONFIG = {
      'LIST_PER_PAGE': 20
 }
 
-'''CACHES = {
+CACHES = {
 
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        #'LOCATION': 'select2_cache_table_dev',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     },
     
     'select2': {
@@ -207,7 +206,7 @@ SUIT_CONFIG = {
         'LOCATION': 'select2_cache_table_dev',
     }
 }
-'''
+
  
 if DEBUG:
     CACHES = {
