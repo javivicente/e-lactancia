@@ -199,7 +199,7 @@ CACHES = {
 
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'select2_cache_table_dev',
+        #'LOCATION': 'select2_cache_table_dev',
     },
     
     'select2': {
