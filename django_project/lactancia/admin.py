@@ -16,22 +16,11 @@ from django.utils.translation import ugettext_lazy as _
 import csv
 from suit.admin import SortableModelAdmin
 from django_select2.forms import Select2Widget, Select2MultipleWidget, ModelSelect2Widget, ModelSelect2MultipleWidget, ModelSelect2TagWidget
+from import_export.admin import ExportMixin
+from import_export import resources
+from import_export import fields
 
 
-### SELECT2 WIDGETS ###
-
-class GrupoSimpleWidget(ModelSelect2Widget):
-    search_fields = ['nombre__icontains',]
-
-class GrupoMultipleWidget(ModelSelect2MultipleWidget):
-    search_fields = ['nombre_es__icontains',]
-
-class PaisesWidget(ModelSelect2MultipleWidget):
-    search_fields = ['nombre__icontains', ]
-    
-
-class IngredientesActivosWidget(ModelSelect2MultipleWidget):
-    search_fields = ['nombre__icontains', ]
     
     
 class GrupoComentariosInline(admin.TabularInline):
@@ -46,22 +35,55 @@ class GrupoForm(ModelForm):
                 widgets = {
                        'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span6'}),
                        'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span6'}),
+                       'relacionados': Select2MultipleWidget(attrs={'rows': 3, 'class': 'span12'}),
+                       
                        #'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
                         }
                         
                 exclude= ('nombre','slug',)
+
+class GrupoResource(resources.ModelResource):
+    relacionados = fields.Field()
+    num_productos = fields.Field()
+    visitas = fields.Field()
+    
+    class Meta: 
+        model = Grupo
+        fields = ( 'nombre',
+                   'relacionados',
+                   'num_productos',
+                   'visitas',
+                   'fecha_modificacion',
+                    )
+        export_order = ( 'nombre',
+                   'relacionados',
+                   'num_productos',
+                   'visitas',
+                   'fecha_modificacion',
+                   )
+    
+    def dehydrate_relacionados(self, object):
+        return unicode(object.obten_relacionados())
+        
+    
+    def dehydrate_num_productos(self, obj):
+        return unicode(obj.num_productos())
+    
+    def dehydrate_visitas(self, obj):
+        return unicode(obj.visitas())
+        
+                   
                 
-                
-class GrupoAdmin(admin.ModelAdmin):
+class GrupoAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ('nombre','slug', 'num_productos','obten_relacionados','opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     ordering = ('nombre',)
     search_fields = ('nombre_es','nombre_en')
-    filter_horizontal = ('relacionados',)
+    #filter_horizontal = ('relacionados',)
     readonly_fields = ('fecha_creacion', 'fecha_modificacion','visitas','slug',)
     inlines = [GrupoComentariosInline,]
     date_hierarchy = 'fecha_modificacion'
     form = GrupoForm
-    
+    resource_class = GrupoResource
     fieldsets = [
                 (None, {
                         'classes': ('wide',),
@@ -83,6 +105,7 @@ class RiesgoForm(ModelForm):
                 widgets = {
                        'descripcion_es': AutosizedTextarea(attrs={'rows': 3, 'class': 'input-xlarge'}),
                        'descripcion_en': AutosizedTextarea(attrs={'rows': 3, 'class': 'input-xlarge'}),
+                        
                         }
                         
                 exclude= ('descripcion','nombre',)
@@ -134,12 +157,44 @@ class MarcaForm(ModelForm):
             self.save_m2m()
             return instance
 
-class MarcaAdmin(admin.ModelAdmin):
+class MarcaResource(resources.ModelResource):
+    paises = fields.Field()
+    principios_activos = fields.Field()
+    visitas = fields.Field()
+    
+    class Meta: 
+        model = Marca
+        fields = ( 'nombre',
+                   'paises',
+                   'principios_activos',
+                   'visitas',
+                   'fecha_modificacion',
+                    )
+        export_order = ( 'nombre',
+                   'paises',
+                   'principios_activos',
+                   'visitas',
+                   'fecha_modificacion',
+                   )
+    
+    def dehydrate_paises(self, object):
+        return unicode(object.en_paises())
+        
+    
+    def dehydrate_principios_activos(self, obj):
+        return unicode(obj.obten_principios())
+    
+    def dehydrate_visitas(self, obj):
+        return unicode(obj.visitas())
+            
+class MarcaAdmin(ExportMixin, admin.ModelAdmin):
     save_as = True
     list_display = ('nombre','multiples_principios','slug', 'obten_principios','en_paises',
                         'opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     search_fields = ['nombre','principios_activos__nombre',]
     form = MarcaForm
+    list_filter = ( 'principios_activos', )
+    resource_class = MarcaResource
     ordering = ('nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas','slug')
     inlines = [MarcaComentariosInline, ]
@@ -186,13 +241,41 @@ class AliasForm(ModelForm):
             nombre_en = self.cleaned_data.get('nombre_en')
             if not nombre_en and not nombre_es:
                 raise ValidationError(_(u"Debes indicar al menos un sinónimo (en inglés o en español)."))
+
+class AliasResource(resources.ModelResource):
+    producto_principal = fields.Field()
+    visitas = fields.Field()
+    
+    class Meta: 
+        model = Alias
+        fields = ( 'nombre',
+                   'producto_principal',
+                   'visitas',
+                   'fecha_modificacion',
+                    )
+        export_order = ( 'nombre',
+                   'producto_principal',
+                   'visitas',
+                   'fecha_modificacion',
+                   )
+    
+    def dehydrate_paises(self, object):
+        return unicode(object.en_paises())
         
-class AliasAdmin(admin.ModelAdmin):
+    def dehydrate_producto_principal(self, obj):
+        return unicode(obj.producto_principal.nombre)
+    
+    def dehydrate_visitas(self, obj):
+        return unicode(obj.visitas())
+                
+class AliasAdmin(ExportMixin, admin.ModelAdmin):
     form = AliasForm
+    resource_class = AliasResource
     list_display = ('producto_principal','nombre_es', 'nombre_en', 'slug',
                         'opiniones_pendientes','visitas', 'fecha_modificacion','en_ambos_idiomas')
     search_fields = ('producto_principal__nombre', 'nombre_es','nombre_en',)
     ordering = ('producto_principal__nombre',)
+    list_filter = ( 'producto_principal', )
     readonly_fields = ('fecha_creacion','fecha_modificacion','visitas','slug',)
     inlines = [AliasComentariosInline, ]
     date_hierarchy = 'fecha_modificacion'
@@ -239,15 +322,46 @@ class Otras_escriturasForm(ModelForm):
                 }
                 exclude= ['idioma', 'slug',]
         
-        
-        
-class Otras_escriturasAdmin(admin.ModelAdmin):
-    form = Otras_escriturasForm
+
+class Otras_escriturasResource(resources.ModelResource):
+    producto_principal = fields.Field()
+    escritura = fields.Field()
+    visitas = fields.Field()
     
+    class Meta: 
+        model = Otras_escrituras
+        fields = ( 'nombre',
+                   'producto_principal',
+                   'escritura',
+                   'visitas',
+                   'fecha_modificacion',
+                    )
+        export_order = ( 'nombre',
+                   'producto_principal',
+                   'escritura',
+                   'visitas',
+                   'fecha_modificacion',
+                   )
+    
+    def dehydrate_paises(self, object):
+        return unicode(object.en_paises())
+        
+    def dehydrate_producto_principal(self, obj):
+        return unicode(obj.producto_principal.nombre)
+    
+    def dehydrate_escritura(self, obj):
+        return unicode(obj.escritura.nombre)
+    
+    def dehydrate_visitas(self, obj):
+        return unicode(obj.visitas())
+        
+class Otras_escriturasAdmin(ExportMixin, admin.ModelAdmin):
+    form = Otras_escriturasForm
+    resource_class = Otras_escriturasResource
     list_display = ('nombre', 'producto_principal', 'slug', 'escritura',
                         'opiniones_pendientes','visitas', 'fecha_modificacion',)
     search_fields = ('producto_principal__nombre', 'nombre',)
-    list_filter=('escritura',)
+    list_filter=('escritura','producto_principal',)
     #prepopulated_fields = {'slug': ('nombre',)}
     ordering = ('escritura__order','producto_principal__nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion','visitas','slug')
@@ -516,11 +630,91 @@ class ProdComentariosInline(admin.TabularInline):
         exclude = ('alias','otra_escritura','marca','grupo','mensaje','lang',)
         extra = 0
 
+class ProductoResource(resources.ModelResource):
+    riesgo = fields.Field()
+    grupos = fields.Field()
+    visitas = fields.Field()
+    alternativas = fields.Field()
+    num_referencias_biblio = fields.Field()
+    comentario_productos = fields.Field()
+    comentario_grupos = fields.Field()
+    
+    class Meta: 
+        model = Producto
+        fields = ( 'nombre',
+                   'riesgo',
+                   'grupos',
+                   'comentario',
+                   'comentario_productos',
+                   'comentario_grupos',
+                   'alternativas',
+                   'biodisponibilidad',
+                   'peso_molecular',
+                   'union_proteinas',
+                   'volumen_distrib',
+                   'pka',
+                   't_maximo',
+                   't_medio', 
+                   'indice_leche_plasma', 
+                   'dosis_teorica',
+                   'dosis_relativa',
+                   'dosis_terapeutica',
+                   'visitas',
+                   'num_referencias_biblio',
+                   'fecha_modificacion',
+                    )
+        export_order = ( 'nombre',
+                   'riesgo',
+                   'grupos',
+                   'comentario',
+                   'comentario_productos',
+                   'comentario_grupos',
+                   'alternativas',
+                   'biodisponibilidad',
+                   'peso_molecular',
+                   'union_proteinas',
+                   'volumen_distrib',
+                   'pka',
+                   't_maximo',
+                   't_medio', 
+                   'indice_leche_plasma', 
+                   'dosis_teorica',
+                   'dosis_relativa',
+                   'dosis_terapeutica',
+                   'visitas',
+                   'num_referencias_biblio',
+                   'fecha_modificacion',
+                    )
+    
+    def dehydrate_riesgo(self, object):
+        if object.riesgo:
+            return unicode(object.riesgo.nivel)
+        else:
+            return ''
+    
+    def dehydrate_grupos(self, obj):
+        return unicode(obj.obten_grupos())
+    
+    def dehydrate_alternativas(self, obj):
+        return unicode(obj.obten_alternativas())
+        
+    def dehydrate_comentario_productos(self, obj):
+        return unicode(obj.obten_referencia_otros_productos())
+    
+    def dehydrate_comentario_grupos(self, obj):
+        return unicode(obj.obten_referencia_grupos())
+        
+    def dehydrate_visitas(self, obj):
+        return unicode(obj.visitas())
+        
+    def dehydrate_num_referencias_biblio(self, object):
+        return unicode(object.num_biblio())
 
-                
-class ProductoAdmin(admin.ModelAdmin):
+        
+class ProductoAdmin(ExportMixin, admin.ModelAdmin):
         
     form = ProductoForm
+    resource_class = ProductoResource
     list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
     #list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'num_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes', 'fecha_modificacion','traducido_al_ingles',)
     list_filter = ( 'riesgo', 'grupo', )

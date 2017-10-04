@@ -205,6 +205,15 @@ class Producto(models.Model):
         return ";\n".join([g.nombre for g in self.grupo.all()])
     obten_grupos.short_description=_(u'Grupo(s)')
 
+    def obten_referencia_otros_productos(self):
+        return ";\n".join([s.nombre for s in self.referencia_otros_productos.all()])
+    obten_referencia_otros_productos.short_description=_(u'Referencias a otros productos')
+    
+    def obten_referencia_grupos(self):
+        return ";\n".join([s.nombre for s in self.referencia_grupos.all()])
+    obten_referencia_grupos.short_description=_(u'Referencia a grupos')
+    
+    
     def visitas(self):
         aux = Visita_producto_total.objects.filter(producto=self.id)
         if len(aux) > 0:
