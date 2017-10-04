@@ -5,14 +5,24 @@
 {% block extrahead %}
 <link href="{{STATIC_URL}}img/favicon.ico"  type="image/x-icon">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+<script type="text/javascript" src="{% static 'js/MyRelatedObjectLookups.js' %}"></script>
 {% endblock %}
 
 
 {# Additional CSS includes #}
-{#{% block extrastyle %}#}
+{% block extrastyle %}
 {#  <link rel="stylesheet" type="text/css" href="{% static 'css/my_project.css' %}" media="all">#}
-{#{% endblock %}#}
+<style type="text/css">
+    .form-horizontal .inline-related .select2 .selection,
+    .form-horizontal .inline-related .select2 .select2-selection {
+        display: block !important;
+    }
 
+    .form-horizontal .inline-related .select2 .dropdown-wrapper {
+        display: inline !important;
+    }
+</style>
+{% endblock %}
 
 {# Additional JS files in footer, right before </body> #}
 {% block extrajs %}
@@ -22,6 +32,8 @@ $(document).ready(function(){
   $('.file-upload > a').attr('target', '_blank');
 });
 </script>
+</script>
+
 {% endblock %}
 
 
@@ -69,5 +81,5 @@ $(document).ready(function(){
 
 {# Footer copyright (right side) #}
 {% block copyright %}
-  &copy; 2015 Apilam<br>Desarrollado por <a href="http://www.apilam.org" target="_blank">Apilam</a>
+  &copy; {% now "Y" %} Apilam<br>Desarrollado por <a href="http://www.apilam.org" target="_blank">Apilam</a>
 {% endblock %}

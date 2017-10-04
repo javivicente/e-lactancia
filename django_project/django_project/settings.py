@@ -207,7 +207,7 @@ CACHES = {
         'LOCATION': 'select2_cache_table_dev',
     }
 }
-
+ 
 if DEBUG:
     CACHES = {
 

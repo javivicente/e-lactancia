@@ -104,9 +104,8 @@ class MarcaComentariosInline(admin.TabularInline):
 class MarcaForm(ModelForm):
         class Meta:
                 widgets = {
-                            'guest': Select2Widget,
-                            'paises': Select2MultipleWidget(attrs={'class':'span8'}),
-                            'principios_activos': Select2MultipleWidget(attrs={'class':'span8'}),
+                            'paises': Select2MultipleWidget(attrs={'class':'span12'}),
+                            'principios_activos': Select2MultipleWidget(attrs={'class':'span12'}),
                         }
 
        
@@ -140,7 +139,6 @@ class MarcaAdmin(admin.ModelAdmin):
     list_display = ('nombre','multiples_principios','slug', 'obten_principios','en_paises',
                         'opiniones_pendientes','visitas','fecha_modificacion','traducido_al_ingles',)
     search_fields = ['nombre','principios_activos__nombre',]
-    filter_horizontal = ('principios_activos','paises',)
     form = MarcaForm
     ordering = ('nombre',)
     readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas','slug')
@@ -177,8 +175,9 @@ class AliasForm(ModelForm):
                 model = Alias
                 widgets = {
                         #'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
-                        'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
-                        'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
+                        'nombre_es': AutosizedTextarea(attrs={'rows': 1, 'class': 'span8'}),
+                        'nombre_en': AutosizedTextarea(attrs={'rows': 1, 'class': 'span8'}),
+                        'producto_principal': Select2Widget(attrs={'rows': 1, 'class': 'span8'}),
                 }
                 exclude= ('nombre','slug',)
         
@@ -235,6 +234,8 @@ class Otras_escriturasForm(ModelForm):
                 widgets = {
                         #'slug': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
                         'nombre': AutosizedTextarea(attrs={'rows': 1, 'class': 'span4'}),
+                        'producto_principal': Select2Widget(attrs={'rows': 1, 'class': 'span8'}),
+                        'escritura': Select2Widget(attrs={'rows': 1, 'class': 'span6'}),
                 }
                 exclude= ['idioma', 'slug',]
         
@@ -273,14 +274,15 @@ class BiblioForm(ModelForm):
         class Meta:
                 model = Bibliografia
                 widgets = {
-                        'autores': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-xlarge'}),
-                        'titulo': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-xlarge'}),
-                        'publicacion': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-xlarge'}),
+                        'autores': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        'titulo': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
+                        'publicacion': AutosizedTextarea(attrs={'rows': 1, 'class': 'span8'}),
                         'anyo': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-small'}),
+                        'productos': Select2MultipleWidget(attrs={'rows': 5, 'class': 'span12'}),
                         }
                 fields= '__all__'
         
-        productos = forms.ModelMultipleChoiceField(queryset=Producto.objects.all(),required=False,widget=FilteredSelectMultiple(verbose_name=u'Productos', is_stacked=True))
+        #productos = forms.ModelMultipleChoiceField(queryset=Producto.objects.all(),required=False,widget=FilteredSelectMultiple(verbose_name=u'Productos', is_stacked=True))
         # Overriding __init__ here allows us to provide initial
         # data for 'productos' field
         def __init__(self, *args, **kwargs):
@@ -297,6 +299,7 @@ class BiblioForm(ModelForm):
                     initial['productos'] = [t.pk for t in kwargs['instance'].productos.all()]
 
                 forms.ModelForm.__init__(self, *args, **kwargs)
+                #ModelSelect2MultipleWidget.__init__(self, *args, **kwargs)
 
         # Overriding save allows us to process the value of 'bibliography' field    
         def save(self, commit=True):
@@ -338,7 +341,7 @@ class BibliografiaAdmin(admin.ModelAdmin):
         search_fields = ('publicacion', 'titulo', 'autores','productos__nombre')
         ordering = ('-anyo',)
         readonly_fields = ('fecha_creacion','fecha_modificacion',)
-        filter_horizontal = ('productos',)
+        #filter_horizontal = ('productos',)
         list_filter = ('fecha_modificacion',)
         
         
@@ -358,6 +361,8 @@ class BibliografiaAdmin(admin.ModelAdmin):
         )
 
 admin.site.register(Bibliografia, BibliografiaAdmin)
+
+
 
         
 class ProductoForm(ModelForm):
@@ -382,10 +387,15 @@ class ProductoForm(ModelForm):
                         'dosis_teorica': EnclosedInput(append='mg/Kg/d'),
                         'dosis_relativa': EnclosedInput(append='%'),
                         'dosis_terapeutica': EnclosedInput(append='%'),
+                        'grupo': Select2MultipleWidget(attrs={'rows': 1, 'class': 'span12'}),
+                        'alternativas': Select2MultipleWidget(attrs={'rows': 1, 'class': 'span12'}),
+                        'referencia_otros_productos': Select2MultipleWidget(attrs={'rows': 1, 'class': 'span12'}),
+                        'referencia_grupos': Select2MultipleWidget(attrs={'rows': 1, 'class': 'span12'}),
+                        'biblio': Select2MultipleWidget(attrs={'rows': 5, 'class': 'span12'}),
                         }
                 exclude = ('nombre', 'comentario',)
         
-        biblio = forms.ModelMultipleChoiceField(queryset=Bibliografia.objects.all(),required=False,widget=FilteredSelectMultiple(verbose_name=_(u'Artículos'), is_stacked=True))
+        #biblio = forms.ModelMultipleChoiceField(queryset=Bibliografia.objects.all(),required=False,widget=FilteredSelectMultiple(verbose_name=_(u'Artículos'), is_stacked=True))
         # Overriding __init__ here allows us to provide initial
         # data for 'biblio' field
         def __init__(self, *args, **kwargs):
@@ -513,16 +523,17 @@ class ProductoAdmin(admin.ModelAdmin):
     form = ProductoForm
     list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
     #list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'num_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes', 'fecha_modificacion','traducido_al_ingles',)
-    list_filter = ( 'riesgo','grupo', )
+    list_filter = ( 'riesgo', 'grupo', )
     ordering = ('nombre',)
     search_fields = ('nombre_es', 'nombre_en',)
     #filter_horizontal = ('grupo','alternativas','marcas','biblio',)
-    filter_horizontal = ('grupo','alternativas','referencia_otros_productos','referencia_grupos','biblio',)
+    #filter_horizontal = ('biblio',)
     readonly_fields = ('fecha_creacion','fecha_modificacion', 'visitas','slug',)
     #readonly_fields = ('fecha_creacion','fecha_modificacion', )
     inlines = [Otras_escriturasInline, AliasInline, ProdComentariosInline, ]
     date_hierarchy = 'fecha_modificacion'
-        
+    list_select_related = True
+    
     fieldsets = [
                 (None, {
                         'classes': ('suit-tab suit-tab-nombre',),
