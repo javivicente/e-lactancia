@@ -1,6 +1,16 @@
 #wrap > .container {
         padding-top: 20px;
       }
+    
+    /* this is for testing top bar non-fixed */    
+    .navbar {
+    background: transparent; /* Old browsers */
+    border-width: 0px;
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;    
+    position: absolute;
+    }
+    
     .navbar .navbar-inner {
     background: transparent; /* Old browsers */
     border-width: 0px;
