@@ -57,7 +57,11 @@
             var $field = $(this);
             var $option = $field.find('option:selected');
             var select_name = $option.data('name');
-            $field.attr('name', select_name ? select_name : '')
+            if (select_name) {
+                $field.attr('name', select_name);
+            } else {
+                $field.removeAttr('name');
+            }
             // Handle additional values for date filters
             var additional = $option.data('additional');
             if (additional) {
@@ -86,7 +90,7 @@
 
         var get_url = function ($add_link, $select) {
             var value = $select.val();
-            return $add_link.attr('href') + '../' + value + '/';
+            return $add_link.attr('href').split('?')[0] + '../' + value + '/';
         };
 
         var add_link = function ($select) {
@@ -156,6 +160,28 @@
         activate_tabs();
     };
 
+    /**
+     * Avoids double-submit issues in the change_form.
+     */
+    $.fn.suit_form_debounce = function () {
+        var $form = $(this),
+            $saveButtons = $form.find('.submit-row button'),
+            submitting = false;
+
+        $form.submit(function () {
+            if (submitting) {
+                return false;
+            }
+
+            submitting = true;
+            $saveButtons.addClass('disabled');
+
+            setTimeout(function () {
+                $saveButtons.removeClass('disabled');
+                submitting = false;
+            }, 5000);
+        });
+    };
 
     $(function () {
 
