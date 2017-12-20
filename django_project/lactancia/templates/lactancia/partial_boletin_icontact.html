@@ -1,0 +1,201 @@
+{% load static %} 
+{% load i18n %} 
+
+<script type="text/javascript" src="//app.icontact.com/icp/static/form/javascripts/validation-captcha.js"></script>
+
+<script type="text/javascript" src="//app.icontact.com/icp/static/form/javascripts/tracking.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//app.icontact.com/icp/static/human/css/signupBuilder/formGlobalStyles.css">
+
+<style type="text/css" id="signupBuilderAdvancedStyles">
+
+</style>
+
+<style type="text/css" id="signupBuilderStyles">
+#ic_signupform .elcontainer {
+   background: #ffffff;
+   text-align: left;
+   max-width: 500px;
+   padding: 30px 30px;
+   border-radius: 10px;
+   border: 0px solid #ffffff;
+   font-size: 12px;
+   color: #7d8288;
+   font-family: 'open-sans', trebuchet ms;
+}
+
+#ic_signupform .elcontainer.center-aligned .formEl { 
+	margin-right: auto;
+	margin-left: auto; 
+}
+
+#ic_signupform .elcontainer.right-aligned .formEl { 
+	margin-left: auto; 
+}
+
+#ic_signupform .form-header {
+   
+   background: #ffffff;
+   margin-top: -30px;
+   margin-left: -30px;
+   margin-right: -30px;
+   margin-bottom: 30px; /* using padding on purpose */
+   padding-top: 20px;
+   padding-right: 30px;
+   padding-bottom: 20px;
+   padding-left: 30px;
+   border-radius: calc(10px - 0px) calc(10px - 0px) 0 0;
+   text-align: left;
+   font-size: 200%;
+   color: #223345;
+   border-bottom: 2px none #ffffff;
+}
+
+#ic_signupform .elcontainer.inline-label-left .formEl.fieldtype-input label,
+#ic_signupform .elcontainer.inline-label-left .formEl.fieldtype-dropdown label,
+#ic_signupform .elcontainer.inline-label-left .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer.inline-label-left .formEl.fieldtype-checkbox h3,
+#ic_signupform .elcontainer.inline-label-right .formEl.fieldtype-input label,
+#ic_signupform .elcontainer.inline-label-right .formEl.fieldtype-dropdown label,
+#ic_signupform .elcontainer.inline-label-right .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer.inline-label-right .formEl.fieldtype-checkbox h3 {
+   width: 30%;
+}
+	   
+#ic_signupform .elcontainer.inline-label-left .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer.inline-label-left .formEl.fieldtype-checkbox h3,
+#ic_signupform .elcontainer.inline-label-right .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer.inline-label-right .formEl.fieldtype-checkbox h3 {
+   line-height: 3em; 
+}
+
+#ic_signupform .elcontainer.tight.inline-label-left .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer.tight.inline-label-left .formEl.fieldtype-checkbox h3,
+#ic_signupform .elcontainer.tight.inline-label-right .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer.tight.inline-label-right .formEl.fieldtype-checkbox h3 {
+   line-height: 2em; 
+}
+
+#ic_signupform .elcontainer.generous.inline-label-left .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer.generous.inline-label-left .formEl.fieldtype-checkbox h3,
+#ic_signupform .elcontainer.generous.inline-label-right .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer.generous.inline-label-right .formEl.fieldtype-checkbox h3 {
+   line-height: 4em; 
+}
+
+#ic_signupform .elcontainer.inline-label-left .formEl input[type="text"],
+#ic_signupform .elcontainer.inline-label-left .formEl select,
+#ic_signupform .elcontainer.inline-label-left .formEl.fieldtype-radio .option-container,
+#ic_signupform .elcontainer.inline-label-left .formEl.fieldtype-checkbox .option-container,
+#ic_signupform .elcontainer.inline-label-right .formEl input[type="text"],
+#ic_signupform .elcontainer.inline-label-right .formEl select,
+#ic_signupform .elcontainer.inline-label-right .formEl.fieldtype-radio .option-container,
+#ic_signupform .elcontainer.inline-label-right .formEl.fieldtype-checkbox .option-container {
+   width: 70%;
+}
+
+#ic_signupform .elcontainer.hidden-label .formEl.required:before {
+   color: #797d80;
+}
+	   
+#ic_signupform .elcontainer .formEl {
+   font-size: 1em;
+}
+
+#ic_signupform .elcontainer .formEl.fieldtype-input label,
+#ic_signupform .elcontainer .formEl.fieldtype-dropdown label,
+#ic_signupform .elcontainer .formEl.fieldtype-radio h3,
+#ic_signupform .elcontainer .formEl.fieldtype-checkbox h3 {
+   font-size: 100%;
+   font-weight: bold;
+   color: #223345;
+}
+
+#ic_signupform .elcontainer .formEl.fieldtype-input input[type="text"],
+#ic_signupform .elcontainer .formEl.fieldtype-dropdown select {
+   background-color: #f5f5f5;
+   border: 2px solid #e7e7e7;
+   border-radius: 3px;
+}
+	   
+#ic_signupform .elcontainer .formEl.fieldtype-input input[type="text"],
+#ic_signupform .elcontainer .formEl.fieldtype-dropdown select,
+#ic_signupform .elcontainer .formEl.fieldtype-radio label,
+#ic_signupform .elcontainer .formEl.fieldtype-checkbox label {
+   font-size: 100%;
+}
+
+#ic_signupform .elcontainer .formEl input[type="text"]::-moz-placeholder {
+   color: #797d80;
+   font-family: inherit;
+}
+
+#ic_signupform .elcontainer .formEl input[type="text"]::-webkit-input-placeholder {
+   color: #797d80;
+   font-family: inherit;
+}
+
+#ic_signupform .elcontainer .formEl input[type="text"]:-ms-input-placeholder {
+   color: #797d80;
+   font-family: inherit;
+}
+
+#ic_signupform .elcontainer .formEl input[type="text"],
+#ic_signupform .elcontainer .formEl select,
+#ic_signupform .elcontainer .formEl .option-container label {
+   color: #797d80;
+   font-family: inherit;
+}
+	   
+#ic_signupform .elcontainer.inline-button .submit-container {
+	display: inline-block;
+	box-sizing: border-box;
+	right: -.5em;
+	padding: 0 1em 0 0;
+	position: relative;
+	vertical-align: bottom;
+	margin-bottom: 1em;
+}
+	
+#ic_signupform .elcontainer.inline-button.tight .sortables {
+	margin-bottom: -.5em;
+}
+	
+#ic_signupform .elcontainer.inline-button .sortables {
+	margin-bottom: -1em;
+}
+	
+#ic_signupform .elcontainer.inline-button.generous .sortables {
+	margin-bottom: -1.5em;
+}
+
+#ic_signupform .elcontainer .submit-container {
+   text-align: center;
+}
+
+#ic_signupform .elcontainer .submit-container input[type="submit"] {
+   background: #0099cc;
+   border: 0px solid #e7ce4d;
+   border-radius: 25px;
+   line-height: 1em;
+   padding: 18px 50px;
+   color: #ffffff;
+   font-size: 100%;
+   font-family: inherit;
+   width: auto;
+}</style>
+
+
+{% if LANGUAGE_CODE == 'es' %}
+
+<form id="ic_signupform" captcha-key="6LeCZCcUAAAAALhxcQ5fN80W6Wa2K3GqRQK6WRjA" captcha-theme="light" new-captcha="true" method="POST" action="https://app.icontact.com/icp/core/mycontacts/signup/designer/form/?id=122&cid=1498624&lid=6600"><div class="elcontainer generous stacked left-aligned"><div class="form-header"><h3>Recibe información actualizada, novedades y noticias sobre la lactancia, el proyecto E-LACTANCIA y otras iniciativas de APILAM</h3></div><div class="sortables"><div class="formEl fieldtype-input required" data-validation-type="1" data-label="Nombre " style="display: inline-block; width: 100%;"><label>Nombre <span class="indicator required">*</span></label><input type="text" placeholder="Tu nombre (sin apellidos)" name="data[fname]"></div><div class="formEl fieldtype-input required" data-validation-type="1" data-label="Correo" style="display: inline-block; width: 100%;"><label>Correo<span class="indicator required">*</span></label><input type="text" placeholder="Tu email" name="data[email]"></div><div class="formEl fieldtype-checkbox required" dataname="listGroups" data-validation-type="1" data-label="Lists" style="display: none; width: 100%;"><h3>Lists<span class="indicator required">*</span></h3><div class="option-container"><label class="checkbox"><input type="checkbox" alt="Lists" name="data[listGroups][]" value="16227" checked="checked">TODO SOBRE LACTANCIA, E-LACTANCIA Y APILAM</label></div></div><div class="submit-container"><input type="submit" value="ME APUNTO" class="btn btn-submit"></div></div><div class="hidden-container"></div></div></form><img src="//app.icontact.com/icp/core/signup/tracking.gif?id=122&cid=1498624&lid=6600"/>
+                                
+{# <script type="text/javascript" src="//app.icontact.com/icp/core/mycontacts/signup/designer/form/automatic?id=122&cid=1498624&lid=6600"></script> #}
+{% else %}
+
+
+<form id="ic_signupform" captcha-key="6LeCZCcUAAAAALhxcQ5fN80W6Wa2K3GqRQK6WRjA" captcha-theme="light" new-captcha="true" method="POST" action="https://app.icontact.com/icp/core/mycontacts/signup/designer/form/?id=123&cid=1498624&lid=6600"><div class="elcontainer generous stacked left-aligned"><div class="form-header"><h3>Get updated info, tips and news about breastfeeding, E-LACTANCIA project and other initiatives from APILAM</h3></div><div class="sortables"><div class="formEl fieldtype-input required" data-validation-type="1" data-label="First Name " style="display: inline-block; width: 100%;"><label>First Name <span class="indicator required">*</span></label><input type="text" placeholder="Your name" name="data[fname]"></div><div class="formEl fieldtype-input required" data-validation-type="1" data-label="Email " style="display: inline-block; width: 100%;"><label>Email <span class="indicator required">*</span></label><input type="text" placeholder="Your email" name="data[email]"></div><div class="formEl fieldtype-checkbox required" dataname="listGroups" data-validation-type="1" data-label="Lists" style="display: none; width: 100%;"><h3>Lists<span class="indicator required">*</span></h3><div class="option-container"><label class="checkbox"><input type="checkbox" alt="" name="data[listGroups][]" value="16225" checked="checked">ALL ABOUT BREASTFEEDING, E-LACTANCIA AND APILAM</label></div></div><div class="submit-container"><input type="submit" value="I WANT TO JOIN" class="btn btn-submit"></div></div><div class="hidden-container"></div></div></form><img src="//app.icontact.com/icp/core/signup/tracking.gif?id=123&cid=1498624&lid=6600"/>
+                                
+{#<script type="text/javascript" src="//app.icontact.com/icp/core/mycontacts/signup/designer/form/automatic?id=123&cid=1498624&lid=6600"></script>#}
+{% endif %}
+                            

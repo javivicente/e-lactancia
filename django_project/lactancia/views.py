@@ -169,7 +169,9 @@ def load_initial_context():
                   'MARCAS':         mark_safe(MARCAS),
                   'ESCRITURAS':   mark_safe(ESCRITURAS),
                   'N': N,
+
                 }
+                
     context=get_alert_risk(context)
     return context 
     
@@ -1329,7 +1331,7 @@ def privacidad(request):
 
     context = initial_context
     context.update({'meta': set_meta(request)})
-    return render(request, 'lactancia/privacidad.html', context)
+    return render(request, 'lactancia/privacidad-b3.html', context)
 
 
 def aviso_legal(request):
@@ -1370,6 +1372,13 @@ def boletin_error(request):
     return render(request, 'lactancia/boletin_error.html', context)
 
 
+def boletin_ok(request):
+    
+    context = initial_context
+    context.update({'meta': set_meta(request)})
+    return render(request, 'lactancia/boletin_ok.html', context)
+    
+    
 '''Lista de productos que tienen alternativas con un riesgo mayor que el del
 propio producto'''
 from django.contrib.admin.views.decorators import staff_member_required
@@ -2012,7 +2021,7 @@ def get_vancouver_reference(item=None):
     # Drug-interactions.com [homepage on the Internet]. Indianapolis: Indiana University Department of Medicine; 2003 [updated 17 May 2006; cited 30 May 2006]. Available from: http://medicine.iupui.edu/flockhart/
     
     if item:
-        result = 'APILAM. ' + item.nombre + '. ' + _(u'En') + ': ' + 'e-lactancia.org. ' + _(u'APILAM: Asociación para la promoción e investigación científica y cultural de la lactancia materna') + '; 2002 ' + _(u'actualizado') + ' ' + _date(item.fecha_modificacion, "d b Y") + '; ' + _(u'citado') + ' ' + _date(now, "d b Y") + '. ' + _(u'Disponible en') + ' http://e-lactancia.org' + item.get_absolute_url()
+        result = 'APILAM. ' + item.nombre + '. ' + _(u'En') + ': ' + 'e-lactancia.org. ' + _(u'APILAM: Asociación para la promoción e investigación científica y cultural de la lactancia materna') + '; 2002 ' + _(u'actualizado') + ' ' + _date(item.fecha_modificacion, "d b Y") + '; ' + _(u'acceso') + ' ' + _date(now, "d b Y") + '. ' + _(u'Disponible en') + ' http://e-lactancia.org' + item.get_absolute_url()
     else:
     
         last_update = cache.get('prod_last_update')
@@ -2020,7 +2029,7 @@ def get_vancouver_reference(item=None):
             last_update = Producto.objects.latest('fecha_modificacion').fecha_modificacion
             cache.set('prod_last_update',last_update)
         
-        result = 'e-lactancia.org. ' + _(u'APILAM: Asociación para la promoción e investigación científica y cultural de la lactancia materna') + '; 2002 ' + _(u'actualizado') + ' ' + _date(last_update, "d b Y") + '; ' + _(u'citado') + ' ' + _date(now, "d F, Y") + '. ' + _(u'Disponible en') + ' http://e-lactancia.org'
+        result = 'e-lactancia.org. ' + _(u'APILAM: Asociación para la promoción e investigación científica y cultural de la lactancia materna') + '; 2002 ' + _(u'actualizado') + ' ' + _date(last_update, "d b Y") + '; ' + _(u'acceso') + ' ' + _date(now, "d F, Y") + '. ' + _(u'Disponible en') + ' http://e-lactancia.org'
     
     return unicode(result)
     

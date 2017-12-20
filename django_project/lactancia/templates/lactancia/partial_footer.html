@@ -1,0 +1,127 @@
+{% load static %} 
+{% load i18n %} 
+    <footer class="footer">
+      <div class="container" id="container-footer">
+        {% block footer %}
+        <div class="content-footer">
+            <div class="row">
+
+                {# bloque de logo de apilam y texto sobre proyecto #}
+                <div class="col-lg-4 col-xs-12 col-sm-12 footer_apilam">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-2">
+                            <img src="{{ STATIC_URL }}img/apilam-logo-80x105px.png" id="footer_logo"></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-10">
+                            <p class="text-justify">{% trans 'e-lactancia es un proyecto de <a class="white-text" href="http://apilam.org/" target="_blank">APILAM</a>, asociación para la promoción e investigación científica y cultural de la lactancia materna, bajo <a class="white-text" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Internacional Creative Commons</a>' %}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                {# bloque de links a secciones web #}
+                <div class="col-lg-4 col-md-4  col-sm-10 col-xs-12 footer_links">
+                    <h5 class="hidden-lg hidden-md">&nbsp </h5>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="link-contrast" href="{% url 'lactancia:patrocinadores' %}" rel="nofollow">{% trans "PATROCINAN" %}</a>
+                                </li>
+                                <li>
+                                    <a class="link-contrast" href="{% url 'lactancia:avales' %}" rel="nofollow">{% trans "CITAN Y RECOMIENDAN" %}</a>
+                                </li>
+                                <li>
+                                    <a class="link-contrast" href="{% url 'lactancia:creditos' %}#citation" rel="nofollow">{% trans "CÓMO CITAR E-LACTANCIA" %}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-4" style="margin-left:-40px;">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="link-contrast" href="{% url 'lactancia:alerta_riesgos' %}" rel="nofollow">{% trans "ALERTAS" %}</a>
+                                </li>
+                                <li>
+                                    <a class="link-contrast" href="{% url 'lactancia:creditos' %}" rel="nofollow">{% trans "NOSOTROS" %}</a>
+                                </li>
+                                <li>
+                                    <a class="link-contrast" href="{% url 'lactancia:estadisticas' %}" rel="nofollow">{% trans "ESTADÍSTICAS" %}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                {# bloque de RRSS y botones de donar y suscripcion #}
+                <div class="col-lg-4 col-md-4 col-xs-12 col-sm-8 footer_rrss_donativos">
+                    <h5 class="hidden-lg hidden-md">&nbsp </h5>
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-5">
+                            <h5 class="row-space-4 hidden-xs" style="margin-top:0px; margin-left:5px;">{% trans "SÍGUENOS" %}</h5>
+                            
+                            <ul class="list-unstyled list-inline">
+                                <li>
+                                    <a class="link-contrast footer-icon-container" href="http://apilam.org/blog/" target="_blank"> blog
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link-contrast footer-icon-container" href="https://www.facebook.com/APILAM.Lactancia.Materna/" rel="Publisher" target="_blank"> <i class="fa fa-facebook fa-lg"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="list-unstyled list-inline">
+                                <li>
+                                    <a class="link-contrast footer-icon-container" href="https://twitter.com/apilam_" target="_blank"> <i class="fa fa-twitter fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link-contrast footer-icon-container" href="https://instagram.com/apilam_breastfeeding_museum/" target="_blank"> <i class="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>   
+                        <div class="col-xs-7 col-sm-7">
+                        
+                            {# BOTON DONAR #}
+                            <a class="btn round btn-donate" href="{% url 'lactancia:donativos' %}">{% trans 'DONA AHORA' %}</a>
+                            
+                            {# BOTON SUSCRIPCION #}
+                            <a class="btn btn-mail outline" href="#subscribe" rel="nofollow" onclick="$('#subscribe').modal('show');" style="margin-top:10px;"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;{% trans 'Suscríbete' %}</a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            {#  bloque políticas#}
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 footer_politicas">
+                    <ul class="list-unstyled list-inline">
+                      <li><small><a class="white-text" href="{% url 'lactancia:aviso_legal' %}" rel="nofollow">{% trans 'Aviso legal' %}</a></small></li>
+                      <li>|</li>
+                      <li><small><a class="white-text" href="{% url 'lactancia:privacidad' %}" rel="nofollow">{% trans 'Política de privacidad' %}</a></small></li>
+                      <li>|</li>
+                      <li><small><a class="white-text" href="{% url 'lactancia:cookies' %}" rel="nofollow">{% trans 'Política de cookies' %}</a></small></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-6 footer_desarrollos">
+                     <div class="pull-right hidden-sm hidden-xs">
+                        <ul class="list-unstyled list-inline">
+                          <li><small><a class="white-text" href="http://baptistepons.com" target="_blank">{% trans 'Diseño: Baptiste Pons' %}</a></small></li>
+                          <li>|</li>
+                          <li><small><a class="white-text" href="https://aprendecopy.com" target="_blank">{% trans 'Desarrollo & Copywriting: Javi Vicente' %}</a></small></li>
+                        </ul>
+                     </div>
+                     <div class="hidden-md hidden-lg">
+                        <ul class="list-unstyled list-inline">
+                          <li><small><a class="white-text" href="http://baptistepons.com" target="_blank">{% trans 'Diseño: Baptiste Pons' %}</a></small></li>
+                          <li>|</li>
+                          <li><small><a class="white-text" href="https://aprendecopy.com" target="_blank">{% trans 'Desarrollo & Copywriting: Javi Vicente' %}</a></small></li>
+                        </ul>
+                     </div>
+                </div>
+            </div>
+          
+          </div>
+          {% endblock %}
+          
+      </div>
+    </footer>

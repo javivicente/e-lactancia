@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+{% load i18n %} {% load static %} 
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"">
+    <meta name="author" content="APILAM">
+    {% include 'meta.html' %}
+    
+    <title>{% block title %}{% endblock %}</title>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <!-[if gte IE 9]>
+    <style type="text/css">
+        .gradient {
+            filter: none;
+        }
+    </style>
+    <![endif]->    
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link href="{{STATIC_URL}}css/lactancia.css" rel="stylesheet"> 
+    <link href="{{STATIC_URL}}img/favicon.ico" rel="icon" type="image/x-icon">
+     
+      {# Google Analytics #}
+     <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37964776-2', 'e-lactancia.org');
+    ga('send', 'pageview');
+
+    </script>
+    <script src="//load.sumome.com/" data-sumo-site-id="5da895e2e231bac3184b2755e7cbbaa4769606cfaabea9c1d098f4530937b579" async="async"></script>
+    
+    {% block style %}
+    {% endblock %}
+</head>
+<body id="body">
+    
+    {% block pre_mainpage %}
+    
+    {% include 'lactancia/partial_top_bar.html' %}
+    
+    
+    <div class="modal fade modal-subscribe" id="subscribe">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="row">
+                            <div class="col-sm-12">
+                            {% include 'lactancia/partial_boletin_icontact.html' %}
+                            </div>
+                            
+                            
+                        </div>
+               </div>
+            </div> <!-- /.modal-content -->
+        </div>   <!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
+    {% endblock %} {# pre_mainpage #}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Begin page content -->
+    
+    
+    {# DON´T MOVE THE MAINPAGE BLOCK FROM HERE, OTHERWISE THE ACCOMMODATION FORM CANNOT BE SERIALIZED!!! #}
+    <div class="container">
+    {% block mainpage %}
+     
+    {% endblock %}   
+    </div>
+    
+    {% block post_mainpage %}
+    {% include 'lactancia/partial_footer.html' %}
+    
+    {% endblock %} {# post_mainpage #}
+    
+ 
+
+
+    {% block js %}
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/typeahead.bundle.min.js"></script>    
+    <script type="text/javascript">var switchTo5x=true;</script>
+    
+    <script>
+        var width; 
+        //less than 768px
+        if ($(window).width() < 767){
+            width = $(window).width() - 200; 
+            
+        }
+        else{
+            /* Small Devices, .visible-sm-* */
+            if ($(window).width() < 991){
+                width = $(window).width() - 620;
+            }
+            else{
+                /* Medium Devices, .visible-md-* */
+                if ($(window).width() < 1199){
+                    width = $(window).width() - 700; 
+                }
+                /* Large Devices, .visible-lg-* */
+                else {
+                    width = 500; //$('#top_bar_right_menu').width; 
+                }
+            }  
+        }
+
+        $('#search_form .typeahead').css('width', width); 
+        $('#search_form .tt-query').css('width', width); 
+        $('#search_form .tt-hint').css('width', width);       
+    </script>
+    <script>
+        
+           
+     var charMap = {
+        'aAÁÀÄÂáàáäâ': 'a',
+        'cCÇç': 'c',
+        'eEÉÈËÊèéêë': 'e',
+        'iIÍÌÏÎíìîï': 'i',
+        'oOÓÒÖÔóòöô': 'o',
+        'uUÚÙÜÛúùüû': 'u',
+        'nNÑñ': 'n',
+      };
+      
+      var normalize = function(str) {
+       if (str) {
+            $.each(charMap, function(chars, normalized) {
+                var regex = new RegExp('[' + chars + ']', 'gi');
+                str = str.replace(regex, normalized);
+            });
+        }
+        return str;
+    }
+        
+        
+     
+        var queryTokenizer = function (q) {
+            var normalized = normalize(q);
+            return Bloodhound.tokenizers.nonword(normalized);
+        };
+
+
+
+
+        var productos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
+            limit: 5,
+            local: $.map({{PRODUCTOS}}, function (name) {
+                // Normalize the name - use this for searching
+                //console.log(name.nombre_es)
+                term = {% if LANGUAGE_CODE == 'es' %} name.nombre_es {% else %} name.nombre_en {% endif %}
+                var normalized = normalize(term);
+                //console.log(normalized)
+                return {
+                    nombre: normalized,
+                    id: name.id,
+                    // Include the original name - use this for display purposes
+                    displayValue: term
+                    };
+                }),
+            sorter:function(a, b) { 
+
+                 //get input text
+                 var InputString= $('.typeahead').typeahead('val');
+                 //var InputString= normalize($('.typeahead').typeahead('val'));
+                 
+                 //move exact matches to top
+                 if(InputString==a['nombre']){ return -1;}
+                 if(InputString==b['nombre']){return 1;}
+
+                 //close match without case matching
+                 if(InputString.toLowerCase() ==a['nombre'].toLowerCase()){ return -1;}
+                 if(InputString.toLowerCase()==b['nombre'].toLowerCase()){return 1;} 
+
+                 if( (InputString!=a['nombre']) && (InputString!=b['nombre'])){
+
+                      if (a['nombre'] < b['nombre']) {
+                         return -1;
+                      }
+                      else if (a['nombre'] > b['nombre']) {
+                         return 1;
+                      }
+                      else return 0;
+                 }
+              },
+        });
+            
+        
+        var grupos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
+            limit: 2,
+            local: $.map({{GRUPOS}}, function (name) {
+                // Normalize the name - use this for searching
+                //console.log(name.termino)
+                term = {% if LANGUAGE_CODE == 'es' %} name.nombre_es {% else %} name.nombre_en {% endif %}
+                
+                var normalized = normalize(term);
+                //console.log(normalized)
+                return {
+                    nombre: normalized,
+                    id: name.id,
+                    // Include the original name - use this for display purposes
+                    displayValue: term
+                    };
+            }),
+            
+        });
+        
+        var sinonimos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
+            limit: 2,
+            local: $.map({{SINONIMOS}}, function (name) {
+                // Normalize the name - use this for searching
+                //console.log(name.termino)
+                term = {% if LANGUAGE_CODE == 'es' %} name.nombre_es {% else %} name.nombre_en {% endif %}
+                
+                var normalized = normalize(term);
+                //console.log(normalized)
+                return {
+                    nombre: normalized,
+                    id: name.id,
+                    // Include the original name - use this for display purposes
+                    displayValue: term
+                    };
+            }),
+            sorter:function(a, b) { 
+
+                 //get input text
+                 var InputString= normalize($('.typeahead').typeahead('val'));
+                 
+                 //move exact matches to top
+                 if(InputString==a['nombre']){ return -1;}
+                 if(InputString==b['nombre']){return 1;}
+
+                 //close match without case matching
+                 if(InputString.toLowerCase() ==a['nombre'].toLowerCase()){ return -1;}
+                 if(InputString.toLowerCase()==b['nombre'].toLowerCase()){return 1;} 
+
+                 if( (InputString!=a['nombre']) && (InputString!=b['nombre'])){
+
+                      if (a['nombre'] < b['nombre']) {
+                         return -1;
+                      }
+                      else if (a['nombre'] > b['nombre']) {
+                         return 1;
+                      }
+                      else return 0;
+                 }
+              },
+            
+        });
+        var escrituras = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
+            limit: 2,
+            local: $.map({{ESCRITURAS}}, function (name) {
+                // Normalize the name - use this for searching
+                //console.log(name.termino)
+                var normalized = normalize(name.nombre);
+                //console.log(normalized)
+                return {
+                    nombre: normalized,
+                    id: name.id,
+                    // Include the original name - use this for display purposes
+                    displayValue: name.nombre
+                    };
+            }),
+            
+        });
+        
+        var marcas = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.nonword('nombre'),
+            queryTokenizer: queryTokenizer,
+            identify: function(obj) { return obj.termino; },
+            limit: 3,
+            local: $.map({{MARCAS}}, function (name) {
+                // Normalize the name - use this for searching
+                //console.log(name.nombre_es)
+                term = {% if LANGUAGE_CODE == 'es' %} name.nombre_paises_es {% else %} name.nombre_paises_en {% endif %}
+                var normalized = normalize(term);
+                //console.log(normalized)
+                return {
+                    nombre: normalized,
+                    id: name.id,
+                    // Include the original name - use this for display purposes
+                    displayValue: term
+                    };
+            }),
+            
+            
+            
+        });
+        
+        productos.initialize();
+        grupos.initialize();
+        sinonimos.initialize();
+        escrituras.initialize();
+        marcas.initialize();
+        
+        
+        $('.typeahead').typeahead(
+        {
+            minLength: 1,
+            highlight: true,
+            autoselect: true
+        },
+        {
+            name: 'producto',
+            displayKey: 'displayValue',
+            source: productos.ttAdapter(),
+            templates: { header: '<h4 class="search-name">{% trans "Productos" %}</h4>' ,
+                                empty: '<div class="empty-message">{% trans "No encontramos productos para tu consulta" %}</div>'
+            }
+        },
+        {
+            name: 'sinonimo',
+            displayKey: 'displayValue',
+            source: sinonimos.ttAdapter(),
+            templates: { header: '<h4 class="search-name">{% trans "Sinónimos de productos" %}</h4>',
+                                empty: '<div class="empty-message">{% trans "No encontramos sinónimos para tu consulta" %}</div>'
+            }
+        },
+        {
+            name: 'escritura',
+            displayKey: 'displayValue',
+            source: escrituras.ttAdapter(),
+            templates: { header: '<h4 class="search-name">{% trans "Productos en otras escrituras" %}</h4>',
+                                 empty: '<div class="empty-message">{% trans "No encontramos resultados para tu consulta" %}</div>'
+            }
+        },
+        {
+            name: 'grupo',
+            displayKey: 'displayValue',
+            source: grupos.ttAdapter(),
+            templates: { header: '<h4 class="search-name">{% trans "Grupos" %}</h4>',
+                            empty: '<div class="empty-message">{% trans "No encontramos grupos para tu consulta" %}</div>'
+            }
+        },
+        {
+            name: 'marca',
+            displayKey: 'displayValue',
+            source: marcas.ttAdapter(),
+            templates: { header: '<h4 class="search-name">{% trans "Marcas de productos" %}</h4>', 
+                                empty: '<div class="empty-message">{% trans "No encontramos marcas para tu consulta" %}</div>'
+            }
+        }
+        
+     ).bind("typeahead:selected", function(obj, datum, name) {
+            //console.log(name);
+            //console.log(datum.id);
+            window.location.href='{% url "lactancia:buscar" %}?term_id='+datum.id+'&term_type='+name;
+            $("#term-id").val(datum.id);
+            $("#term-type").val(name);
+      });
+      
+               
+        {# there is a conflict between typeahead and autofocus. This is required to manually set the autofocus without interfering with the typeaheads #}
+        $(document).ready(function () {
+            $('#search_input').trigger('focus');
+            });
+    </script>
+    
+    {% comment %}
+    <script>
+        $("#btn_alert_risk").popover({
+            html : true, 
+            placement:'bottom',
+            title: '{% trans "¡Advertencia!" %}' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_alert_risk&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{% trans "Se ha modificado recientemente el nivel de riesgo de al menos uno de los términos." %}' + '<br/><br/> <a href="{% url "lactancia:alerta_riesgos" %}">{% trans "Más información" %}</a>'
+        });
+    </script>
+    {% endcomment %}
+	{% endblock %}
+    <script type="text/javascript" id="cookiebanner"
+    src="{% get_static_prefix %}js/cookiebanner.min.js"
+    data-linkmsg="{% trans 'política de privacidad' %}"
+    data-message="{% trans 'Usamos cookies para mejorar tu experiencia. Al continuar navegando en nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre nuestra ' %}"
+    data-moreinfo="{% url 'lactancia:privacidad' %}">
+    </script>
+    {% block typeahead %}
+    
+    {% endblock %}
+</body>
+</html> 

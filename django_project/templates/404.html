@@ -1,15 +1,19 @@
-{% extends "lactancia/base.html" %} 
+{% extends "lactancia/base_bootstrap3.html" %} 
 {% load i18n %}
-{% block topbar_share %}  
-{% endblock %}
 
 {% block mainpage %}
 <div class="row-fluid">
 
-	<div class="well span6">
+	<div class="well col-xs-12 col-sm-6">
 		<h2> {% trans "Vaya, parece que algo va mal... No hemos encontrado la página que buscabas. Por favor, prueba con otra búsqueda." %} </h2>
 	</div>
-
+    <div class=" col-xs-12 col-sm-6">
+		{% if LANGUAGE_CODE == 'es' %}
+            <script type="text/javascript" src="//app.icontact.com/icp/core/mycontacts/signup/designer/form/automatic?id=122&cid=1498624&lid=6600"></script>
+        {% else %}
+            <script type="text/javascript" src="//app.icontact.com/icp/core/mycontacts/signup/designer/form/automatic?id=123&cid=1498624&lid=6600"></script>
+        {% endif %}
+	</div>
 </div>
 
 

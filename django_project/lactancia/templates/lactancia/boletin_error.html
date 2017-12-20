@@ -1,21 +1,21 @@
-{% extends "lactancia/base.html" %} 
+{% extends "lactancia/base_bootstrap3.html" %} 
 {% load i18n %}
-{% block title %}: {% trans "Problema con registro al Boletín" %}{% endblock %}
-{% block topbar_share %}  
-{% endblock %}
+{% block title %} {% trans "Problema con registro al Boletín" %}{% endblock %}
 
-{# share block #}
-{% block fb_url %}{% url 'lactancia:boletin_error' %}{% endblock %}
-{% block twitter_data-text %}{% trans "Estoy suscribiéndome al boletín de APILAM y  e-lactancia. ¡Tu también puedes unirte!" %}{% endblock %}
 
-{% block share_top %}
-{% endblock %}
 
 {% block mainpage %}
+    <div class="alert alert-danger">
+                {% trans "Hemos detectado un error en tu petición. Por favor, vuelve a intentarlo. Comprueba que la información que has introducido es correcta." %}
+    </div>
 
-<div class="alert alert-danger">
-			{% trans "Hemos detectado un error en tu petición. Por favor, cierra esta ventana y vuelve a intentarlo. Comprueba que la información que has introducido es correcta." %}
-</div>
-
-
+    <div class="row">
+        <div class="col-sm-12">
+        {% if LANGUAGE_CODE == 'es' %}
+            <script type="text/javascript" src="//app.icontact.com/icp/core/mycontacts/signup/designer/form/automatic?id=122&cid=1498624&lid=6600"></script>
+        {% else %}
+            <script type="text/javascript" src="//app.icontact.com/icp/core/mycontacts/signup/designer/form/automatic?id=123&cid=1498624&lid=6600"></script>
+        {% endif %}
+        </div>
+    </div>
 {% endblock %}

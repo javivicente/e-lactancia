@@ -1,0 +1,34 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% block title %} {% trans "Gracias por unirte al Boletín" %}{% endblock %}
+
+
+
+{% block mainpage %}
+    <h3>{% trans "¡Gracias por tu tiempo!" %}</h3>
+            
+    <p>{% trans "Muchas gracias por suscribirte" %}. {% trans "Has sido añadida/o correctamente a nuestro boletín." %} 
+    {% trans "Recibirás un correo de confirmación en tu buzón en unos minutos" %}. <br/>
+    {% trans "Muchas gracias de parte de todo el equipo de e-lactancia APILAM" %}.</p>
+    
+    <h3>{% trans "A continuación te mostramos información útil sobre nuestra política de comunicaciones" %}:</h3>
+                
+    <div class="row" style="padding-bottom:50px;">         
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <h3>{% trans "¿Qué voy a obtener? " %}</h3>
+            <p >{% trans "Únicamente te mandaremos información relevante relacionada con la lactancia materna, APILAM y e-lactancia" %}.</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <h3>{% trans "¿Cómo puedo dejar de recibir vuestros correos?" %}</h3>
+            <p >{% trans "Puedes hacer click en el link que apacerá al final de cualquier correo que te mandemos para anular tu suscripción de forma segura e instantánea" %}.</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">        
+           <h3>{% trans "¿Cómo puedo asegurarme de que vuestros correos me llegan?" %}</h3>
+           <p >{% trans "Nos puedes ayudar a llegar a tu buzón de entrada si te tomas unos segundos para añadir nuestro email (apilam.es@gmail.com) a tu lista de contactos" %}.</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+           <h3>{% trans "¿Mi información está segura?" %}</h3>
+           <p >{% trans "Nos tomamos tu privacidad muy en serio y empleamos una serie de medidas de seguridad para proteger tu información personal" %}.</p>
+        </div>
+    </div>
+{% endblock %}

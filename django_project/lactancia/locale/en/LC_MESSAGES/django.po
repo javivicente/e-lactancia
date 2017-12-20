@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-01 17:10+0100\n"
+"POT-Creation-Date: 2017-12-20 10:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -430,6 +430,7 @@ msgid "Grupo"
 msgstr "Group"
 
 #: models.py:47 templates/lactancia/base.html:573
+#: templates/lactancia/base_bootstrap3.html:366
 #: templates/lactancia/detalle_p.html:393
 #: templates/lactancia/estadisticas_json_ES.html:1411
 #: templates/lactancia/estadisticas_json_v3.html:1161
@@ -713,6 +714,7 @@ msgid ""
 msgstr ""
 
 #: models.py:329 templates/lactancia/base.html:557
+#: templates/lactancia/base_bootstrap3.html:350
 msgid "Sinónimos de productos"
 msgstr "Products synonyms"
 
@@ -1606,10 +1608,13 @@ msgstr ""
 
 # mark to review!
 #: templates/lactancia/base.html:72 templates/lactancia/landing.html:36
+#: templates/lactancia/partial_top_bar.html:18
 msgid "Buscar"
 msgstr "Search"
 
 #: templates/lactancia/base.html:104
+#: templates/lactancia/partial_footer.html:85
+#: templates/lactancia/partial_top_bar.html:38
 msgid "DONA AHORA"
 msgstr "DONATE NOW"
 
@@ -1646,6 +1651,7 @@ msgid "AVALES"
 msgstr "SUPPORTERS"
 
 #: templates/lactancia/base.html:172
+#: templates/lactancia/partial_footer.html:41
 msgid "ALERTAS"
 msgstr "ALERTS"
 
@@ -1658,6 +1664,7 @@ msgid "CIFRAS"
 msgstr "NUMBERS"
 
 #: templates/lactancia/base.html:185
+#: templates/lactancia/partial_footer.html:16
 msgid ""
 "e-lactancia es un proyecto de <a class=\"white-text\" href=\"http://apilam."
 "org/\" target=\"_blank\">APILAM</a>, asociación para la promoción e "
@@ -1672,14 +1679,17 @@ msgstr ""
 "Creative Commons Internacional License</a>"
 
 #: templates/lactancia/base.html:216
+#: templates/lactancia/partial_footer.html:98
 msgid "Aviso legal"
 msgstr "Legal notice"
 
 #: templates/lactancia/base.html:217
+#: templates/lactancia/partial_footer.html:100
 msgid "Política de privacidad"
 msgstr "Privacy Policy"
 
 #: templates/lactancia/base.html:218
+#: templates/lactancia/partial_footer.html:102
 msgid "Política de cookies"
 msgstr "Cookies Policy"
 
@@ -1688,6 +1698,7 @@ msgid "Web desarrollada por"
 msgstr "Web developed by"
 
 #: templates/lactancia/base.html:549
+#: templates/lactancia/base_bootstrap3.html:342
 #: templates/lactancia/estadisticas_json_ES.html:18
 #: templates/lactancia/estadisticas_json_ES.html:67
 #: templates/lactancia/estadisticas_json_ES.html:116
@@ -1699,30 +1710,37 @@ msgid "Productos"
 msgstr "Products"
 
 #: templates/lactancia/base.html:550
+#: templates/lactancia/base_bootstrap3.html:343
 msgid "No encontramos productos para tu consulta"
 msgstr "No products found for your query"
 
 #: templates/lactancia/base.html:558
+#: templates/lactancia/base_bootstrap3.html:351
 msgid "No encontramos sinónimos para tu consulta"
 msgstr "No synonyms found for your query"
 
 #: templates/lactancia/base.html:565
+#: templates/lactancia/base_bootstrap3.html:358
 msgid "Productos en otras escrituras"
 msgstr "Products in other writings and languages"
 
 #: templates/lactancia/base.html:566
+#: templates/lactancia/base_bootstrap3.html:359
 msgid "No encontramos resultados para tu consulta"
 msgstr "No results found for your query"
 
 #: templates/lactancia/base.html:574
+#: templates/lactancia/base_bootstrap3.html:367
 msgid "No encontramos grupos para tu consulta"
 msgstr "No groups found for your query"
 
 #: templates/lactancia/base.html:581
+#: templates/lactancia/base_bootstrap3.html:374
 msgid "Marcas de productos"
 msgstr "Products tradenames"
 
 #: templates/lactancia/base.html:582
+#: templates/lactancia/base_bootstrap3.html:375
 msgid "No encontramos marcas para tu consulta"
 msgstr "No tradenames found for your query"
 
@@ -1742,10 +1760,12 @@ msgid "Más información"
 msgstr "More information"
 
 #: templates/lactancia/base.html:642
+#: templates/lactancia/base_bootstrap3.html:409
 msgid "política de privacidad"
 msgstr "Privacy Policy"
 
 #: templates/lactancia/base.html:643
+#: templates/lactancia/base_bootstrap3.html:410
 msgid ""
 "Usamos cookies para mejorar tu experiencia. Al continuar navegando en "
 "nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre "
@@ -1758,22 +1778,104 @@ msgstr ""
 msgid "Problema con registro al Boletín"
 msgstr "A problem occurred with your donation!"
 
-# mark to review!
 #: templates/lactancia/boletin_error.html:9
 msgid ""
-"Estoy suscribiéndome al boletín de APILAM y  e-lactancia. ¡Tu también puedes "
-"unirte!"
+"Hemos detectado un error en tu petición. Por favor, vuelve a intentarlo. "
+"Comprueba que la información que has introducido es correcta."
 msgstr ""
-"I'm joining the APILAM and e-lactancia Newsletter. You can also join us!"
+"It looks like we discovered an error in your request. Please try it again. "
+"Check the information you have entered is correct."
 
-#: templates/lactancia/boletin_error.html:17
+#: templates/lactancia/boletin_ok.html:3
+msgid "Gracias por unirte al Boletín"
+msgstr "Thank you for joining the Newsletter"
+
+#: templates/lactancia/boletin_ok.html:8
+#: templates/lactancia/partial_newsletter.html:6
+msgid "¡Gracias por tu tiempo!"
+msgstr "Thank you for your time!"
+
+#: templates/lactancia/boletin_ok.html:10
+msgid "Muchas gracias por suscribirte"
+msgstr "Thank you for subscribing"
+
+#: templates/lactancia/boletin_ok.html:10
+#: templates/lactancia/partial_newsletter.html:10
+msgid "Has sido añadida/o correctamente a nuestro boletín."
+msgstr "You have successfully been added to our newsletter."
+
+#: templates/lactancia/boletin_ok.html:11
+msgid "Recibirás un correo de confirmación en tu buzón en unos minutos"
+msgstr "You'll receive a confirmation mail in a minute to your inbox"
+
+#: templates/lactancia/boletin_ok.html:12
+#: templates/lactancia/partial_newsletter.html:12
+msgid "Muchas gracias de parte de todo el equipo de e-lactancia APILAM"
+msgstr "Thank you very much from the team of e-lactancia and APILAM"
+
+#: templates/lactancia/boletin_ok.html:14
+#: templates/lactancia/partial_newsletter.html:13
 msgid ""
-"Hemos detectado un error en tu petición. Por favor, cierra esta ventana y "
-"vuelve a intentarlo. Comprueba que la información que has introducido es "
-"correcta."
+"A continuación te mostramos información útil sobre nuestra política de "
+"comunicaciones"
+msgstr "Here are some useful information on our communication policy"
+
+#: templates/lactancia/boletin_ok.html:18
+#: templates/lactancia/partial_newsletter.html:16
+msgid "¿Qué voy a obtener? "
+msgstr "What am I going to get?"
+
+#: templates/lactancia/boletin_ok.html:19
+#: templates/lactancia/partial_newsletter.html:17
+msgid ""
+"Únicamente te mandaremos información relevante relacionada con la lactancia "
+"materna, APILAM y e-lactancia"
 msgstr ""
-"It looks like we discovered an error in your request. Please close this "
-"window and try again. Double check the information you have entered."
+"We will only send you relevant information related to breastfeeding, APILAM "
+"and e-lactancia"
+
+#: templates/lactancia/boletin_ok.html:22
+#: templates/lactancia/partial_newsletter.html:19
+msgid "¿Cómo puedo dejar de recibir vuestros correos?"
+msgstr "How can I stop receiving email?"
+
+#: templates/lactancia/boletin_ok.html:23
+#: templates/lactancia/partial_newsletter.html:20
+msgid ""
+"Puedes hacer click en el link que apacerá al final de cualquier correo que "
+"te mandemos para anular tu suscripción de forma segura e instantánea"
+msgstr ""
+"You can click the link at the bottom of any email we send to instantly and "
+"securely unsubscribe"
+
+#: templates/lactancia/boletin_ok.html:26
+#: templates/lactancia/partial_newsletter.html:22
+msgid "¿Cómo puedo asegurarme de que vuestros correos me llegan?"
+msgstr "How can I ensure your email gets to me?"
+
+#: templates/lactancia/boletin_ok.html:27
+#: templates/lactancia/partial_newsletter.html:23
+msgid ""
+"Nos puedes ayudar a llegar a tu buzón de entrada si te tomas unos segundos "
+"para añadir nuestro email (apilam.es@gmail.com) a tu lista de contactos"
+msgstr ""
+"You can help us reach every time your inbox by taking a few seconds right "
+"now to add our email address (apilam.es@gmail.com) to your contacts or safe "
+"sender list"
+
+#: templates/lactancia/boletin_ok.html:30
+#: templates/lactancia/partial_newsletter.html:25
+msgid "¿Mi información está segura?"
+msgstr "Is my information secure?"
+
+#: templates/lactancia/boletin_ok.html:31
+#: templates/lactancia/partial_newsletter.html:26
+msgid ""
+"Nos tomamos tu privacidad muy en serio y empleamos una serie de medidas de "
+"seguridad para proteger tu información personal"
+msgstr ""
+"We value your privacy and use a variety of security measures to protect your "
+"personal information"
 
 #: templates/lactancia/creditos.html:10 templates/lactancia/creditos.html:11
 msgid "Descubre quiénes están detrás de e-lactancia "
@@ -1831,11 +1933,11 @@ msgstr "Communication"
 msgid "Licenciada en Periodismo"
 msgstr "Degree in Journalism"
 
-#: templates/lactancia/creditos.html:102
+#: templates/lactancia/creditos.html:103
 msgid "Cómo citar esta web"
 msgstr ""
 
-#: templates/lactancia/creditos.html:103
+#: templates/lactancia/creditos.html:104
 msgid ""
 "Puedes citar esta web para tus trabajos científicos. Encontrarás este mismo "
 "desplegable en cada ficha de la web para que puedas hacer citas "
@@ -1845,7 +1947,7 @@ msgstr ""
 "down in each file of the web so you can make bibliographical citations to "
 "specific products and terms."
 
-#: templates/lactancia/creditos.html:105
+#: templates/lactancia/creditos.html:106
 msgid ""
 "Si necesitas citar la web de e-lactancia, abajo puedes encontrar varios "
 "formatos de cita, según tus necesidades."
@@ -1853,7 +1955,7 @@ msgstr ""
 "If you need to cite the e-lactation website, below you can find several "
 "citation formats, according to your needs."
 
-#: templates/lactancia/creditos.html:106
+#: templates/lactancia/creditos.html:107
 #: templates/lactancia/partial_citation.html:8
 msgid ""
 "Elige el formato de cita bibliográfica que prefieras. Puedes copiar el texto "
@@ -2825,7 +2927,7 @@ msgstr "Comment successfully submitted"
 
 #: templates/lactancia/partial_comments_terms.html:16
 msgid "Muchas gracias por enviarnos tus sugerencias y opiniones"
-msgstr "Thank you very much for your suggestions and comments."
+msgstr "Thank you very much for your suggestions and comments"
 
 #: templates/lactancia/partial_comments_terms.html:17
 msgid "Puedes"
@@ -2843,6 +2945,46 @@ msgstr "your comment about"
 msgid "cuantas veces quieras"
 msgstr "whenever you want"
 
+#: templates/lactancia/partial_footer.html:28
+msgid "PATROCINAN"
+msgstr "SPONSORS"
+
+#: templates/lactancia/partial_footer.html:31
+msgid "CITAN Y RECOMIENDAN"
+msgstr "CITE & RECOMMEND"
+
+#: templates/lactancia/partial_footer.html:34
+msgid "CÓMO CITAR E-LACTANCIA"
+msgstr "HOW TO CITE E-LACTANCIA"
+
+#: templates/lactancia/partial_footer.html:44
+msgid "NOSOTROS"
+msgstr "ABOUT US"
+
+#: templates/lactancia/partial_footer.html:47
+msgid "ESTADÍSTICAS"
+msgstr "STATS"
+
+#: templates/lactancia/partial_footer.html:59
+msgid "SÍGUENOS"
+msgstr "FOLLOW US"
+
+#: templates/lactancia/partial_footer.html:88
+#: templates/lactancia/partial_newsletter_box.html:13
+#: templates/lactancia/partial_top_bar.html:32
+msgid "Suscríbete"
+msgstr "Subscribe"
+
+#: templates/lactancia/partial_footer.html:108
+#: templates/lactancia/partial_footer.html:115
+msgid "Diseño: Baptiste Pons"
+msgstr "Design: Baptiste Pons"
+
+#: templates/lactancia/partial_footer.html:110
+#: templates/lactancia/partial_footer.html:117
+msgid "Desarrollo & Copywriting: Javi Vicente"
+msgstr "Development & Copywriting: Javi Vicente"
+
 #: templates/lactancia/partial_modal_profile.html:6
 msgid "¿Cuál es tu perfil de usuario?"
 msgstr "What is your user profile?"
@@ -2855,80 +2997,13 @@ msgstr ""
 "By indicating your profile you can evaluate the information of any term "
 "collected in e-lactancia."
 
-#: templates/lactancia/partial_newsletter.html:6
-msgid "¡Gracias por tu tiempo!"
-msgstr "Thank you for your time!"
-
 #: templates/lactancia/partial_newsletter.html:10
 msgid "Muchas gracias por suscribirte,"
 msgstr "Thank you for subscribing,"
 
-#: templates/lactancia/partial_newsletter.html:10
-msgid "Has sido añadida/o correctamente a nuestro boletín."
-msgstr "You have successfully been added to our newsletter."
-
 #: templates/lactancia/partial_newsletter.html:11
 msgid "Recibirás nuestro boletín en la  dirección"
 msgstr "You will receive our newsletter to"
-
-#: templates/lactancia/partial_newsletter.html:12
-msgid "Muchas gracias de parte de todo el equipo de e-lactancia APILAM"
-msgstr "Thank you very much from the team of e-lactancia and APILAM"
-
-#: templates/lactancia/partial_newsletter.html:13
-msgid ""
-"A continuación te mostramos información útil sobre nuestra política de "
-"comunicaciones"
-msgstr "Here are some useful information on our communication policy"
-
-#: templates/lactancia/partial_newsletter.html:16
-msgid "¿Qué voy a obtener? "
-msgstr "What am I going to get?"
-
-#: templates/lactancia/partial_newsletter.html:17
-msgid ""
-"Únicamente te mandaremos información relevante relacionada con la lactancia "
-"materna, APILAM y e-lactancia"
-msgstr ""
-"We will only send you relevant information related to breastfeeding, APILAM "
-"and e-lactancia."
-
-#: templates/lactancia/partial_newsletter.html:19
-msgid "¿Cómo puedo dejar de recibir vuestros correos?"
-msgstr "How can I stop receiving email?"
-
-#: templates/lactancia/partial_newsletter.html:20
-msgid ""
-"Puedes hacer click en el link que apacerá al final de cualquier correo que "
-"te mandemos para anular tu suscripción de forma segura e instantánea"
-msgstr ""
-"You can click the link at the bottom of any email we send to instantly and "
-"securely unsubscribe"
-
-#: templates/lactancia/partial_newsletter.html:22
-msgid "¿Cómo puedo asegurarme de que vuestros correos me llegan?"
-msgstr "How can I ensure your email gets to me?"
-
-#: templates/lactancia/partial_newsletter.html:23
-msgid ""
-"Nos puedes ayudar a llegar a tu buzón de entrada si te tomas unos segundos "
-"para añadir nuestro email (apilam.es@gmail.com) a tu lista de contactos"
-msgstr ""
-"You can help us reach every time your inbox by taking a few seconds right "
-"now to add our email address (apilam.es@gmail.com) to your contacts or safe "
-"sender list"
-
-#: templates/lactancia/partial_newsletter.html:25
-msgid "¿Mi información está segura?"
-msgstr "Is my information secure?"
-
-#: templates/lactancia/partial_newsletter.html:26
-msgid ""
-"Nos tomamos tu privacidad muy en serio y empleamos una serie de medidas de "
-"seguridad para proteger tu información personal"
-msgstr ""
-"We value your privacy and use a variety of security measures to protect your "
-"personal information"
 
 #: templates/lactancia/partial_newsletter.html:42
 #: templates/lactancia/partial_newsletter.html:56
@@ -2942,10 +3017,6 @@ msgstr "Newsletter"
 #: templates/lactancia/partial_newsletter_box.html:6
 msgid "Recibe información sobre lactancia y APILAM."
 msgstr "Get information about breastfeeding and APILAM"
-
-#: templates/lactancia/partial_newsletter_box.html:13
-msgid "Suscríbete"
-msgstr "Subscribe"
 
 #: templates/lactancia/partial_ratings.html:16
 msgid "Tu opinión es muy importante"
@@ -3095,28 +3166,22 @@ msgstr ""
 "You can also use it and promote #Breastfeeding"
 
 # mark to review!
+#: templates/lactancia/privacidad-b3.html:3
 #: templates/lactancia/privacidad.html:3
 msgid "Privacidad de e-lactancia"
 msgstr "e-lactancia privacy"
 
-# mark to review!
-#: templates/lactancia/privacidad.html:10
-#: templates/lactancia/privacidad.html:11
-msgid ""
-"Estoy leyéndome con sumo interés la política de privacidad de e-lactancia "
-"#Lactancia"
-msgstr ""
-"I´m reading with devotion the document on the privacy policy from e-"
-"lactancia #Breastfeeding"
-
+#: templates/lactancia/privacidad-b3.html:13
 #: templates/lactancia/privacidad.html:21
 msgid "<h2>POLÍTICA DE PRIVACIDAD</h2>"
 msgstr "<h2>PRIVACY POLICY</h2>"
 
+#: templates/lactancia/privacidad-b3.html:16
 #: templates/lactancia/privacidad.html:24
 msgid "<h3>RESPONSABLE DEL FICHERO</h3>"
 msgstr "<h3>RESPONSIBLE FOR THE FILE</h3>"
 
+#: templates/lactancia/privacidad-b3.html:18
 #: templates/lactancia/privacidad.html:26
 msgid ""
 "<p>La Asociación para la Promoción e Investigación científica y cultural de "
@@ -3138,10 +3203,12 @@ msgstr ""
 "registered in the General Data Protection Registry of the Spanish Data "
 "Protection Agency.</p>"
 
+#: templates/lactancia/privacidad-b3.html:20
 #: templates/lactancia/privacidad.html:28
 msgid "<h3>RECOGIDA DE DATOS</h3>"
 msgstr "<h3>DATA COLLECTION</h3>"
 
+#: templates/lactancia/privacidad-b3.html:21
 #: templates/lactancia/privacidad.html:29
 msgid ""
 "<strong>e-lactancia.org</strong> únicamente recoge los datos de carácter "
@@ -3151,10 +3218,12 @@ msgstr ""
 "<strong>e-lactancia.org</strong> only collects personal information that you "
 "provide through the forms on the website and our email addresses."
 
+#: templates/lactancia/privacidad-b3.html:23
 #: templates/lactancia/privacidad.html:31
 msgid "<h3>Usos y Finalidades de los Datos Recogidos</h3>"
 msgstr "<h3>Uses and Purposes of Data Collected</h3>"
 
+#: templates/lactancia/privacidad-b3.html:25
 #: templates/lactancia/privacidad.html:33
 msgid ""
 "<p>En <strong>e-lactancia.org</strong> se recogen los datos de carácter "
@@ -3168,10 +3237,12 @@ msgstr ""
 "can contact us at <a href='mailto:apilam.es@gmail.com'>apilam.es@gmail.com</"
 "a>. The uses and purposes foreseen are:</p>"
 
+#: templates/lactancia/privacidad-b3.html:27
 #: templates/lactancia/privacidad.html:35
 msgid "<h4>ENVÍO DE INFORMACIÓN</h4>"
 msgstr "<h4>SHIPPING  INFORMATION</h4>"
 
+#: templates/lactancia/privacidad-b3.html:29
 #: templates/lactancia/privacidad.html:37
 msgid ""
 "<p><strong>e-lactancia.org</strong> empleará los datos personales que nos "
@@ -3190,10 +3261,12 @@ msgstr ""
 "who do not wish to receive this type of information can inform by email to  "
 "<a href='mailto:apilam.es@gmail.com'>apilam.es@gmail.com</a>.</p>"
 
+#: templates/lactancia/privacidad-b3.html:31
 #: templates/lactancia/privacidad.html:39
 msgid "<h4>COMUNICACIÓN DE DATOS A TERCEROS</h4>"
 msgstr "<h4>REPORTING TO THIRD PARTIES</h4>"
 
+#: templates/lactancia/privacidad-b3.html:33
 #: templates/lactancia/privacidad.html:41
 msgid ""
 "<p><strong>e-lactancia.org</strong> no tiene previsto revelar sus datos "
@@ -3205,10 +3278,12 @@ msgstr ""
 "personal data to third parties, except in cases in which a law so provides "
 "(public authorities, administrative or judicial authorities, etc)</p>"
 
+#: templates/lactancia/privacidad-b3.html:35
 #: templates/lactancia/privacidad.html:43
 msgid "<h4>USO DE COOKIES</h4>"
 msgstr "<h4>USE OF COOKIES</h4>"
 
+#: templates/lactancia/privacidad-b3.html:36
 #: templates/lactancia/privacidad.html:44
 msgid ""
 "<strong>e-lactancia.org</strong> emplea cookies, que son archivos de texto "
@@ -3223,14 +3298,17 @@ msgstr ""
 "Protection Agency, a detailed description of the use of cookies is available "
 "on our <a href='{% url 'lactancia:cookies_en' %}'>Use of Cookies Policy</a>"
 
+#: templates/lactancia/privacidad-b3.html:37
 #: templates/lactancia/privacidad.html:45
 msgid "Política de uso de cookies"
 msgstr "Cookies Policy"
 
+#: templates/lactancia/privacidad-b3.html:39
 #: templates/lactancia/privacidad.html:47
 msgid "<h3>EJERCICIO DE DERECHOS</h3>"
 msgstr "<h3>EXERCISE OF RIGHTS</h3>"
 
+#: templates/lactancia/privacidad-b3.html:40
 #: templates/lactancia/privacidad.html:48
 msgid ""
 "En cualquier momento podrá ejercer los Derechos de acceso, rectificación, "
@@ -3245,10 +3323,12 @@ msgstr ""
 "license or passport) by email to <a href='mailto:apilam.es@gmail.com'>apilam."
 "es@gmail.com</a>."
 
+#: templates/lactancia/privacidad-b3.html:42
 #: templates/lactancia/privacidad.html:50
 msgid "<h3>VERSIÓN</h3>"
 msgstr "<h3>VERSION</h3>"
 
+#: templates/lactancia/privacidad-b3.html:43
 #: templates/lactancia/privacidad.html:51
 msgid ""
 "Esta política de privacidad es de fecha 01/12/2013 y cualquier modificación "
@@ -3256,6 +3336,16 @@ msgid ""
 msgstr ""
 "This Privacy Policy is dated 2013/12/01 and any modification of the terms "
 "will be posted on this website."
+
+# mark to review!
+#: templates/lactancia/privacidad.html:10
+#: templates/lactancia/privacidad.html:11
+msgid ""
+"Estoy leyéndome con sumo interés la política de privacidad de e-lactancia "
+"#Lactancia"
+msgstr ""
+"I´m reading with devotion the document on the privacy policy from e-"
+"lactancia #Breastfeeding"
 
 #: templates/lactancia/uso_cookies.html:3
 msgid "Cookies en e-lactancia"
@@ -3521,11 +3611,11 @@ msgstr ""
 "target='_blank'>Opera</a></li> \n"
 "</ul>\n"
 
-#: views.py:181
+#: views.py:183
 msgid "e-lactancia.org"
 msgstr "e-lactancia.org"
 
-#: views.py:182
+#: views.py:184
 msgid ""
 "Información sobre compatibilidad de medicamentos y otros productos con la "
 "lactancia materna, desarrollada por la Asociación para la Promoción "
@@ -3535,47 +3625,47 @@ msgstr ""
 "prescriptions and other products developed by the Association for Promotion "
 "and Cultural and Scientific Research of Breastfeeding, APILAM"
 
-#: views.py:185 views.py:189 views.py:193 views.py:197
+#: views.py:187 views.py:191 views.py:195 views.py:199
 msgid "Nivel de riesgo para la lactancia según e-lactancia.org"
 msgstr "Level of risk for breastfeeding according to e-lactancia.org"
 
-#: views.py:200
+#: views.py:202
 msgid "Niveles de riesgo para la lactancia según e-lactancia.org"
 msgstr "Levels of risk for breastfeeding according to e-lactancia.org"
 
-#: views.py:201
+#: views.py:203
 msgid "Listado de la familia"
 msgstr "List of elements from "
 
-#: views.py:201
+#: views.py:203
 msgid "por nivel de riesgo según e-lactancia.org"
 msgstr "by level of risk according e-lactancia.org"
 
-#: views.py:608
+#: views.py:610
 msgid "['muy mala', 'mala', 'regular', 'buena', 'muy buena']"
 msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
 
-#: views.py:1916 views.py:1923 views.py:1947 views.py:1956 views.py:1980
-#: views.py:1988
+#: views.py:1925 views.py:1932 views.py:1956 views.py:1965 views.py:1989
+#: views.py:1997
 msgid ""
 "Asociación para la Promoción científica y cultural de la Lactancia Materna"
 msgstr ""
 "Association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2003
+#: views.py:2012
 msgid "En e-lactancia.org."
 msgstr "In e-lactancia.org"
 
-#: views.py:2003 views.py:2005
+#: views.py:2012 views.py:2014
 msgid "Recuperado"
 msgstr "Retrieved"
 
-#: views.py:2003 views.py:2005
+#: views.py:2012 views.py:2014
 msgid "a partir de"
 msgstr "from"
 
-#: views.py:2005 views.py:2034 views.py:2036
+#: views.py:2014 views.py:2043 views.py:2045
 msgid ""
 "APILAM (Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna)"
@@ -3583,11 +3673,11 @@ msgstr ""
 "APILAM (Association for promotion and cultural and scientific research of "
 "breastfeeding)"
 
-#: views.py:2015
+#: views.py:2024
 msgid "En"
 msgstr "In"
 
-#: views.py:2015 views.py:2023
+#: views.py:2024 views.py:2032
 msgid ""
 "APILAM: Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna"
@@ -3595,25 +3685,35 @@ msgstr ""
 "APILAM: association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2015 views.py:2023
+#: views.py:2024 views.py:2032
 msgid "actualizado"
 msgstr "updated"
 
-#: views.py:2015 views.py:2023
-msgid "citado"
-msgstr "cited"
+#: views.py:2024 views.py:2032
+msgid "acceso"
+msgstr ""
 
-#: views.py:2015 views.py:2023
+#: views.py:2024 views.py:2032
 msgid "Disponible en"
 msgstr "Available from"
 
-#: views.py:2034 views.py:2036
+#: views.py:2043 views.py:2045
 msgid "accedido el"
 msgstr "accessed"
 
-#: views.py:2126
+#: views.py:2135
 msgid "Descargar cita bibliográfica en fichero"
 msgstr "Download citation reference file"
+
+# mark to review!
+#~ msgid ""
+#~ "Estoy suscribiéndome al boletín de APILAM y  e-lactancia. ¡Tu también "
+#~ "puedes unirte!"
+#~ msgstr ""
+#~ "I'm joining the APILAM and e-lactancia Newsletter. You can also join us!"
+
+#~ msgid "citado"
+#~ msgstr "cited"
 
 #~ msgid "Artículos"
 #~ msgstr "Papers"
