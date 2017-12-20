@@ -1,0 +1,80 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% block title %}{% trans 'Cookies en e-lactancia' %}{% endblock %}
+
+
+{% block mainpage %}
+
+<div class="well">
+<h2>{% trans 'Uso de cookies' %}</h2>
+{% trans '<p><strong>e-lactancia.org</strong> comunica a través de este aviso que utiliza cookies cuando el usuario navega por las páginas de este sitio.</p>' %}
+
+{% trans '<p>En <strong>e-lactancia.org</strong> nos preocupamos por tu privacidad y hacemos un uso responsable de las cookies. El uso de estos archivos nos permite mejorar la usabilidad de nuestro sitio y ofrecerte un mejor servicio, así como acceso a aplicaciones o funcionalidades especiales.</p>' %}
+
+{% trans '<h3>¿Qué es una Cookie?</h3>' %}
+
+{% trans '<p>Es un pequeño archivo de texto que almacena información, que es creado por el sitio web que estás visitando y/o las aplicaciones de terceros que utilice dicha web.<br> Estos ficheros no son ejecutables y no contienen virus.</p>' %}
+
+{% trans '<h3>Cookies en <strong>e-lactancia.org</strong></h3>' %}
+
+{% trans 'En <strong>e-lactancia.org</strong> utilizamos tres tipos de cookies diferentes:' %}
+
+
+{% blocktrans %} 
+<ul>
+	<li><strong>Tipo 1: Estrictamente necesarias.</strong> Sustentan las funcionalidades básicas de la web como, por ejemplo, permitir valorar las fichas o enviarnos comentarios.
+		<ul>
+			<li><strong>Sessionid</strong>. Son usadas por nuestro sistema de gestión de contenidos para almacenar el identificador de sesión una vez que nos indicas cuál es tu perfil de usuario (médico, enfermero/a, padre/madre, ...). Esto te identifica y nos permite saber qué comentarios y valoraciones has realizado previamente desde tu navegador. La duración de esta cookie es de 15 días. Pasado ese tiempo, si vuelves a acceder a <strong>e-lactancia.org</strong>, se te volverá a preguntar por el perfil de usuario.</li>
+			<li><strong>cookielaw_accepted</strong> (permanente). Almacena tu aceptación de la política de cookies. Irónicamente, necesitamos instalar una cookie para saber que las aceptas y así dejar de mostrar el banner que informa sobre ellas.</li>
+		</ul>
+	</li>
+    <li><strong>Tipo 2: Cookies de funcionalidades extras.</strong> Necesarias para disponer de ciertas funciones útiles en la web como, por ejemplo, los botones de compartir en redes sociales.
+		<ul>
+			<li><strong>Cookies de Facebook, Google+ y Twitter</strong>. Te ofrecemos botones sociales para que puedas compartir fácilmente cualquier contenido de <strong>e-lactancia.org</strong>. Para ello, necesitamos instalar las cookies que estas redes sociales emplean. Puedes consultar el listado de cookies en los siguientes enlaces:</li>
+			<ul>
+				<li><a href="https://developers.facebook.com/docs/reference/fql/cookies/permissions">Botón "me gusta" de Facebook</a></li>
+				<li><a href="https://developers.google.com/+/web/buttons-policy?hl=en">Botón de compartir de Google+</a></li>
+				<li><a href="https://twitter.com/privacy">Botón de twittear de Twitter</a></li>
+			</ul>
+		</ul>
+	</li>
+
+    <li><strong>Tipo 3: Cookies de análisis.</strong> Estas cookies nos permiten obtener datos anónimos de las visitas de nuestros usuarios. Con ellas analizamos el uso de la web sin concretar datos individuales y se usan únicamente para optimizar el contenido y el rendimiento de nuestra web.
+		<ul>
+			<li><strong>Google Analytics</strong>. 
+				<ul>
+
+				<li>Las cookies de Google Analytics recogen información acerca de cómo los usuarios usan nuestra página web. Se incluyen la dirección IP del usuario, detalles de las visitas a nuestra página web y su procedencia. Se emplean para analizar el uso de la página web y así poder entender a los usuarios que visitan nuestra página web con el objetivo de mejorar nuestros productos, servicios y actividades. Esta información es leída por Google Inc. Con ella, realiza informes anónimos sobre las visitas a <strong>e-lactancia.org</strong></li>
+				<li>Las cookies de Google Analytics que se instalan en tu navegador y el tiempo que permanecen se detallan a continuación:
+					<ul>
+						<li> <strong>_utma</strong> (2 años)</li>
+						<li><strong>_utmb</strong> (30 minutos)</li>
+						<li><strong>_utmc</strong> (sesión de navegador)</li> 
+						<li><strong>_utmz</strong> (6 meses)</li>
+					</ul>
+				Si quieres saber más sobre estas cookies, haz clic <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage" target="_blank">aquí</a></li>
+				<li>Haz clic <a href="http://www.google.com/analytics/learn/privacy.html" target="_blank">aquí</a> para leer la Política de privacidad de Google Analytics.</li>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+{% endblocktrans %}
+
+{% trans '<h3>Cómo gestionar las Cookies en tu equipo</h3>' %}
+
+{% trans '<strong>e-lactancia.org</strong> hace un uso responsable de las cookies y solo las emplea con los fines descritos arriba.' %}
+
+{% trans 'Cambiar la configuración de aceptación de cookies podría entorpecer la navegación y restarle funcionalidades a nuestra web. Aún así, si quieres más información sobre su configuración, puedes consultar las páginas web de los principales navegadores:' %}
+
+{% blocktrans %}
+<ul>
+<li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank">Google Chrome</a></li>
+<li><a href="http://support.mozilla.org/es/home" target="_blank">Firefox</a></li> 
+<li><a href="http://support.microsoft.com/ph/807/es-es" target="_blank">Internet Explorer</a></li> 
+<li><a href="http://support.apple.com/kb/HT1677?viewlocale=es_ES" target="_blank">Safari</a></li> 
+<li><a href="http://help.opera.com/Windows/11.50/es-ES/cookies.html" target="_blank">Opera</a></li>
+</ul>
+{% endblocktrans %}
+</div>
+{% endblock %}

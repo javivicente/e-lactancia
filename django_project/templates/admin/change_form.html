@@ -42,9 +42,7 @@
   <script type="text/javascript">
     $(function () {
     Suit.after_inline.register('init_select2', function(inline_prefix, row){
-        console.log($(row).find('select'));
         $(row).find('.select2').remove();
-        
         $(row).find('select').select2();
         $('.select2').css('width', 176);
     });

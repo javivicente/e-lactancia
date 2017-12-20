@@ -1325,7 +1325,7 @@ def cookies(request):
 
     context = initial_context
     context.update({'meta': set_meta(request)}),
-    return render(request, 'lactancia/uso_cookies.html', context)
+    return render(request, 'lactancia/uso_cookies-b3.html', context)
 
 def privacidad(request):
 
@@ -1338,7 +1338,7 @@ def aviso_legal(request):
 
     context = initial_context
     context.update({'meta': set_meta(request)}),
-    return render(request, 'lactancia/aviso_legal.html', context)
+    return render(request, 'lactancia/aviso_legal-b3.html', context)
 
 
 ''' Donativos views'''
