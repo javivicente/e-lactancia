@@ -26,7 +26,7 @@ class PerfilForm(Form):
     #perfil = ChoiceField(widget=RadioSelect(attrs={'onchange': 'this.form.submit();'}), choices=PROFILE_CHOICES, )
 
 class ComentarioForm(Form):
-    comentario = CharField(widget=Textarea(attrs={'class': 'span12', 'rows': 4, 'id':"opinion", 'maxlength':250,  'placeholder': _(u"Espacio para opinión o sugerencia. Para consultas: elactancia.org@gmail.com")}))
+    comentario = CharField(widget=Textarea(attrs={'class': 'col-xs-12', 'rows': 5, 'id':"opinion", 'maxlength':250,  'placeholder': _(u"Ayúdanos a mejorar el contenido de e-lactancia con tu opinión o sugerencia sobre la calidad de la información de esta ficha.")}))
     email = EmailField(required=False)
     
     def clean_comentario(self):

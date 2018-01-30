@@ -1,0 +1,29 @@
+{% load i18n %}
+
+
+<div class="container-fluid pink">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 col-xs-6 col-xs-offset-0">
+                
+                    <img src="{{STATIC_URL}}img/jose-maria-paricio-300px.jpg" class="img-responsive img-circle" alt="Jose Maria Paricio, Founder & President of APILAM/e-Lactancia"/> 
+                
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <blockquote>
+                    <p>{% trans "Tu aportación es fundamental para que este servicio siga siendo gratuito." %} {% trans "Necesitamos la generosidad de personas como tú que creen en las bondades de la lactancia materna." %} <br/><br/>{% trans "Gracias por ayudar a seguir salvando lactancias." %}</p>
+                    <footer>{% trans "José María Paricio, creador de e-lactancia."%}</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2">
+                <div style="margin-top:40px;">
+                    <a class="btn btn-lg round btn-donate" href="{% url 'lactancia:donativos' %}" style="padding: 18px;">{% trans 'DONA AHORA' %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+
+

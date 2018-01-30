@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.humanize',
     'debug_toolbar',
     'ratings',
     'django_select2',

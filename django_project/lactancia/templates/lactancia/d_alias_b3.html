@@ -1,0 +1,36 @@
+{% extends "lactancia/d_producto_b3.html" %} 
+{% load i18n %}
+{% block title %} {{aliasp.nombre}} {% trans " y lactancia materna: ¿son compatibles?" %}{% endblock %}
+
+
+
+{% block prod_header %}{{ aliasp.nombre }}{% endblock %}
+{% block alternativa_no_razon %}{{aliasp.nombre}}{% endblock %}
+{% block alternativa_no_sin_razon %}{{aliasp.nombre}}{% endblock %}
+
+
+{% block alias_text %}
+	<strong>{{aliasp.nombre}}</strong> {% trans "también se conoce como" %} <a href="{% url 'lactancia:ficha_producto' prod.slug %}">{{prod.nombre}}</a>. 
+	{% if prod_alias|length > 1 %}
+		{% trans "Esta es una lista de otros posibles nombres" %}:
+	{% endif %}
+{% endblock %}
+{% block listado_alias %}
+    {% for alias in prod_alias %}
+        {% if aliasp.id != alias.id %}
+	        <li><a href="{% url 'lactancia:ficha_alias' alias.slug %}"  >{{ alias.nombre }}</a></li>
+	    {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block name_main_prod_otras_escrituras %}{{aliasp.nombre}}{% endblock %}
+
+{% block term_en_marca %}{{aliasp.nombre}}{% endblock %}
+{% block term_en_marca_composicion %}{{aliasp.nombre}}{% endblock %}
+
+
+
+
+{% block term_plural %}{{aliasp.nombre}}{% endblock %}
+{% block term_singular %}{{aliasp.nombre}}{% endblock %}
+

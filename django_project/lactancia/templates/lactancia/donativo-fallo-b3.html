@@ -1,0 +1,12 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% block title %} {% trans "Problema con tu donativo" %}{% endblock %}
+
+{% block mainpage %}
+
+<div class="alert alert-danger">
+            <p class="lead">{% trans "Problema con tu donativo" %}</p>
+            <p>{% trans "Parece que no se ha completado la transacción. Puedes " %} <a href="{% url 'lactancia:donativos' %}">{% trans "intentarlo de nuevo " %}</a> {% trans "si lo deseas." %}</p>
+</div>
+<div style="margin-bottom: 20%;"></div>
+{% endblock %}

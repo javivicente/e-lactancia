@@ -1,0 +1,38 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% block title %}{% trans 'Alerta de cambio de nivel de riesgos en e-lactancia' %}{% endblock %}
+
+
+{% block titulo_mainpage %}
+<h2>{% block alertas_header %}{% trans "Alertas" %}{% endblock %}</h2>
+{% endblock %}
+
+
+{% block mainpage %}
+                  
+{% if 90_days_alerts %}
+        <p>{% block alertas_content %}{% trans "A continuación se muestra el listado de cambios de niveles de riesgo registrados en la base de datos de e-lactancia en los últimos 3 meses. Para acceder a la ficha completa de cada producto, toca sobre su nombre. " %}{% endblock%}</p>
+
+        
+        {% for a in alerts.all %}
+            {% if a.active_90  %}
+                {% if a.titulo_es == '<p class="text-error">Nivel de riesgo incrementado</p>' %}
+                    <div class="alert alert-danger">
+                {% else %}
+                    <div class="alert alert-success">
+                {% endif %} 
+                        <h3><a href="{% url 'lactancia:ficha_producto' a.producto.slug %}"> {{ a.producto.nombre }}</a></h3>
+                        <p><small>{% trans "Nivel de riesgo revisado el" %} {{ a.fecha_modificacion|date:"d/m/Y"}}</small></p>
+                        <h4>{{a.titulo | safe}}</h4>
+                        <p>{{a.contenido | safe}}</p>
+                        
+                    </div>  
+            {% endif %}
+        {% endfor %} 
+        
+{% else %}
+        <p>{% trans "Durante los últimos 3 meses no ha habido cambios en el nivel de riesgo de ninguno de los productos de la base de datos de e-lactancia." %}</p>
+        <div style="margin-bottom: 20%;"></div>
+{% endif %}
+
+ {% endblock %}

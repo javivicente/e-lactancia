@@ -1,0 +1,47 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% block title %}{% trans "Entidades que patrocinan e-lactancia" %}{% endblock %}
+
+
+
+{% block mainpage %}
+<div class="row" style="margin-top:40px;">
+        <h1 class="center">{% block dona_header %}{% trans "Entidades que patrocinan e-lactancia" %}{% endblock%}</h1>
+</div>
+{% for entidad in entidades %}
+<div id="{{entidad.id}}" style="margin-bottom:120px;"></div>
+<div class="row"> 
+  
+  <div class="col-xs-4" >
+    <p class="text-right"><a href="{{entidad.URL}}" rel="nofollow" target="_blank"><img class="logo" src="{{entidad.logo.url}}"></a></p>
+  </div>
+
+  <div class="col-xs-6">
+    <h3>{{entidad.entidad}} {% if entidad.pais %} ({{entidad.pais.nombre}}) {% endif %}</h3>
+    {% if entidad.descripcion %}
+    <blockquote >
+        <p>{{entidad.descripcion|safe}}</p>
+    </blockquote>
+    {% endif %}
+  </div> {# de todos los supporters #}  
+</div>
+{% endfor %}
+
+<div style="margin-top:40px;" class="row">
+</div>
+
+{% for t in textos_patrocinadores %}
+    {% if t.visible %}
+    <div class="row"> 
+       <div class="col-xs-7">
+            <h2 >{{t.title}}</h2>
+            {{ t.content|safe|linebreaks}}
+       </div>
+    </div>
+    {% endif %}
+{% endfor %}
+<div style="margin-top: 40px; "class="row">
+</div>
+
+
+{% endblock %}

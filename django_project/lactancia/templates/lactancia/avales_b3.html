@@ -1,0 +1,49 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% block title %}{% trans "Entidades que recomiendan el uso de e-lactancia" %}{% endblock %}
+
+
+
+
+{% block mainpage %}
+<div class="row" style="margin-top:40px;">
+        <h1 class="center">{% block dona_header %}{% trans "Entidades que recomiendan el uso de e-lactancia" %}{% endblock%}</h1>
+</div>
+{% for aval in avales %}
+<div id="{{aval.id}}" style="margin-bottom:120px;"></div>
+<div class="row"> 
+  
+  <div class="col-xs-4" >
+    <p class="text-right"><img class="logo" src="{{aval.logo.url}}"></p>
+    <p  class="text-right">{{aval.URL}}</p>
+  </div>
+
+  <div class="col-xs-6">
+    <h2 class="h3">{{aval.entidad}} {% if aval.pais %}({{aval.pais.nombre}}){% endif %}</h2>
+    <blockquote >
+        <p>{{aval.extracto|safe}}</p>
+        <footer><a href="{{aval.carta.url}}" target="_blank"><cite>{% trans 'Leer documento completo' %}</cite></a></footer>
+    </blockquote>
+  </div> {# de todos los supporters #}  
+</div>
+
+{% endfor %}
+
+<div style="margin-top:40px;" class="row">
+</div>
+
+{% for t in textos_avales %}
+    {% if t.visible %}
+    <div class="row"> 
+       <div class="col-xs-8">
+            <h2 class="text-center">{{t.title}}</h2>
+            {{ t.content|safe|linebreaks}}
+       </div>
+    </div>
+    {% endif %}
+{% endfor %}
+<div style="margin-top: 40px; "class="row">
+</div>
+
+
+{% endblock %}

@@ -278,7 +278,7 @@ def buscar(request):
 
 '''dynamic calculation of the span of names of the product (alias, trademarks and groups)'''
 def calcula_span_product_names(product):
-
+    '''
     # by default, there's only one column (group)...
     span='span12' 
 
@@ -288,39 +288,65 @@ def calcula_span_product_names(product):
     # if there is only trades or alias (there will be 2 columns)
     elif (product.hay_marcas() or (product.hay_alias() or product.hay_escrituras())):
         span='span6'
+    '''
+    
+    ''' Boostrap 3 version'''
+    # by default, there's only one column (group)...
+    span='col-xs-12 col-md-12' 
 
+    # if there are alias and trademarks (there will be 3 columns)
+    if (product.hay_marcas() and (product.hay_alias() or product.hay_escrituras())):
+        span='col-xs-12 col-md-4'
+    # if there is only trades or alias (there will be 2 columns)
+    elif (product.hay_marcas() or (product.hay_alias() or product.hay_escrituras())):
+        span='col-xs-12 col-md-6'
+
+        
     return span
 
 
 '''dynamic calculation of the span for biblio and pharmacokinetics'''
 def calcula_span_product_pharma_biblio(product):
-
+    
+    '''
     # by default, there's only one column (group)...
     span='span12'
 
     # if there are phamacokinetics (there will be 2 columns)
     if product.es_principio_activo():
         span='span6'
+    '''
+
+    '''Boostrap 3 Version '''
+    # by default, there's only one column (group)...
+    span='col-md-12'
+
+    # if there are phamacokinetics (there will be 2 columns)
+    if product.es_principio_activo():
+        span='col-md-6'    
         
     return span
 
 
 '''dynamic calculation of the span of the table of risk (includes risk, comment, and alternatives)'''
 def calcula_span_product_risk(product):
-    if product.no_alternativas:
     
-        span = {'span_nivel': 'span4',
-            'span_nivel_desc': 'span4',
-            'span_alternativas': 'invisible',
-            'span_comment': 'span8'
-            }
-    
-    else:
-        span = {'span_nivel': 'span4',
-            'span_nivel_desc': 'span4',
-            'span_alternativas': 'span3',
-            'span_comment': 'span8'
-            }
+    '''
+    span = {
+        'span_nivel': 'span4',
+        'span_nivel_desc': 'span4',
+        'span_alternativas': 'span3',
+        'span_comment': 'span8'
+    }
+    '''
+        
+    # version Bootstrap 3
+    span = {
+        'span_nivel': 'col-xs-12 col-sm-4 col-md-3',
+        'span_nivel_desc': 'col-xs-12 col-sm-4 col-md-3',
+        'span_alternativas': 'col-xs-12 col-sm-12 col-md-3',
+        'span_comment': 'col-xs-12 col-sm-8 col-md-6'
+        }
     
     return span
 
@@ -341,28 +367,6 @@ def calcula_span_marca(marca):
 
 
     
-'''dynamic calculation of the span of risks and related products of a group'''
-def calcula_span_block_risk(no_alternativas):
-    if no_alternativas:
-        span = {'span_r0': 'span12', #originalmente span9
-            'span_r1': 'span12', #originalmente span9
-            'span_r2': 'span12', #originalmente span9
-            'span_r3': 'span12', #originalmente span9
-            'span_risks': 'span12',
-            'span_related': 'span3',
-            #'span_suscribe': 'span3'
-            }
-    else:
-        span = {'span_r0': 'span9', #originalmente span9
-            'span_r1': 'span9', #originalmente span9
-            'span_r2': 'span9', #originalmente span9
-            'span_r3': 'span9', #originalmente span9
-            'span_risks': 'span12',
-            'span_related': 'span3',
-            #'span_suscribe': 'span3'
-            }
-    return span
-
     
     
     
@@ -469,11 +473,10 @@ def get_context_for_product(request, prod):
     if help_d_terap == None:
         help_d_terap = Mensaje.objects.get(nombre__icontains='dosis_terapeutica')
         cache.set('help_d_terap',help_d_terap,timeout)
-    hints = mark_safe(get_rating_hints())
+    #hints = mark_safe(get_rating_hints())
     span_risk = calcula_span_product_risk(prod)
     span_biblio = calcula_span_product_pharma_biblio(prod)
-    span_block_risk = calcula_span_block_risk(prod.no_alternativas)    
-
+    
     '''calling the messages in the page'''
     prod_disclaimer = cache.get('prod_disclaimer')
     if prod_disclaimer == None:
@@ -541,11 +544,9 @@ def get_context_for_product(request, prod):
                'exito_subscription': False,
                'user_email': '',
                'user_fname': '',
-               'hints': hints,
                'prod_alert': prod_alert,
                'span_names': span_names,
                'span_risk': span_risk,
-               'span_block_risk': span_block_risk,
                'span_biblio': span_biblio,
                'prod_disclaimer': prod_disclaimer,
                'risk0_info': risk0_info,
@@ -957,7 +958,6 @@ def get_context_for_marca(request, marca):
         prod = None
     span_risk = calcula_span_product_risk(prod)
     span_marca = calcula_span_marca(marca)
-    span_block_risk = calcula_span_block_risk(prod.no_alternativas)
     
     '''calling the messages in the page'''
     prod_disclaimer = cache.get('prod_disclaimer')
@@ -1004,7 +1004,7 @@ def get_context_for_marca(request, marca):
 
     marca_alerts = get_alert_risk_for_marca(marca)
 
-    hints = mark_safe(get_rating_hints())
+    #hints = mark_safe(get_rating_hints())
     
     visits = get_visits(marca)
     
@@ -1016,10 +1016,8 @@ def get_context_for_marca(request, marca):
                'comentario': None,
                'mostrar_exito_comentario': False,
                'desplegar_comentario': False,
-               'hints': hints,
                'marca_alerts': marca_alerts,
                'span_risk': span_risk,
-               'span_block_risk': span_block_risk,
                'prod_disclaimer': prod_disclaimer,
                'marca_info_disclaimer': marca_info_disclaimer,
                'risk0_info': risk0_info,
@@ -1067,7 +1065,7 @@ def ficha_producto(request, slug):
     except Producto.DoesNotExist:
         raise Http404
     
-    return render(request, 'lactancia/detalle_p.html', context)
+    return render(request, 'lactancia/d_producto_b3.html', context)
 
     
 def detalle_ap(request, alias_id):
@@ -1093,7 +1091,7 @@ def ficha_alias(request, slug):
     except Alias.DoesNotExist:
         raise Http404
     
-    return render(request, 'lactancia/detalle_ap.html', context)
+    return render(request, 'lactancia/d_alias_b3.html', context)
 
 def detalle_oe(request, otra_escritura_id):
 
@@ -1116,7 +1114,7 @@ def ficha_otra_escritura(request, slug):
     except Otras_escrituras.DoesNotExist:
         raise Http404
     
-    return render(request, 'lactancia/detalle_oe.html', context)
+    return render(request, 'lactancia/d_otra_escritura_b3.html', context)
 
 def detalle_m(request, marca_id):
     try:
@@ -1138,17 +1136,55 @@ def ficha_marca(request, slug):
     except Marca.DoesNotExist:
         raise Http404
     
-    return render(request, 'lactancia/detalle_m.html', context)
+    return render(request, 'lactancia/d_marca_b3.html', context)
 
 
 def get_context_for_grupo(request, grupo):
 
+    prods = None
+    exists_r3 = False
+    exists_r2 = False
+    exists_r1 = False
+    exists_r0 = False
     
+    
+    
+    prods = cache.get('grupo_'+str(grupo.id)+'_es')
+    if prods == None:
+        filterargs = { 'grupo': grupo.id }
+        prods = Producto.objects.filter(**filterargs).order_by('nombre')
+        cache.set('grupo_'+str(grupo.id)+'_es', prods,timeout)
+    
+    exists_r3 = cache.get('grupo_r3_'+str(grupo.id)+'_exists_es')
+    if exists_r3 == None:
+        filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 3 }
+        exists_r3 = Producto.objects.filter(**filterargs).exists()
+        cache.set('grupo_r3_'+str(grupo.id)+'_exists_es', exists_r3,timeout)
+
+    exists_r2 = cache.get('grupo_r2_'+str(grupo.id)+'_exists_es')    
+    if exists_r2 == None:
+        filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 2 }
+        exists_r2 = Producto.objects.filter(**filterargs).exists()
+        cache.set('grupo_r2_'+str(grupo.id)+'_exists_es', exists_r2,timeout)
+   
+    exists_r1 = cache.get('grupo_r1_'+str(grupo.id)+'_exists_es')   
+    if exists_r1 == None:
+        filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 1 }
+        exists_r1 = Producto.objects.filter(**filterargs).exists()
+        cache.set('grupo_r1_'+str(grupo.id)+'_exists_es', exists_r1,timeout)
+        
+    exists_r0 = cache.get('grupo_r0_'+str(grupo.id)+'_exists_es')
+    if exists_r0 == None:
+        filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 0 }
+        exists_r0 = Producto.objects.filter(**filterargs).exists()
+        cache.set('grupo_r0_'+str(grupo.id)+'_exists_es', exists_r0,timeout)
+        
     prods_r3 = None
     prods_r2 = None
     prods_r1 = None
     prods_r0 = None
     
+    '''
     prods_r3 = cache.get('grupo_r3_'+str(grupo.id)+'_es')
     if prods_r3 == None:
         filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 3 }
@@ -1169,6 +1205,7 @@ def get_context_for_grupo(request, grupo):
         filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 0 }
         prods_r0 = Producto.objects.filter(**filterargs).order_by('nombre')
         cache.set('grupo_r0_'+str(grupo.id)+'_es', prods_r0,timeout)
+    '''
     
     '''calling the messages in the page'''
     prod_disclaimer = cache.get('prod_disclaimer')
@@ -1210,14 +1247,15 @@ def get_context_for_grupo(request, grupo):
 
     grupo_alerts = get_alert_risk_for_grupo(grupo)
     
-    span_block_risk = calcula_span_grupo(grupo)
+    #span_block_risk = calcula_span_grupo(grupo)
 
-    span_block_risk.update({'span_r0': 'span3'})
-    span_block_risk.update({'span_r1': 'span3'})
-    span_block_risk.update({'span_r2': 'span3'})
-    span_block_risk.update({'span_r3': 'span3'})
-
-    hints = mark_safe(get_rating_hints())
+   
+    #span_block_risk.update({'span_r0': 'col-xs-3'})
+    #span_block_risk.update({'span_r1': 'col-xs-3'})
+    #span_block_risk.update({'span_r2': 'col-xs-3'})
+    #span_block_risk.update({'span_r3': 'col-xs-3'})
+    
+    #hints = mark_safe(get_rating_hints())
 
     visits = get_visits(grupo)
     
@@ -1229,13 +1267,12 @@ def get_context_for_grupo(request, grupo):
                'comentario': None,
                'mostrar_exito_comentario': False,
                'desplegar_comentario': False,
-               'hints': hints,
                'grupo_alerts': grupo_alerts,
-                'prods_r3': prods_r3,
-                'prods_r2': prods_r2,
-                'prods_r1': prods_r1,
-                'prods_r0': prods_r0,
-                'span_block_risk': span_block_risk, 
+               'exists_r3': exists_r3,
+               'exists_r2': exists_r2,
+               'exists_r1': exists_r1,
+               'exists_r0': exists_r0,
+               'prods': prods,
                'prod_disclaimer': prod_disclaimer,
                'risk0_info': risk0_info,
                'risk1_info': risk1_info,
@@ -1274,7 +1311,7 @@ def ficha_grupo(request, slug):
     except Grupo.DoesNotExist:
         raise Http404
     
-    return render(request, 'lactancia/detalle_g2.html', context)
+    return render(request, 'lactancia/d_grupo_b3.html', context)
     
     
 def hay_alertas_de_90_dias():
@@ -1297,7 +1334,7 @@ def alerta_riesgos(request):
         context.update({'meta': set_meta(request)})
     except Mensaje.DoesNotExist:
         raise Http404
-    return render(request, 'lactancia/alerta_riesgos.html', context)
+    return render(request, 'lactancia/alerta_riesgos_b3.html', context)
 
  
 
@@ -1314,7 +1351,7 @@ def creditos(request):
                
     context.update(initial_context)    
     context.update({'meta': set_meta(request)})
-    return render(request, 'lactancia/creditos.html', context)
+    return render(request, 'lactancia/creditos_b3.html', context)
     
     
     
@@ -1354,7 +1391,7 @@ def donativo_exito(request):
     
     context = initial_context
     context.update({'meta': set_meta(request)})
-    return render(request, 'lactancia/donativo_exito.html', context)
+    return render(request, 'lactancia/donativo-exito-b3.html', context)
 
 
 
@@ -1362,22 +1399,25 @@ def donativo_cancelado(request):
     
     context = initial_context
     context.update({'meta': set_meta(request)})
-    return render(request, 'lactancia/donativo_fallo.html', context)
+    return render(request, 'lactancia/donativo-fallo-b3.html', context)
 
 
 def boletin_error(request):
     
+    return redirect('lactancia:landing', permanent=True)
+    '''
     context = initial_context
     context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/boletin_error.html', context)
-
+    '''
 
 def boletin_ok(request):
-    
+    return redirect('lactancia:landing', permanent=True)
+    '''
     context = initial_context
     context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/boletin_ok.html', context)
-    
+    '''
     
 '''Lista de productos que tienen alternativas con un riesgo mayor que el del
 propio producto'''
@@ -1408,13 +1448,13 @@ def lista_negra(request):
                 }
     context.update(initial_context)    
     context.update({'meta': set_meta(request)})
-    return render(request, 'lactancia/lista_negra.html', context)    
+    return render(request, 'lactancia/lista_negra_b3.html', context)    
 
 @staff_member_required
 def limpia_cache(request):
     cache.clear()
     context = load_initial_context()
-    return render(request, 'lactancia/limpiar_cache.html', context)
+    return render(request, 'lactancia/limpiar_cache_b3.html', context)
     
 ''' CALCULO DE VISITAS '''
 def calculate_visits():
@@ -1422,85 +1462,93 @@ def calculate_visits():
     grupos_all = Grupo.objects.all().order_by('id')
     for p in grupos_all:
     
-        aux = Visita.objects.filter(grupo=p.pk)
+        aux = Visita.objects.filter(grupo=p.pk).count()
         
         # salvamos el número de visitas total a este término
         visita, created = Visita_grupo_total.objects.get_or_create(grupo=p)
-        visita.visitas = aux.count()
+        visita.visitas = aux
         visita.save()
         
+        '''
         # salvamos en número de visitas total por perfil de usuario:
         for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
             visita, created = Visita_grupo_perfil.objects.get_or_create(grupo=p,perfil=i)
             visita.visitas = aux.filter(user__perfil=i).count()
             visita.save()
-    
+        '''
+        
     productos_all = Producto.objects.all().order_by('id')
     for p in productos_all:
     
-        aux = Visita.objects.filter(prod=p.pk)
+        aux = Visita.objects.filter(prod=p.pk).count()
         
         # salvamos el número de visitas total a este término
         visita, created = Visita_producto_total.objects.get_or_create(producto=p)
-        visita.visitas = aux.count()
+        visita.visitas = aux
         visita.save()
         
+    '''
         # salvamos en número de visitas total por perfil de usuario:
         for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
             visita, created = Visita_producto_perfil.objects.get_or_create(producto=p,perfil=i)
             visita.visitas = aux.filter(user__perfil=i).count()
             visita.save()
-            
+    '''
+        
     otras_escrituras_all = Otras_escrituras.objects.all().order_by('id')
     for p in otras_escrituras_all:
     
-        aux = Visita.objects.filter(otra_escritura=p.pk)
+        aux = Visita.objects.filter(otra_escritura=p.pk).count()
         
         # salvamos el número de visitas total a este término
         visita, created = Visita_otras_escrituras_total.objects.get_or_create(otras_escrituras=p)
-        visita.visitas = aux.count()
+        visita.visitas = aux
         visita.save()
         
+    '''
         # salvamos en número de visitas total por perfil de usuario:
         for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
             visita, created = Visita_otras_escrituras_perfil.objects.get_or_create(otras_escrituras=p,perfil=i)
             visita.visitas = aux.filter(user__perfil=i).count()
             visita.save()
-    
+    '''
+        
     alias_all = Alias.objects.all().order_by('id')
     for p in alias_all:
     
-        aux = Visita.objects.filter(alias=p.pk)
+        aux = Visita.objects.filter(alias=p.pk).count()
         
         # salvamos el número de visitas total a este término
         visita, created = Visita_alias_total.objects.get_or_create(alias=p)
-        visita.visitas = aux.count()
+        visita.visitas = aux
         visita.save()
-        
+    '''    
+    
         # salvamos en número de visitas total por perfil de usuario:
         for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
             visita, created = Visita_alias_perfil.objects.get_or_create(alias=p,perfil=i)
             visita.visitas = aux.filter(user__perfil=i).count()
             visita.save()
-            
+    '''    
             
     
     marcas_all = Marca.objects.all().order_by('id')
     for p in marcas_all:
     
-        aux = Visita.objects.filter(marca=p.pk)
+        aux = Visita.objects.filter(marca=p.pk).count()
         
         # salvamos el número de visitas total a este término
         visita, created = Visita_marca_total.objects.get_or_create(marca=p)
-        visita.visitas = aux.count()
+        visita.visitas = aux
         visita.save()
         
+    '''
         # salvamos en número de visitas total por perfil de usuario:
         for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
             visita, created = Visita_marca_perfil.objects.get_or_create(marca=p,perfil=i)
             visita.visitas = aux.filter(user__perfil=i).count()
             visita.save()
-    
+    '''
     return 0
     
 ''' ESTADISTICAS '''
@@ -1585,7 +1633,7 @@ def get_context_for_stats_json_v2(request):
     
     
 
-    # Visits per profile
+    '''# Visits per profile
     json_data=file(PROJECT_PATH +'/media/stats_profile_1d.json','r')
     data = json.loads(json_data.read().decode("utf-8-sig"))
     visits_profile_1d = data
@@ -1605,7 +1653,7 @@ def get_context_for_stats_json_v2(request):
     json_data=file(PROJECT_PATH +'/media/stats_profile_all.json','r')
     data = json.loads(json_data.read().decode("utf-8-sig"))
     visits_profile_all = data
-    
+    '''
     
     # Top visits countries
     json_data=file(PROJECT_PATH +'/media/stats_country_1d.json','r')
@@ -1648,11 +1696,6 @@ def get_context_for_stats_json_v2(request):
                  'visits_country_1m': visits_country_1m,
                  'visits_country_1y': visits_country_1y,
                  'visits_country_all': visits_country_all,
-                 'visits_profile_1d': visits_profile_1d,
-                 'visits_profile_1w': visits_profile_1w,
-                 'visits_profile_1m': visits_profile_1m,
-                 'visits_profile_1y': visits_profile_1y,
-                 'visits_profile_all': visits_profile_all,
                  'daily': daily,
                  'weekly': weekly,
                  'monthly': monthly,
@@ -1748,7 +1791,7 @@ def get_context_for_stats_json_ES(request):
     daily = zip(visits_daily, consultations_daily)
     
     
-
+    '''
     # Visits per profile
     json_data=file(PROJECT_PATH +'/media/stats_profile_1d_ES.json','r')
     data = json.loads(json_data.read().decode("utf-8-sig"))
@@ -1769,7 +1812,7 @@ def get_context_for_stats_json_ES(request):
     json_data=file(PROJECT_PATH +'/media/stats_profile_all_ES.json','r')
     data = json.loads(json_data.read().decode("utf-8-sig"))
     visits_profile_all = data
-    
+    '''
     
     # Top visits SPANISH cities
     json_data=file(PROJECT_PATH +'/media/stats_cities_1d_ES.json','r')
@@ -1810,11 +1853,6 @@ def get_context_for_stats_json_ES(request):
                  'visits_cities_1m': visits_cities_1m,
                  'visits_cities_1y': visits_cities_1y,
                  'visits_cities_all': visits_cities_all,
-                 'visits_profile_1d': visits_profile_1d,
-                 'visits_profile_1w': visits_profile_1w,
-                 'visits_profile_1m': visits_profile_1m,
-                 'visits_profile_1y': visits_profile_1y,
-                 'visits_profile_all': visits_profile_all,
                  'daily': daily,
                  'weekly': weekly,
                  'monthly': monthly,
@@ -1834,13 +1872,18 @@ def patrocinadores(request):
         patrocinadores = Patrocinador.objects.filter(visible=True).order_by('order')
         cache.set('patrocinadores', patrocinadores)
     patrocinadores = cache.get('patrocinadores')
+    textos_patrocinadores = cache.get('textos_patrocinadores')
+    if textos_patrocinadores == None:
+        textos_patrocinadores = Docs.objects.filter(type='s').order_by('order')
+        cache.set('textos_patrocinadores', textos_patrocinadores)
+    textos_patrocinadores = cache.get('textos_patrocinadores')
     context = {
                 'entidades': patrocinadores,
+                'textos_patrocinadores': textos_patrocinadores,
                 }
-    textos = Docs.objects.filter(type='s').order_by('order')
     context.update(initial_context)    
-    context.update({'meta': set_meta(request), 'textos':textos,})
-    return render(request, 'lactancia/patrocinadores.html', context)
+    context.update({'meta': set_meta(request)})
+    return render(request, 'lactancia/patrocinadores_b3.html', context)
 
 
 def avales(request):
@@ -1850,26 +1893,34 @@ def avales(request):
         avales = Aval.objects.filter(visible=True).order_by('order')
         cache.set('avales', avales)
     avales = cache.get('avales')
+    textos_avales = cache.get('textos_avales')
+    if textos_avales == None:
+        textos_avales = Docs.objects.filter(type='a').order_by('order')
+        cache.set('textos_avales', textos_avales)
+    textos_avales = cache.get('textos_avales')
+    
+    
     context = {
                 'avales': avales,
+                'textos_avales': textos_avales,
                 }
                 
-    textos = Docs.objects.filter(type='a').order_by('order')
     context.update(initial_context)    
-    context.update({'meta': set_meta(request), 'textos':textos,})
-    return render(request, 'lactancia/avales.html', context)
+    context.update({'meta': set_meta(request)})
+    
+    return render(request, 'lactancia/avales_b3.html', context)
     
     
 def estadisticas(request):
     context = get_context_for_stats_json_v2(request)
     context.update({'meta': set_meta(request)})
-    return render(request, 'lactancia/estadisticas_json_v3.html', context)
+    return render(request, 'lactancia/estadisticas_json_v4-b3.html', context)
 
 
 def estadisticas_ES(request):
     context = get_context_for_stats_json_ES(request)
     context.update({'meta': set_meta(request)})
-    return render(request, 'lactancia/estadisticas_json_ES.html', context)
+    return render(request, 'lactancia/estadisticas_json_ES-b3.html', context)
 
     
 '''API: List of terms'''
@@ -2132,9 +2183,9 @@ def download_citation(request):
         elif term == 'otra_escritura':
             item = Otras_escrituras.objects.get(id=id)
     result = ''
-    result += '<div class="span6">' + '<a href="'+ generate_citation_link(item, citation) + '" download class="btn btn-info">' + _(u'Descargar cita bibliográfica en fichero') + '</a>' + '</div>'
-    result += '<div class="span12"><blockquote>' + generate_citation_text(item,citation) + '</blockquote></div>'
-    #result += '<a href="'+ generate_citation_link(item, citation) + '" download class="btn btn-info">' + _(u'Descargar cita bibliográfica en fichero') + '</a>'
+    result += '<div class="col-xs-12">' + '<a href="'+ generate_citation_link(item, citation) + '" download id="btn_download_citation" class="btn btn-info">' + _(u'Descargar') + '</a>' + '</div>'
+    result += '<div class="col-xs-12" style="margin-top:20px;"><p>' + generate_citation_text(item,citation) + '</p></div>'
+    
     
     return HttpResponse(result)       
     

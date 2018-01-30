@@ -1,0 +1,675 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% load static %} 
+{% load humanize %}
+
+
+{% block title %} {{prod.nombre}} {% trans " y lactancia materna: ¿son compatibles?" %}{% endblock %}
+{% block url %}{% url 'lactancia:ficha_producto' prod.slug %}{% endblock %}
+
+
+{% block mainpage %}
+
+<div class="row">
+    <div class="col-xs-10">
+        <p class="small last-update">{% trans "Última actualización:" %} {{prod.fecha_modificacion|date:"DATE_FORMAT"}}</p> 
+        <h1 class="term-header {% if prod.riesgo.nivel == 3 %} risk-level3-prods {% elif prod.riesgo.nivel == 2 %} risk-level2-prods {% elif prod.riesgo.nivel == 1 %}  risk-level1-prods {% elif prod.riesgo.nivel == 0 %} risk-level0-prods {% endif %}">
+        {% block prod_header %}{{ prod.nombre }}{% endblock %}</h1>
+    </div>
+</div> 
+    
+{# mensaje de éxito o fracaso en el envío del comentario del usuario #}    
+{% include 'lactancia/partial_comments_terms.html' %}
+
+
+{# mensaje de advertencia de cambio de riesgo #}
+{% block alert %}
+{% if prod_alert %}
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>    
+                <h5>{{prod_alert.titulo | safe}}</h5>
+                <p><small>{{prod_alert.contenido | safe}}</small></p>
+                <p><small>{% trans "Nivel de riesgo revisado el" %} {{ prod_alert.fecha_modificacion|date:"DATE_FORMAT"}}</small></p>
+        </div>  
+{% endif %}
+{% endblock %}
+
+
+
+
+{###################### block of risk ###############################}
+
+{% block risks %}
+<div class="row-margins">
+    {% block risk_container_grupo %}{% endblock %}    
+        <div class="row equal"> 
+
+            {# caja de riesgo #}
+            <div class="{{span_risk.span_nivel}} equal no-lateral-padding">
+                <div class="grey-box squared {% if prod.riesgo.nivel == 3 %} risk-level3 {% elif prod.riesgo.nivel == 2 %} risk-level2 {% elif prod.riesgo.nivel == 1 %} risk-level1 {% elif prod.riesgo.nivel == 0 %} risk-level0 {% endif %}">
+                    <h2 class="risk-header">{{prod.riesgo.nombre}} {% trans 'para la lactancia' %}</h2>
+                    <h4>{{prod.riesgo.descripcion|linebreaks}}</h4>
+                </div>
+            </div>
+            
+            
+            {# caja de riesgo y comentario #}
+            <div class="{{span_risk.span_comment}} equal no-lateral-padding">
+                <div class="grey-box squared {% if prod.riesgo.nivel == 3 %} risk-comment-level3 {% elif prod.riesgo.nivel == 2 %} risk-comment-level2 {% elif prod.riesgo.nivel == 1 %} risk-comment-level1 {% elif prod.riesgo.nivel == 0 %} risk-comment-level0 {% endif %}">
+                        {% block comentario_content %}
+                                {% if prod.comentario %}
+                                    {{ prod.comentario|linebreaks }}
+                                
+                                    {# Referencias a otros productos #}
+                                    {% if prod.referencia_otros_productos.count > 0 %}
+                                            <br/>
+                                            {% if prod.referencia_otros_productos.count == 1 %}
+                                                {% trans "Puede consultar abajo la información de este producto relacionado:" %}
+                                            {% else %}
+                                                {% trans "Puede consultar abajo la información de estos productos relacionados:" %}
+                                            {% endif %}
+                                        <br/><br/>
+                                        <ul class="inline">
+                                        {% for ref in prod.referencia_otros_productos.all|dictsort:"nombre" %}
+                                            <li><a 
+                                                  {% if prod.riesgo.nivel == 0 %}
+                                                    class="link_r0" 
+                                                  {% elif prod.riesgo.nivel == 1 %}
+                                                    class="link_r1"
+                                                  {% elif prod.riesgo.nivel == 2 %}
+                                                    class="link_r2"
+                                                  {% elif prod.riesgo.nivel == 3 %}
+                                                    class="link_r3"
+                                                  {% endif %} 
+                                                  href="{% url 'lactancia:ficha_producto' ref.slug %}" target="_blank"><strong>{{ ref.nombre }}</strong></a> ({{ref.riesgo.nombre}})</li>
+                                        {% endfor%}
+                                        </ul>
+                                            
+                                    {% endif %}
+                                    
+                                    {# Referencias a otros grupos #}
+                                    {% if prod.referencia_grupos.count > 0 %}
+                                    <br/>
+                                        {% if prod.referencia_grupos.count == 1 %}
+                                            {% trans "Puede consultar abajo la información de este grupo relacionado:" %}
+                                        {% else %}
+                                            {% trans "Puede consultar abajo la información de estos grupos relacionados:" %}
+                                        {% endif %}
+                                    <br/><br/>
+                                    <ul class="inline">
+                                        {% for ref in prod.referencia_grupos.all|dictsort:"nombre" %}
+                                            <li ><a 
+                                                {% if prod.riesgo.nivel == 0 %}
+                                                class="link_r0" 
+                                                {% elif prod.riesgo.nivel == 1 %}
+                                                class="link_r1"
+                                                {% elif prod.riesgo.nivel == 2 %}
+                                                class="link_r2"
+                                                {% elif prod.riesgo.nivel == 3 %}
+                                                class="link_r3"
+                                                {% endif %} 
+                                                href="{% url 'lactancia:ficha_grupo' ref.slug %}" target="_blank"><strong>{{ ref.nombre }}</strong></a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                        
+                                    {% endif %}
+                                    
+                                {% else %}
+                                    <p>{% trans "Estamos habilitando un comentario para este producto." %}</p>
+                                {% endif %}
+                            {% endblock %}
+                        
+                    </div>
+            </div>
+            
+            {# caja de alternativas #}
+            <div class="{{span_risk.span_alternativas}} equal no-lateral-padding">
+                <div class="grey-box squared risk-alt">
+            
+                        <h3 class="risk-header">{% trans "Alternativas" %}</h3>
+                        {% block alternativas %}
+                        {% if prod.hay_alternativas %}
+                            <ul><!--  class="nav nav-pills nav-stacked" -->
+                                {% for alt in prod.alternativas.all %}
+                                    <li ><a class="link_r{{alt.riesgo.nivel}}" href="{% url 'lactancia:ficha_producto' alt.slug %}"  >{{ alt.nombre }}</a> ({{alt.riesgo.nombre}})</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            {% if prod.no_alternativas %}
+                                <p>{% trans "No hay" %}</p>
+                            {% elif prod.riesgo.nivel == 0 %}
+                                <p>{% trans "No se muestran alternativas porque" %} <strong class="risk-level0-prods" >{% block alternativa_no_razon %}{{prod.nombre}}{% endblock %}</strong> {% trans "tiene un nivel de riesgo muy bajo." %}</p>
+                            {% else %}
+                                <p class="risk-level{{prod.riesgo.nivel}}-prods">{% trans "No disponemos de alternativas para" %} <strong>{% block alternativa_no_sin_razon %}{{prod.nombre}}{% endblock %}</strong>.</p>
+                            {% endif %}
+                        {% endif %}
+                        {% endblock %}
+                        
+                </div> {# caja alternativas #}
+            </div> {# bloque alternativas #}
+        </div>  {# row equal para hacer los bloques igual de altos #}
+
+</div> {# row para riesgos, comentario y alternativas #} 
+
+
+{# Leyenda #}
+
+{% include 'lactancia/partial_legend_b3.html' %}
+
+
+
+{######################## FAJA DE DONATIVO ###############################}
+
+</div> {# CERRAMOS EL DIV DEL CONTAINER DE LA PÁGINA PRINCIPAL  #}
+{# esto permite que la faja de donativo ocupe todo el ancho de la página #}
+{% include 'lactancia/partial_pink_donation.html' %}
+
+<div class="container"> {# VOLVEMOS a abrir un container de ancho normal para pintar el resto de la página #}
+
+{######################### FIN FAJA DE DONATIVO ############################}
+
+
+{% block related_groups %}
+{% endblock %}    
+
+   
+{% endblock %}  {# block of risks #}
+    
+
+
+{############################### block of names ###############################}
+{#################################################################}
+{% block names_and_biblio %}
+
+    <div class="row top-bottom-margins equal">
+    <!-- alias -->
+    {% if prod_alias or prod_otras_escrituras %}
+        <div class="{{span_names}} equal">
+            <div class="grey-box">
+                <h3 class="risk-header">{% trans "Otros nombres" %}</h3>
+                {% block other_names_first %}
+                {% if prod_alias %}
+                    
+                    <p>{% block alias_text %}<strong>{{prod.nombre}}</strong> {% trans "también se conoce como" %}{% endblock %}</p>
+                    <ul> 
+                        {% block listado_alias %}
+                            {% for alias in prod_alias %}
+                                {% if alias.nombre != '' %}
+                                    <li><a href="{% url 'lactancia:ficha_alias' alias.slug %}"  >{{ alias.nombre }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endblock %}
+                    </ul>
+                    <br>
+                 {% endif %}
+                 {% endblock %}
+                 
+                 {% block other_names_second %}
+                 {% if prod_otras_escrituras %}
+                    <p><strong>{% block name_main_prod_otras_escrituras %}{{prod.nombre}}{% endblock %}</strong> {% trans "en otros idiomas o escrituras" %}:</p>
+                    <ul> 
+                            {% for alias in prod_otras_escrituras %}
+                                <li><a href="{% url 'lactancia:ficha_otra_escritura' alias.slug %}"  >{{ alias.nombre }}</a> ({{alias.escritura.nombre}})</li>
+                            {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div> <!-- OTROS NOMBRES well -->
+    {% endif %}
+    
+    {% if prod.hay_marcas %}
+        <div class="{{span_names}} equal">
+            <div class="grey-box">
+                <h3 class="risk-header">{% trans "Marcas comerciales" %}</h3>
+                
+            
+                <p>{% trans "Principales marcas comerciales de diversos países que contienen" %} <strong>{% block term_en_marca %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición:" %}</p>
+
+                {% if prod.marcas.count > 5 %}
+                    <div class="accordion accordion-marcas" id="marcas_accordion">
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle text-center" data-toggle="collapse" data-parent="#marcas_accordion" href="#collapsemarcaOne" id="accordion-marcas">{% trans "Listado de" %} {{prod.marcas.count}} {% trans "marcas" %}</a>
+                            </div>
+                            <div id="collapsemarcaOne" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                {% endif %}
+                     <ul>
+                     {% for marca in prod.marcas.all|dictsort:"nombre" %}
+                        {% if marca.principios_activos.count > 1 %}
+                            <li><a href="{% url 'lactancia:ficha_marca' marca.slug %}">{{ marca.nombre_paises }}</a>&trade;. 
+                            {% trans "Contiene otros elementos aparte de" %} <strong>{% block term_en_marca_composicion %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición" %}
+                            </li>
+                        {% else %}
+                            <li><a href="{% url 'lactancia:ficha_marca' marca.slug %}">{{ marca.nombre_paises }}</a>&trade;
+                            </li>
+                        {% endif %}
+                     {% endfor %}
+                     </ul>
+                {% if prod.marcas.count > 5 %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div> <!-- MARCA well -->
+    {% endif %}
+
+        <div class="{{span_names}} equal">
+            <div class="grey-box">
+                {% if prod.grupo.count > 1 %}
+                    <h3 class="risk-header">{% trans "Grupos" %}</h3>
+                    <p><strong>{% block term_plural %}{{prod.nombre}}{% endblock %}</strong> {% trans "pertenece a las siguientes familias o grupos:" %}</p>
+                {% else %}
+                    <h3>{% trans "Grupo" %}</h3>
+                    <p><strong>{% block term_singular %}{{prod.nombre}}{% endblock %}</strong> {% trans "pertenece a la siguiente familia o grupo:" %}</p>
+                {% endif %}                    
+                <ul><!-- class="nav nav-pills nav-stacked" -->
+                    {% for g in prod.grupo.all|dictsort:"nombre" %}
+                        <li><a href="{% url 'lactancia:ficha_grupo' g.slug %}"  >{{ g.nombre }}</a></li>
+                    {% endfor %}
+                </ul>
+             </div>
+        </div> <!-- GRUPOS well -->
+    </div> {# cierre row equal #}
+
+    
+
+
+
+<!-- end of block of names -->
+
+
+
+{############################### block of pharma/biblio ###############################}
+{#####################################################################}
+
+<div class="row top-bottom-margins">
+
+    {% if prod.es_principio_activo %}
+    <div class="{{span_biblio}}">
+        <h3 class="risk-header">{% trans "Farmacocinética" %}</h3>   
+        
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>{% trans "Variable" %}</th>
+                    <th>{% trans "Valor" %}</th>
+                    <th>{% trans "Unidades" %}</th>
+                </tr>
+            </thead> 
+            <tbody>
+                {% if prod.biodisponibilidad  %}
+                    <tr>
+                        <td>
+                        <a class="btn btn-link nounderline" id="btn_biod" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        {{ help_biod.titulo | safe}}    
+                        </td>
+                        <td>{{prod.biodisponibilidad}}</td>
+                        <td>%</td>
+                    </tr>
+                {% endif %}
+                {% if prod.peso_molecular  %}
+                    <tr>
+                        <td>
+                        <a class="btn btn-link nounderline" id="btn_p_molecular" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        {{ help_p_molecular.titulo | safe}} 
+                        </td>
+                        <td>{{prod.peso_molecular}}</td>
+                        <td>daltons</td>
+                    </tr>
+                {% endif %}
+                {% if prod.union_proteinas %}
+                    <tr>
+                        <td>
+                        <a class="btn btn-link nounderline" id="btn_u_prot" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        {{ help_u_prot.titulo | safe}}
+                        </td>
+                        <td>{{prod.union_proteinas}}</td>   
+                        <td>%</td>
+                    </tr>
+                {% endif %}
+                {% if prod.volumen_distrib %}
+                    <tr>
+                        <td>
+                        <a class="btn btn-link nounderline" id="btn_vol_dist" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                        {{ help_vol_dist.titulo | safe}}
+                        </td>
+                        <td>{{prod.volumen_distrib}}</td>   
+                        <td>l/Kg</td>
+                    </tr>
+                {% endif %}
+                {% if prod.pka %}
+                    <tr>
+                        <td>
+                            <a class="btn btn-link nounderline" id="btn_pka" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            {{ help_pka.titulo | safe}}
+                        </td>
+                        <td>{{prod.pka}}</td>   
+                        <td>-</td>
+                    </tr>
+                {% endif %}
+                {% if prod.t_maximo  %}
+                    <tr>
+                        <td>
+                            <a class="btn btn-link nounderline" id="btn_tmax" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            {{ help_tmax.titulo | safe}}
+                        </td>
+                        <td>{{prod.t_maximo}}</td>
+                        <td>{% trans "horas" %}</td>
+                    </tr>
+                {% endif %}
+                {% if prod.t_medio  %}
+                    <tr>
+                        <td>
+                            <a class="btn btn-link nounderline"  id="btn_tmed" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            {{ help_tmed.titulo | safe}}
+                        </td>
+                        <td>{{prod.t_medio}}</td>
+                        <td>{% trans "horas" %}</td>
+                    </tr>
+                {% endif %}
+                {% if prod.indice_leche_plasma  %}
+                    <tr>
+                        <td>
+                            <a class="btn btn-link nounderline"  id="btn_i_l_p" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                            {{ help_i_l_p.titulo | safe}}
+                        </td>
+                        <td>{{prod.indice_leche_plasma}}</td>
+                        <td>-</td>
+                    </tr>
+                {% endif %}
+                
+                {% if prod.dosis_teorica  %}
+                        <tr>
+                            <td>
+                                <a class="btn btn-link nounderline" id="btn_d_teor" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                                {{ help_d_teor.titulo | safe}}
+                            </td>
+                            <td>{{prod.dosis_teorica}}</td>
+                            <td>mg/Kg/d</td>
+                        </tr>
+                {% endif %}
+                {% if prod.dosis_relativa  %}
+                       <tr>
+                           <td>
+                             <a class="btn btn-link nounderline" id="btn_d_rel" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                             {{ help_d_rel.titulo | safe }}
+                            </td>
+                            <td>{{prod.dosis_relativa}}</td>
+                            <td>%</td>
+                        </tr>
+                {% endif %}
+                {% if prod.dosis_terapeutica  %}
+                        <tr>
+                            <td>
+                                <a class="btn btn-link nounderline" id="btn_d_terap" data-toggle="popover"><i class="fa fa-question-circle"></i></a>
+                                {{ help_d_terap.titulo | safe}}
+                            </td>
+                            <td>{{prod.dosis_terapeutica}}</td>
+                            <td>%</td>
+                        </tr>
+                {% endif %}
+            </tbody>
+    </table>
+    </div> {# pharma #}
+{% endif %}
+    
+    
+    <div class="{{span_biblio}}">
+        <h3 class="risk-header">{% trans "Bibliografía" %}</h3>
+
+            {% if prod.biblio.count > 5 %}
+                <div class="panel accordion-biblio" id="biblio_accordion">
+                <div class="panel-group">
+                    <div class="panel-heading">
+                        <a role="button" class="collapsed text-center" data-toggle="collapse" data-parent="#biblio_accordion" href="#collapsebiblioOne" id="accordion-biblio">{% trans "Listado de" %} {{prod.biblio.count}} {% trans "referencias" %}</a>
+                    </div>
+                    <div id="collapsebiblioOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+            {% endif %}
+                            {% if prod.hay_biblio %}
+                                <ol>
+                                    {% for biblio in prod.biblio.all|dictsortreversed:"anyo" %}
+                                        <li>{{biblio.autores}} <em>{{ biblio.titulo }}</em> <strong>{{biblio.publicacion}}</strong> <strong>{{biblio.anyo}}</strong>
+                                        {% if biblio.abstract_link  %}
+                                            <a class="btn btn-link" href="{{biblio.abstract_link}}" target="_blank">{% trans "Resumen" %}</a>
+                                        {% endif %}
+                                        {% if biblio.full_text_link  %}
+                                            <a class="btn btn-link" href="{{biblio.full_text_link}}" target="_blank">{% trans "Texto completo (enlace a fuente original)" %}</a>
+                                        {% endif %}
+                                        {% if biblio.pdf  %}
+                                            <a class="btn btn-link" href="{{biblio.pdf.url}}" target="_blank">{% trans "Texto completo (en nuestros servidores)" %}</a>
+                                        {% endif %}
+                                        </li>        
+                                    {% endfor %}
+                                </ol>
+                            {% elif prod.tiene_biblio %}
+                                <p>{% trans "Estamos trabajando en poner las citas bibliográficas de este producto. En breve estará disponible. Si desea tener acceso a esta información, por favor, háganoslo saber con un comentario en el apartado de opinión." %}</p>
+                            {% else %}
+                                <p>{% trans "No disponemos de bibliografía para este producto." %}</p>
+                            {% endif %}
+            {% if prod.biblio.count > 5 %}
+                        </div>
+                    </div>
+                </div>
+                </div>
+            {% endif %}
+    </div> {# biblio #}
+    
+</div> {# row #}    
+{#  end of block of pharma/biblio #}
+
+{% endblock  %} {# block of names and biblio #}
+
+
+
+{% endblock %} {# block of mainpage #}
+
+
+{% block comments-citation %}
+
+<div class="container-fluid blue">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-3">
+                <h4 class="risk-header text-uppercase">{% trans "Visitas totales" %} 
+                </h4>
+                <p class="lead" style="color:#000;">{{visits.0|intcomma}}</p>
+            </div>
+            <div class="col-md-5 col-sm-6">
+                <h4 class="risk-header text-uppercase">{% trans "Ayúdanos a mejorar esta ficha" %} 
+                </h4>
+                
+                <div class="row">
+                    <form action="" method="post">
+                        <div class="col-xs-12 col-sm-12 col-md-10" style="margin-left: 15px; padding-left:0;">
+                            <div class="field">
+                                <span class="label label-danger">{{ comment_form.comentario.errors }}</span>
+                                {% if desplegar_comentario %}
+                                    {% if mostrar_exito_comentario %}
+                                        <span class="label label-success">{% trans "Comentario enviado con éxito. ¡Muchas gracias!" %}</span>
+                                    {% else %}
+                                        <span class="label label-info">{% trans "Puedes editar tu comentario y volver a enviarlo si lo deseas" %}</span>
+                                    {% endif %}
+                                {% endif %}
+                                {{ comment_form.comentario }}
+                            </div>
+                            {% csrf_token %}
+                        </div>
+                        <div class="col-xs-12" style="margin-left: 15px; padding-left:0;">
+                            <input class="btn btn-info" type="submit" id="btn_form_opinion" name="form_opinion" value="{% trans 'Enviar' %}" />
+                        </div>
+                    </form>
+                </div>
+                
+                <h4 class="risk-header text-uppercase">{% trans "¿Necesitas más información?" %} 
+                </h4>
+                <div class="row" style="margin: 20px 20px 20px 5px;">
+                    <p>{% trans 'Escríbenos a elactancia.org@gmail.com' %}</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                {% block citation %}
+                    {% include 'lactancia/partial_citation_b3.html' %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{############################### block of JS  ###############################}
+{########################################################################}
+
+{% block js %}
+{{ block.super }}
+
+
+    <script>
+    
+        $("#btn_risk0").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk0_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk0&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk0_info.contenido| safe }}'
+        });
+        $("#btn_risk1").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk1_info.titulo | safe}}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk1&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk1_info.contenido | safe }}'
+        });
+        $("#btn_risk2").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk2_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk2&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk2_info.contenido|safe }}'
+        });
+        $("#btn_risk3").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk3_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk3_info.contenido | safe }}'
+        });
+        
+    </script>
+    <script type="text/javascript">
+        $("#btn_citation").popover({
+            html : true,
+            placement:'left',
+            content: '{% trans "Elige el formato de cita bibliográfica que prefieras. Puedes copiar el texto de la cita y también descargarlo en tu equipo presionando el botón" %}'
+        }); 
+    </script>
+        
+        {% block pharma_popovers %}
+        <script type="text/javascript">
+        $("#btn_biod").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_biod.titulo | safe}}  <button type="button" id="close" class="close" onclick="$(&quot;#btn_biod&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_biod.contenido| safe}}'
+        }); 
+        </script>
+        <script type="text/javascript">
+        $("#btn_p_molecular").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_p_molecular.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_p_molecular&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_p_molecular.contenido| safe}}'
+        });
+        </script>
+        <script type="text/javascript">
+        $("#btn_u_prot").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_u_prot.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_u_prot&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_u_prot.contenido | safe}}'
+        }); 
+        </script>
+        <script type="text/javascript">
+        $("#btn_vol_dist").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_vol_dist.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_vol_dist&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_vol_dist.contenido | safe}}'
+        });
+        </script>
+        <script type="text/javascript">
+        $("#btn_i_l_p").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_i_l_p.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_i_l_p&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_i_l_p.contenido | safe}}'
+        }); 
+        </script>
+        <script type="text/javascript">
+        $("#btn_pka").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_pka.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_pka&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_pka.contenido | safe}}'
+        }); 
+        </script>
+        <script type="text/javascript">
+        $("#btn_tmax").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_tmax.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_tmax&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_tmax.contenido | safe}}'
+        });
+        </script>
+        <script type="text/javascript">
+        $("#btn_tmed").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_tmed.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_tmed&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_tmed.contenido | safe}}'
+        });
+        </script>
+        <script type="text/javascript">
+        $("#btn_d_rel").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_d_rel.titulo | safe }} <button type="button" id="close" class="close" onclick="$(&quot;#btn_d_rel&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_d_rel.contenido | safe}}'
+        });
+        </script>
+        <script type="text/javascript">
+        $("#btn_d_teor").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_d_teor.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_d_teor&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_d_teor.contenido | safe}}'
+        });
+        </script>
+        <script type="text/javascript">
+        $("#btn_d_terap").popover({
+            html : true,
+            placement:'right',
+            title: '{{ help_d_terap.titulo | safe}} <button type="button" id="close" class="close" onclick="$(&quot;#btn_d_terap&quot;).popover(&quot;hide&quot;);">&times;</button>',
+            content: '{{ help_d_terap.contenido | safe}}'
+        });   
+        </script>
+         {% endblock %} 
+         <script>
+$(':not(#anything)').on('click', function (e) {
+    $('.btn-link').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});            
+
+
+
+</script>
+
+{% endblock %}

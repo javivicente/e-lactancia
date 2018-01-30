@@ -1,0 +1,70 @@
+{% load i18n %}
+
+<div class="row top-bottom-margins equal">
+    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="grey-box squared risk-level0-legend"></div>
+            </div>
+            <div class="col-xs-7 equal" style="margin-top:5px; padding:0;">
+                <p class="small link_r0"><strong>{{risk0_info.titulo}}.</strong></p>
+                <p class="small">{{risk0_leyenda.descripcion}}</p>
+                <p class="small"><a id="btn_risk0" data-toggle="popover">{% trans 'Más información' %}</a></p>
+                
+            </div>
+        </div>  
+    </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="grey-box squared risk-level1-legend"></div>
+            </div>
+            <div class="col-xs-7 equal" style="margin-top:5px; padding:0;">
+                <p class="small link_r1"><strong>{{risk1_info.titulo}}.</strong></p>
+                <p class="small">{{risk1_leyenda.descripcion}}</p>
+                <p class="small"><a id="btn_risk1" data-toggle="popover">{% trans 'Más información' %}</a></p>
+                
+            </div>
+        </div>  
+    </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="grey-box squared risk-level2-legend"></div>
+            </div>
+            <div class="col-xs-7 equal" style="margin-top:5px; padding:0;">
+                <p class="small link_r2"><strong>{{risk2_info.titulo}}.</strong></p>
+                <p class="small">{{risk2_leyenda.descripcion}}</p>
+                <a class="small" id="btn_risk2" data-toggle="popover">{% trans 'Más información' %}</a>
+                
+            </div>
+        </div>  
+    </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="grey-box squared risk-level3-legend"></div>
+            </div>
+            <div class="col-xs-7 equal" style="margin-top:5px; padding:0;">
+                <p class="small link_r3"><strong>{{risk3_info.titulo}}.</strong></p>
+                <p class="small">{{risk3_leyenda.descripcion}}</p>
+                <p class="small"><a id="btn_risk3" data-toggle="popover">{% trans 'Más información' %}</a></p>
+                
+            </div>
+        </div>  
+    </div>
+    
+</div>
+
+
+    
+
+
+<div class="row ">
+    <div class="col-xs-12 col-sm-10">
+        <p class="disclaimer-text">{{ prod_disclaimer.contenido | safe }}</p>
+    </div>
+</div>

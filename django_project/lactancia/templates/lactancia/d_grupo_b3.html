@@ -1,0 +1,295 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% load static %} 
+{% load humanize %}
+{% block style %}
+{{block.super}}
+<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-maxlength.js"></script>
+{% endblock %}
+
+{% block title %} {{grupop.nombre}} {% trans " y lactancia materna: ¿cuáles son compatibles?" %}{% endblock %}
+
+{% block url %}{% url 'lactancia:ficha_grupo' grupop.slug %}{% endblock %}
+
+{% block mainpage %}
+
+<div class="row">
+    <div class="col-xs-10">
+        <p class="small last-update">{% trans "Última actualización:" %} {{grupop.fecha_modificacion|date:"DATE_FORMAT"}}</p> 
+        <h1 class="term-header">
+        {% block prod_header %}{{ grupop.nombre }}{% endblock %}</h1>
+    </div>
+</div> 
+
+       
+
+{# mensaje de éxito o fracaso en el envío del comentario del usuario #}    
+{% include 'lactancia/partial_comments_terms.html' %}
+
+{# mensaje de advertencia de cambio de riesgo #}
+{% block alert %}
+{% if grupo_alerts %}
+    {% for a in grupo_alerts.all %}
+        {% if a.active_90 %}
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>    
+                <h5>{{ a.producto.nombre }} ({% trans "perteneciente a" %}  {{grupop.nombre}}): {{a.titulo | safe}}</h5>
+                <p><small>{{a.contenido | safe}}</small></p>
+                <p><small>{% trans "Nivel de riesgo revisado el" %} {{ a.fecha_modificacion|date:"DATE_FORMAT"}}</small></p>
+            </div>
+        {% endif %}  
+    {% endfor %}   
+{% endif %}
+{% endblock %}
+
+
+
+{# row of button filters #}
+<div class="row top-bottom-margins equal">
+    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+        {% if exists_r0 %}
+        <a class="btn grey-box squared risk-comment-level0 link_r0 btn-filter" id="filter_r0">
+           <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk0_info.titulo|upper}}</strong>
+        </a>
+        {% else %}
+        <a class="btn grey-box squared filter-disabled risk-alt  btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk0_info.titulo | lower }} {% trans 'para este grupo' %}">
+           <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk0_info.titulo|upper}}</strong>
+        </a>
+        {% endif %}
+    </div>
+          
+    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+        {% if exists_r1 %}
+        <a class="btn grey-box squared risk-comment-level1 link_r1 btn-filter" id="filter_r1">
+           <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk1_info.titulo|upper}}</strong>
+        </a>
+        {% else %}
+        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk1_info.titulo | lower }} {% trans 'para este grupo' %}">
+           <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk1_info.titulo|upper}}</strong>
+        </a>
+        {% endif %}
+    </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+        {% if exists_r2 %}
+        <a class="btn grey-box squared risk-comment-level2 link_r2 btn-filter" id="filter_r2">
+           <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk2_info.titulo|upper}}</strong>
+        </a>
+        {% else %}
+        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk2_info.titulo | lower }} {% trans 'para este grupo' %}">
+           <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk2_info.titulo|upper}}</strong>
+        </a>
+        {% endif %}
+    </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+        {% if exists_r3 %}
+        <a class="btn grey-box squared risk-comment-level3 link_r3 btn-filter" id="filter_r3">
+           <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk3_info.titulo|upper}}</strong>
+        </a>
+        {% else %}
+        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk3_info.titulo | lower }} {% trans 'para este grupo' %}">
+           <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk3_info.titulo|upper}}</strong>
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+{# NUBE DE PRODUCTOS #}
+
+<div class="row">
+    <div class="col-xs-12">
+        <ul class="list-unstyled list-inline">
+            {% for p in prods %}
+             <li class="risk-level{{p.riesgo.nivel}}-tag cloud-prod" ><a class="center nounderline" href="{% url 'lactancia:ficha_producto' p.slug %}"> {{ p.nombre }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{# Leyenda #}
+
+{% include 'lactancia/partial_legend_b3.html' %}
+
+
+
+{######################## FAJA DE DONATIVO ###############################}
+
+</div> {# CERRAMOS EL DIV DEL CONTAINER DE LA PÁGINA PRINCIPAL  #}
+{# esto permite que la faja de donativo ocupe todo el ancho de la página #}
+{% include 'lactancia/partial_pink_donation.html' %}
+
+<div class="container"> {# VOLVEMOS a abrir un container de ancho normal para pintar el resto de la página #}
+
+{######################### FIN FAJA DE DONATIVO ############################}
+
+
+
+{% block related_groups %}
+
+    <div class="row" style="margin-bottom:50px;">
+        {% if grupop.hay_relacionados %}
+            <div class="col-xs-12">
+                <div class="grey-box">
+                    <h3 class="risk-header">{% trans "Grupos relacionados con" %} {{grupop.nombre}}</h3>
+                        <ul class="list-unstyled list-inline">
+                                {% for g in grupop.relacionados.all|dictsort:"nombre" %}
+                                    <li><a href="{% url 'lactancia:ficha_grupo' g.slug %}">{{ g.nombre }}</a> ({{g.producto_set.count}} {% trans "productos" %})</li>
+                                {% endfor %}
+                        </ul>
+                </div>
+            </div>    
+        {% endif %}
+    </div>
+    
+{% endblock %} {# block of related_groups #}
+
+{% endblock %} {# block of mainpage #}
+
+
+{% block comments-citation %}
+
+<div class="container-fluid blue">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-3">
+                <h4 class="risk-header text-uppercase">{% trans "Visitas totales" %} 
+                </h4>
+                <p class="lead" style="color:#000;">{{visits.0|intcomma}}</p>
+            </div>
+            <div class="col-md-5 col-sm-6">
+                <h4 class="risk-header text-uppercase">{% trans "Ayúdanos a mejorar esta ficha" %} 
+                </h4>
+                
+                <div class="row">
+                    <form action="" method="post">
+                        <div class="col-xs-12 col-sm-12 col-md-10" style="margin-left: 15px; padding-left:0;">
+                            <div class="field">
+                                <span class="label label-danger">{{ comment_form.comentario.errors }}</span>
+                                {% if desplegar_comentario %}
+                                    {% if mostrar_exito_comentario %}
+                                        <span class="label label-success">{% trans "Comentario enviado con éxito. ¡Muchas gracias!" %}</span>
+                                    {% else %}
+                                        <span class="label label-info">{% trans "Puedes editar tu comentario y volver a enviarlo si lo deseas" %}</span>
+                                    {% endif %}
+                                {% endif %}
+                                {{ comment_form.comentario }}
+                            </div>
+                            {% csrf_token %}
+                        </div>
+                        <div class="col-xs-12" style="margin-left: 15px; padding-left:0;">
+                            <input class="btn btn-info" type="submit" id="btn_form_opinion" name="form_opinion" value="{% trans 'Enviar' %}" />
+                        </div>
+                    </form>
+                </div>
+                
+                <h4 class="risk-header text-uppercase">{% trans "¿Necesitas más información?" %} 
+                </h4>
+                <div class="row" style="margin: 20px 20px 20px 5px;">
+                    <p>{% trans 'Escríbenos a elactancia.org@gmail.com' %}</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                {% block citation %}
+                    {% include 'lactancia/partial_citation_b3.html' %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+{############################### block of JS  ###############################}
+{########################################################################}
+
+{% block js %}
+{{ block.super }}
+    <script type="text/javascript">jQuery(document).ready(function( $ ) {
+			$('#filter_r0').css('cursor', 'pointer').click(function(){
+				$('.risk-level0-tag').toggle();
+				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk0_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk0_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk0_info.titulo|upper}}</strong>";
+				$(this).html(checkChange);
+			});
+            
+            $('#filter_r1').css('cursor', 'pointer').click(function(){
+				$('.risk-level1-tag').toggle();
+				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk1_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk1_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk1_info.titulo|upper}}</strong>";
+				$(this).html(checkChange);
+			});
+            
+            $('#filter_r2').css('cursor', 'pointer').click(function(){
+				$('.risk-level2-tag').toggle();
+				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk2_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk2_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk2_info.titulo|upper}}</strong>";
+				$(this).html(checkChange);
+			});
+            
+            $('#filter_r3').css('cursor', 'pointer').click(function(){
+				$('.risk-level3-tag').toggle();
+				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk3_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk3_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk3_info.titulo|upper}}</strong>";
+				$(this).html(checkChange);
+			});
+            
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+		});
+    </script>
+    <script>
+    
+        $("#btn_marca").popover({
+            html : true, 
+            placement:'bottom',
+            title: '{{trademark_disclaimer.titulo | safe }}' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_marca&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{trademark_disclaimer.contenido | safe }}'
+        });
+    
+        $("#btn_risk0").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk0_info.titulo | safe }}</strong>' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk0&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk0_info.contenido| safe }}'
+        });
+        $("#btn_risk1").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk1_info.titulo | safe}}</strong>' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk1&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk1_info.contenido | safe }}'
+        });
+        $("#btn_risk2").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk2_info.titulo | safe }}</strong>' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk2&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk2_info.contenido|safe }}'
+        });
+        $("#btn_risk3").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk3_info.titulo | safe }}</strong>' +
+                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk3_info.contenido | safe }}'
+        });
+
+        {% block pharma_popovers %}
+        {% endblock %}
+
+    $(':not(#anything)').on('click', function (e) {
+    $('.btn-link').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});            
+    </script>    
+        
+{% endblock %}

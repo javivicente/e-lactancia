@@ -1,13 +1,11 @@
 {% load i18n %}
-{% load ratings_tags %}
 
-<div class="container">
-<div class="row-fluid">
-    <div class="span6">
-        <h3>{% trans "Cómo citar esta ficha" %}</h3>
-        {% trans "Elige el formato de cita bibliográfica que prefieras. Puedes copiar el texto de la cita y también descargarlo en tu equipo presionando el botón" %}:
-        <div class="row" style="margin: 20px 20px 20px 5px;">
-            <div class="span6">
+        <h4 class="risk-header text-uppercase">{% trans "Cómo citar esta ficha" %} 
+        <a class="btn btn-link nounderline" id="btn_citation" data-toggle="popover" style="margin-left:-15px;"><i class="fa fa-question-circle"></i></a>
+        </h4>
+        
+        <div class="row">
+            <div class="col-xs-12" style="margin-left: 15px; padding-left:0;">
                <select id="citation_type" data-term-id="{% if grupop %}{{grupop.id}}{% elif aliasp %}{{aliasp.id}}{% elif otra_escritura %}{{otra_escritura.id}}{% elif marcap %}{{marcap.id}}{% elif prod %}{{prod.id}}{% endif %}"  data-term-type="{% if grupop %}{{grupop.dime_que_eres}}{% elif aliasp %}{{aliasp.dime_que_eres}}{% elif otra_escritura %}{{otra_escritura.dime_que_eres}}{% elif marcap %}{{marcap.dime_que_eres}}{% elif prod %}{{prod.dime_que_eres}}{% endif %}"  name="citation_type">
                {% if LANGUAGE_CODE == 'es' %}
                 <option value="APA" >Cita estilo APA</option>
@@ -28,9 +26,7 @@
             </div>
             <div id="reference"></div>
        </div>
-    </div>
-</div>
-</div>
+    
 <script>
     $("#citation_type").val('APA');
 </script>
@@ -46,7 +42,7 @@ function generate_citation(citation) {
     $.get('/download-citation/', {citation_type: citation, term_type: term_type, term_id: term_id  }, function(data){
         $('#reference').html(data);
     });      
-
+    //console.log("final de la fiesta.")
     }
 
 $(document).ready(function(){

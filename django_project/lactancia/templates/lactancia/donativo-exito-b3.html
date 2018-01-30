@@ -1,0 +1,16 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% block title %}: {% trans "¡Gracias por tu donativo!" %}{% endblock %}
+
+
+{% block mainpage %}
+<div class="row equal">
+  <div class="col-xs-12">  
+    <div class="grey-box credit-box squared">
+        <img class="img-responsive center" src="/static/img/logo-sombra.png">
+        <p class="lead white-text"><strong>{% trans "¡Gracias!" %}</strong><br> {% trans "En nombre de todos los que formamos parte de e-lactancia, te damos las gracias por tu donativo." %}</p>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 20%;"></div>
+{% endblock %}
