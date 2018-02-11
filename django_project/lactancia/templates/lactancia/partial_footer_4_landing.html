@@ -1,0 +1,54 @@
+{% load static %} 
+{% load i18n %} 
+    <footer class="footer">
+      <div class="container" id="container-footer">
+        {% block footer %}
+        <div class="content-footer">
+            <div class="row">
+
+                {# bloque de logo de apilam y texto sobre proyecto #}
+                <div class="col-lg-6 col-xs-12 col-sm-12 ">
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-offset-0 col-sm-2 col-sm-offset-0 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-0">
+                            <img src="{{ STATIC_URL }}img/logo-apilam-.png" id="footer_logo"></a>
+                        </div>
+                        <div class="col-xs-0 col-sm-0 col-md-0 col-lg-1"></div>
+                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                            <p>{% trans 'e-lactancia es un proyecto de <a class="white-text" href="http://apilam.org/" target="_blank">APILAM</a>, asociación para la promoción e investigación científica y cultural de la lactancia materna, bajo <a class="white-text" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Internacional Creative Commons</a>' %}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-xs-12">
+                    <div class="row">
+                        <img  src="{{ STATIC_URL }}img/paypal-secure.png" style="max-width:80%; max-height:100px;" alt="{% trans 'Pago seguro con PayPal' %}" />
+                    </div>
+                </div>
+                
+            </div>
+            
+            {#  bloque políticas#}
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="list-unstyled list-inline" >
+                      <li><small><a class="white-text" href="{% url 'lactancia:aviso_legal' %}" rel="nofollow">{% trans 'Aviso legal' %}</a></small></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            {#  bloque políticas#}
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="list-unstyled list-inline" >
+                      <li><small>{% trans "Los iconos de nuestros resultados han sido cedidos graciosamente por Flaticon" %}</small></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+          </div>
+          {% endblock %}
+          
+      </div>
+    </footer>

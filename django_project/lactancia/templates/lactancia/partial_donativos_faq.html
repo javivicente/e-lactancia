@@ -1,0 +1,87 @@
+{% load i18n %}
+
+<div class="panel-group" id="accordion-faq">
+  <div class="panel panel-squared">
+    <div class="panel-heading faq-panel-header">
+      <h4 class="panel-title">
+        <a class="h3" data-toggle="collapse" data-parent="#accordion-faq" href="#collapse1">
+        {% trans "¿Puedo donar otra cantidad?" %}</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body faq-panel-body">
+     
+         <p style="margin-bottom: 20px;">{% trans "Por supuesto. Puedes donar mediante PayPal o tarjeta la cantidad que quieras* presionando el botón de abajo." %}</p>
+         
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}4BLX2BB5A8KYY{% else %}BLSTZ4B6QGTJQ{% endif %}">
+                <input class="btn round btn-donate" type="submit" style="padding: 18px;" value="{% trans 'DONAR OTRA CANTIDAD' %}"/>
+            </form>
+         
+            <img src="{{STATIC_URL}}img/PayPal.png" style="background-color:#fff; margin: 15px 0; max-height:80px;" alt="Secure Payment PayPal"/> 
+         
+         <p class="small">* {% blocktrans %} PayPal nos cobra una comisión por cada donativo que recibimos.<br/>Si tienes pensado donar 5€ o menos, considera unirte a nuestro grupo <a href='https://www.teaming.net/e-lactancia'  target='_blank'>Teamer de e-lactancia</a> por 1€ al mes, donde tu aportación nos llegará íntegra.{% endblocktrans %}</p>
+         
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-squared">
+    <div class="panel-heading faq-panel-header">
+      <h4 class="panel-title">
+        <a class="h3" data-toggle="collapse" data-parent="#accordion-faq" href="#collapse2">
+        {% trans "¿Puedo donar por transferencia bancaria?" %}</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body faq-panel-body">
+        <p style="margin-bottom:30px;">{% trans "Claro que sí. Puedes hacernos llegar tu donativo a:" %}</p>
+        <address style="margin-bottom:30px;"><small>
+            CaixaBank: <strong>ES58 2100 6086 2302 0004 3629</strong><br><br/>
+            {% trans "Titular" %}: <strong>APILAM</strong><br/><br/>
+            {% trans "Concepto" %}: <strong>{% trans "Donativo " %}</strong></small>
+        </address>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-squared">
+    <div class="panel-heading faq-panel-header">
+      <h4 class="panel-title">
+        <a class="h3" data-toggle="collapse" data-parent="#accordion-faq" href="#collapse3">
+        {% trans "¿Puedo colaborar económicamente de otra forma?" %}</a>
+      </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body faq-panel-body">
+           {% trans "Hemos creado un grupo Teaming para recaudar fondos para e-lactancia." %}
+           <br/><br/>
+           {% trans "Puedes <a href='https://www.teaming.net/e-lactancia' target='_blank'>hacerte teamer y unirte al grupo</a> por un donativo de 1€ al mes." %}
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-squared">
+    <div class="panel-heading faq-panel-header">
+      <h4 class="panel-title">
+        <a class="h3" data-toggle="collapse" data-parent="#accordion-faq" href="#collapse4">
+        {% trans "¿Qué más puedo hacer?" %}</a>
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse">
+      <div class="panel-body faq-panel-body">
+          <p>{% trans "Además de como donante, puedes colaborar con APILAM y e-lactancia de diferentes maneras:" %}</p>
+
+          <ul>
+            
+            <li>{% trans "Comparte con tus familiares y amigos esta página en" %} <a href='https://www.facebook.com/sharer.php?u=http%3A%2F%2Fe-lactancia.org%2Fdonativos%2F' target='_blank'>Facebook</a> {% trans "o" %} <a href='https://twitter.com/intent/tweet?url=http%3A%2F%2Fe-lactancia.org%2Fdonativos%2F&text=DONA&via=APILAM_' target='_blank'>Twitter</a>.</li>
+
+            <li>{% trans "Entra nuestra página de <a href='https://www.teaming.net/e-lactancia' target='_blank'>Teaming</a> y compártela en tus redes sociales." %}</li>
+            
+            {% comment %}<li>{% trans "Únete a nuestro <a href="#subscribe" rel="nofollow" onclick="$('#subscribe').modal('show');">boletín de noticias</a> para estar al corriente de nuestra actividad." %}</li>{% endcomment %}
+            
+            <li>{% trans 'Síguenos en redes sociales: <a href="https://www.facebook.com/APILAM.Lactancia.Materna/" target="_blank">Facebook</a>, <a href="https://twitter.com/apilam_" target="_blank">Twitter</a>, <a href="https://instagram.com/apilam_breastfeeding_museum/" target="_blank">Instagram</a>' %}</li>
+          </ul>
+          
+      </div>
+    </div>
+  </div>
+</div>

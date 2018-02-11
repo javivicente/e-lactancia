@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-11 17:26+0100\n"
+"POT-Creation-Date: 2018-02-11 18:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.py:92 models.py:59 templates/lactancia/d_grupo_b3.html:222
-#: templates/lactancia/detalle_g2.html:222
+#: admin.py:92 models.py:59 templates/lactancia/detalle_g2.html:222
 msgid "Grupos relacionados"
 msgstr "Related groups"
 
@@ -82,7 +81,7 @@ msgstr "Risk and groups"
 msgid "Comentario"
 msgstr "Comment"
 
-#: admin.py:820 models.py:202 templates/lactancia/d_producto_b3.html:143
+#: admin.py:820 models.py:202 templates/lactancia/d_producto_b3.html:130
 #: templates/lactancia/detalle_p.html:196
 msgid "Alternativas"
 msgstr "Alternatives"
@@ -133,6 +132,8 @@ msgid "Última edición otra escritura"
 msgstr "Las edit of other writings"
 
 #: forms.py:7 models.py:22 models.py:711
+#: templates/lactancia/creditos_b3.html:28
+#: templates/lactancia/creditos_b3.html:36
 #: templates/lactancia/estadisticas_json_ES.html:469
 #: templates/lactancia/estadisticas_json_ES.html:517
 #: templates/lactancia/estadisticas_json_ES.html:568
@@ -372,8 +373,8 @@ msgid ""
 "Ayúdanos a mejorar el contenido de e-lactancia con tu opinión o sugerencia "
 "sobre la calidad de la información de esta ficha."
 msgstr ""
-"Help us to improve the content of e-lactancia with your opinion or suggestion about the quality of the information in this entry."
-
+"Help us to improve the content of e-lactancia with your opinion or "
+"suggestion about the quality of the information in this entry."
 
 #: forms.py:36
 msgid "No hay suficiente texto"
@@ -430,17 +431,19 @@ msgstr "Last update"
 msgid "grupos con los que se relaciona"
 msgstr "related groups"
 
-#: models.py:46 templates/lactancia/d_producto_b3.html:329
+#: models.py:46 templates/lactancia/d_producto_b3.html:267
 #: templates/lactancia/detalle_p.html:396
 msgid "Grupo"
 msgstr "Group"
 
 #: models.py:47 templates/lactancia/base.html:573
-#: templates/lactancia/base_bootstrap3.html:369
-#: templates/lactancia/d_producto_b3.html:326
+#: templates/lactancia/base_bootstrap3.html:372
+#: templates/lactancia/d_producto_b3.html:264
 #: templates/lactancia/detalle_p.html:393
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
 #: templates/lactancia/estadisticas_json_ES.html:1411
 #: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
 msgid "Grupos"
 msgstr "Groups"
 
@@ -650,8 +653,10 @@ msgstr "Authors"
 msgid "Revista"
 msgstr "Review"
 
-#: models.py:278 templates/lactancia/estadisticas_json_ES.html:265
+#: models.py:278 templates/lactancia/estadisticas_json_ES-b3.html:267
+#: templates/lactancia/estadisticas_json_ES.html:265
 #: templates/lactancia/estadisticas_json_v3.html:264
+#: templates/lactancia/estadisticas_json_v4-b3.html:265
 msgid "Año"
 msgstr "Year"
 
@@ -721,7 +726,7 @@ msgid ""
 msgstr ""
 
 #: models.py:329 templates/lactancia/base.html:557
-#: templates/lactancia/base_bootstrap3.html:353
+#: templates/lactancia/base_bootstrap3.html:356
 msgid "Sinónimos de productos"
 msgstr "Products synonyms"
 
@@ -888,7 +893,17 @@ msgstr "e-mail"
 msgid "Tipo de usuario (perfil)"
 msgstr "Type of user (profile)"
 
-#: models.py:673 templates/lactancia/estadisticas_json_ES.html:965
+#: models.py:673 templates/lactancia/estadisticas_json_ES-b3.html:470
+#: templates/lactancia/estadisticas_json_ES-b3.html:506
+#: templates/lactancia/estadisticas_json_ES-b3.html:555
+#: templates/lactancia/estadisticas_json_ES-b3.html:591
+#: templates/lactancia/estadisticas_json_ES-b3.html:639
+#: templates/lactancia/estadisticas_json_ES-b3.html:675
+#: templates/lactancia/estadisticas_json_ES-b3.html:722
+#: templates/lactancia/estadisticas_json_ES-b3.html:758
+#: templates/lactancia/estadisticas_json_ES-b3.html:806
+#: templates/lactancia/estadisticas_json_ES-b3.html:842
+#: templates/lactancia/estadisticas_json_ES.html:965
 #: templates/lactancia/estadisticas_json_ES.html:1001
 #: templates/lactancia/estadisticas_json_ES.html:1050
 #: templates/lactancia/estadisticas_json_ES.html:1086
@@ -920,6 +935,16 @@ msgstr "Latitude"
 #: templates/lactancia/estadisticas_json_v3.html:1004
 #: templates/lactancia/estadisticas_json_v3.html:1051
 #: templates/lactancia/estadisticas_json_v3.html:1087
+#: templates/lactancia/estadisticas_json_v4-b3.html:461
+#: templates/lactancia/estadisticas_json_v4-b3.html:497
+#: templates/lactancia/estadisticas_json_v4-b3.html:545
+#: templates/lactancia/estadisticas_json_v4-b3.html:581
+#: templates/lactancia/estadisticas_json_v4-b3.html:628
+#: templates/lactancia/estadisticas_json_v4-b3.html:664
+#: templates/lactancia/estadisticas_json_v4-b3.html:710
+#: templates/lactancia/estadisticas_json_v4-b3.html:746
+#: templates/lactancia/estadisticas_json_v4-b3.html:793
+#: templates/lactancia/estadisticas_json_v4-b3.html:829
 msgid "País"
 msgstr "Country"
 
@@ -1280,10 +1305,12 @@ msgstr ""
 "lactancia"
 
 #: templates/lactancia/alerta_riesgos.html:13
+#: templates/lactancia/alerta_riesgos_b3.html:7
 msgid "Alertas"
 msgstr "Alerts"
 
 #: templates/lactancia/alerta_riesgos.html:20
+#: templates/lactancia/alerta_riesgos_b3.html:14
 msgid ""
 "A continuación se muestra el listado de cambios de niveles de riesgo "
 "registrados en la base de datos de e-lactancia en los últimos 3 meses. Para "
@@ -1294,15 +1321,17 @@ msgstr ""
 "its full information."
 
 #: templates/lactancia/alerta_riesgos.html:31
-#: templates/lactancia/d_grupo_b3.html:92
+#: templates/lactancia/alerta_riesgos_b3.html:25
+#: templates/lactancia/d_grupo_b3.html:38
 #: templates/lactancia/d_marca_b3.html:18
-#: templates/lactancia/d_producto_b3.html:45
+#: templates/lactancia/d_producto_b3.html:32
 #: templates/lactancia/detalle_g2.html:92
 #: templates/lactancia/detalle_m.html:30 templates/lactancia/detalle_p.html:93
 msgid "Nivel de riesgo revisado el"
 msgstr "Level of risk reviewed on"
 
 #: templates/lactancia/alerta_riesgos.html:40
+#: templates/lactancia/alerta_riesgos_b3.html:34
 msgid ""
 "Durante los últimos 3 meses no ha habido cambios en el nivel de riesgo de "
 "ninguno de los productos de la base de datos de e-lactancia."
@@ -1310,7 +1339,12 @@ msgstr ""
 "No changes in the level of risk of the products in the e-lactancia database "
 "have been registered during the last 3 months."
 
+#: templates/lactancia/alerta_riesgos_b3.html:3
+msgid "Alerta de cambio de nivel de riesgos en e-lactancia"
+msgstr "Risk level change alert in e-lactancia"
+
 #: templates/lactancia/avales.html:3 templates/lactancia/avales.html.py:12
+#: templates/lactancia/avales_b3.html:3 templates/lactancia/avales_b3.html:10
 msgid "Entidades que recomiendan el uso de e-lactancia"
 msgstr "Institutions that recommend the use of e-lactancia"
 
@@ -1322,7 +1356,7 @@ msgstr ""
 "e-lactancia.org is supported by relevant institutions that recommend its use."
 "You can also use it and promote #Breastfeeding"
 
-#: templates/lactancia/avales.html:34
+#: templates/lactancia/avales.html:34 templates/lactancia/avales_b3.html:25
 msgid "Leer documento completo"
 msgstr "Read full document"
 
@@ -1633,15 +1667,16 @@ msgid "Buscar"
 msgstr "Search"
 
 #: templates/lactancia/base.html:104
-#: templates/lactancia/d_producto_b3.html:222
-#: templates/lactancia/partial_footer.html:86
+#: templates/lactancia/partial_donativos_cajas.html:13
+#: templates/lactancia/partial_donativos_cajas.html:27
+#: templates/lactancia/partial_donativos_cajas.html:41
+#: templates/lactancia/partial_footer.html:107
+#: templates/lactancia/partial_pink_donation.html:20
 #: templates/lactancia/partial_top_bar.html:38
 msgid "DONA AHORA"
 msgstr "DONATE NOW"
 
 #: templates/lactancia/base.html:126 templates/lactancia/base.html.py:140
-#: templates/lactancia/d_grupo_b3.html:48
-#: templates/lactancia/d_grupo_b3.html:49
 #: templates/lactancia/detalle_ap.html:8 templates/lactancia/detalle_ap.html:9
 #: templates/lactancia/detalle_g2.html:48
 #: templates/lactancia/detalle_g2.html:49 templates/lactancia/detalle_m.html:8
@@ -1688,6 +1723,7 @@ msgstr "NUMBERS"
 
 #: templates/lactancia/base.html:185
 #: templates/lactancia/partial_footer.html:17
+#: templates/lactancia/partial_footer_4_landing.html:17
 msgid ""
 "e-lactancia es un proyecto de <a class=\"white-text\" href=\"http://apilam."
 "org/\" target=\"_blank\">APILAM</a>, asociación para la promoción e "
@@ -1702,17 +1738,18 @@ msgstr ""
 "Creative Commons Internacional License</a>"
 
 #: templates/lactancia/base.html:216
-#: templates/lactancia/partial_footer.html:99
+#: templates/lactancia/partial_footer.html:120
+#: templates/lactancia/partial_footer_4_landing.html:34
 msgid "Aviso legal"
 msgstr "Legal notice"
 
 #: templates/lactancia/base.html:217
-#: templates/lactancia/partial_footer.html:101
+#: templates/lactancia/partial_footer.html:122
 msgid "Política de privacidad"
 msgstr "Privacy Policy"
 
 #: templates/lactancia/base.html:218
-#: templates/lactancia/partial_footer.html:103
+#: templates/lactancia/partial_footer.html:124
 msgid "Política de cookies"
 msgstr "Cookies Policy"
 
@@ -1721,7 +1758,13 @@ msgid "Web desarrollada por"
 msgstr "Web developed by"
 
 #: templates/lactancia/base.html:549
-#: templates/lactancia/base_bootstrap3.html:345
+#: templates/lactancia/base_bootstrap3.html:348
+#: templates/lactancia/estadisticas_json_ES-b3.html:20
+#: templates/lactancia/estadisticas_json_ES-b3.html:69
+#: templates/lactancia/estadisticas_json_ES-b3.html:118
+#: templates/lactancia/estadisticas_json_ES-b3.html:166
+#: templates/lactancia/estadisticas_json_ES-b3.html:215
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
 #: templates/lactancia/estadisticas_json_ES.html:18
 #: templates/lactancia/estadisticas_json_ES.html:67
 #: templates/lactancia/estadisticas_json_ES.html:116
@@ -1729,41 +1772,42 @@ msgstr "Web developed by"
 #: templates/lactancia/estadisticas_json_ES.html:213
 #: templates/lactancia/estadisticas_json_ES.html:1411
 #: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
 msgid "Productos"
 msgstr "Products"
 
 #: templates/lactancia/base.html:550
-#: templates/lactancia/base_bootstrap3.html:346
+#: templates/lactancia/base_bootstrap3.html:349
 msgid "No encontramos productos para tu consulta"
 msgstr "No products found for your query"
 
 #: templates/lactancia/base.html:558
-#: templates/lactancia/base_bootstrap3.html:354
+#: templates/lactancia/base_bootstrap3.html:357
 msgid "No encontramos sinónimos para tu consulta"
 msgstr "No synonyms found for your query"
 
 #: templates/lactancia/base.html:565
-#: templates/lactancia/base_bootstrap3.html:361
+#: templates/lactancia/base_bootstrap3.html:364
 msgid "Productos en otras escrituras"
 msgstr "Products in other writings and languages"
 
 #: templates/lactancia/base.html:566
-#: templates/lactancia/base_bootstrap3.html:362
+#: templates/lactancia/base_bootstrap3.html:365
 msgid "No encontramos resultados para tu consulta"
 msgstr "No results found for your query"
 
 #: templates/lactancia/base.html:574
-#: templates/lactancia/base_bootstrap3.html:370
+#: templates/lactancia/base_bootstrap3.html:373
 msgid "No encontramos grupos para tu consulta"
 msgstr "No groups found for your query"
 
 #: templates/lactancia/base.html:581
-#: templates/lactancia/base_bootstrap3.html:377
+#: templates/lactancia/base_bootstrap3.html:380
 msgid "Marcas de productos"
 msgstr "Products tradenames"
 
 #: templates/lactancia/base.html:582
-#: templates/lactancia/base_bootstrap3.html:378
+#: templates/lactancia/base_bootstrap3.html:381
 msgid "No encontramos marcas para tu consulta"
 msgstr "No tradenames found for your query"
 
@@ -1779,16 +1823,20 @@ msgstr ""
 "The level of risk associated to at least one term has been recently modified."
 
 #: templates/lactancia/base.html:635
+#: templates/lactancia/partial_legend_b3.html:12
+#: templates/lactancia/partial_legend_b3.html:26
+#: templates/lactancia/partial_legend_b3.html:40
+#: templates/lactancia/partial_legend_b3.html:54
 msgid "Más información"
 msgstr "More information"
 
 #: templates/lactancia/base.html:642
-#: templates/lactancia/base_bootstrap3.html:412
+#: templates/lactancia/base_bootstrap3.html:404
 msgid "política de privacidad"
 msgstr "Privacy Policy"
 
 #: templates/lactancia/base.html:643
-#: templates/lactancia/base_bootstrap3.html:413
+#: templates/lactancia/base_bootstrap3.html:405
 msgid ""
 "Usamos cookies para mejorar tu experiencia. Al continuar navegando en "
 "nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre "
@@ -1905,6 +1953,7 @@ msgid "Descubre quiénes están detrás de e-lactancia "
 msgstr "Learn who are behind e-lactancia"
 
 #: templates/lactancia/creditos.html:17
+#: templates/lactancia/creditos_b3.html:11
 msgid "Conócenos"
 msgstr "About us"
 
@@ -1917,6 +1966,9 @@ msgid "Pediatra Doctor en Medicina"
 msgstr "Pediatrician, MD."
 
 #: templates/lactancia/creditos.html:30
+#: templates/lactancia/creditos_b3.html:27
+#: templates/lactancia/creditos_b3.html:48
+#: templates/lactancia/creditos_b3.html:56
 msgid "Revisión de contenidos y asesoramiento"
 msgstr "Content review and counceling"
 
@@ -1925,6 +1977,7 @@ msgid "Médica Pediatra"
 msgstr "Pediatrician"
 
 #: templates/lactancia/creditos.html:36
+#: templates/lactancia/creditos_b3.html:35
 msgid "Revisión de contenidos y traducción al inglés"
 msgstr "Content review and English translation"
 
@@ -1953,14 +2006,17 @@ msgid "Comunicación"
 msgstr "Communication"
 
 #: templates/lactancia/creditos.html:64
+#: templates/lactancia/creditos_b3.html:65
 msgid "Licenciada en Periodismo"
 msgstr "Degree in Journalism"
 
 #: templates/lactancia/creditos.html:103
+#: templates/lactancia/creditos_b3.html:94
 msgid "Cómo citar esta web"
 msgstr ""
 
 #: templates/lactancia/creditos.html:104
+#: templates/lactancia/creditos_b3.html:95
 msgid ""
 "Puedes citar esta web para tus trabajos científicos. Encontrarás este mismo "
 "desplegable en cada ficha de la web para que puedas hacer citas "
@@ -1971,6 +2027,7 @@ msgstr ""
 "specific products and terms."
 
 #: templates/lactancia/creditos.html:106
+#: templates/lactancia/creditos_b3.html:97
 msgid ""
 "Si necesitas citar la web de e-lactancia, abajo puedes encontrar varios "
 "formatos de cita, según tus necesidades."
@@ -1979,7 +2036,8 @@ msgstr ""
 "citation formats, according to your needs."
 
 #: templates/lactancia/creditos.html:107
-#: templates/lactancia/d_producto_b3.html:663
+#: templates/lactancia/creditos_b3.html:98
+#: templates/lactancia/d_producto_b3.html:565
 #: templates/lactancia/partial_citation.html:8
 msgid ""
 "Elige el formato de cita bibliográfica que prefieras. Puedes copiar el texto "
@@ -1989,16 +2047,36 @@ msgstr ""
 "citation text below and also download it on your computer by pressing the "
 "button"
 
+#: templates/lactancia/creditos_b3.html:19
+msgid "Creador y coordinador. Revisión de contenidos y asesoramiento."
+msgstr "Founder and coordinator. Content review and counceling."
+
+#: templates/lactancia/creditos_b3.html:20
+msgid "Pediatra. Doctor en Medicina."
+msgstr "Pediatrician, MD, PhD."
+
+#: templates/lactancia/creditos_b3.html:49
+msgid "Licenciada en Farmacia"
+msgstr "Degree in pharmacy"
+
+#: templates/lactancia/creditos_b3.html:57
+msgid "Doctora en Farmacia. IBCLC."
+msgstr "Doctor of Pharmacy. IBCLC"
+
+#: templates/lactancia/creditos_b3.html:64
+msgid "Comunicación y patrocinio"
+msgstr "Communication & sponsorship"
+
 #: templates/lactancia/d_alias_b3.html:3 templates/lactancia/d_marca_b3.html:3
 #: templates/lactancia/d_otra_escritura_b3.html:3
-#: templates/lactancia/d_producto_b3.html:12
+#: templates/lactancia/d_producto_b3.html:7
 msgid " y lactancia materna: ¿son compatibles?"
-msgstr ""
+msgstr " and breastfeeding. Are they compatible?"
 
 # mark to review!
 #: templates/lactancia/d_alias_b3.html:13
 #: templates/lactancia/d_otra_escritura_b3.html:30
-#: templates/lactancia/d_producto_b3.html:256
+#: templates/lactancia/d_producto_b3.html:194
 #: templates/lactancia/detalle_ap.html:24
 #: templates/lactancia/detalle_oe.html:42
 #: templates/lactancia/detalle_p.html:302
@@ -2010,66 +2088,25 @@ msgstr "is also known as"
 msgid "Esta es una lista de otros posibles nombres"
 msgstr "Here it is a list of alternative known names:"
 
-#: templates/lactancia/d_grupo_b3.html:43
-#: templates/lactancia/detalle_ap.html:3
-#: templates/lactancia/detalle_g2.html:43 templates/lactancia/detalle_m.html:3
-#: templates/lactancia/detalle_oe.html:3 templates/lactancia/detalle_p.html:44
-msgid "Compatibilidad de"
-msgstr "Compatibility of"
+#: templates/lactancia/d_grupo_b3.html:10
+msgid " y lactancia materna: ¿cuáles son compatibles?"
+msgstr " and breastfeeding. Which are compatible?"
 
-#: templates/lactancia/d_grupo_b3.html:43
-#: templates/lactancia/detalle_ap.html:3
-#: templates/lactancia/detalle_g2.html:43 templates/lactancia/detalle_m.html:3
-#: templates/lactancia/detalle_oe.html:3 templates/lactancia/detalle_p.html:44
-msgid "con la lactancia materna"
-msgstr "with breastfeeding"
+#: templates/lactancia/d_grupo_b3.html:18
+#: templates/lactancia/d_producto_b3.html:15
+#: templates/lactancia/detalle_p.html:61
+msgid "Última actualización:"
+msgstr "Last update:"
 
-#: templates/lactancia/d_grupo_b3.html:48
-#: templates/lactancia/d_grupo_b3.html:49
-#: templates/lactancia/detalle_ap.html:8 templates/lactancia/detalle_ap.html:9
-#: templates/lactancia/detalle_g2.html:48
-#: templates/lactancia/detalle_g2.html:49 templates/lactancia/detalle_m.html:8
-#: templates/lactancia/detalle_m.html:9 templates/lactancia/detalle_oe.html:8
-#: templates/lactancia/detalle_oe.html:9 templates/lactancia/detalle_p.html:52
-#: templates/lactancia/detalle_p.html:53
-msgid "con la #lactancia"
-msgstr "with #breastfeeding"
-
-#: templates/lactancia/d_grupo_b3.html:59
-#: templates/lactancia/detalle_g2.html:59
-msgid "Última modificación "
-msgstr "Last update "
-
-#: templates/lactancia/d_grupo_b3.html:90
+#: templates/lactancia/d_grupo_b3.html:36
 #: templates/lactancia/detalle_g2.html:90
 msgid "perteneciente a"
 msgstr "belonging to"
 
-#: templates/lactancia/d_grupo_b3.html:102
-#: templates/lactancia/detalle_g2.html:102
-#: templates/lactancia/detalle_p.html:104
-msgid "Riesgo para la lactancia"
-msgstr "Breastfeeding risk"
-
-#: templates/lactancia/d_grupo_b3.html:112
-#: templates/lactancia/detalle_g2.html:112
-msgid "Lista de los"
-msgstr "List of"
-
-#: templates/lactancia/d_grupo_b3.html:112
-#: templates/lactancia/detalle_g2.html:112
-msgid "productos de la familia o grupo"
-msgstr "products in family or group"
-
-#: templates/lactancia/d_grupo_b3.html:112
-#: templates/lactancia/detalle_g2.html:112
-msgid "por nivel de riesgo"
-msgstr "according to the level of risk"
-
-#: templates/lactancia/d_grupo_b3.html:136
-#: templates/lactancia/d_grupo_b3.html:158
-#: templates/lactancia/d_grupo_b3.html:180
-#: templates/lactancia/d_grupo_b3.html:202
+#: templates/lactancia/d_grupo_b3.html:55
+#: templates/lactancia/d_grupo_b3.html:67
+#: templates/lactancia/d_grupo_b3.html:79
+#: templates/lactancia/d_grupo_b3.html:91
 #: templates/lactancia/detalle_g2.html:136
 #: templates/lactancia/detalle_g2.html:158
 #: templates/lactancia/detalle_g2.html:180
@@ -2077,53 +2114,60 @@ msgstr "according to the level of risk"
 msgid "No hay productos de"
 msgstr "There are no products of"
 
-#: templates/lactancia/d_grupo_b3.html:136
-#: templates/lactancia/d_grupo_b3.html:158
-#: templates/lactancia/d_grupo_b3.html:180
-#: templates/lactancia/d_grupo_b3.html:202
-#: templates/lactancia/detalle_g2.html:136
-#: templates/lactancia/detalle_g2.html:158
-#: templates/lactancia/detalle_g2.html:180
-#: templates/lactancia/detalle_g2.html:202
-msgid "para"
-msgstr "for"
+#: templates/lactancia/d_grupo_b3.html:55
+#: templates/lactancia/d_grupo_b3.html:67
+#: templates/lactancia/d_grupo_b3.html:79
+#: templates/lactancia/d_grupo_b3.html:91
+msgid "para este grupo"
+msgstr "for this group"
 
-#: templates/lactancia/d_grupo_b3.html:215
-#: templates/lactancia/detalle_g2.html:215
-#: templates/lactancia/detalle_p.html:264
-msgid "HAZ UN DONATIVO"
-msgstr "MAKE A DONATION"
+#: templates/lactancia/d_grupo_b3.html:134
+msgid "Grupos relacionados con"
+msgstr "Groups related with"
 
-#: templates/lactancia/d_grupo_b3.html:216
-#: templates/lactancia/detalle_g2.html:216
-#: templates/lactancia/detalle_p.html:265
-msgid "Si esta información te ha sido de ayuda"
-msgstr "If you find this information helpful"
-
-#: templates/lactancia/d_grupo_b3.html:223
-#: templates/lactancia/detalle_g2.html:223
-msgid "Lista de grupos relacionados con"
-msgstr "List of groups related with"
-
-#: templates/lactancia/d_grupo_b3.html:226
+#: templates/lactancia/d_grupo_b3.html:137
 #: templates/lactancia/detalle_g2.html:226
 msgid "productos"
 msgstr "products"
 
-#: templates/lactancia/d_grupo_b3.html:298
-#: templates/lactancia/detalle_g2.html:298
-msgid "de"
-msgstr "of"
+#: templates/lactancia/d_grupo_b3.html:156
+#: templates/lactancia/d_producto_b3.html:479
+#: templates/lactancia/partial_ratings.html:67
+msgid "Visitas totales"
+msgstr "Total visits"
 
-#: templates/lactancia/d_grupo_b3.html:299
-#: templates/lactancia/detalle_g2.html:299
-msgid "Llevas"
-msgstr "Written"
+#: templates/lactancia/d_grupo_b3.html:161
+#: templates/lactancia/d_producto_b3.html:484
+msgid "Ayúdanos a mejorar esta ficha"
+msgstr "Help us improve this entry"
 
-#: templates/lactancia/d_grupo_b3.html:300
-#: templates/lactancia/detalle_g2.html:300
-msgid "caracteres"
-msgstr "characters"
+#: templates/lactancia/d_grupo_b3.html:171
+#: templates/lactancia/d_producto_b3.html:494
+#: templates/lactancia/partial_ratings.html:37
+msgid "Comentario enviado con éxito. ¡Muchas gracias!"
+msgstr "Comment successfully submitted. Thank you!"
+
+#: templates/lactancia/d_grupo_b3.html:173
+#: templates/lactancia/d_producto_b3.html:496
+#: templates/lactancia/partial_ratings.html:39
+msgid "Puedes editar tu comentario y volver a enviarlo si lo deseas"
+msgstr "You can edit your comment and send it again if you wish"
+
+#: templates/lactancia/d_grupo_b3.html:181
+#: templates/lactancia/d_producto_b3.html:504
+#: templates/lactancia/partial_ratings.html:50
+msgid "Enviar"
+msgstr "Send"
+
+#: templates/lactancia/d_grupo_b3.html:186
+#: templates/lactancia/d_producto_b3.html:509
+msgid "¿Necesitas más información?"
+msgstr "Do you need more information?"
+
+#: templates/lactancia/d_grupo_b3.html:189
+#: templates/lactancia/d_producto_b3.html:512
+msgid "Escríbenos a elactancia.org@gmail.com"
+msgstr "Write us at elactancia.org@gmail.com"
 
 #: templates/lactancia/d_marca_b3.html:16
 #: templates/lactancia/detalle_m.html:28
@@ -2185,200 +2229,170 @@ msgstr "in"
 msgid "Así se escribe en otros idiomas"
 msgstr "Is written in other languages"
 
-#: templates/lactancia/d_producto_b3.html:20
-#: templates/lactancia/detalle_p.html:61
-msgid "Última actualización:"
-msgstr "Last update:"
-
-#: templates/lactancia/d_producto_b3.html:63
+#: templates/lactancia/d_producto_b3.html:50
 msgid "para la lactancia"
 msgstr "for breastfeeding"
 
-#: templates/lactancia/d_producto_b3.html:80
+#: templates/lactancia/d_producto_b3.html:67
 #: templates/lactancia/detalle_p.html:135
 msgid "Puede consultar abajo la información de este producto relacionado:"
 msgstr "See below the information of this related product:"
 
-#: templates/lactancia/d_producto_b3.html:82
+#: templates/lactancia/d_producto_b3.html:69
 #: templates/lactancia/detalle_p.html:137
 msgid "Puede consultar abajo la información de estos productos relacionados:"
 msgstr "See below the information of these related products:"
 
-#: templates/lactancia/d_producto_b3.html:107
+#: templates/lactancia/d_producto_b3.html:94
 #: templates/lactancia/detalle_p.html:162
 msgid "Puede consultar abajo la información de este grupo relacionado:"
 msgstr "See below the information of this related group:"
 
-#: templates/lactancia/d_producto_b3.html:109
+#: templates/lactancia/d_producto_b3.html:96
 #: templates/lactancia/detalle_p.html:164
 msgid "Puede consultar abajo la información de estos grupos relacionados:"
 msgstr "See below the information of these related groups:"
 
-#: templates/lactancia/d_producto_b3.html:132
+#: templates/lactancia/d_producto_b3.html:119
 #: templates/lactancia/detalle_p.html:187
 msgid "Estamos habilitando un comentario para este producto."
 msgstr "We are working on a comment for this product."
 
-#: templates/lactancia/d_producto_b3.html:153
+#: templates/lactancia/d_producto_b3.html:140
 #: templates/lactancia/detalle_p.html:206
 msgid "No hay"
 msgstr "There are not"
 
-#: templates/lactancia/d_producto_b3.html:155
+#: templates/lactancia/d_producto_b3.html:142
 #: templates/lactancia/detalle_p.html:208
 msgid "No se muestran alternativas porque"
 msgstr "We do not have alternatives for"
 
-#: templates/lactancia/d_producto_b3.html:155
+#: templates/lactancia/d_producto_b3.html:142
 #: templates/lactancia/detalle_p.html:208
 msgid "tiene un nivel de riesgo muy bajo."
 msgstr "since it is relatively safe."
 
-#: templates/lactancia/d_producto_b3.html:157
+#: templates/lactancia/d_producto_b3.html:144
 #: templates/lactancia/detalle_m.html:93
 #: templates/lactancia/detalle_p.html:210
 msgid "No disponemos de alternativas para"
 msgstr "We do not have alternatives for"
 
-#: templates/lactancia/d_producto_b3.html:172
-#: templates/lactancia/detalle_p.html:239
-msgid "Leyenda de riesgos"
-msgstr "Legend of risks"
-
-#: templates/lactancia/d_producto_b3.html:216
-msgid ""
-"Tu aportación es fundamental para que este servicio siga siendo gratuito."
-msgstr ""
-"Your contribution is essential for this service to remain free."
-
-#: templates/lactancia/d_producto_b3.html:216
-msgid ""
-"Necesitamos la generosidad de personas como tú que creen en las bondades de "
-"la lactancia materna."
-msgstr ""
-"We need the generosity of people like you who believe in the benefits of breastfeeding."
-
-#: templates/lactancia/d_producto_b3.html:216
-msgid "Gracias por ayudar a seguir salvando lactancias."
-msgstr "Thank you for helping rescuing breastfeeding."
-
-# mark to review!
-#: templates/lactancia/d_producto_b3.html:217
-msgid "José María Paricio, creador de e-lactancia."
-msgstr "José María Paricio, founder of e-lactancia."
-
-#: templates/lactancia/d_producto_b3.html:252
+#: templates/lactancia/d_producto_b3.html:190
 #: templates/lactancia/detalle_p.html:298
 msgid "Otros nombres"
 msgstr "Other names"
 
-#: templates/lactancia/d_producto_b3.html:272
+#: templates/lactancia/d_producto_b3.html:210
 #: templates/lactancia/detalle_p.html:318
 msgid "en otros idiomas o escrituras"
 msgstr "in other languages or writings"
 
-#: templates/lactancia/d_producto_b3.html:287
+#: templates/lactancia/d_producto_b3.html:225
 #: templates/lactancia/detalle_p.html:332
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
 #: templates/lactancia/estadisticas_json_ES.html:1411
 #: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
 msgid "Marcas comerciales"
 msgstr "Tradenames"
 
-#: templates/lactancia/d_producto_b3.html:290
+#: templates/lactancia/d_producto_b3.html:228
 #: templates/lactancia/detalle_p.html:335
 msgid "Principales marcas comerciales de diversos países que contienen"
 msgstr "Main tradenames from several countries containing"
 
-#: templates/lactancia/d_producto_b3.html:290
+#: templates/lactancia/d_producto_b3.html:228
 #: templates/lactancia/detalle_p.html:335
 msgid "en su composición:"
 msgstr "in its composition:"
 
-#: templates/lactancia/d_producto_b3.html:296
-#: templates/lactancia/d_producto_b3.html:491
+#: templates/lactancia/d_producto_b3.html:234
+#: templates/lactancia/d_producto_b3.html:429
 #: templates/lactancia/detalle_p.html:341
 #: templates/lactancia/detalle_p.html:568
 msgid "Listado de"
 msgstr "List of"
 
-#: templates/lactancia/d_producto_b3.html:296
+#: templates/lactancia/d_producto_b3.html:234
 #: templates/lactancia/detalle_p.html:341
 msgid "marcas"
 msgstr "tradenames"
 
-#: templates/lactancia/d_producto_b3.html:305
+#: templates/lactancia/d_producto_b3.html:243
 #: templates/lactancia/detalle_p.html:362
 msgid "Contiene otros elementos aparte de"
 msgstr "Contains other elements than"
 
-#: templates/lactancia/d_producto_b3.html:305
+#: templates/lactancia/d_producto_b3.html:243
 #: templates/lactancia/detalle_p.html:362
 msgid "en su composición"
 msgstr "in its composition"
 
-#: templates/lactancia/d_producto_b3.html:327
+#: templates/lactancia/d_producto_b3.html:265
 #: templates/lactancia/detalle_p.html:394
 msgid "pertenece a las siguientes familias o grupos:"
 msgstr "belongs to these groups or families:"
 
-#: templates/lactancia/d_producto_b3.html:330
+#: templates/lactancia/d_producto_b3.html:268
 #: templates/lactancia/detalle_p.html:397
 msgid "pertenece a la siguiente familia o grupo:"
 msgstr "belongs to this group or family:"
 
-#: templates/lactancia/d_producto_b3.html:356
+#: templates/lactancia/d_producto_b3.html:294
 #: templates/lactancia/detalle_p.html:433
 msgid "Farmacocinética"
 msgstr "Pharmacokinetics"
 
-#: templates/lactancia/d_producto_b3.html:361
+#: templates/lactancia/d_producto_b3.html:299
 #: templates/lactancia/detalle_p.html:438
 msgid "Variable"
 msgstr "Variable"
 
-#: templates/lactancia/d_producto_b3.html:362
+#: templates/lactancia/d_producto_b3.html:300
 #: templates/lactancia/detalle_p.html:439
 msgid "Valor"
 msgstr "Value"
 
-#: templates/lactancia/d_producto_b3.html:363
+#: templates/lactancia/d_producto_b3.html:301
 #: templates/lactancia/detalle_p.html:440
 msgid "Unidades"
 msgstr "Units"
 
-#: templates/lactancia/d_producto_b3.html:424
-#: templates/lactancia/d_producto_b3.html:434
+#: templates/lactancia/d_producto_b3.html:362
+#: templates/lactancia/d_producto_b3.html:372
 #: templates/lactancia/detalle_p.html:501
 #: templates/lactancia/detalle_p.html:511
 msgid "horas"
 msgstr "hours"
 
-#: templates/lactancia/d_producto_b3.html:485
+#: templates/lactancia/d_producto_b3.html:423
 #: templates/lactancia/detalle_p.html:562
 msgid "Bibliografía"
 msgstr "References"
 
-#: templates/lactancia/d_producto_b3.html:491
+#: templates/lactancia/d_producto_b3.html:429
 #: templates/lactancia/detalle_p.html:568
 msgid "referencias"
 msgstr "references"
 
-#: templates/lactancia/d_producto_b3.html:501
+#: templates/lactancia/d_producto_b3.html:439
 #: templates/lactancia/detalle_p.html:578
 msgid "Resumen"
 msgstr "Abstract"
 
-#: templates/lactancia/d_producto_b3.html:504
+#: templates/lactancia/d_producto_b3.html:442
 #: templates/lactancia/detalle_p.html:581
 msgid "Texto completo (enlace a fuente original)"
 msgstr "Full text (link to original source)"
 
-#: templates/lactancia/d_producto_b3.html:507
+#: templates/lactancia/d_producto_b3.html:445
 #: templates/lactancia/detalle_p.html:584
 msgid "Texto completo (en nuestros servidores)"
 msgstr "Full text (in our servers)"
 
-#: templates/lactancia/d_producto_b3.html:513
+#: templates/lactancia/d_producto_b3.html:451
 #: templates/lactancia/detalle_p.html:590
 msgid ""
 "Estamos trabajando en poner las citas bibliográficas de este producto. En "
@@ -2389,50 +2403,131 @@ msgstr ""
 "available soon. If you wish to have access to this information, please let "
 "us know by leaving your comment in the opinion section below."
 
-#: templates/lactancia/d_producto_b3.html:515
+#: templates/lactancia/d_producto_b3.html:453
 #: templates/lactancia/detalle_p.html:592
 msgid "No disponemos de bibliografía para este producto."
 msgstr "There are no references for this product."
 
-#: templates/lactancia/d_producto_b3.html:539
-#: templates/lactancia/partial_ratings.html:67
-msgid "Visitas totales"
-msgstr "Total visits"
+#: templates/lactancia/detalle_ap.html:3
+#: templates/lactancia/detalle_g2.html:43 templates/lactancia/detalle_m.html:3
+#: templates/lactancia/detalle_oe.html:3 templates/lactancia/detalle_p.html:44
+msgid "Compatibilidad de"
+msgstr "Compatibility of"
 
-#: templates/lactancia/d_producto_b3.html:544
-msgid "Ayúdanos a mejorar esta ficha"
-msgstr "Help us improve this entry"
+#: templates/lactancia/detalle_ap.html:3
+#: templates/lactancia/detalle_g2.html:43 templates/lactancia/detalle_m.html:3
+#: templates/lactancia/detalle_oe.html:3 templates/lactancia/detalle_p.html:44
+msgid "con la lactancia materna"
+msgstr "with breastfeeding"
 
-#: templates/lactancia/d_producto_b3.html:554
-#: templates/lactancia/partial_ratings.html:37
-msgid "Comentario enviado con éxito. ¡Muchas gracias!"
-msgstr "Comment successfully submitted. Thank you!"
+#: templates/lactancia/detalle_ap.html:8 templates/lactancia/detalle_ap.html:9
+#: templates/lactancia/detalle_g2.html:48
+#: templates/lactancia/detalle_g2.html:49 templates/lactancia/detalle_m.html:8
+#: templates/lactancia/detalle_m.html:9 templates/lactancia/detalle_oe.html:8
+#: templates/lactancia/detalle_oe.html:9 templates/lactancia/detalle_p.html:52
+#: templates/lactancia/detalle_p.html:53
+msgid "con la #lactancia"
+msgstr "with #breastfeeding"
 
-#: templates/lactancia/d_producto_b3.html:556
-#: templates/lactancia/partial_ratings.html:39
-msgid "Puedes editar tu comentario y volver a enviarlo si lo deseas"
-msgstr "You can edit your comment and send it again if you wish"
+#: templates/lactancia/detalle_g2.html:59
+msgid "Última modificación "
+msgstr "Last update "
 
-#: templates/lactancia/d_producto_b3.html:564
-#: templates/lactancia/partial_ratings.html:50
-msgid "Enviar"
-msgstr "Send"
+#: templates/lactancia/detalle_g2.html:102
+#: templates/lactancia/detalle_p.html:104
+msgid "Riesgo para la lactancia"
+msgstr "Breastfeeding risk"
 
-#: templates/lactancia/d_producto_b3.html:569
-msgid "¿Necesitas más información?"
-msgstr "Do you need more information?"
+#: templates/lactancia/detalle_g2.html:112
+msgid "Lista de los"
+msgstr "List of"
 
-#: templates/lactancia/d_producto_b3.html:572
-msgid "Escríbenos a elactancia.org@gmail.com"
-msgstr "Write us at elactancia.org@gmail.com"
+#: templates/lactancia/detalle_g2.html:112
+msgid "productos de la familia o grupo"
+msgstr "products in family or group"
+
+#: templates/lactancia/detalle_g2.html:112
+msgid "por nivel de riesgo"
+msgstr "according to the level of risk"
+
+#: templates/lactancia/detalle_g2.html:136
+#: templates/lactancia/detalle_g2.html:158
+#: templates/lactancia/detalle_g2.html:180
+#: templates/lactancia/detalle_g2.html:202
+msgid "para"
+msgstr "for"
+
+#: templates/lactancia/detalle_g2.html:215
+#: templates/lactancia/detalle_p.html:264
+msgid "HAZ UN DONATIVO"
+msgstr "MAKE A DONATION"
+
+#: templates/lactancia/detalle_g2.html:216
+#: templates/lactancia/detalle_p.html:265
+msgid "Si esta información te ha sido de ayuda"
+msgstr "If you find this information helpful"
+
+#: templates/lactancia/detalle_g2.html:223
+msgid "Lista de grupos relacionados con"
+msgstr "List of groups related with"
+
+#: templates/lactancia/detalle_g2.html:298
+msgid "de"
+msgstr "of"
+
+#: templates/lactancia/detalle_g2.html:299
+msgid "Llevas"
+msgstr "Written"
+
+#: templates/lactancia/detalle_g2.html:300
+msgid "caracteres"
+msgstr "characters"
 
 #: templates/lactancia/detalle_m.html:78
 msgid "Alternativas de cada principio activo"
 msgstr "Alternatives for each active ingredient"
 
+#: templates/lactancia/detalle_p.html:239
+msgid "Leyenda de riesgos"
+msgstr "Legend of risks"
+
+#: templates/lactancia/donativo-exito-b3.html:3
 #: templates/lactancia/donativo_exito.html:3
 msgid "¡Gracias por tu donativo!"
 msgstr "Thanks for your donation!"
+
+#: templates/lactancia/donativo-exito-b3.html:11
+#: templates/lactancia/donativo_exito.html:21
+msgid "¡Gracias!"
+msgstr "Thank you!"
+
+#: templates/lactancia/donativo-exito-b3.html:11
+#: templates/lactancia/donativo_exito.html:23
+msgid ""
+"En nombre de todos los que formamos parte de e-lactancia, te damos las "
+"gracias por tu donativo."
+msgstr "On behalf of all of us at e-lactancia, we thank you for your donation."
+
+#: templates/lactancia/donativo-fallo-b3.html:3
+#: templates/lactancia/donativo-fallo-b3.html:8
+#: templates/lactancia/donativo_fallo.html:3
+msgid "Problema con tu donativo"
+msgstr "Problem with your donation"
+
+#: templates/lactancia/donativo-fallo-b3.html:9
+#: templates/lactancia/donativo_fallo.html:18
+msgid "Parece que no se ha completado la transacción. Puedes "
+msgstr "It seems that the transaction has not been completed. You can "
+
+#: templates/lactancia/donativo-fallo-b3.html:9
+#: templates/lactancia/donativo_fallo.html:18
+msgid "intentarlo de nuevo "
+msgstr "try again "
+
+#: templates/lactancia/donativo-fallo-b3.html:9
+#: templates/lactancia/donativo_fallo.html:18
+msgid "si lo deseas."
+msgstr "if you want."
 
 #: templates/lactancia/donativo_exito.html:11
 msgid ""
@@ -2441,20 +2536,6 @@ msgid ""
 msgstr ""
 "I´m supporting e-lactancia. You can also contribute to save #Breastfeeding"
 
-#: templates/lactancia/donativo_exito.html:21
-msgid "¡Gracias!"
-msgstr "Thank you!"
-
-#: templates/lactancia/donativo_exito.html:23
-msgid ""
-"En nombre de todos los que formamos parte de e-lactancia, te damos las "
-"gracias por tu donativo."
-msgstr "On behalf of all of us at e-lactancia, we thank you for your donation."
-
-#: templates/lactancia/donativo_fallo.html:3
-msgid "Problema con tu donativo"
-msgstr "Problem with your donation"
-
 #: templates/lactancia/donativo_fallo.html:10
 msgid ""
 "Estoy haciendo un donativo para e-lactancia. Tu también puedes ayudar a "
@@ -2462,17 +2543,33 @@ msgid ""
 msgstr ""
 "I´m supporting e-lactancia. You can also contribute to save #Breastfeeding"
 
-#: templates/lactancia/donativo_fallo.html:18
-msgid "Parece que no se ha completado la transacción. Puedes "
-msgstr "It seems that the transaction has not been completed. You can "
+#: templates/lactancia/donativos-b3.html:5
+msgid "Dona para salvar lactancias"
+msgstr "Donate to save breastfeeding"
 
-#: templates/lactancia/donativo_fallo.html:18
-msgid "intentarlo de nuevo "
-msgstr "try again "
+#: templates/lactancia/donativos-b3.html:27
+msgid "Tú puedes hacer que e-lactancia siga siendo gratuita para todos."
+msgstr "You can help to keep e-lactancia free for everyone."
 
-#: templates/lactancia/donativo_fallo.html:18
-msgid "si lo deseas."
-msgstr "if you want."
+#: templates/lactancia/donativos-b3.html:33
+msgid "En 2017 conseguimos grandes resultados.<br/>Gracias a personas como tú."
+msgstr "In 2017 we achieved great results.<br/>Thanks to people like you."
+
+#: templates/lactancia/donativos-b3.html:44
+msgid "Añadimos y revisamos 2.417 fichas de medicamentos"
+msgstr "We add and reviewed 2,417 medication records"
+
+#: templates/lactancia/donativos-b3.html:57
+msgid "Recibimos 16.580.344 consultas online de todo el mundo"
+msgstr "We received 16,580,344 queries online from around the world"
+
+#: templates/lactancia/donativos-b3.html:71
+msgid "Atendimos 1.931 consultas por correo electrónico"
+msgstr "We answered 1,931 inquiries by email"
+
+#: templates/lactancia/donativos-b3.html:82
+msgid "Preguntas frecuentes"
+msgstr "FAQs"
 
 #: templates/lactancia/donativos.html:3
 msgid "Colabora con e-lactancia"
@@ -2506,14 +2603,17 @@ msgid "IBAN"
 msgstr "IBAN"
 
 #: templates/lactancia/donativos.html:32
+#: templates/lactancia/partial_donativos_faq.html:41
 msgid "Titular"
 msgstr "Holder"
 
 #: templates/lactancia/donativos.html:33
+#: templates/lactancia/partial_donativos_faq.html:42
 msgid "Concepto"
 msgstr "Concept"
 
 #: templates/lactancia/donativos.html:33
+#: templates/lactancia/partial_donativos_faq.html:42
 msgid "Donativo "
 msgstr "Donation"
 
@@ -2570,6 +2670,11 @@ msgstr ""
 "€10 finance one-hour email responses to users with doubts about the "
 "compatibility of breastfeeding"
 
+#: templates/lactancia/estadisticas_json_ES-b3.html:20
+#: templates/lactancia/estadisticas_json_ES-b3.html:69
+#: templates/lactancia/estadisticas_json_ES-b3.html:118
+#: templates/lactancia/estadisticas_json_ES-b3.html:166
+#: templates/lactancia/estadisticas_json_ES-b3.html:215
 #: templates/lactancia/estadisticas_json_ES.html:18
 #: templates/lactancia/estadisticas_json_ES.html:67
 #: templates/lactancia/estadisticas_json_ES.html:116
@@ -2578,6 +2683,20 @@ msgstr ""
 msgid "consultas"
 msgstr "consultations"
 
+#: templates/lactancia/estadisticas_json_ES-b3.html:268
+#: templates/lactancia/estadisticas_json_ES-b3.html:319
+#: templates/lactancia/estadisticas_json_ES-b3.html:369
+#: templates/lactancia/estadisticas_json_ES-b3.html:412
+#: templates/lactancia/estadisticas_json_ES-b3.html:470
+#: templates/lactancia/estadisticas_json_ES-b3.html:508
+#: templates/lactancia/estadisticas_json_ES-b3.html:555
+#: templates/lactancia/estadisticas_json_ES-b3.html:593
+#: templates/lactancia/estadisticas_json_ES-b3.html:639
+#: templates/lactancia/estadisticas_json_ES-b3.html:677
+#: templates/lactancia/estadisticas_json_ES-b3.html:722
+#: templates/lactancia/estadisticas_json_ES-b3.html:760
+#: templates/lactancia/estadisticas_json_ES-b3.html:806
+#: templates/lactancia/estadisticas_json_ES-b3.html:844
 #: templates/lactancia/estadisticas_json_ES.html:266
 #: templates/lactancia/estadisticas_json_ES.html:317
 #: templates/lactancia/estadisticas_json_ES.html:367
@@ -2605,6 +2724,20 @@ msgstr "consultations"
 msgid "Consultas"
 msgstr "Consultations"
 
+#: templates/lactancia/estadisticas_json_ES-b3.html:269
+#: templates/lactancia/estadisticas_json_ES-b3.html:320
+#: templates/lactancia/estadisticas_json_ES-b3.html:370
+#: templates/lactancia/estadisticas_json_ES-b3.html:413
+#: templates/lactancia/estadisticas_json_ES-b3.html:470
+#: templates/lactancia/estadisticas_json_ES-b3.html:507
+#: templates/lactancia/estadisticas_json_ES-b3.html:555
+#: templates/lactancia/estadisticas_json_ES-b3.html:592
+#: templates/lactancia/estadisticas_json_ES-b3.html:639
+#: templates/lactancia/estadisticas_json_ES-b3.html:676
+#: templates/lactancia/estadisticas_json_ES-b3.html:722
+#: templates/lactancia/estadisticas_json_ES-b3.html:759
+#: templates/lactancia/estadisticas_json_ES-b3.html:806
+#: templates/lactancia/estadisticas_json_ES-b3.html:843
 #: templates/lactancia/estadisticas_json_ES.html:267
 #: templates/lactancia/estadisticas_json_ES.html:318
 #: templates/lactancia/estadisticas_json_ES.html:368
@@ -2633,25 +2766,294 @@ msgstr "Consultations"
 #: templates/lactancia/estadisticas_json_v3.html:1005
 #: templates/lactancia/estadisticas_json_v3.html:1051
 #: templates/lactancia/estadisticas_json_v3.html:1088
+#: templates/lactancia/estadisticas_json_v4-b3.html:266
+#: templates/lactancia/estadisticas_json_v4-b3.html:315
+#: templates/lactancia/estadisticas_json_v4-b3.html:363
+#: templates/lactancia/estadisticas_json_v4-b3.html:404
+#: templates/lactancia/estadisticas_json_v4-b3.html:461
+#: templates/lactancia/estadisticas_json_v4-b3.html:498
+#: templates/lactancia/estadisticas_json_v4-b3.html:545
+#: templates/lactancia/estadisticas_json_v4-b3.html:582
+#: templates/lactancia/estadisticas_json_v4-b3.html:628
+#: templates/lactancia/estadisticas_json_v4-b3.html:665
+#: templates/lactancia/estadisticas_json_v4-b3.html:710
+#: templates/lactancia/estadisticas_json_v4-b3.html:747
+#: templates/lactancia/estadisticas_json_v4-b3.html:793
+#: templates/lactancia/estadisticas_json_v4-b3.html:830
 msgid "Visitas únicas"
 msgstr "Unique visits"
 
+#: templates/lactancia/estadisticas_json_ES-b3.html:318
 #: templates/lactancia/estadisticas_json_ES.html:316
 #: templates/lactancia/estadisticas_json_v3.html:313
+#: templates/lactancia/estadisticas_json_v4-b3.html:314
 msgid "Mes"
 msgstr "Month"
 
+#: templates/lactancia/estadisticas_json_ES-b3.html:368
+#: templates/lactancia/estadisticas_json_ES-b3.html:373
 #: templates/lactancia/estadisticas_json_ES.html:366
 #: templates/lactancia/estadisticas_json_ES.html:371
 #: templates/lactancia/estadisticas_json_v3.html:361
 #: templates/lactancia/estadisticas_json_v3.html:365
+#: templates/lactancia/estadisticas_json_v4-b3.html:362
+#: templates/lactancia/estadisticas_json_v4-b3.html:366
 msgid "Semana"
 msgstr "Week"
 
+#: templates/lactancia/estadisticas_json_ES-b3.html:411
 #: templates/lactancia/estadisticas_json_ES.html:409
 #: templates/lactancia/estadisticas_json_v3.html:402
+#: templates/lactancia/estadisticas_json_v4-b3.html:403
 msgid "Día"
 msgstr "Day"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:885
+#: templates/lactancia/estadisticas_json_ES.html:1380
+msgid "e-lactancia en cifras "
+msgstr "e-lactancia in numbers"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:890
+#: templates/lactancia/estadisticas_json_ES.html:1396
+msgid "e-lactancia en cifras en España"
+msgstr "e-lactancia in numbers in Spain"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:891
+#: templates/lactancia/estadisticas_json_ES.html:1397
+#: templates/lactancia/estadisticas_json_v3.html:1147
+#: templates/lactancia/estadisticas_json_v4-b3.html:878
+msgid "las estadísticas se actualizan a diario"
+msgstr "statistics are daily updated"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:893
+#: templates/lactancia/estadisticas_json_ES.html:1406
+#: templates/lactancia/estadisticas_json_v3.html:1156
+#: templates/lactancia/estadisticas_json_v4-b3.html:880
+msgid "Sobre los términos"
+msgstr "About the terms"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:897
+#: templates/lactancia/estadisticas_json_ES.html:1410
+#: templates/lactancia/estadisticas_json_v3.html:1160
+#: templates/lactancia/estadisticas_json_v4-b3.html:884
+msgid "Distribución de los términos en nuestra base de datos"
+msgstr "Distribution of the tems in our database"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
+#: templates/lactancia/estadisticas_json_ES.html:1411
+#: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
+msgid "A día de hoy, hay"
+msgstr "Up to date, there are"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
+#: templates/lactancia/estadisticas_json_ES.html:1411
+#: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
+msgid "distintos pertenecientes a"
+msgstr "different products belonging to"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
+#: templates/lactancia/estadisticas_json_ES.html:1411
+#: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
+msgid ", con"
+msgstr ", with"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
+#: templates/lactancia/estadisticas_json_ES.html:1411
+#: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
+msgid "Sinónimos"
+msgstr "Synonyms"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
+#: templates/lactancia/estadisticas_json_ES.html:1411
+#: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
+msgid "En total hay"
+msgstr "There are in total"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:898
+#: templates/lactancia/estadisticas_json_ES.html:1411
+#: templates/lactancia/estadisticas_json_v3.html:1161
+#: templates/lactancia/estadisticas_json_v4-b3.html:885
+msgid "Términos"
+msgstr "Terms"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:904
+#: templates/lactancia/estadisticas_json_ES.html:1421
+msgid "Consultas y Visitas es España"
+msgstr "Consultations and Visits in Spain"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:905
+#: templates/lactancia/estadisticas_json_ES.html:1422
+msgid "Productos más consultados en España"
+msgstr "Products with most consultations in Spain"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:909
+#: templates/lactancia/estadisticas_json_ES.html:1426
+msgid "Último día "
+msgstr "Last day"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:910
+#: templates/lactancia/estadisticas_json_ES.html:1427
+msgid "Última semana "
+msgstr "Last week"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:911
+#: templates/lactancia/estadisticas_json_ES.html:1428
+msgid "Último mes "
+msgstr "Last month"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:912
+#: templates/lactancia/estadisticas_json_ES.html:1429
+msgid "Último año "
+msgstr "Last year"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:913
+#: templates/lactancia/estadisticas_json_ES.html:1430
+msgid "Total "
+msgstr "Total"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:937
+#: templates/lactancia/estadisticas_json_ES.html:1454
+msgid "Visitas por periodo de tiempo en España"
+msgstr "Visits by periods of time in Spain"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:940
+#: templates/lactancia/estadisticas_json_ES.html:1457
+#: templates/lactancia/estadisticas_json_v3.html:1206
+#: templates/lactancia/estadisticas_json_v4-b3.html:930
+msgid "Anualmente"
+msgstr "Yearly"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:941
+#: templates/lactancia/estadisticas_json_ES.html:1458
+#: templates/lactancia/estadisticas_json_v3.html:1207
+#: templates/lactancia/estadisticas_json_v4-b3.html:931
+msgid "Mensualmente"
+msgstr "Monthly"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:942
+#: templates/lactancia/estadisticas_json_ES.html:1459
+#: templates/lactancia/estadisticas_json_v3.html:1208
+#: templates/lactancia/estadisticas_json_v4-b3.html:932
+msgid "Semanalmente"
+msgstr "Weekly"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:943
+#: templates/lactancia/estadisticas_json_ES.html:1460
+#: templates/lactancia/estadisticas_json_v3.html:1209
+#: templates/lactancia/estadisticas_json_v4-b3.html:933
+msgid "Diariamente"
+msgstr "Daily"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:964
+#: templates/lactancia/estadisticas_json_ES.html:1601
+msgid "Top 150 de Visitas por ciudades españolas "
+msgstr "Top 150 visits by Spanish cities"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:967
+#: templates/lactancia/estadisticas_json_ES.html:1486
+#: templates/lactancia/estadisticas_json_ES.html:1604
+#: templates/lactancia/estadisticas_json_v3.html:1175
+#: templates/lactancia/estadisticas_json_v3.html:1235
+#: templates/lactancia/estadisticas_json_v3.html:1298
+#: templates/lactancia/estadisticas_json_v4-b3.html:899
+#: templates/lactancia/estadisticas_json_v4-b3.html:960
+msgid "Último día"
+msgstr "Last day"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:968
+#: templates/lactancia/estadisticas_json_ES.html:1487
+#: templates/lactancia/estadisticas_json_ES.html:1605
+#: templates/lactancia/estadisticas_json_v3.html:1176
+#: templates/lactancia/estadisticas_json_v3.html:1236
+#: templates/lactancia/estadisticas_json_v3.html:1299
+#: templates/lactancia/estadisticas_json_v4-b3.html:900
+#: templates/lactancia/estadisticas_json_v4-b3.html:961
+msgid "Última semana"
+msgstr "Last week"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:969
+#: templates/lactancia/estadisticas_json_ES.html:1488
+#: templates/lactancia/estadisticas_json_ES.html:1606
+#: templates/lactancia/estadisticas_json_v3.html:1177
+#: templates/lactancia/estadisticas_json_v3.html:1237
+#: templates/lactancia/estadisticas_json_v3.html:1300
+#: templates/lactancia/estadisticas_json_v4-b3.html:901
+#: templates/lactancia/estadisticas_json_v4-b3.html:962
+msgid "Último mes"
+msgstr "Last month"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:970
+#: templates/lactancia/estadisticas_json_ES.html:1489
+#: templates/lactancia/estadisticas_json_ES.html:1607
+#: templates/lactancia/estadisticas_json_v3.html:1178
+#: templates/lactancia/estadisticas_json_v3.html:1238
+#: templates/lactancia/estadisticas_json_v3.html:1301
+#: templates/lactancia/estadisticas_json_v4-b3.html:902
+#: templates/lactancia/estadisticas_json_v4-b3.html:963
+msgid "Último año"
+msgstr "Last year"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:971
+#: templates/lactancia/estadisticas_json_ES.html:1490
+#: templates/lactancia/estadisticas_json_ES.html:1608
+#: templates/lactancia/estadisticas_json_v3.html:1179
+#: templates/lactancia/estadisticas_json_v3.html:1239
+#: templates/lactancia/estadisticas_json_v3.html:1302
+#: templates/lactancia/estadisticas_json_v4-b3.html:903
+#: templates/lactancia/estadisticas_json_v4-b3.html:964
+msgid "Total"
+msgstr "Total"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:977
+#: templates/lactancia/estadisticas_json_ES-b3.html:997
+#: templates/lactancia/estadisticas_json_ES-b3.html:1015
+#: templates/lactancia/estadisticas_json_ES-b3.html:1034
+#: templates/lactancia/estadisticas_json_ES-b3.html:1052
+#: templates/lactancia/estadisticas_json_ES.html:1614
+#: templates/lactancia/estadisticas_json_ES.html:1634
+#: templates/lactancia/estadisticas_json_ES.html:1652
+#: templates/lactancia/estadisticas_json_ES.html:1671
+#: templates/lactancia/estadisticas_json_ES.html:1689
+#: templates/lactancia/estadisticas_json_v3.html:1308
+#: templates/lactancia/estadisticas_json_v3.html:1328
+#: templates/lactancia/estadisticas_json_v3.html:1346
+#: templates/lactancia/estadisticas_json_v3.html:1365
+#: templates/lactancia/estadisticas_json_v3.html:1383
+#: templates/lactancia/estadisticas_json_v4-b3.html:970
+#: templates/lactancia/estadisticas_json_v4-b3.html:990
+#: templates/lactancia/estadisticas_json_v4-b3.html:1008
+#: templates/lactancia/estadisticas_json_v4-b3.html:1027
+#: templates/lactancia/estadisticas_json_v4-b3.html:1045
+msgid "Mapa de visitas"
+msgstr "Visits map"
+
+#: templates/lactancia/estadisticas_json_ES-b3.html:980
+#: templates/lactancia/estadisticas_json_ES-b3.html:1000
+#: templates/lactancia/estadisticas_json_ES-b3.html:1018
+#: templates/lactancia/estadisticas_json_ES-b3.html:1037
+#: templates/lactancia/estadisticas_json_ES-b3.html:1055
+#: templates/lactancia/estadisticas_json_ES.html:1617
+#: templates/lactancia/estadisticas_json_ES.html:1637
+#: templates/lactancia/estadisticas_json_ES.html:1655
+#: templates/lactancia/estadisticas_json_ES.html:1674
+#: templates/lactancia/estadisticas_json_ES.html:1692
+#: templates/lactancia/estadisticas_json_v3.html:1311
+#: templates/lactancia/estadisticas_json_v3.html:1331
+#: templates/lactancia/estadisticas_json_v3.html:1349
+#: templates/lactancia/estadisticas_json_v3.html:1368
+#: templates/lactancia/estadisticas_json_v3.html:1386
+#: templates/lactancia/estadisticas_json_v4-b3.html:973
+#: templates/lactancia/estadisticas_json_v4-b3.html:993
+#: templates/lactancia/estadisticas_json_v4-b3.html:1011
+#: templates/lactancia/estadisticas_json_v4-b3.html:1030
+#: templates/lactancia/estadisticas_json_v4-b3.html:1048
+msgid "Tabla de visitas"
+msgstr "Visits table"
 
 #: templates/lactancia/estadisticas_json_ES.html:466
 #: templates/lactancia/estadisticas_json_ES.html:514
@@ -2689,163 +3091,18 @@ msgstr "User profile"
 msgid "Farmacéutico"
 msgstr "Pharmacist"
 
-#: templates/lactancia/estadisticas_json_ES.html:1380
-msgid "e-lactancia en cifras "
-msgstr "e-lactancia in numbers"
-
 #: templates/lactancia/estadisticas_json_ES.html:1386
 #: templates/lactancia/estadisticas_json_ES.html:1387
 msgid "Estas son las cifras que maneja e-lactancia en España para salvar la"
 msgstr "Looking at the numbers e-lactancia manages in Spain to save"
 
-#: templates/lactancia/estadisticas_json_ES.html:1396
-msgid "e-lactancia en cifras en España"
-msgstr "e-lactancia in numbers in Spain"
-
-#: templates/lactancia/estadisticas_json_ES.html:1397
-#: templates/lactancia/estadisticas_json_v3.html:1147
-msgid "las estadísticas se actualizan a diario"
-msgstr "statistics are daily updated"
-
-#: templates/lactancia/estadisticas_json_ES.html:1406
-#: templates/lactancia/estadisticas_json_v3.html:1156
-msgid "Sobre los términos"
-msgstr "About the terms"
-
-#: templates/lactancia/estadisticas_json_ES.html:1410
-#: templates/lactancia/estadisticas_json_v3.html:1160
-msgid "Distribución de los términos en nuestra base de datos"
-msgstr "Distribution of the tems in our database"
-
-#: templates/lactancia/estadisticas_json_ES.html:1411
-#: templates/lactancia/estadisticas_json_v3.html:1161
-msgid "A día de hoy, hay"
-msgstr "Up to date, there are"
-
-#: templates/lactancia/estadisticas_json_ES.html:1411
-#: templates/lactancia/estadisticas_json_v3.html:1161
-msgid "distintos pertenecientes a"
-msgstr "different products belonging to"
-
-#: templates/lactancia/estadisticas_json_ES.html:1411
-#: templates/lactancia/estadisticas_json_v3.html:1161
-msgid ", con"
-msgstr ", with"
-
-#: templates/lactancia/estadisticas_json_ES.html:1411
-#: templates/lactancia/estadisticas_json_v3.html:1161
-msgid "Sinónimos"
-msgstr "Synonyms"
-
-#: templates/lactancia/estadisticas_json_ES.html:1411
-#: templates/lactancia/estadisticas_json_v3.html:1161
-msgid "En total hay"
-msgstr "There are in total"
-
-#: templates/lactancia/estadisticas_json_ES.html:1411
-#: templates/lactancia/estadisticas_json_v3.html:1161
-msgid "Términos"
-msgstr "Terms"
-
 #: templates/lactancia/estadisticas_json_ES.html:1413
 msgid "nombres alternativos con los que se conocen los productos "
 msgstr "alternative names for the products "
 
-#: templates/lactancia/estadisticas_json_ES.html:1421
-msgid "Consultas y Visitas es España"
-msgstr "Consultations and Visits in Spain"
-
-#: templates/lactancia/estadisticas_json_ES.html:1422
-msgid "Productos más consultados en España"
-msgstr "Products with most consultations in Spain"
-
-#: templates/lactancia/estadisticas_json_ES.html:1426
-msgid "Último día "
-msgstr "Last day"
-
-#: templates/lactancia/estadisticas_json_ES.html:1427
-msgid "Última semana "
-msgstr "Last week"
-
-#: templates/lactancia/estadisticas_json_ES.html:1428
-msgid "Último mes "
-msgstr "Last month"
-
-#: templates/lactancia/estadisticas_json_ES.html:1429
-msgid "Último año "
-msgstr "Last year"
-
-#: templates/lactancia/estadisticas_json_ES.html:1430
-msgid "Total "
-msgstr "Total"
-
-#: templates/lactancia/estadisticas_json_ES.html:1454
-msgid "Visitas por periodo de tiempo en España"
-msgstr "Visits by periods of time in Spain"
-
-#: templates/lactancia/estadisticas_json_ES.html:1457
-#: templates/lactancia/estadisticas_json_v3.html:1206
-msgid "Anualmente"
-msgstr "Yearly"
-
-#: templates/lactancia/estadisticas_json_ES.html:1458
-#: templates/lactancia/estadisticas_json_v3.html:1207
-msgid "Mensualmente"
-msgstr "Monthly"
-
-#: templates/lactancia/estadisticas_json_ES.html:1459
-#: templates/lactancia/estadisticas_json_v3.html:1208
-msgid "Semanalmente"
-msgstr "Weekly"
-
-#: templates/lactancia/estadisticas_json_ES.html:1460
-#: templates/lactancia/estadisticas_json_v3.html:1209
-msgid "Diariamente"
-msgstr "Daily"
-
 #: templates/lactancia/estadisticas_json_ES.html:1483
 msgid "Visitas por perfil de usuario en España"
 msgstr "Visits by user profile in Spain"
-
-#: templates/lactancia/estadisticas_json_ES.html:1486
-#: templates/lactancia/estadisticas_json_ES.html:1604
-#: templates/lactancia/estadisticas_json_v3.html:1175
-#: templates/lactancia/estadisticas_json_v3.html:1235
-#: templates/lactancia/estadisticas_json_v3.html:1298
-msgid "Último día"
-msgstr "Last day"
-
-#: templates/lactancia/estadisticas_json_ES.html:1487
-#: templates/lactancia/estadisticas_json_ES.html:1605
-#: templates/lactancia/estadisticas_json_v3.html:1176
-#: templates/lactancia/estadisticas_json_v3.html:1236
-#: templates/lactancia/estadisticas_json_v3.html:1299
-msgid "Última semana"
-msgstr "Last week"
-
-#: templates/lactancia/estadisticas_json_ES.html:1488
-#: templates/lactancia/estadisticas_json_ES.html:1606
-#: templates/lactancia/estadisticas_json_v3.html:1177
-#: templates/lactancia/estadisticas_json_v3.html:1237
-#: templates/lactancia/estadisticas_json_v3.html:1300
-msgid "Último mes"
-msgstr "Last month"
-
-#: templates/lactancia/estadisticas_json_ES.html:1489
-#: templates/lactancia/estadisticas_json_ES.html:1607
-#: templates/lactancia/estadisticas_json_v3.html:1178
-#: templates/lactancia/estadisticas_json_v3.html:1238
-#: templates/lactancia/estadisticas_json_v3.html:1301
-msgid "Último año"
-msgstr "Last year"
-
-#: templates/lactancia/estadisticas_json_ES.html:1490
-#: templates/lactancia/estadisticas_json_ES.html:1608
-#: templates/lactancia/estadisticas_json_v3.html:1179
-#: templates/lactancia/estadisticas_json_v3.html:1239
-#: templates/lactancia/estadisticas_json_v3.html:1302
-msgid "Total"
-msgstr "Total"
 
 #: templates/lactancia/estadisticas_json_ES.html:1494
 #: templates/lactancia/estadisticas_json_ES.html:1514
@@ -2893,38 +3150,10 @@ msgid ""
 "perfil de usuario "
 msgstr "Below is the breakdown of visitors who have provided their profile"
 
-#: templates/lactancia/estadisticas_json_ES.html:1601
-msgid "Top 150 de Visitas por ciudades españolas "
-msgstr "Top 150 visits by Spanish cities"
-
-#: templates/lactancia/estadisticas_json_ES.html:1614
-#: templates/lactancia/estadisticas_json_ES.html:1634
-#: templates/lactancia/estadisticas_json_ES.html:1652
-#: templates/lactancia/estadisticas_json_ES.html:1671
-#: templates/lactancia/estadisticas_json_ES.html:1689
-#: templates/lactancia/estadisticas_json_v3.html:1308
-#: templates/lactancia/estadisticas_json_v3.html:1328
-#: templates/lactancia/estadisticas_json_v3.html:1346
-#: templates/lactancia/estadisticas_json_v3.html:1365
-#: templates/lactancia/estadisticas_json_v3.html:1383
-msgid "Mapa de visitas"
-msgstr "Visits map"
-
-#: templates/lactancia/estadisticas_json_ES.html:1617
-#: templates/lactancia/estadisticas_json_ES.html:1637
-#: templates/lactancia/estadisticas_json_ES.html:1655
-#: templates/lactancia/estadisticas_json_ES.html:1674
-#: templates/lactancia/estadisticas_json_ES.html:1692
-#: templates/lactancia/estadisticas_json_v3.html:1311
-#: templates/lactancia/estadisticas_json_v3.html:1331
-#: templates/lactancia/estadisticas_json_v3.html:1349
-#: templates/lactancia/estadisticas_json_v3.html:1368
-#: templates/lactancia/estadisticas_json_v3.html:1386
-msgid "Tabla de visitas"
-msgstr "Visits table"
-
 #: templates/lactancia/estadisticas_json_v3.html:1129
 #: templates/lactancia/estadisticas_json_v3.html:1146
+#: templates/lactancia/estadisticas_json_v4-b3.html:871
+#: templates/lactancia/estadisticas_json_v4-b3.html:877
 msgid "e-lactancia en cifras"
 msgstr "e-lactancia in numbers"
 
@@ -2934,14 +3163,17 @@ msgid "Estas son las cifras que maneja e-lactancia para salvar la"
 msgstr "Looking at the numbers e-lactancia manages to save "
 
 #: templates/lactancia/estadisticas_json_v3.html:1170
+#: templates/lactancia/estadisticas_json_v4-b3.html:894
 msgid "Consultas y Visitas"
 msgstr "Consultations and Visits"
 
 #: templates/lactancia/estadisticas_json_v3.html:1171
+#: templates/lactancia/estadisticas_json_v4-b3.html:895
 msgid "Productos más consultados"
 msgstr "Products with most consultations"
 
 #: templates/lactancia/estadisticas_json_v3.html:1203
+#: templates/lactancia/estadisticas_json_v4-b3.html:927
 msgid "Visitas por periodo de tiempo"
 msgstr "Visits by periods"
 
@@ -2959,6 +3191,7 @@ msgid "Más del 80%% de las visitas son anónimas"
 msgstr "More than 80%% of the visits are anonymous"
 
 #: templates/lactancia/estadisticas_json_v3.html:1295
+#: templates/lactancia/estadisticas_json_v4-b3.html:957
 msgid "Visitas por países"
 msgstr "Visits by country"
 
@@ -3015,10 +3248,12 @@ msgid "Recomiendan el uso de e-lactancia"
 msgstr "Recommenders of e-lactancia"
 
 #: templates/lactancia/limpiar_cache.html:6
+#: templates/lactancia/limpiar_cache_b3.html:5
 msgid "Limpieza de la Caché de e-lactancia"
 msgstr "Clean of the e-lactancia Cache"
 
 #: templates/lactancia/limpiar_cache.html:7
+#: templates/lactancia/limpiar_cache_b3.html:6
 msgid ""
 "La caché se acaba de limpiar. Puedes comprobarlo realizando una búsqueda de "
 "algún término que hayas introducido hace poco. Si todo ha ido bien, "
@@ -3028,10 +3263,12 @@ msgstr ""
 "added or edited. If everything is OK, you will find it in the search list."
 
 #: templates/lactancia/lista_negra.html:6
+#: templates/lactancia/lista_negra_b3.html:5
 msgid "Productos con alternativas a revisar"
 msgstr "Products with alternatives to check out"
 
 #: templates/lactancia/lista_negra.html:7
+#: templates/lactancia/lista_negra_b3.html:6
 msgid ""
 "A continuación se muestra un listado de todos los productos que ahora mismo "
 "tienen una o más alternativas con un nivel de riesgo igual o superior al del "
@@ -3041,6 +3278,7 @@ msgstr ""
 "risk level than the product itself is shown"
 
 #: templates/lactancia/lista_negra.html:15
+#: templates/lactancia/lista_negra_b3.html:15
 msgid ""
 "¡Enhorabuena! Todos los productos de nivel 0 tienen alternativas coherentes"
 msgstr "Congratulations! All level 0 products have coherent alternatives"
@@ -3049,20 +3287,27 @@ msgstr "Congratulations! All level 0 products have coherent alternatives"
 #: templates/lactancia/lista_negra.html:42
 #: templates/lactancia/lista_negra.html:62
 #: templates/lactancia/lista_negra.html:82
+#: templates/lactancia/lista_negra_b3.html:22
+#: templates/lactancia/lista_negra_b3.html:44
+#: templates/lactancia/lista_negra_b3.html:66
+#: templates/lactancia/lista_negra_b3.html:88
 msgid "Nivel "
 msgstr "Level "
 
 #: templates/lactancia/lista_negra.html:35
+#: templates/lactancia/lista_negra_b3.html:37
 msgid ""
 "¡Enhorabuena! Todos los productos de nivel 1 tienen alternativas coherentes"
 msgstr "Congratulations! All level 1 products have coherent alternatives"
 
 #: templates/lactancia/lista_negra.html:55
+#: templates/lactancia/lista_negra_b3.html:59
 msgid ""
 "¡Enhorabuena! Todos los productos de nivel 2 tienen alternativas coherentes"
 msgstr "Congratulations! All level 2 products have coherent alternatives"
 
 #: templates/lactancia/lista_negra.html:75
+#: templates/lactancia/lista_negra_b3.html:81
 msgid ""
 "¡Enhorabuena! Todos los productos de nivel 3 tienen alternativas coherentes"
 msgstr "Congratulations! All level 2 products have coherent alternatives"
@@ -3112,6 +3357,147 @@ msgstr "your comment about"
 msgid "cuantas veces quieras"
 msgstr "whenever you want"
 
+#: templates/lactancia/partial_donativos_cajas.html:6
+msgid "80€"
+msgstr "€80"
+
+#: templates/lactancia/partial_donativos_cajas.html:7
+msgid ""
+"Con 80€ podemos pagar un mes de alojamiento web para que e-lactancia siga "
+"funcionando sin interrupciones y dando servicio gratuito a 35.000 visitas "
+"diarias."
+msgstr ""
+"With €80 we can pay a month of web hosting for e-lactancia so that it can "
+"run without interruptions and giving free service to 35,000 daily visits."
+
+#: templates/lactancia/partial_donativos_cajas.html:21
+msgid "40€"
+msgstr "€40"
+
+#: templates/lactancia/partial_donativos_cajas.html:22
+msgid ""
+"Con 40€ podemos comprar uno de los 100 artículos científicos que necesitamos "
+"cada año para mantener actualizadas las 17.849 fichas de medicamentos."
+msgstr ""
+"With €40 we can buy one of the 100 scientific articles that we need every "
+"year to keep the 17,849 medical prescription records updated."
+
+#: templates/lactancia/partial_donativos_cajas.html:36
+msgid "20€"
+msgstr "€20"
+
+#: templates/lactancia/partial_donativos_cajas.html:37
+msgid ""
+"Con 20€ podemos pagar un tercio de la suscripción anual a Fitoterapia.net "
+"para mantener al día las 1.194 fichas de plantas medicinales."
+msgstr ""
+"With €20 we can pay a third of the annual subscription to Fitoterapia.net to "
+"keep up to date the 1,194 records on medicinal plants."
+
+#: templates/lactancia/partial_donativos_faq.html:8
+msgid "¿Puedo donar otra cantidad?"
+msgstr "Can I donate another amount?"
+
+#: templates/lactancia/partial_donativos_faq.html:14
+msgid ""
+"Por supuesto. Puedes donar mediante PayPal o tarjeta la cantidad que "
+"quieras* presionando el botón de abajo."
+msgstr ""
+"Of course, you can donate with PayPal or credit card any amount you want* by "
+"pressing the button below."
+
+#: templates/lactancia/partial_donativos_faq.html:19
+msgid "DONAR OTRA CANTIDAD"
+msgstr "DONATE OTHER AMOUNT"
+
+#: templates/lactancia/partial_donativos_faq.html:24
+msgid ""
+" PayPal nos cobra una comisión por cada donativo que recibimos.<br/>Si "
+"tienes pensado donar 5€ o menos, considera unirte a nuestro grupo <a "
+"href='https://www.teaming.net/e-lactancia'  target='_blank'>Teamer de e-"
+"lactancia</a> por 1€ al mes, donde tu aportación nos llegará íntegra."
+msgstr ""
+"PayPal charges us a commission for every donation we receive. <br/>If you "
+"plan to donate €5 or less, consider joining our group <ahref='https://www."
+"teaming.net/e-lactancia' target='_blank'>Teamer from e-lactancia</a> for €1 "
+"per month, where your contribution will arrive intact."
+
+#: templates/lactancia/partial_donativos_faq.html:33
+msgid "¿Puedo donar por transferencia bancaria?"
+msgstr "Can I donate by bank transfer?"
+
+#: templates/lactancia/partial_donativos_faq.html:38
+msgid "Claro que sí. Puedes hacernos llegar tu donativo a:"
+msgstr "Sure. You can send us your donation to:"
+
+#: templates/lactancia/partial_donativos_faq.html:51
+msgid "¿Puedo colaborar económicamente de otra forma?"
+msgstr "Can I contribute financially in another way?"
+
+#: templates/lactancia/partial_donativos_faq.html:56
+msgid "Hemos creado un grupo Teaming para recaudar fondos para e-lactancia."
+msgstr "We have created a Teaming group to raise funds for e-lactancia."
+
+#: templates/lactancia/partial_donativos_faq.html:58
+msgid ""
+"Puedes <a href='https://www.teaming.net/e-lactancia' target='_blank'>hacerte "
+"teamer y unirte al grupo</a> por un donativo de 1€ al mes."
+msgstr ""
+"You can <a href='https://www.teaming.net/e-lactancia' target='_blank'>become "
+"teamer and join the group</a> for a donation of €1 per month."
+
+#: templates/lactancia/partial_donativos_faq.html:66
+msgid "¿Qué más puedo hacer?"
+msgstr "What else can I do?"
+
+#: templates/lactancia/partial_donativos_faq.html:71
+msgid ""
+"Además de como donante, puedes colaborar con APILAM y e-lactancia de "
+"diferentes maneras:"
+msgstr ""
+"In addition to as a donor, you can collaborate with APILAM and e-lactancia "
+"in different ways:"
+
+#: templates/lactancia/partial_donativos_faq.html:75
+msgid "Comparte con tus familiares y amigos esta página en"
+msgstr "Share with your family and friends this page at"
+
+#: templates/lactancia/partial_donativos_faq.html:75
+msgid "o"
+msgstr "or"
+
+#: templates/lactancia/partial_donativos_faq.html:77
+msgid ""
+"Entra nuestra página de <a href='https://www.teaming.net/e-lactancia' "
+"target='_blank'>Teaming</a> y compártela en tus redes sociales."
+msgstr ""
+"Visit our page at <a href = 'https: //www.teaming.net/e-lactancia'target = "
+"'_ blank'>Teaming</a> and share it on your social networks."
+
+#: templates/lactancia/partial_donativos_faq.html:82
+msgid ""
+"Síguenos en redes sociales: <a href=\"https://www.facebook.com/APILAM."
+"Lactancia.Materna/\" target=\"_blank\">Facebook</a>, <a href=\"https://"
+"twitter.com/apilam_\" target=\"_blank\">Twitter</a>, <a href=\"https://"
+"instagram.com/apilam_breastfeeding_museum/\" target=\"_blank\">Instagram</a>"
+msgstr ""
+"Follow us on social networks: <a href=\"https://www.facebook.com/APILAM."
+"Lactancia.Materna/\" target=\"_blank\">Facebook</a>, <a href=\"https://"
+"twitter.com/apilam_\" target=\"_blank\">Twitter</a>, <a href=\"https://"
+"instagram.com/apilam_breastfeeding_museum/\" target=\"_blank\">Instagram</a>"
+
+#: templates/lactancia/partial_donativos_header.html:10
+msgid ""
+"Cientos de madres se ven obligadas a interrumpir sus lactancias pese a que "
+"pocas situaciones lo justifican."
+msgstr ""
+"Hundreds of mothers are forced to interrupt their lactations although few "
+"situations justify it."
+
+#: templates/lactancia/partial_donativos_header.html:12
+msgid "Las mamás y sus bebés te necesitan. Salva lactancias. Dona ahora."
+msgstr "Moms and their babies need you. Save lactations. Donate now."
+
 #: templates/lactancia/partial_footer.html:29
 msgid "PATROCINAN"
 msgstr "SPONSORS"
@@ -3132,25 +3518,28 @@ msgstr "ABOUT US"
 msgid "ESTADÍSTICAS"
 msgstr "STATS"
 
-#: templates/lactancia/partial_footer.html:60
-msgid "SÍGUENOS"
-msgstr "FOLLOW US"
-
-#: templates/lactancia/partial_footer.html:89
+#: templates/lactancia/partial_footer.html:110
 #: templates/lactancia/partial_newsletter_box.html:13
 #: templates/lactancia/partial_top_bar.html:32
 msgid "Suscríbete"
 msgstr "Subscribe"
 
-#: templates/lactancia/partial_footer.html:109
-#: templates/lactancia/partial_footer.html:116
+#: templates/lactancia/partial_footer.html:129
 msgid "Diseño: Baptiste Pons"
 msgstr "Design: Baptiste Pons"
 
-#: templates/lactancia/partial_footer.html:111
-#: templates/lactancia/partial_footer.html:118
+#: templates/lactancia/partial_footer.html:131
 msgid "Desarrollo & Copywriting: Javi Vicente"
 msgstr "Development & Copywriting: Javi Vicente"
+
+#: templates/lactancia/partial_footer_4_landing.html:24
+msgid "Pago seguro con PayPal"
+msgstr "Secure payment with PayPal"
+
+#: templates/lactancia/partial_footer_4_landing.html:44
+msgid ""
+"Los iconos de nuestros resultados han sido cedidos graciosamente por Flaticon"
+msgstr "Icons of our results have been graciously given by Flaticon"
 
 #: templates/lactancia/partial_modal_profile.html:6
 msgid "¿Cuál es tu perfil de usuario?"
@@ -3184,6 +3573,28 @@ msgstr "Newsletter"
 #: templates/lactancia/partial_newsletter_box.html:6
 msgid "Recibe información sobre lactancia y APILAM."
 msgstr "Get information about breastfeeding and APILAM"
+
+#: templates/lactancia/partial_pink_donation.html:14
+msgid ""
+"Tu aportación es fundamental para que este servicio siga siendo gratuito."
+msgstr "Your contribution is essential for this service to remain free."
+
+#: templates/lactancia/partial_pink_donation.html:14
+msgid ""
+"Necesitamos la generosidad de personas como tú que creen en las bondades de "
+"la lactancia materna."
+msgstr ""
+"We need the generosity of people like you who believe in the benefits of "
+"breastfeeding."
+
+#: templates/lactancia/partial_pink_donation.html:14
+msgid "Gracias por ayudar a seguir salvando lactancias."
+msgstr "Thank you for helping rescuing breastfeeding."
+
+# mark to review!
+#: templates/lactancia/partial_pink_donation.html:15
+msgid "José María Paricio, creador de e-lactancia."
+msgstr "José María Paricio, founder of e-lactancia."
 
 #: templates/lactancia/partial_ratings.html:16
 msgid "Tu opinión es muy importante"
@@ -3304,6 +3715,8 @@ msgstr "No. of users"
 
 #: templates/lactancia/patrocinadores.html:3
 #: templates/lactancia/patrocinadores.html:12
+#: templates/lactancia/patrocinadores_b3.html:3
+#: templates/lactancia/patrocinadores_b3.html:9
 msgid "Entidades que patrocinan e-lactancia"
 msgstr "Institutions sponsoring e-lactancia"
 
@@ -3805,31 +4218,31 @@ msgstr "List of elements from "
 msgid "por nivel de riesgo según e-lactancia.org"
 msgstr "by level of risk according e-lactancia.org"
 
-#: views.py:660
+#: views.py:611
 msgid "['muy mala', 'mala', 'regular', 'buena', 'muy buena']"
 msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
 
-#: views.py:1975 views.py:1982 views.py:2006 views.py:2015 views.py:2039
-#: views.py:2047
+#: views.py:1976 views.py:1983 views.py:2007 views.py:2016 views.py:2040
+#: views.py:2048
 msgid ""
 "Asociación para la Promoción científica y cultural de la Lactancia Materna"
 msgstr ""
 "Association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2062
+#: views.py:2063
 msgid "En e-lactancia.org."
 msgstr "In e-lactancia.org"
 
-#: views.py:2062 views.py:2064
+#: views.py:2063 views.py:2065
 msgid "Recuperado"
 msgstr "Retrieved"
 
-#: views.py:2062 views.py:2064
+#: views.py:2063 views.py:2065
 msgid "a partir de"
 msgstr "from"
 
-#: views.py:2064 views.py:2093 views.py:2095
+#: views.py:2065 views.py:2094 views.py:2096
 msgid ""
 "APILAM (Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna)"
@@ -3837,11 +4250,11 @@ msgstr ""
 "APILAM (Association for promotion and cultural and scientific research of "
 "breastfeeding)"
 
-#: views.py:2074
+#: views.py:2075
 msgid "En"
 msgstr "In"
 
-#: views.py:2074 views.py:2082
+#: views.py:2075 views.py:2083
 msgid ""
 "APILAM: Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna"
@@ -3849,25 +4262,41 @@ msgstr ""
 "APILAM: association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2074 views.py:2082
+#: views.py:2075 views.py:2083
 msgid "actualizado"
 msgstr "updated"
 
-#: views.py:2074 views.py:2082
+#: views.py:2075 views.py:2083
 msgid "acceso"
 msgstr "accessed"
 
-#: views.py:2074 views.py:2082
+#: views.py:2075 views.py:2083
 msgid "Disponible en"
 msgstr "Available from"
 
-#: views.py:2093 views.py:2095
+#: views.py:2094 views.py:2096
 msgid "accedido el"
 msgstr "accessed"
 
-#: views.py:2185
+#: views.py:2186
 msgid "Descargar"
 msgstr "Download"
+
+#~ msgid ""
+#~ "Comparte con tus familiares y amigos esta página en <a href='https://www."
+#~ "facebook.com/sharer.php?u=http%%3A%%2F%%2Fe-lactancia.org%%2Fdonativos%"
+#~ "%2F' target='_blank'>Facebook</a> o <a href='https://twitter.com/intent/"
+#~ "tweet?url=http%%3A%%2F%%2Fe-lactancia.org%%2Fdonativos%"
+#~ "%2F&text=DONA&via=APILAM_' target='_blank'>Twitter</a>."
+#~ msgstr ""
+#~ "Share this page with your family and friends at <a href='https://www."
+#~ "facebook.com/sharer.php?u=http%%3A%%2F%%2Fe-lactancia.org%%2Fdonativos%"
+#~ "%2F' target='_blank'>Facebook</a> or <a href='https://twitter.com/intent/"
+#~ "tweet?url=http%%3A%%2F%%2Fe-lactancia.org%%2Fdonativos%"
+#~ "%2F&text=DONA&via=APILAM_' target='_blank'>Twitter</a>."
+
+#~ msgid "SÍGUENOS"
+#~ msgstr "FOLLOW US"
 
 #~ msgid ""
 #~ "Espacio para opinión o sugerencia. Para consultas: elactancia.org@gmail."

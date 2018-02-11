@@ -48,6 +48,7 @@
     
     {% include 'lactancia/partial_top_bar.html' %}
     
+    {% endblock %} {# pre_mainpage #}
     
     <div class="modal fade modal-subscribe" id="subscribe">
         <div class="modal-dialog">
@@ -65,7 +66,7 @@
             </div> <!-- /.modal-content -->
         </div>   <!-- /.modal-dialog -->
     </div> <!-- /.modal -->
-    {% endblock %} {# pre_mainpage #}
+    
     
     
     
@@ -109,6 +110,8 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    {% block top-typeahead %}
     <script type="text/javascript" src="{% get_static_prefix %}js/typeahead.bundle.min.js"></script>    
     <script type="text/javascript">var switchTo5x=true;</script>
     
@@ -393,26 +396,16 @@
             $('#search_input').trigger('focus');
             });
     </script>
+    {% endblock %} {# block top-typeahead #}
     
-    {% comment %}
-    <script>
-        $("#btn_alert_risk").popover({
-            html : true, 
-            placement:'bottom',
-            title: '{% trans "¡Advertencia!" %}' +
-                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_alert_risk&quot;).popover(&quot;hide&quot;);">&times;</button>', 
-            content: '{% trans "Se ha modificado recientemente el nivel de riesgo de al menos uno de los términos." %}' + '<br/><br/> <a href="{% url "lactancia:alerta_riesgos" %}">{% trans "Más información" %}</a>'
-        });
-    </script>
-    {% endcomment %}
-	{% endblock %}
+	{% endblock %} {# block JS #}
     <script type="text/javascript" id="cookiebanner"
     src="{% get_static_prefix %}js/cookiebanner.min.js"
     data-linkmsg="{% trans 'política de privacidad' %}"
     data-message="{% trans 'Usamos cookies para mejorar tu experiencia. Al continuar navegando en nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre nuestra ' %}"
     data-moreinfo="{% url 'lactancia:privacidad' %}">
     </script>
-    {% block typeahead %}
+    {% block landing-typeahead %}
     
     {% endblock %}
 </body>

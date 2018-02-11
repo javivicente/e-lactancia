@@ -1,0 +1,99 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% load static %} 
+{% load humanize %}
+{% block title %} {% trans "Dona para salvar lactancias" %}{% endblock %}
+
+{########## QUITAMOS LA BARRA SUPERIOR PARA TRANSFORMAR LA PÁGINA EN UNA LANDING ##########}
+{% block pre_mainpage %}
+{% endblock %}
+
+{% block mainpage %}
+
+{######################## CABECERA DE DONATIVO ###############################}
+
+</div> {# CERRAMOS EL DIV DEL CONTAINER DE LA PÁGINA PRINCIPAL  #}
+{# esto permite que la cabecera de donativo ocupe todo el ancho de la página #}
+
+{% include 'lactancia/partial_donativos_header.html' %}
+
+
+<div class="container"> {# VOLVEMOS a abrir un container de ancho normal para pintar el resto de la página #}
+
+{######################### FIN CABECERA DE DONATIVO ############################}
+
+{% include 'lactancia/partial_donativos_cajas.html' %}
+
+<p class="lead blue-text">{% trans "Tú puedes hacer que e-lactancia siga siendo gratuita para todos." %}</p>
+
+{% include 'lactancia/partial_icons.html' %}
+
+    
+    <div class="container equal">
+        <h2 class="letras-grandotas">{% trans "En 2017 conseguimos grandes resultados.<br/>Gracias a personas como tú." %}</h2>
+        <div class="row">
+            <div class="col-xs-10 col-sm-4 equal" >
+                <div class="col-xs-12 equal" style="margin-bottom:20px;">
+                
+                     <svg class="icon">
+                          <use xlink:href="#paper" />
+                     </svg>
+                
+                </div>
+                <div class="col-xs-12 equal" style="margin-bottom:50px;">
+                    <p class="lead">{% trans "Añadimos y revisamos 2.417 fichas de medicamentos" %}</p>
+                </div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-4 equal" >
+                <div class="col-xs-12 equal" style="margin-bottom:20px;">
+                
+                     <svg class="icon">
+                          <use xlink:href="#travel" />
+                     </svg>
+                
+                </div>
+                <div class="col-xs-12 equal" style="margin-bottom:50px;">
+                    <p class="lead">{% trans "Recibimos 16.580.344 consultas online de todo el mundo" %}</p>
+                </div>
+            </div>
+            
+            
+            <div class="col-xs-12 col-sm-4 equal" >
+                <div class="col-xs-10 equal" style="margin-bottom:20px;">
+                
+                     <svg class="icon">
+                          <use xlink:href="#interface" />
+                     </svg>
+                
+                </div>
+                <div class="col-xs-12 equal" style="margin-bottom:50px;">
+                    <p class="lead">{% trans "Atendimos 1.931 consultas por correo electrónico" %}</p>
+                </div>
+            </div>
+         </div>   
+        
+    </div>
+
+
+
+<div class="container">
+    <div class="row top-bottom-margins ">
+        <h2 class="letras-grandotas">{% trans "Preguntas frecuentes" %}</h2>
+    
+        {% include 'lactancia/partial_donativos_faq.html' %}
+    
+    </div>
+</div>
+
+{% endblock %}
+
+{% block post_mainpage %}
+    {% include 'lactancia/partial_footer_4_landing.html' %}
+    
+    {% endblock %}
+
+{######### EVITAMOS CARGAR LOS TERMINOS DE LA BARRA DE BÚSQUEDA #########}
+{######### PORQUE TARDA MUCHO Y NO SE MUESTRA EN ESTA LANDING   #########}
+{% block top-typeahead %}
+{% endblock%}

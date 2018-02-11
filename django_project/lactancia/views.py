@@ -1384,7 +1384,7 @@ def donativos(request):
     context = initial_context
     textos = Docs.objects.filter(type='d').order_by('order')
     context.update({'meta': set_meta(request), 'textos':textos,})
-    return render(request, 'lactancia/donativos.html', context)
+    return render(request, 'lactancia/donativos-b3.html', context)
 
 
 def donativo_exito(request):

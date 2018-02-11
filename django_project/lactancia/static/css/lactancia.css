@@ -501,6 +501,8 @@ fieldset[disabled] .btn-donate.active {
     color: #4db1d1;
 }
 
+
+
 .pink {    
     margin: 40px 0;
     padding: 20px;
@@ -530,6 +532,77 @@ blockquote{
     
 border-left: 0;
 }
+
+.header-blue {    
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 120px;
+    background-color: #4db2d0;
+    color: #fff;
+}
+
+.donativos-box {
+    padding-top: 5px;
+    margin-top: 0px;
+    background-color: #fff;
+    border: 2px solid #4db2d0;
+}
+
+.donativo-cantidad{    
+    font-size: 60px;
+    
+}
+
+.primera-caja{
+    margin-top: -80px;
+    margin-left: 0;
+}
+
+.mensaje-donativo {
+    padding-top: 10px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.letras-grandotas{
+    margin: 80px 0;
+    font-size: 44px;
+    font-weight: 300;
+}
+
+.blue-text {
+    color: #4db2d0;
+}
+
+.faq-panel-header {
+    background-color: #fff;
+    border: 2px solid #4db2d0 !important;
+    text-decoration: none !important;
+}
+
+.faq-panel-header a:hover{
+    text-decoration: none !important;
+    border-radius: 0px !important; 
+}
+
+.faq-panel-body{
+    margin-top: -2px;
+    margin-bottom:-5px;
+    
+}
+
+
+
+.panel-group .panel-squared+.panel {
+    margin-top: -3px !important;
+}
+
+.panel-group .faq-panel-heading+.panel-collapse>.panel-body {
+    border-top: none !important; */
+}
+
+
 
 .invisible {
     display: none;
@@ -1308,6 +1381,20 @@ hidden-xs{
             width: 300px;
           }
 
+        .mensaje-donativo {
+        padding-top: 10px;
+        font-size: 42px;
+        font-weight: 300;
+        }
+        
+        .primera-caja{
+            margin-top: 0;
+            margin-left: 0px;
+        }
+        
+        .donativos-box {
+        margin-top: -80px;
+        }
         
 }
 
@@ -1358,8 +1445,21 @@ hidden-xs{
         margin-left: 32px;
       }
       
-        
-
+      .mensaje-donativo {
+    padding-top: 10px;
+    font-size: 42px;
+    font-weight: 300;
+    }
+    
+    .primera-caja{
+    margin-top: 0;
+    margin-left: 15px;
+    }
+    
+    .donativos-box {
+    margin-top: -80px;
+    }
+    
 }
 
 /* Large Devices, .visible-lg-* */
@@ -1404,4 +1504,18 @@ hidden-xs{
     }
     
     
+    .mensaje-donativo {
+    padding-top: 10px;
+    font-size: 42px;
+    font-weight: 300;
+    }
+    
+    .primera-caja{
+    margin-top: 0;
+    margin-left: 15px;
+    }
+
+    .donativos-box {
+    margin-top: -80px;
+    }
 }

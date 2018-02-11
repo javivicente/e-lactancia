@@ -1,0 +1,52 @@
+{% load i18n %}
+
+<div class="row equal">
+    <div class="col-xs-12 col-sm-4 col-md-3 no-lateral-padding equal primera-caja" >
+        <div class="grey-box squared donativos-box">
+            <p class="donativo-cantidad">{% trans "80€" %}</p>
+            <p style="margin-bottom: 20px;">{% blocktrans with percent="%" %}Con 80€ podemos pagar un mes de alojamiento web para que e-lactancia siga funcionando sin interrupciones y dando servicio gratuito a 35.000 visitas diarias.{% endblocktrans %}</p>
+        
+          
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}HQQR8S36K9E5E{% else %}3X2D22GYSEWKC{% endif %}">
+                <input class="btn round btn-lg btn-donate" type="submit" value="{% trans 'DONA AHORA' %}"/>
+            </form>
+            
+            <img src="{{STATIC_URL}}img/PayPal.png" style="margin-top: 15px; max-height:80px;" alt="Secure Payment PayPal"/> 
+        </div>  
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3 no-lateral-padding equal">
+        <div class="grey-box squared donativos-box">
+            <p class="donativo-cantidad">{% trans "40€" %}</p>
+            <p style="margin-bottom: 20px;">{% blocktrans with percent="%" %}Con 40€ podemos comprar uno de los 100 artículos científicos que necesitamos cada año para mantener actualizadas las 17.849 fichas de medicamentos.{% endblocktrans %}</p>
+            
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}3UNJ5EAM6DSG4{% else %}QWJ4QRZ5TBBEC{% endif %}">
+                <input class="btn round btn-lg btn-donate" type="submit" value="{% trans 'DONA AHORA' %}"/>
+            </form>
+            
+            <img src="{{STATIC_URL}}img/PayPal.png" style="margin-top: 15px; max-height:80px;" alt="Secure Payment PayPal"/> 
+        </div>
+          
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3 no-lateral-padding equal">
+        <div class="grey-box squared  donativos-box">
+            <p class="donativo-cantidad">{% trans "20€" %}</p>
+            <p style="margin-bottom: 20px;">{% blocktrans with percent="%" %}Con 20€ podemos pagar un tercio de la suscripción anual a Fitoterapia.net para mantener al día las 1.194 fichas de plantas medicinales.{% endblocktrans %}</p>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}FTNAEJJV38QC2{% else %}GDZARBS52X4JE{% endif %}">
+                <input class="btn round btn-lg btn-donate" type="submit" value="{% trans 'DONA AHORA' %}"/>
+            </form>
+            
+            <img src="{{STATIC_URL}}img/PayPal.png" style="margin-top: 15px; max-height:80px;" alt="Secure Payment PayPal"/> 
+        </div>
+          
+    </div>
+        
+</div>
+
+
+    
