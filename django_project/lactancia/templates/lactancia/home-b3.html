@@ -1,0 +1,184 @@
+{% extends "lactancia/base_bootstrap3.html" %} 
+{% load i18n %}
+{% load static %} 
+{% load humanize %}
+{% block title %} {% trans "e-lactancia: ¿Es compatible con la lactancia?" %}{% endblock %}
+
+{% block style %}
+<meta name="alexaVerifyID" content="i6GOufykI4G0GqzPWU9HIEn3U4U"/>
+
+{% endblock %}
+
+
+{########## QUITAMOS LA BARRA SUPERIOR PARA TRANSFORMAR LA PÁGINA EN UNA LANDING ##########}
+{% block pre_mainpage %}
+{% include 'lactancia/partial_top_bar_home.html' %}
+{% endblock %}
+
+{% block mainpage %}
+
+{######################## ABOVE THE FOLD HOME ###############################}
+
+</div> {# CERRAMOS EL DIV DEL CONTAINER DE LA PÁGINA PRINCIPAL  #}
+{# esto permite que la cabecera de donativo ocupe todo el ancho de la página #}
+
+{% include 'lactancia/partial_home_header.html' %}
+
+
+<div class="container"> {# VOLVEMOS a abrir un container de ancho normal para pintar el resto de la página #}
+
+{######################### FIN ABOVE THE FOLD HOME ############################}
+
+{% include 'lactancia/partial_icons.html' %}
+
+    
+    <div class="row equal" style="margin-top: 50px;">
+    {% for cajita in cajitas|slice:":3" %}
+        <div class="col-xs-11 col-sm-10 col-md-4" >
+            <div class="col-xs-4 col-sm-12">
+                {% if 'check' in cajita.icono.fontawesome_nombre %}
+                    <svg class="icon-el icon" style="margin-bottom:10px;">
+                        <use xlink:href="#shapes" />
+                    </svg>
+                {% elif 'leaf' in cajita.icono.fontawesome_nombre %}
+                    <svg class="icon-el icon" style="margin-bottom:10px;">
+                        <use xlink:href="#nature" />
+                    </svg>
+                {% else %}
+                    <svg class="icon-el icon" style="margin-bottom:10px;">
+                        <use xlink:href="#medical" />
+                    </svg>
+                {% endif %}
+             </div>
+             <div class="col-xs-12">
+                <h3>{{cajita.titulo}}</h3>
+                <p style="margin-bottom:50px;">{{cajita.texto|safe}}</p>   
+            </div>
+       </div>
+   {% endfor %}     
+   </div>     
+
+
+{######################## FAJA DE DONATIVO ###############################}
+
+</div> {# CERRAMOS EL DIV DEL CONTAINER DE LA PÁGINA PRINCIPAL  #}
+{# esto permite que la faja de donativo ocupe todo el ancho de la página #}
+{% include 'lactancia/partial_pink_donation.html' %}
+
+<div class="container"> {# VOLVEMOS a abrir un container de ancho normal para pintar el resto de la página #}
+
+{######################### FIN FAJA DE DONATIVO ############################}
+
+{% endblock %} {# mainpage #}
+
+{% block comments-citation %}
+
+<div class="container-fluid blue">
+    <div class="container">
+        
+         <h3 class="risk-header">{% trans "Recomendamos" %}</h3>
+         <div class="row equal" style="margin-bottom:80px;">
+            {% for cajita in cajitas|slice:"3:" %}        
+                <div class="{{span_recomendados}} equal">
+                    <div class="white-box">
+                        <p><span><strong>{{cajita.titulo}}</strong>.</span>
+                        {{cajita.texto|safe}}</p>
+                        {% if cajita.link %}
+                            <p><a href="{{cajita.link}}" target="_blank">{{cajita.texto_link}}</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>      
+
+  
+        <h3 class="risk-header">{% trans "Patrocinan e-lactancia" %}</h3>    
+        <div class="row equal" style="margin-bottom:80px;">    
+            <div class="col-xs-12 col-sm-12 col-md-8 equal">
+                <div class="equal">
+                {% for pat in patrocinadores %}
+                    <div class="{{span_sponsors}} equal">
+                        <div class="white-box">
+                            <div class="aval" data-content="{{pat.entidad}}" rel="popover" data-placement="bottom" data-trigger="hover">
+                                <a href="{% url 'lactancia:patrocinadores' %}#{{pat.id}}" target="_blank"><img class="icon-el" src="{{pat.logo.url}}"></a>
+                            </div>
+                           
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 equal">
+                <div class="dashed-blue-box equal">
+                    <p class="titular-blue-box">{% trans "¿Quieres patrocinar e-lactancia?" %}</p>
+                    <p class="lead">{% trans "Escríbenos a" %} <a href="maito:apilam.es@gmail.com">apilam.es@gmail.com</a></p>
+                </div>
+            </div>
+        </div>      
+       
+        
+        <h3 class="risk-header">{% trans "Citan y recomiendan el uso de e-lactancia" %}</h3>    
+        <div class="row equal" style="margin-bottom:80px;">    
+            <div class="col-xs-12 col-sm-12 col-md-8 equal">
+                <ul class="list-unstyled list-inline">
+                    {% for aval in avales %}
+                    <li>
+                        <div class="white-box">
+                            <a href="{% url 'lactancia:avales' %}#{{aval.id}}" target="_blank">{{aval.entidad}}{% if aval.pais %}<br/>({{aval.pais.nombre}}){% endif %}</a>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+                
+                {% comment %}
+                <div class="equal">
+                {% for aval in avales %}
+                    <div class="{{span_avales}} equal">
+                        <div class="white-box">
+                            <a href="{% url 'lactancia:avales' %}#{{aval.id}}" target="_blank">{{aval.entidad}}{% if aval.pais %}<br/>({{aval.pais.nombre}}){% endif %}</a>
+                               
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+                {% endcomment %}
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 equal">
+                <div class="dashed-blue-box equal">
+                    <p class="titular-blue-box">{% trans "¿Quieres avalar el uso de e-lactancia?" %}</p>
+                    <p class="lead">{% trans "Escríbenos a" %} <a href="maito:apilam.es@gmail.com">apilam.es@gmail.com</a></p>
+                </div>
+            </div>
+        </div>      
+       
+        
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row top-bottom-margins">
+        <h2 class="text-center blue-text titular-blue-box">{% trans "e-lactancia es un recurso recomendado por la" %}</h2>
+        <div class="col-xs-12">
+            <img src="{{STATIC_URL}}img/abmlogo.png" class="logo-big" alt="Academy of Breastfeeding Medicine logo"/> 
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+    
+            
+
+{% block js %}
+{{ block.super }}
+    <script>
+    $('.aval').popover({
+    placement: 'bottom',
+    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h2 class="popover-title"></h2><div class="popover-content"></div></div>'
+    });
+    </script>
+{% endblock %}

@@ -113,6 +113,8 @@
                 </div>
             </div>
             
+            
+            
             {#  bloque políticas#}
             <div class="row">
                 <div class="col-xs-12 footer_politicas">
@@ -131,6 +133,17 @@
                         <li><small><a class="white-text" href="https://aprendecopy.com" target="_blank">{% trans 'Desarrollo & Copywriting: Javi Vicente' %}</a></small></li>
                      </ul>
                 </div>
+                {% block footer-icons-home %}
+                {% if cajitas %} {# estamos en la home y hay que indicar el uso de iconos de Flaticon #}
+                <div class="row">
+                 <div class="col-xs-12">
+                    <ul class="list-unstyled list-inline" >
+                        <li><small>{% trans "Los iconos del corazón, la hoja y la cruz médica han sido cedidos graciosamente por Flaticon" %}</small></li>
+                     </ul>
+                 </div>
+                </div>
+            {% endif %}
+            {% endblock %}
             </div>
           
           </div>

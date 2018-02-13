@@ -1,0 +1,38 @@
+{% load i18n %}
+{% load humanize %}
+
+<div class="container-fluid header-home">
+       <div class="col-md-4 hidden-xs equal">
+       </div>
+       <div class="col-md-8 col-sm-12 col-xs-12 header-blue-transparent">
+          
+            <div class="col-xs-11 col-sm-10 col-md-9">
+                <p class="mensaje-home">
+                {% trans "¿Es compatible con la lactancia?" %}
+                </p>
+            </div> 
+            <div class="col-xs-10 col-sm-10 col-md-9">
+                <p class="lead lead-home">{% trans 'Consulta la compatibilidad de la lactancia materna con' %} {{N|intcomma}} {% trans 'términos' %}</p>
+                
+                <form class="form-search" id="search_form" action="{% block search_bar_action %}{% url 'lactancia:buscar' %}{% endblock %}">
+                    <input class="typeahead typeahead-home" placeholder="{% trans 'Escribe tu búsqueda' %}" type="text" id="search_input" name="q" style="display:inline;"/>
+                </form>
+                    <input type="hidden" id="term-type" name="term-type" value="">
+                    <input type="hidden" id="term-id" name="term-id" value="">
+            </div>    
+            <div class="col-xs-11 col-sm-10" style="margin-top:30px;">    
+                <p class="sublead"> {% trans 'Algunos ejemplos: ' %} 
+                <a class="link-contrast with-underline" href="{% url 'lactancia:buscar' %}?term_id=816&term_type=producto">{% trans 'Ibuprofeno' %}</a>,
+                <a class="link-contrast with-underline" href="{% url 'lactancia:buscar' %}?term_id=958&term_type=marca">{% trans 'Couldina' %}</a>,
+                <a class="link-contrast with-underline" href="{% url 'lactancia:buscar' %}?term_id=544&term_type=sinonimo">{% trans 'Bayas de Goji' %}</a>,
+                <a class="link-contrast with-underline" href="{% url 'lactancia:buscar' %}?term_id=207&term_type=grupo">{% trans 'Fitoterapia' %}</a>.</p>
+                <p class="sublead">{% trans 'Última actualización' %}: {{last_update|date:"DATETIME_FORMAT"}} (CET)</p>
+            </div>
+          
+       </div>
+    
+</div> 
+
+
+
+

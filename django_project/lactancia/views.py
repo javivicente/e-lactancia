@@ -239,16 +239,44 @@ def landing(request):
         cache.set('patrocinadores', patrocinadores)
     patrocinadores = cache.get('patrocinadores')
     
+    span_recomendados = 'col-xs-12'
+    num_recomendaciones = len(cajitas) - 3
+    if num_recomendaciones == 2:
+        span_recomendados = 'col-xs-12 col-sm-6 col-md-6'
+    if num_recomendaciones > 2:
+        span_recomendados = 'col-xs-12 col-sm-4 col-md-4'
+    
+    span_sponsors = 'col-xs-12'
+    num_sponsors = len(patrocinadores)
+    if num_sponsors == 2:
+        span_sponsors = 'col-xs-12 col-sm-6'
+    if num_sponsors == 3:
+        span_sponsors = 'col-xs-12 col-sm-4'
+    if num_sponsors == 4:
+        span_sponsors = 'col-xs-12 col-sm-3'
+    if num_sponsors == 5:
+        span_sponsors = 'col-xs-12 col-sm-4'
+    if num_sponsors == 6:
+        span_sponsors = 'col-xs-12 col-sm-4'
+    if num_sponsors >= 7:
+        span_sponsors = 'col-xs-12 col-sm-3'
+    
+    span_avales= 'col-xs-6 col-sm-4'
+    
     context = {
                 'last_update': last_update,
                 'cajitas': cajitas,
+                'span_recomendados': span_recomendados,
+                'span_sponsors': span_sponsors,
+                'span_sponsors': span_sponsors,
+                'span_avales': span_avales,
                 'avales': avales,
                 'patrocinadores': patrocinadores,
                 'meta': set_meta(request),
                 }
                 
     context.update(initial_context)    
-    return render(request, 'lactancia/landing.html', context)
+    return render(request, 'lactancia/home-b3.html', context)
     
     
     
