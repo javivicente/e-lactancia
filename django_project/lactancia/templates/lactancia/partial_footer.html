@@ -117,6 +117,15 @@
             
             {#  bloque políticas#}
             <div class="row">
+                {% comment %}
+                <div class="row">
+                 <div class="col-xs-12">
+                    <ul class="list-unstyled list-inline" >
+                        <li><small>{% trans "Busque y lea con detenimiento la información disponible en el sitio sobre su consulta. Si todavía tiene dudas, escríbanos a" %} <a class="white-text" href="mailto:apilam.es@gmail.com" >apilam.es@gmail.com</a></small></li>
+                     </ul>
+                 </div>
+                </div>
+                {% endcomment %}
                 <div class="col-xs-12 footer_politicas">
                     <ul class="list-unstyled list-inline" >
                       <li><small><a class="white-text" href="{% url 'lactancia:aviso_legal' %}" rel="nofollow">{% trans 'Aviso legal' %}</a></small></li>
