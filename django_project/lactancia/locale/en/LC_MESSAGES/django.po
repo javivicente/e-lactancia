@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-14 11:59+0100\n"
+"POT-Creation-Date: 2018-02-14 15:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2557,8 +2557,10 @@ msgid "En 2017 conseguimos grandes resultados.<br/>Gracias a personas como tú."
 msgstr "In 2017 we achieved great results.<br/>Thanks to people like you."
 
 #: templates/lactancia/donativos-b3.html:44
-msgid "Añadimos y revisamos 2.417 fichas de medicamentos"
-msgstr "We add and reviewed 2,417 medication records"
+msgid ""
+"Añadimos 61 fichas de medicamentos, revisamos 169 e incorporamos 5.230 marcas"
+msgstr ""
+"We added 61 medication terms, reviewed 169 and incorporated 5,230 brands"
 
 #: templates/lactancia/donativos-b3.html:57
 msgid "Recibimos 16.580.344 consultas online de todo el mundo"
@@ -4353,6 +4355,9 @@ msgstr "accessed"
 #: views.py:2226
 msgid "Descargar"
 msgstr "Download"
+
+#~ msgid "Añadimos y revisamos 2.417 fichas de medicamentos"
+#~ msgstr "We add and reviewed 2,417 medication records"
 
 #~ msgid ""
 #~ "Comparte con tus familiares y amigos esta página en <a href='https://www."
