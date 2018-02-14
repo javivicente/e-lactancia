@@ -202,13 +202,13 @@ def set_meta(request,producto=None,grupo=None,marca=None,otra_escritura=None,ali
         title= grupo.nombre + ': ' + _(u'Niveles de riesgo para la lactancia según e-lactancia.org')
         description = _(u'Listado de la familia') + ' ' + grupo.nombre + ' ' + _(u'por nivel de riesgo según e-lactancia.org')
     
-    
+    current_lang = get_language()
     meta = Meta(
         title=title,
         description= description,
-        image=static('img/e-lactancia.jpg'),
+        image= static('img/RRSS-elactancia.jpg') if current_lang == 'es'  else static('img/RRSS-elactancia_EN.jpg'),
         url = request.build_absolute_uri(),
-        locale = get_language(),
+        locale = current_lang,
     )
     
     return meta
@@ -1411,7 +1411,19 @@ def aviso_legal(request):
 def donativos(request):
     context = initial_context
     textos = Docs.objects.filter(type='d').order_by('order')
-    context.update({'meta': set_meta(request), 'textos':textos,})
+    title =_(u'Tú puedes salvar lactancias')
+    description = _(u'Cientos de madres se ven obligadas a interrumpir sus lactancia aunque pocas situaciones lo justifica. Las mamás y sus bebés te necesitan. Salva lactancias. Dona ahora.')
+    current_lang = get_language()
+    meta = Meta(
+        title=title,
+        description= description,
+        image= static('img/RRSS-donativo-elactancia.jpg') if current_lang == 'es'  else static('img/RRSS-donativo-elactancia_EN.jpg'),
+        url = request.build_absolute_uri(),
+        locale = current_lang,
+    )
+    
+    
+    context.update({'meta': meta, 'textos':textos,})
     return render(request, 'lactancia/donativos-b3.html', context)
 
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-12 19:12+0100\n"
+"POT-Creation-Date: 2018-02-14 11:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1739,18 +1739,18 @@ msgstr ""
 "Creative Commons Internacional License</a>"
 
 #: templates/lactancia/base.html:216
-#: templates/lactancia/partial_footer.html:122
+#: templates/lactancia/partial_footer.html:132
 #: templates/lactancia/partial_footer_4_landing.html:34
 msgid "Aviso legal"
 msgstr "Legal notice"
 
 #: templates/lactancia/base.html:217
-#: templates/lactancia/partial_footer.html:124
+#: templates/lactancia/partial_footer.html:134
 msgid "Política de privacidad"
 msgstr "Privacy Policy"
 
 #: templates/lactancia/base.html:218
-#: templates/lactancia/partial_footer.html:126
+#: templates/lactancia/partial_footer.html:136
 msgid "Política de cookies"
 msgstr "Cookies Policy"
 
@@ -3200,31 +3200,31 @@ msgstr "Visits by country"
 msgid "e-lactancia: ¿Es compatible con la lactancia?"
 msgstr "e-lactancia. Is this compatible with breastfeeding?"
 
-#: templates/lactancia/home-b3.html:86
+#: templates/lactancia/home-b3.html:79
 msgid "Recomendamos"
 msgstr "We recommend"
 
-#: templates/lactancia/home-b3.html:102 templates/lactancia/landing.html:117
+#: templates/lactancia/home-b3.html:95 templates/lactancia/landing.html:117
 msgid "Patrocinan e-lactancia"
 msgstr "Sponsors of e-lactancia"
 
-#: templates/lactancia/home-b3.html:120
+#: templates/lactancia/home-b3.html:113
 msgid "¿Quieres patrocinar e-lactancia?"
 msgstr "Do you want to sponsor e-lactancia?"
 
-#: templates/lactancia/home-b3.html:121 templates/lactancia/home-b3.html:157
+#: templates/lactancia/home-b3.html:114 templates/lactancia/home-b3.html:150
 msgid "Escríbenos a"
 msgstr "Write us at"
 
-#: templates/lactancia/home-b3.html:127
+#: templates/lactancia/home-b3.html:120
 msgid "Citan y recomiendan el uso de e-lactancia"
 msgstr "They quote and recommend the use of e-lactancia"
 
-#: templates/lactancia/home-b3.html:156
+#: templates/lactancia/home-b3.html:149
 msgid "¿Quieres avalar el uso de e-lactancia?"
 msgstr "Do you want to endorse the use of e-lactancia?"
 
-#: templates/lactancia/home-b3.html:169
+#: templates/lactancia/home-b3.html:162
 msgid "e-lactancia es un recurso recomendado por la"
 msgstr "e-lactancia is a resource recommended by"
 
@@ -3561,19 +3561,21 @@ msgstr "STATS"
 msgid "Suscríbete"
 msgstr "Subscribe"
 
-#: templates/lactancia/partial_footer.html:131
+#: templates/lactancia/partial_footer.html:141
 msgid "Diseño: Baptiste Pons"
 msgstr "Design: Baptiste Pons"
 
-#: templates/lactancia/partial_footer.html:133
+#: templates/lactancia/partial_footer.html:143
 msgid "Desarrollo & Copywriting: Javi Vicente"
 msgstr "Development & Copywriting: Javi Vicente"
 
-#: templates/lactancia/partial_footer.html:141
+#: templates/lactancia/partial_footer.html:151
 msgid ""
 "Los iconos del corazón, la hoja y la cruz médica han sido cedidos "
 "graciosamente por Flaticon"
-msgstr "Icons of heart, green leaf and medical cross have been graciously given by Flaticon"
+msgstr ""
+"Icons of heart, green leaf and medical cross have been graciously given by "
+"Flaticon"
 
 #: templates/lactancia/partial_footer_4_landing.html:24
 msgid "Pago seguro con PayPal"
@@ -4277,27 +4279,42 @@ msgstr "by level of risk according e-lactancia.org"
 msgid "['muy mala', 'mala', 'regular', 'buena', 'muy buena']"
 msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
 
-#: views.py:2004 views.py:2011 views.py:2035 views.py:2044 views.py:2068
-#: views.py:2076
+#: views.py:1414
+#, fuzzy
+#| msgid "Dona para salvar lactancias"
+msgid "Tú puedes salvar lactancias"
+msgstr "Donate to save breastfeeding"
+
+#: views.py:1415
+msgid ""
+"Cientos de madres se ven obligadas a interrumpir sus lactancia aunque pocas "
+"situaciones lo justifica. Las mamás y sus bebés te necesitan. Salva "
+"lactancias. Dona ahora."
+msgstr ""
+"Hundreds of mothers are forced to interrupt nursing although few situations "
+"justify it. Moms and their babies need you. Save breastfeeding. Donate now."
+
+#: views.py:2016 views.py:2023 views.py:2047 views.py:2056 views.py:2080
+#: views.py:2088
 msgid ""
 "Asociación para la Promoción científica y cultural de la Lactancia Materna"
 msgstr ""
 "Association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2091
+#: views.py:2103
 msgid "En e-lactancia.org."
 msgstr "In e-lactancia.org"
 
-#: views.py:2091 views.py:2093
+#: views.py:2103 views.py:2105
 msgid "Recuperado"
 msgstr "Retrieved"
 
-#: views.py:2091 views.py:2093
+#: views.py:2103 views.py:2105
 msgid "a partir de"
 msgstr "from"
 
-#: views.py:2093 views.py:2122 views.py:2124
+#: views.py:2105 views.py:2134 views.py:2136
 msgid ""
 "APILAM (Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna)"
@@ -4305,11 +4322,11 @@ msgstr ""
 "APILAM (Association for promotion and cultural and scientific research of "
 "breastfeeding)"
 
-#: views.py:2103
+#: views.py:2115
 msgid "En"
 msgstr "In"
 
-#: views.py:2103 views.py:2111
+#: views.py:2115 views.py:2123
 msgid ""
 "APILAM: Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna"
@@ -4317,23 +4334,23 @@ msgstr ""
 "APILAM: association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2103 views.py:2111
+#: views.py:2115 views.py:2123
 msgid "actualizado"
 msgstr "updated"
 
-#: views.py:2103 views.py:2111
+#: views.py:2115 views.py:2123
 msgid "acceso"
 msgstr "accessed"
 
-#: views.py:2103 views.py:2111
+#: views.py:2115 views.py:2123
 msgid "Disponible en"
 msgstr "Available from"
 
-#: views.py:2122 views.py:2124
+#: views.py:2134 views.py:2136
 msgid "accedido el"
 msgstr "accessed"
 
-#: views.py:2214
+#: views.py:2226
 msgid "Descargar"
 msgstr "Download"
 
