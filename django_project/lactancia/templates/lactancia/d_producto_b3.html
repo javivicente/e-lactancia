@@ -42,11 +42,11 @@
 {% block risks %}
 <div class="row-margins">
     {% block risk_container_grupo %}{% endblock %}    
-        <div class="row equal"> 
+        <div class="row iguala_altura"> 
 
             {# caja de riesgo #}
-            <div class="{{span_risk.span_nivel}} equal no-lateral-padding">
-                <div class="grey-box squared {% if prod.riesgo.nivel == 3 %} risk-level3 {% elif prod.riesgo.nivel == 2 %} risk-level2 {% elif prod.riesgo.nivel == 1 %} risk-level1 {% elif prod.riesgo.nivel == 0 %} risk-level0 {% endif %}">
+            <div class="column col-xs-12 col-sm-12 col-md-3 no-lateral-padding">
+                <div class="box grey-box squared {% if prod.riesgo.nivel == 3 %} risk-level3 {% elif prod.riesgo.nivel == 2 %} risk-level2 {% elif prod.riesgo.nivel == 1 %} risk-level1 {% elif prod.riesgo.nivel == 0 %} risk-level0 {% endif %}">
                     <h2 class="risk-header">{{prod.riesgo.nombre}} {% trans 'para la lactancia' %}</h2>
                     <h4>{{prod.riesgo.descripcion|linebreaks}}</h4>
                 </div>
@@ -54,8 +54,8 @@
             
             
             {# caja de riesgo y comentario #}
-            <div class="{{span_risk.span_comment}} equal no-lateral-padding">
-                <div class="grey-box squared {% if prod.riesgo.nivel == 3 %} risk-comment-level3 {% elif prod.riesgo.nivel == 2 %} risk-comment-level2 {% elif prod.riesgo.nivel == 1 %} risk-comment-level1 {% elif prod.riesgo.nivel == 0 %} risk-comment-level0 {% endif %}">
+            <div class="column col-xs-12 col-sm-12 col-md-6 no-lateral-padding">
+                <div class="box grey-box squared {% if prod.riesgo.nivel == 3 %} risk-comment-level3 {% elif prod.riesgo.nivel == 2 %} risk-comment-level2 {% elif prod.riesgo.nivel == 1 %} risk-comment-level1 {% elif prod.riesgo.nivel == 0 %} risk-comment-level0 {% endif %}">
                         {% block comentario_content %}
                                 {% if prod.comentario %}
                                     {{ prod.comentario|linebreaks }}
@@ -124,8 +124,8 @@
             </div>
             
             {# caja de alternativas #}
-            <div class="{{span_risk.span_alternativas}} equal no-lateral-padding">
-                <div class="grey-box squared risk-alt">
+            <div class="column col-xs-12 col-sm-12 col-md-3  no-lateral-padding">
+                <div class="box grey-box squared risk-alt">
             
                         <h3 class="risk-header">{% trans "Alternativas" %}</h3>
                         {% block alternativas %}
@@ -182,11 +182,11 @@
 {#################################################################}
 {% block names_and_biblio %}
 
-    <div class="row top-bottom-margins equal">
+    <div class="row top-bottom-margins iguala_altura">
     <!-- alias -->
     {% if prod_alias or prod_otras_escrituras %}
-        <div class="{{span_names}} equal">
-            <div class="grey-box">
+        <div class="column {{span_names}}">
+            <div class="box grey-box">
                 <h3 class="risk-header">{% trans "Otros nombres" %}</h3>
                 {% block other_names_first %}
                 {% if prod_alias %}
@@ -220,8 +220,8 @@
     {% endif %}
     
     {% if prod.hay_marcas %}
-        <div class="{{span_names}} equal">
-            <div class="grey-box">
+        <div class="column {{span_names}}">
+            <div class="box grey-box">
                 <h3 class="risk-header">{% trans "Marcas comerciales" %}</h3>
                 
             
@@ -258,8 +258,8 @@
         </div> <!-- MARCA well -->
     {% endif %}
 
-        <div class="{{span_names}} equal">
-            <div class="grey-box">
+        <div class="column {{span_names}}">
+            <div class="box grey-box">
                 {% if prod.grupo.count > 1 %}
                     <h3 class="risk-header">{% trans "Grupos" %}</h3>
                     <p><strong>{% block term_plural %}{{prod.nombre}}{% endblock %}</strong> {% trans "pertenece a las siguientes familias o grupos:" %}</p>
@@ -475,7 +475,7 @@
 <div class="container-fluid blue">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-sm-3">
+            <div class="col-md-2 col-sm-5">
                 <h4 class="risk-header text-uppercase">{% trans "Visitas totales" %} 
                 </h4>
                 <p class="lead" style="color:#000;">{{visits.0|intcomma}}</p>
@@ -529,7 +529,6 @@
 {% block js %}
 {{ block.super }}
 
-
     <script>
     
         $("#btn_risk0").popover({
@@ -538,10 +537,22 @@
             title: '<strong>{{risk0_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk0&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk0_info.contenido| safe }}'
         });
+        $("#btn_risk0_sm").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk0_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk0_sm&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk0_info.contenido| safe }}'
+        });
         $("#btn_risk1").popover({
             html : true, 
             placement:'bottom',
             title: '<strong>{{risk1_info.titulo | safe}}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk1&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk1_info.contenido | safe }}'
+        });
+        $("#btn_risk1_sm").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk1_info.titulo | safe}}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk1_sm&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk1_info.contenido | safe }}'
         });
         $("#btn_risk2").popover({
@@ -550,10 +561,22 @@
             title: '<strong>{{risk2_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk2&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk2_info.contenido|safe }}'
         });
+        $("#btn_risk2_sm").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk2_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk2_sm&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk2_info.contenido|safe }}'
+        });
         $("#btn_risk3").popover({
             html : true, 
             placement:'bottom',
             title: '<strong>{{risk3_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk3_info.contenido | safe }}'
+        });
+        $("#btn_risk3_sm").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk3_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3_sm&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk3_info.contenido | safe }}'
         });
         

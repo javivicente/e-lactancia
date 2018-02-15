@@ -370,10 +370,9 @@ def calcula_span_product_risk(product):
         
     # version Bootstrap 3
     span = {
-        'span_nivel': 'col-xs-12 col-sm-4 col-md-3',
-        'span_nivel_desc': 'col-xs-12 col-sm-4 col-md-3',
+        'span_nivel': 'col-xs-12 col-sm-12 col-md-3',
         'span_alternativas': 'col-xs-12 col-sm-12 col-md-3',
-        'span_comment': 'col-xs-12 col-sm-8 col-md-6'
+        'span_comment': 'col-xs-12 col-sm-12 col-md-6'
         }
     
     return span

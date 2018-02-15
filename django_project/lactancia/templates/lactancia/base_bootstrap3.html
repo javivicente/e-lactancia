@@ -17,13 +17,13 @@
         }
     </style>
     <![endif]->    
-
+    
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link href="{{STATIC_URL}}css/elactancia.css" rel="stylesheet"> 
+    <link href="{{STATIC_URL}}css/e-lactancia.css" rel="stylesheet"> 
     <link href="{{STATIC_URL}}img/favicon.ico" rel="icon" type="image/x-icon">
      
       {# Google Analytics #}
@@ -114,7 +114,44 @@
     {% block top-typeahead %}
     <script type="text/javascript" src="{% get_static_prefix %}js/typeahead.bundle.min.js"></script>    
     <script type="text/javascript">var switchTo5x=true;</script>
-    
+    <script>
+        function equalheight () {
+            
+            $('.iguala_altura').each(function(){  
+                var container_width_per = $(this).width() * 0.8; 
+                console.log(container_width_per)
+                var highestBox = 0;
+                $('.column', this).each(function(){
+
+                    var htmlString = $( this ).html();
+
+               
+                    $(this).height('auto');
+                    
+                    if($(this).height() > highestBox) 
+                       highestBox = $(this).height(); 
+                });  
+                
+                if($('.column',this).width() < container_width_per) {
+                    console.log($('.column',this).width());
+                    $('.column',this).height(highestBox);
+                }
+        });  
+
+        };
+        $(window).resize(function() {   //to work in resize
+            
+            equalheight('.iguala_altura');
+        });
+
+        $(document).ready(function() {
+            equalheight('.iguala_altura');
+        });
+        $('#accordion-marcas').click(function() {  
+            setTimeout(equalheight('.iguala_altura'), 200);
+            
+        });
+    </script>
     <script>
         var width; 
         //less than 768px

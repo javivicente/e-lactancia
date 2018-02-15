@@ -45,55 +45,59 @@
 
 
 {# row of button filters #}
-<div class="row top-bottom-margins equal">
-    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+<div class="row top-bottom-margins">
+    <div class="col-xs-12 col-sm-6 col-md-3">
         {% if exists_r0 %}
-        <a class="btn grey-box squared risk-comment-level0 link_r0 btn-filter" id="filter_r0">
+        <a class="btn box grey-box squared risk-comment-level0 link_r0 btn-filter" id="filter_r0" style="margin-top:15px !important;">
            <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk0_info.titulo|upper}}</strong>
         </a>
         {% else %}
-        <a class="btn grey-box squared filter-disabled risk-alt  btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk0_info.titulo | lower }} {% trans 'para este grupo' %}">
+        <a class="btn box grey-box squared filter-disabled risk-alt  btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk0_info.titulo | lower }} {% trans 'para este grupo' %}" style="margin-top: 15px; margin-left:0 !important;">
            <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk0_info.titulo|upper}}</strong>
         </a>
         {% endif %}
     </div>
           
-    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+    <div class="col-xs-12 col-sm-6 col-md-3">
         {% if exists_r1 %}
-        <a class="btn grey-box squared risk-comment-level1 link_r1 btn-filter" id="filter_r1">
+        <a class="btn box grey-box squared risk-comment-level1 link_r1 btn-filter" id="filter_r1" style="margin-top:15px !important;">
            <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk1_info.titulo|upper}}</strong>
         </a>
         {% else %}
-        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk1_info.titulo | lower }} {% trans 'para este grupo' %}">
+        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk1_info.titulo | lower }} {% trans 'para este grupo' %}" style="margin-top: 15px; margin-left:0 !important;">
            <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk1_info.titulo|upper}}</strong>
         </a>
         {% endif %}
     </div>
     
-    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+    <div class="col-xs-12 col-sm-6 col-md-3">
         {% if exists_r2 %}
-        <a class="btn grey-box squared risk-comment-level2 link_r2 btn-filter" id="filter_r2">
+        <a class="btn grey-box squared risk-comment-level2 link_r2 btn-filter" id="filter_r2" style="margin-top:15px !important;">
            <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk2_info.titulo|upper}}</strong>
         </a>
         {% else %}
-        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk2_info.titulo | lower }} {% trans 'para este grupo' %}">
+        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk2_info.titulo | lower }} {% trans 'para este grupo' %}" style="margin-top: 15px; margin-left:0 !important;">
            <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk2_info.titulo|upper}}</strong>
         </a>
         {% endif %}
     </div>
     
-    <div class="col-xs-12 col-sm-6 col-md-3 equal">
+    <div class="col-xs-12 col-sm-6 col-md-3">
         {% if exists_r3 %}
-        <a class="btn grey-box squared risk-comment-level3 link_r3 btn-filter" id="filter_r3">
+        <a class="btn grey-box squared risk-comment-level3 link_r3 btn-filter" id="filter_r3" style="margin-top:15px !important;">
            <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk3_info.titulo|upper}}</strong>
         </a>
         {% else %}
-        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk3_info.titulo | lower }} {% trans 'para este grupo' %}">
+        <a class="btn grey-box squared filter-disabled risk-alt btn-filter" data-toggle="tooltip" data-placement="top" title="{% trans 'No hay productos de' %} {{risk3_info.titulo | lower }} {% trans 'para este grupo' %}" style="margin-top: 15px; margin-left:0 !important;">
            <i class="fa fa-2x fa-fw fa-eye"></i> <strong>{{risk3_info.titulo|upper}}</strong>
         </a>
         {% endif %}
     </div>
 </div>
+
+
+
+
 
 {# NUBE DE PRODUCTOS #}
 
@@ -152,7 +156,7 @@
 <div class="container-fluid blue">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-sm-3">
+            <div class="col-md-2 col-sm-5">
                 <h4 class="risk-header text-uppercase">{% trans "Visitas totales" %} 
                 </h4>
                 <p class="lead" style="color:#000;">{{visits.0|intcomma}}</p>
@@ -215,7 +219,19 @@
 				$(this).html(checkChange);
 			});
             
+            $('#filter_r0_sm').css('cursor', 'pointer').click(function(){
+				$('.risk-level0-tag').toggle();
+				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk0_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk0_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk0_info.titulo|upper}}</strong>";
+				$(this).html(checkChange);
+			});
+            
             $('#filter_r1').css('cursor', 'pointer').click(function(){
+				$('.risk-level1-tag').toggle();
+				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk1_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk1_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk1_info.titulo|upper}}</strong>";
+				$(this).html(checkChange);
+			});
+            
+            $('#filter_r1_sm').css('cursor', 'pointer').click(function(){
 				$('.risk-level1-tag').toggle();
 				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk1_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk1_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk1_info.titulo|upper}}</strong>";
 				$(this).html(checkChange);
@@ -227,7 +243,19 @@
 				$(this).html(checkChange);
 			});
             
+            $('#filter_r2_sm').css('cursor', 'pointer').click(function(){
+				$('.risk-level2-tag').toggle();
+				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk2_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk2_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk2_info.titulo|upper}}</strong>";
+				$(this).html(checkChange);
+			});
+            
             $('#filter_r3').css('cursor', 'pointer').click(function(){
+				$('.risk-level3-tag').toggle();
+				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk3_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk3_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk3_info.titulo|upper}}</strong>";
+				$(this).html(checkChange);
+			});
+            
+            $('#filter_r3_sm').css('cursor', 'pointer').click(function(){
 				$('.risk-level3-tag').toggle();
 				var checkChange = $(this).html() == "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk3_info.titulo|upper}}</strong>" ? "<i class=\"fa fa-2x fa-fw fa-eye\"></i> <strong>{{risk3_info.titulo|upper}}</strong>" : "<i class=\"fa fa-2x fa-fw fa-eye-slash\"></i> <strong>{{risk3_info.titulo|upper}}</strong>";
 				$(this).html(checkChange);
@@ -251,31 +279,52 @@
         $("#btn_risk0").popover({
             html : true, 
             placement:'bottom',
-            title: '<strong>{{risk0_info.titulo | safe }}</strong>' +
-                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk0&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            title: '<strong>{{risk0_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk0&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk0_info.contenido| safe }}'
+        });
+        $("#btn_risk0_sm").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk0_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk0_sm&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk0_info.contenido| safe }}'
         });
         $("#btn_risk1").popover({
             html : true, 
             placement:'bottom',
-            title: '<strong>{{risk1_info.titulo | safe}}</strong>' +
-                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk1&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            title: '<strong>{{risk1_info.titulo | safe}}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk1&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk1_info.contenido | safe }}'
+        });
+        $("#btn_risk1_sm").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk1_info.titulo | safe}}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk1_sm&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk1_info.contenido | safe }}'
         });
         $("#btn_risk2").popover({
             html : true, 
             placement:'bottom',
-            title: '<strong>{{risk2_info.titulo | safe }}</strong>' +
-                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk2&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            title: '<strong>{{risk2_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk2&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk2_info.contenido|safe }}'
+        });
+        $("#btn_risk2_sm").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk2_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk2_sm&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk2_info.contenido|safe }}'
         });
         $("#btn_risk3").popover({
             html : true, 
             placement:'bottom',
-            title: '<strong>{{risk3_info.titulo | safe }}</strong>' +
-                    '<button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            title: '<strong>{{risk3_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3&quot;).popover(&quot;hide&quot;);">&times;</button>', 
             content: '{{risk3_info.contenido | safe }}'
         });
+        $("#btn_risk3_sm").popover({
+            html : true, 
+            placement:'bottom',
+            title: '<strong>{{risk3_info.titulo | safe }}</strong><button type="button" id="close" class="close" onclick="$(&quot;#btn_risk3_sm&quot;).popover(&quot;hide&quot;);">&times;</button>', 
+            content: '{{risk3_info.contenido | safe }}'
+        });
+        
 
         {% block pharma_popovers %}
         {% endblock %}

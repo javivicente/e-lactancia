@@ -550,15 +550,11 @@ fieldset[disabled] .btn-donate.active {
     margin-top: 15px;
 }  
 
-  
-.equal {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-}  
 
+
+.box {
+    height: 100%;
+}
 
 .row-margins{
     margin: 15px;
@@ -590,6 +586,7 @@ fieldset[disabled] .btn-donate.active {
 
 .btn-filter {
     padding: 10px !important;
+    white-space: normal;
 }
 
 
@@ -706,7 +703,7 @@ border-left: 0;
     padding-left: 50px;
     padding-right: 20px;
     padding-bottom: 60px;
-    background-color: rgba(77, 178, 208, 1);
+    background-color: rgba(77, 178, 208, 0.8);
     color: #fff;
 }
 
@@ -1494,7 +1491,7 @@ hidden-xs{
 @media (min-width: 768px) and (max-width: 991px) {
     
         .header-blue-transparent{
-        background-color: rgba(77, 178, 208, 1);   
+        background-color: rgba(77, 178, 208, 0.8);   
         }
         
         .navbar-default-home .navbar-brand-home {
@@ -1572,6 +1569,7 @@ hidden-xs{
 
 /* Medium Devices, .visible-md-* */
 @media (min-width: 992px) and (max-width: 1199px) {
+    
     
     .header-blue-transparent{
     background-color: rgba(77, 178, 208, 0.8);   
@@ -1658,6 +1656,7 @@ hidden-xs{
 
 /* Large Devices, .visible-lg-* */
 @media (min-width: 1200px) {
+    
     
     .header-blue-transparent{
     background-color: rgba(77, 178, 208, 0.8);   
