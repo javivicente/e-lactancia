@@ -139,46 +139,59 @@
         });  
 
         };
-        $(window).resize(function() {   //to work in resize
+        
+        function searchbarwidth () {
             
+            var width; 
+        
+            if ($(window).width()<425 ){
+                width = $(window).width() - 45; 
+            }
+            //less than 768px
+            else{ 
+                if($(window).width() < 767){
+                width = $(window).width() - 200; 
+                
+                }
+                else{
+                    /* Small Devices, .visible-sm-* */
+                    if ($(window).width() < 991){
+                        width = $(window).width() - 620;
+                    }
+                    else{
+                        /* Medium Devices, .visible-md-* */
+                        if ($(window).width() < 1199){
+                            width = $(window).width() - 700; 
+                        }
+                        /* Large Devices, .visible-lg-* */
+                        else {
+                            width = 500; //$('#top_bar_right_menu').width; 
+                        }
+                    }  
+                }
+            }
+            $('#search_form .typeahead').css('width', width); 
+            $('#search_form .tt-query').css('width', width); 
+            $('#search_form .tt-hint').css('width', width);  
+
+        };
+        
+        
+        $(window).resize(function() {   //to work in resize
+            searchbarwidth();
             equalheight('.iguala_altura');
         });
 
         $(document).ready(function() {
+            searchbarwidth();
             equalheight('.iguala_altura');
         });
         $('#accordion-marcas').click(function() {  
             setTimeout(equalheight('.iguala_altura'), 200);
-            
         });
     </script>
     <script>
-        var width; 
-        //less than 768px
-        if ($(window).width() < 767){
-            width = $(window).width() - 200; 
-            
-        }
-        else{
-            /* Small Devices, .visible-sm-* */
-            if ($(window).width() < 991){
-                width = $(window).width() - 620;
-            }
-            else{
-                /* Medium Devices, .visible-md-* */
-                if ($(window).width() < 1199){
-                    width = $(window).width() - 700; 
-                }
-                /* Large Devices, .visible-lg-* */
-                else {
-                    width = 500; //$('#top_bar_right_menu').width; 
-                }
-            }  
-        }
-
-        $('#search_form .typeahead').css('width', width); 
-        $('#search_form .tt-query').css('width', width); 
-        $('#search_form .tt-hint').css('width', width);       
+               
     </script>
     <script>
         
