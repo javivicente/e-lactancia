@@ -145,23 +145,26 @@
             var width; 
         
             if ($(window).width()<425 ){
-                width = $(window).width() - 45; 
+                width = $(window).width()*0.9; 
             }
             //less than 768px
             else{ 
                 if($(window).width() < 767){
-                width = $(window).width() - 200; 
+                //width = $(window).width() - 200; 
+                width = $(window).width()*0.8; 
                 
                 }
                 else{
                     /* Small Devices, .visible-sm-* */
                     if ($(window).width() < 991){
-                        width = $(window).width() - 620;
+                        //width = $(window).width() - 620;
+                        width = $(window).width()*0.8;
                     }
                     else{
                         /* Medium Devices, .visible-md-* */
                         if ($(window).width() < 1199){
-                            width = $(window).width() - 700; 
+                           // width = $(window).width() - 700; 
+                            width = $(window).width()*0.8; 
                         }
                         /* Large Devices, .visible-lg-* */
                         else {
