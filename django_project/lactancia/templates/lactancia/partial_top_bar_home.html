@@ -13,7 +13,7 @@
         {% block topbar_brand %}
         <a class="navbar-brand navbar-brand-home" href="{% block topbar_brand_url %}{% url 'lactancia:landing' %}{% endblock %}">e-lactancia</a>
         {% endblock %}                    
-        
+        <div class="row visible-xs hidden-sm hidden-md hidden-lg"><a class="btn round btn-donate pull-right top_btn_donar" href="{% url 'lactancia:donativos' %}" style="margin-right:6px; margin-top:16px;">{% trans 'DONA AHORA' %}</a></div>
         
         
         {# bloque de la derecha (se colapsa en móvil) #}
@@ -23,7 +23,7 @@
                     {# BOTON SUSCRIPCION #}
                     <a class="btn btn-mail outline" id="top_btn_suscripcion" href="#subscribe" rel="nofollow" onclick="$('#subscribe').modal('show');"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;{% trans 'Suscríbete' %}</a>
                 </li> 
-                <li>{# BOTON DONAR PAYPAL #}
+                <li class="hidden-xs">{# BOTON DONAR PAYPAL #}
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                             <input type="hidden" name="cmd" value="_s-xclick">
                             <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}4BLX2BB5A8KYY{% else %}BLSTZ4B6QGTJQ{% endif %}">
