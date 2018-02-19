@@ -162,6 +162,24 @@
 {% block js %}
 {{ block.super }}
     <script>
+        function searchbarhomewidth () {
+            
+            var width = $("#search_form_home").parent().width();
+            $('#search_form_home .typeahead').css('width', width); 
+            $('#search_form_home .tt-query').css('width', width); 
+            $('#search_form_home .tt-hint').css('width', width);  
+
+        };
+        $(window).resize(function() {   //to work in resize
+            searchbarhomewidth();
+        });
+
+        $(document).ready(function() {
+            searchbarhomewidth();
+        });
+        
+    </script>
+    <script>
     $('.aval').popover({
     placement: 'bottom',
     template: '<div class="popover" role="tooltip"><div class="arrow"></div><h2 class="popover-title"></h2><div class="popover-content"></div></div>'
