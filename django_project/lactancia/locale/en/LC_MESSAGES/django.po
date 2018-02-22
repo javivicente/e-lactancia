@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-14 15:52+0100\n"
+"POT-Creation-Date: 2018-02-22 13:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -437,7 +437,7 @@ msgid "Grupo"
 msgstr "Group"
 
 #: models.py:47 templates/lactancia/base.html:573
-#: templates/lactancia/base_bootstrap3.html:372
+#: templates/lactancia/base_bootstrap3.html:424
 #: templates/lactancia/d_producto_b3.html:264
 #: templates/lactancia/detalle_p.html:393
 #: templates/lactancia/estadisticas_json_ES-b3.html:898
@@ -726,7 +726,7 @@ msgid ""
 msgstr ""
 
 #: models.py:329 templates/lactancia/base.html:557
-#: templates/lactancia/base_bootstrap3.html:356
+#: templates/lactancia/base_bootstrap3.html:408
 msgid "Sinónimos de productos"
 msgstr "Products synonyms"
 
@@ -1662,7 +1662,7 @@ msgstr "Reading the fascinating text of the Legal Notice of e-lactancia"
 
 # mark to review!
 #: templates/lactancia/base.html:72 templates/lactancia/landing.html:36
-#: templates/lactancia/partial_top_bar.html:18
+#: templates/lactancia/partial_top_bar.html:20
 msgid "Buscar"
 msgstr "Search"
 
@@ -1672,7 +1672,10 @@ msgstr "Search"
 #: templates/lactancia/partial_donativos_cajas.html:41
 #: templates/lactancia/partial_footer.html:107
 #: templates/lactancia/partial_pink_donation.html:20
-#: templates/lactancia/partial_top_bar.html:38
+#: templates/lactancia/partial_pink_donation_2.html:14
+#: templates/lactancia/partial_top_bar.html:17
+#: templates/lactancia/partial_top_bar.html:40
+#: templates/lactancia/partial_top_bar_home.html:16
 #: templates/lactancia/partial_top_bar_home.html:30
 msgid "DONA AHORA"
 msgstr "DONATE NOW"
@@ -1723,8 +1726,6 @@ msgid "CIFRAS"
 msgstr "NUMBERS"
 
 #: templates/lactancia/base.html:185
-#: templates/lactancia/partial_footer.html:17
-#: templates/lactancia/partial_footer_4_landing.html:17
 msgid ""
 "e-lactancia es un proyecto de <a class=\"white-text\" href=\"http://apilam."
 "org/\" target=\"_blank\">APILAM</a>, asociación para la promoción e "
@@ -1759,7 +1760,7 @@ msgid "Web desarrollada por"
 msgstr "Web developed by"
 
 #: templates/lactancia/base.html:549
-#: templates/lactancia/base_bootstrap3.html:348
+#: templates/lactancia/base_bootstrap3.html:400
 #: templates/lactancia/estadisticas_json_ES-b3.html:20
 #: templates/lactancia/estadisticas_json_ES-b3.html:69
 #: templates/lactancia/estadisticas_json_ES-b3.html:118
@@ -1778,37 +1779,37 @@ msgid "Productos"
 msgstr "Products"
 
 #: templates/lactancia/base.html:550
-#: templates/lactancia/base_bootstrap3.html:349
+#: templates/lactancia/base_bootstrap3.html:401
 msgid "No encontramos productos para tu consulta"
 msgstr "No products found for your query"
 
 #: templates/lactancia/base.html:558
-#: templates/lactancia/base_bootstrap3.html:357
+#: templates/lactancia/base_bootstrap3.html:409
 msgid "No encontramos sinónimos para tu consulta"
 msgstr "No synonyms found for your query"
 
 #: templates/lactancia/base.html:565
-#: templates/lactancia/base_bootstrap3.html:364
+#: templates/lactancia/base_bootstrap3.html:416
 msgid "Productos en otras escrituras"
 msgstr "Products in other writings and languages"
 
 #: templates/lactancia/base.html:566
-#: templates/lactancia/base_bootstrap3.html:365
+#: templates/lactancia/base_bootstrap3.html:417
 msgid "No encontramos resultados para tu consulta"
 msgstr "No results found for your query"
 
 #: templates/lactancia/base.html:574
-#: templates/lactancia/base_bootstrap3.html:373
+#: templates/lactancia/base_bootstrap3.html:425
 msgid "No encontramos grupos para tu consulta"
 msgstr "No groups found for your query"
 
 #: templates/lactancia/base.html:581
-#: templates/lactancia/base_bootstrap3.html:380
+#: templates/lactancia/base_bootstrap3.html:432
 msgid "Marcas de productos"
 msgstr "Products tradenames"
 
 #: templates/lactancia/base.html:582
-#: templates/lactancia/base_bootstrap3.html:381
+#: templates/lactancia/base_bootstrap3.html:433
 msgid "No encontramos marcas para tu consulta"
 msgstr "No tradenames found for your query"
 
@@ -1824,20 +1825,24 @@ msgstr ""
 "The level of risk associated to at least one term has been recently modified."
 
 #: templates/lactancia/base.html:635
-#: templates/lactancia/partial_legend_b3.html:12
-#: templates/lactancia/partial_legend_b3.html:26
-#: templates/lactancia/partial_legend_b3.html:40
-#: templates/lactancia/partial_legend_b3.html:54
+#: templates/lactancia/partial_legend_b3.html:15
+#: templates/lactancia/partial_legend_b3.html:30
+#: templates/lactancia/partial_legend_b3.html:45
+#: templates/lactancia/partial_legend_b3.html:60
+#: templates/lactancia/partial_legend_b3.html:79
+#: templates/lactancia/partial_legend_b3.html:94
+#: templates/lactancia/partial_legend_b3.html:111
+#: templates/lactancia/partial_legend_b3.html:126
 msgid "Más información"
 msgstr "More information"
 
 #: templates/lactancia/base.html:642
-#: templates/lactancia/base_bootstrap3.html:404
+#: templates/lactancia/base_bootstrap3.html:456
 msgid "política de privacidad"
 msgstr "Privacy Policy"
 
 #: templates/lactancia/base.html:643
-#: templates/lactancia/base_bootstrap3.html:405
+#: templates/lactancia/base_bootstrap3.html:457
 msgid ""
 "Usamos cookies para mejorar tu experiencia. Al continuar navegando en "
 "nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre "
@@ -1968,8 +1973,8 @@ msgstr "Pediatrician, MD."
 
 #: templates/lactancia/creditos.html:30
 #: templates/lactancia/creditos_b3.html:27
-#: templates/lactancia/creditos_b3.html:48
-#: templates/lactancia/creditos_b3.html:56
+#: templates/lactancia/creditos_b3.html:44
+#: templates/lactancia/creditos_b3.html:52
 msgid "Revisión de contenidos y asesoramiento"
 msgstr "Content review and counceling"
 
@@ -2007,17 +2012,17 @@ msgid "Comunicación"
 msgstr "Communication"
 
 #: templates/lactancia/creditos.html:64
-#: templates/lactancia/creditos_b3.html:65
+#: templates/lactancia/creditos_b3.html:61
 msgid "Licenciada en Periodismo"
 msgstr "Degree in Journalism"
 
 #: templates/lactancia/creditos.html:103
-#: templates/lactancia/creditos_b3.html:94
+#: templates/lactancia/creditos_b3.html:109
 msgid "Cómo citar esta web"
 msgstr "How to cite this website"
 
 #: templates/lactancia/creditos.html:104
-#: templates/lactancia/creditos_b3.html:95
+#: templates/lactancia/creditos_b3.html:110
 msgid ""
 "Puedes citar esta web para tus trabajos científicos. Encontrarás este mismo "
 "desplegable en cada ficha de la web para que puedas hacer citas "
@@ -2028,7 +2033,7 @@ msgstr ""
 "specific products and terms."
 
 #: templates/lactancia/creditos.html:106
-#: templates/lactancia/creditos_b3.html:97
+#: templates/lactancia/creditos_b3.html:112
 msgid ""
 "Si necesitas citar la web de e-lactancia, abajo puedes encontrar varios "
 "formatos de cita, según tus necesidades."
@@ -2037,8 +2042,8 @@ msgstr ""
 "citation formats, according to your needs."
 
 #: templates/lactancia/creditos.html:107
-#: templates/lactancia/creditos_b3.html:98
-#: templates/lactancia/d_producto_b3.html:565
+#: templates/lactancia/creditos_b3.html:113
+#: templates/lactancia/d_producto_b3.html:588
 #: templates/lactancia/partial_citation.html:8
 msgid ""
 "Elige el formato de cita bibliográfica que prefieras. Puedes copiar el texto "
@@ -2056,15 +2061,15 @@ msgstr "Founder and coordinator. Content review and counceling."
 msgid "Pediatra. Doctor en Medicina."
 msgstr "Pediatrician, MD, PhD."
 
-#: templates/lactancia/creditos_b3.html:49
+#: templates/lactancia/creditos_b3.html:45
 msgid "Licenciada en Farmacia"
 msgstr "Degree in pharmacy"
 
-#: templates/lactancia/creditos_b3.html:57
+#: templates/lactancia/creditos_b3.html:53
 msgid "Doctora en Farmacia. IBCLC."
 msgstr "Doctor of Pharmacy. IBCLC"
 
-#: templates/lactancia/creditos_b3.html:64
+#: templates/lactancia/creditos_b3.html:60
 msgid "Comunicación y patrocinio"
 msgstr "Communication & sponsorship"
 
@@ -2122,50 +2127,50 @@ msgstr "There are no products of"
 msgid "para este grupo"
 msgstr "for this group"
 
-#: templates/lactancia/d_grupo_b3.html:134
+#: templates/lactancia/d_grupo_b3.html:138
 msgid "Grupos relacionados con"
 msgstr "Groups related with"
 
-#: templates/lactancia/d_grupo_b3.html:137
+#: templates/lactancia/d_grupo_b3.html:141
 #: templates/lactancia/detalle_g2.html:226
 msgid "productos"
 msgstr "products"
 
-#: templates/lactancia/d_grupo_b3.html:156
+#: templates/lactancia/d_grupo_b3.html:160
 #: templates/lactancia/d_producto_b3.html:479
 #: templates/lactancia/partial_ratings.html:67
 msgid "Visitas totales"
 msgstr "Total visits"
 
-#: templates/lactancia/d_grupo_b3.html:161
+#: templates/lactancia/d_grupo_b3.html:165
 #: templates/lactancia/d_producto_b3.html:484
 msgid "Ayúdanos a mejorar esta ficha"
 msgstr "Help us improve this entry"
 
-#: templates/lactancia/d_grupo_b3.html:171
+#: templates/lactancia/d_grupo_b3.html:175
 #: templates/lactancia/d_producto_b3.html:494
 #: templates/lactancia/partial_ratings.html:37
 msgid "Comentario enviado con éxito. ¡Muchas gracias!"
 msgstr "Comment successfully submitted. Thank you!"
 
-#: templates/lactancia/d_grupo_b3.html:173
+#: templates/lactancia/d_grupo_b3.html:177
 #: templates/lactancia/d_producto_b3.html:496
 #: templates/lactancia/partial_ratings.html:39
 msgid "Puedes editar tu comentario y volver a enviarlo si lo deseas"
 msgstr "You can edit your comment and send it again if you wish"
 
-#: templates/lactancia/d_grupo_b3.html:181
+#: templates/lactancia/d_grupo_b3.html:185
 #: templates/lactancia/d_producto_b3.html:504
 #: templates/lactancia/partial_ratings.html:50
 msgid "Enviar"
 msgstr "Send"
 
-#: templates/lactancia/d_grupo_b3.html:186
+#: templates/lactancia/d_grupo_b3.html:190
 #: templates/lactancia/d_producto_b3.html:509
 msgid "¿Necesitas más información?"
 msgstr "Do you need more information?"
 
-#: templates/lactancia/d_grupo_b3.html:189
+#: templates/lactancia/d_grupo_b3.html:193
 #: templates/lactancia/d_producto_b3.html:512
 msgid "Escríbenos a elactancia.org@gmail.com"
 msgstr "Write us at elactancia.org@gmail.com"
@@ -3210,23 +3215,23 @@ msgstr "We recommend"
 msgid "Patrocinan e-lactancia"
 msgstr "Sponsors of e-lactancia"
 
-#: templates/lactancia/home-b3.html:113
+#: templates/lactancia/home-b3.html:112
 msgid "¿Quieres patrocinar e-lactancia?"
 msgstr "Do you want to sponsor e-lactancia?"
 
-#: templates/lactancia/home-b3.html:114 templates/lactancia/home-b3.html:150
+#: templates/lactancia/home-b3.html:113 templates/lactancia/home-b3.html:135
 msgid "Escríbenos a"
 msgstr "Write us at"
 
-#: templates/lactancia/home-b3.html:120
+#: templates/lactancia/home-b3.html:119
 msgid "Citan y recomiendan el uso de e-lactancia"
 msgstr "They quote and recommend the use of e-lactancia"
 
-#: templates/lactancia/home-b3.html:149
+#: templates/lactancia/home-b3.html:134
 msgid "¿Quieres avalar el uso de e-lactancia?"
 msgstr "Do you want to endorse the use of e-lactancia?"
 
-#: templates/lactancia/home-b3.html:162
+#: templates/lactancia/home-b3.html:147
 msgid "e-lactancia es un recurso recomendado por la"
 msgstr "e-lactancia is a resource recommended by"
 
@@ -3536,6 +3541,23 @@ msgstr ""
 msgid "Las mamás y sus bebés te necesitan. Salva lactancias. Dona ahora."
 msgstr "Moms and their babies need you. Save lactations. Donate now."
 
+#: templates/lactancia/partial_footer.html:17
+#: templates/lactancia/partial_footer_4_landing.html:17
+msgid ""
+"e-lactancia es un proyecto de <a class=\"white-text with-underline\" href="
+"\"http://apilam.org/\" target=\"_blank\">APILAM</a>, Asociación para la "
+"Promoción e Investigación científica y cultural de la Lactancia Materna, "
+"bajo <a class=\"white-text with-underline\" target=\"_blank\" href=\"http://"
+"creativecommons.org/licenses/by-nc-sa/4.0/\">Licencia Internacional Creative "
+"Commons</a>"
+msgstr ""
+"e-lactancia is a project of <a class='white-text with-underline' "
+"href='http://apilam.org/' target='_blank'>APILAM</a>, Association for "
+"Promotion and cultural and scientific Research of Breastfeeding, under a  <a "
+"class='white-text with-underline' target='_blank' href='http://"
+"creativecommons.org/licenses/by-nc-sa/4.0/'> Creative Commons Internacional "
+"License</a>"
+
 #: templates/lactancia/partial_footer.html:29
 msgid "PATROCINAN"
 msgstr "SPONSORS"
@@ -3549,8 +3571,8 @@ msgid "CÓMO CITAR E-LACTANCIA"
 msgstr "HOW TO CITE E-LACTANCIA"
 
 #: templates/lactancia/partial_footer.html:45
-msgid "NOSOTROS"
-msgstr "ABOUT US"
+msgid "ACERCA DE"
+msgstr "ABOUT"
 
 #: templates/lactancia/partial_footer.html:48
 msgid "ESTADÍSTICAS"
@@ -3558,7 +3580,7 @@ msgstr "STATS"
 
 #: templates/lactancia/partial_footer.html:110
 #: templates/lactancia/partial_newsletter_box.html:13
-#: templates/lactancia/partial_top_bar.html:32
+#: templates/lactancia/partial_top_bar.html:34
 #: templates/lactancia/partial_top_bar_home.html:24
 msgid "Suscríbete"
 msgstr "Subscribe"
@@ -3654,6 +3676,14 @@ msgstr "Thank you for helping rescuing breastfeeding."
 #: templates/lactancia/partial_pink_donation.html:15
 msgid "José María Paricio, creador de e-lactancia."
 msgstr "José María Paricio, founder of e-lactancia."
+
+#: templates/lactancia/partial_pink_donation_2.html:9
+msgid "e-lactancia solo puede seguir siendo gratuita gracias a ti."
+msgstr "e-lactancia can only remain free thanks to you."
+
+#: templates/lactancia/partial_pink_donation_2.html:10
+msgid "Tu donativo ayuda a seguir salvando lactancias."
+msgstr "Your donation helps keep saving breastfeeding."
 
 #: templates/lactancia/partial_ratings.html:16
 msgid "Tu opinión es muy importante"
@@ -4277,17 +4307,15 @@ msgstr "List of elements from "
 msgid "por nivel de riesgo según e-lactancia.org"
 msgstr "by level of risk according e-lactancia.org"
 
-#: views.py:639
+#: views.py:638
 msgid "['muy mala', 'mala', 'regular', 'buena', 'muy buena']"
 msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
 
-#: views.py:1414
-#, fuzzy
-#| msgid "Dona para salvar lactancias"
+#: views.py:1413
 msgid "Tú puedes salvar lactancias"
-msgstr "Donate to save breastfeeding"
+msgstr "You can save breastfeeding"
 
-#: views.py:1415
+#: views.py:1414
 msgid ""
 "Cientos de madres se ven obligadas a interrumpir sus lactancia aunque pocas "
 "situaciones lo justifica. Las mamás y sus bebés te necesitan. Salva "
@@ -4296,27 +4324,27 @@ msgstr ""
 "Hundreds of mothers are forced to interrupt nursing although few situations "
 "justify it. Moms and their babies need you. Save breastfeeding. Donate now."
 
-#: views.py:2016 views.py:2023 views.py:2047 views.py:2056 views.py:2080
-#: views.py:2088
+#: views.py:2015 views.py:2022 views.py:2046 views.py:2055 views.py:2079
+#: views.py:2087
 msgid ""
 "Asociación para la Promoción científica y cultural de la Lactancia Materna"
 msgstr ""
 "Association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2103
+#: views.py:2102
 msgid "En e-lactancia.org."
 msgstr "In e-lactancia.org"
 
-#: views.py:2103 views.py:2105
+#: views.py:2102 views.py:2104
 msgid "Recuperado"
 msgstr "Retrieved"
 
-#: views.py:2103 views.py:2105
+#: views.py:2102 views.py:2104
 msgid "a partir de"
 msgstr "from"
 
-#: views.py:2105 views.py:2134 views.py:2136
+#: views.py:2104 views.py:2133 views.py:2135
 msgid ""
 "APILAM (Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna)"
@@ -4324,11 +4352,11 @@ msgstr ""
 "APILAM (Association for promotion and cultural and scientific research of "
 "breastfeeding)"
 
-#: views.py:2115
+#: views.py:2114
 msgid "En"
 msgstr "In"
 
-#: views.py:2115 views.py:2123
+#: views.py:2114 views.py:2122
 msgid ""
 "APILAM: Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna"
@@ -4336,25 +4364,28 @@ msgstr ""
 "APILAM: association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2115 views.py:2123
+#: views.py:2114 views.py:2122
 msgid "actualizado"
 msgstr "updated"
 
-#: views.py:2115 views.py:2123
+#: views.py:2114 views.py:2122
 msgid "acceso"
 msgstr "accessed"
 
-#: views.py:2115 views.py:2123
+#: views.py:2114 views.py:2122
 msgid "Disponible en"
 msgstr "Available from"
 
-#: views.py:2134 views.py:2136
+#: views.py:2133 views.py:2135
 msgid "accedido el"
 msgstr "accessed"
 
-#: views.py:2226
+#: views.py:2225
 msgid "Descargar"
 msgstr "Download"
+
+#~ msgid "NOSOTROS"
+#~ msgstr "ABOUT US"
 
 #~ msgid "Añadimos y revisamos 2.417 fichas de medicamentos"
 #~ msgstr "We add and reviewed 2,417 medication records"
