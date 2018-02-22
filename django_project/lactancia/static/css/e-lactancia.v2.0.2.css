@@ -553,6 +553,7 @@ fieldset[disabled] .btn-donate.active {
 
 
 .box {
+    /*height: fit-content;*/
     height: 100%;
 }
 
@@ -663,6 +664,10 @@ fieldset[disabled] .btn-donate.active {
     background-color: #fbdcec;
 }
 
+    .boton-donativo-faja, .boton-donativo-faja-2{
+        margin-top: 0px;
+    }
+
 
 #citation_type {
     
@@ -708,19 +713,19 @@ border-left: 0;
 }
 
 .lead-home{
-    font-size: 24px;
+    font-size: 15px;
 }
 
 .sublead {
     font-weight:300;
-    font-size: 18px;
+    font-size: 12px;
    
 }
 
 .icon-el{
     display: block;
     max-width: 100%;
-    height: 100px;
+    height: 50px;
     margin-left: auto;
     margin-right: auto; 
 }
@@ -776,8 +781,8 @@ border-left: 0;
 }
 
 .mensaje-home {
-    margin-top: 70px;
-    font-size: 38px;
+    margin-top: 50px;
+    font-size: 24px;
     font-weight: 300;
 }
 
@@ -1489,6 +1494,29 @@ hidden-xs{
 
 /* Small Devices, .visible-sm-* */
 @media (min-width: 768px) and (max-width: 991px) {
+    .icon-el{
+    height: 80px;
+    }
+    .boton-donativo-faja{
+        margin-top: 40px;
+    }
+    .boton-donativo-faja-2{
+        margin-top: 20px;
+    }
+    
+    .sublead {
+    font-size: 18px;
+    }
+    
+        .lead-home{
+        font-size: 24px;
+        }
+
+        .mensaje-home {
+            margin-top: 70px;
+            font-size: 32px; 
+       }
+    
     
         .header-home {  
         background: url('/static/img/home-bg-elactancia-sm.jpg') no-repeat center center;
@@ -1577,6 +1605,30 @@ hidden-xs{
 
 /* Medium Devices, .visible-md-* */
 @media (min-width: 992px) and (max-width: 1199px) {
+    
+    .icon-el{
+    height: 100px;
+    }
+    
+        .boton-donativo-faja{
+        margin-top: 40px;
+    }
+
+    
+    .sublead {
+    font-size: 18px;
+    }
+    
+    .lead-home{
+    font-size: 24px;
+    }
+
+
+    .mensaje-home {
+    margin-top: 70px;
+    font-size: 38px;
+    }
+    
     
     .header-home {  
         background: url('/static/img/home-bg-elactancia.jpg') no-repeat center center;
@@ -1669,6 +1721,28 @@ hidden-xs{
 /* Large Devices, .visible-lg-* */
 @media (min-width: 1200px) {
     
+    .icon-el{
+    height: 100px;
+    }
+    
+    .boton-donativo-faja-2{
+        margin-top: 20px;
+    }
+
+    .boton-donativo-faja{
+        margin-top: 40px;
+    }
+    
+    .sublead {
+    font-size: 18px;
+    }
+
+    
+    .lead-home{
+    font-size: 24px;
+    }
+
+    
     .header-home {  
         background: url('/static/img/home-bg-elactancia.jpg') no-repeat center center;
         background-size: cover;
@@ -1737,6 +1811,7 @@ hidden-xs{
     }
     
     .mensaje-home {
+    margin-top: 70px;
     font-size: 64px;
     }
     

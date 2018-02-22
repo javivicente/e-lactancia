@@ -1,0 +1,23 @@
+{% load i18n %}
+
+
+<div class="container-fluid pink" style="margin-bottom:0 !important;">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <h3 class="h2">{% trans "e-lactancia solo puede seguir siendo gratuita gracias a ti." %}</h3>
+                    <p class="lead">{% trans "Tu donativo ayuda a seguir salvando lactancias." %}</p>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2">
+                <div class="boton-donativo-faja-2">
+                    <a class="btn btn-lg round btn-donate" href="{% url 'lactancia:donativos' %}" style="padding: 18px;">{% trans 'DONA AHORA' %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+
+
