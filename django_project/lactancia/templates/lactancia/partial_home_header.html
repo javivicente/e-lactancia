@@ -2,16 +2,16 @@
 {% load humanize %}
 
 <div class="container-fluid header-home">
-       <div class="col-md-4 hidden-xs equal">
+       <div class="col-lg-4 col-md-4 hidden-xs equal">
        </div>
-       <div class="col-md-8 col-sm-12 col-xs-12 header-blue-transparent">
+       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 header-blue-transparent">
           
-            <div class="col-xs-11 col-sm-10 col-md-9">
+            <div class="col-xs-11 col-sm-10 col-md-9 col-lg-9">
                 <p class="mensaje-home">
                 {% trans "¿Es compatible con la lactancia?" %}
                 </p>
             </div> 
-            <div class="col-xs-10 col-sm-10 col-md-9">
+            <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9">
                 <p class="lead lead-home">{% trans 'Consulta la compatibilidad de la lactancia materna con' %} {{N|intcomma}} {% trans 'términos' %}</p>
                 
                 <form class="form-search" id="search_form_home" action="{% block search_bar_action %}{% url 'lactancia:buscar' %}{% endblock %}">
