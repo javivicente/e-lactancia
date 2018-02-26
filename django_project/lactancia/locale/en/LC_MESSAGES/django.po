@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 17:29+0100\n"
+"POT-Creation-Date: 2018-02-26 19:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1718,6 +1718,7 @@ msgid "ALERTAS"
 msgstr "ALERTS"
 
 #: templates/lactancia/base.html:175
+#: templates/lactancia/partial_footer.html:45
 msgid "CONÓCENOS"
 msgstr "ABOUT US"
 
@@ -1973,6 +1974,7 @@ msgstr "Pediatrician, MD."
 
 #: templates/lactancia/creditos.html:30
 #: templates/lactancia/creditos_b3.html:27
+#: templates/lactancia/creditos_b3.html:35
 #: templates/lactancia/creditos_b3.html:44
 #: templates/lactancia/creditos_b3.html:52
 msgid "Revisión de contenidos y asesoramiento"
@@ -1983,7 +1985,6 @@ msgid "Médica Pediatra"
 msgstr "Pediatrician"
 
 #: templates/lactancia/creditos.html:36
-#: templates/lactancia/creditos_b3.html:35
 msgid "Revisión de contenidos y traducción al inglés"
 msgstr "Content review and English translation"
 
@@ -2054,11 +2055,11 @@ msgstr ""
 "button"
 
 #: templates/lactancia/creditos_b3.html:19
-msgid "Creador y coordinador. Revisión de contenidos y asesoramiento."
-msgstr "Founder and coordinator. Content review and counceling."
+msgid "Creador y coordinador. Revisión de contenidos y asesoramiento"
+msgstr "Founder and coordinator. Content review and counceling"
 
 #: templates/lactancia/creditos_b3.html:20
-msgid "Pediatra. Doctor en Medicina."
+msgid "Pediatra. Doctor en Medicina"
 msgstr "Pediatrician, MD, PhD."
 
 #: templates/lactancia/creditos_b3.html:45
@@ -2066,7 +2067,7 @@ msgid "Licenciada en Farmacia"
 msgstr "Degree in pharmacy"
 
 #: templates/lactancia/creditos_b3.html:53
-msgid "Doctora en Farmacia. IBCLC."
+msgid "Doctora en Farmacia. IBCLC"
 msgstr "Doctor of Pharmacy. IBCLC"
 
 #: templates/lactancia/creditos_b3.html:60
@@ -2362,9 +2363,8 @@ msgid "Valor"
 msgstr "Value"
 
 #: templates/lactancia/d_producto_b3.html:302
-#: templates/lactancia/detalle_p.html:440
-msgid "Unidades"
-msgstr "Units"
+msgid "Unidad"
+msgstr "Unit"
 
 #: templates/lactancia/d_producto_b3.html:363
 #: templates/lactancia/d_producto_b3.html:373
@@ -2496,6 +2496,10 @@ msgstr "Alternatives for each active ingredient"
 #: templates/lactancia/detalle_p.html:239
 msgid "Leyenda de riesgos"
 msgstr "Legend of risks"
+
+#: templates/lactancia/detalle_p.html:440
+msgid "Unidades"
+msgstr "Units"
 
 #: templates/lactancia/donativo-exito-b3.html:3
 #: templates/lactancia/donativo_exito.html:3
@@ -3215,23 +3219,31 @@ msgstr "We recommend"
 msgid "Patrocinan e-lactancia"
 msgstr "Sponsors of e-lactancia"
 
-#: templates/lactancia/home-b3.html:112
+#: templates/lactancia/home-b3.html:113
 msgid "¿Quieres patrocinar e-lactancia?"
 msgstr "Do you want to sponsor e-lactancia?"
 
-#: templates/lactancia/home-b3.html:113 templates/lactancia/home-b3.html:135
+#: templates/lactancia/home-b3.html:114 templates/lactancia/home-b3.html:138
+#: templates/lactancia/home-b3.html:151
 msgid "Escríbenos a"
 msgstr "Write us at"
 
-#: templates/lactancia/home-b3.html:119
+#: templates/lactancia/home-b3.html:120
 msgid "Citan y recomiendan el uso de e-lactancia"
 msgstr "They quote and recommend the use of e-lactancia"
 
-#: templates/lactancia/home-b3.html:134
+#: templates/lactancia/home-b3.html:137
 msgid "¿Quieres avalar el uso de e-lactancia?"
 msgstr "Do you want to endorse the use of e-lactancia?"
 
-#: templates/lactancia/home-b3.html:147
+#: templates/lactancia/home-b3.html:150
+msgid ""
+"¿No encontraste lo que buscabas o tienes alguna sugerencia sobre la página?"
+msgstr ""
+"Did not find what you were looking for or do you have any suggestions about "
+"the page?"
+
+#: templates/lactancia/home-b3.html:162
 msgid "e-lactancia es un recurso recomendado por la"
 msgstr "e-lactancia is a resource recommended by"
 
@@ -3569,10 +3581,6 @@ msgstr "CITE & RECOMMEND"
 #: templates/lactancia/partial_footer.html:35
 msgid "CÓMO CITAR E-LACTANCIA"
 msgstr "HOW TO CITE E-LACTANCIA"
-
-#: templates/lactancia/partial_footer.html:45
-msgid "ACERCA DE"
-msgstr "ABOUT"
 
 #: templates/lactancia/partial_footer.html:48
 msgid "ESTADÍSTICAS"
@@ -4382,6 +4390,9 @@ msgstr "accessed"
 #: views.py:2225
 msgid "Descargar"
 msgstr "Download"
+
+#~ msgid "ACERCA DE"
+#~ msgstr "ABOUT"
 
 #~ msgid "NOSOTROS"
 #~ msgstr "ABOUT US"

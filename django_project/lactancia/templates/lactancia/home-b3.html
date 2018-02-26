@@ -84,7 +84,7 @@
                         <p><span><strong>{{cajita.titulo}}</strong>.</span>
                         {{cajita.texto|safe}}</p>
                         {% if cajita.link %}
-                            <p><a href="{{cajita.link}}" target="_blank">{{cajita.texto_link}}</a></p>
+                            <p><a class="with-underline" href="{{cajita.link}}" target="_blank" style="color:#337ab7;">{{cajita.texto_link}}</a></p>
                         {% endif %}
                     </div>
                 </div>
@@ -93,8 +93,8 @@
 
   
         <h3 class="risk-header">{% trans "Patrocinan e-lactancia" %}</h3>    
-        <div class="row iguala_altura" style="margin-bottom:80px;">    
-            <div class="column col-xs-12 col-sm-12 col-md-8 ">
+        <div class="row">    
+            <div class="col-xs-12">
                 {% for pat in patrocinadores %}
                     <div class="{{span_sponsors}}">
                         <div class="white-box">
@@ -105,20 +105,21 @@
                         </div>
                     </div>
                 {% endfor %}
-                
             </div>
-            <div class="column col-xs-12 col-sm-12 col-md-4">
+        </div>   
+        <div class="row" style="margin-bottom:80px;">    
+            <div class="col-xs-12">
                 <div class="box dashed-blue-box">
-                    <p class="titular-blue-box">{% trans "¿Quieres patrocinar e-lactancia?" %}</p>
-                    <p class="lead">{% trans "Escríbenos a" %} <a href="maito:apilam.es@gmail.com">apilam.es@gmail.com</a></p>
+                    <p class="titular-blue-box">{% trans "¿Quieres patrocinar e-lactancia?" %}
+                    <span class="lead">&nbsp;&nbsp;&nbsp;{% trans "Escríbenos a" %} <a class="with-underline" href="mailto:apilam.es@gmail.com" >apilam.es@gmail.com</a></span></p>
                 </div>
             </div>
         </div>      
        
         
         <h3 class="risk-header">{% trans "Citan y recomiendan el uso de e-lactancia" %}</h3>    
-        <div class="iguala_altura row" style="margin-bottom:80px;">    
-            <div class="column col-xs-12 col-sm-12 col-md-8">
+        <div class="row">    
+            <div class="column col-xs-12 col-sm-12 col-md-12">
                 <ul class="list-unstyled list-inline">
                     {% for aval in avales %}
                     <li>
@@ -129,16 +130,30 @@
                 {% endfor %}
                 </ul>
             </div>
-            <div class="column col-xs-12 col-sm-12 col-md-4">
+        </div>
+        <div class="row" style="margin-bottom:80px;">   
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="box dashed-blue-box ">
-                    <p class="titular-blue-box">{% trans "¿Quieres avalar el uso de e-lactancia?" %}</p>
-                    <p class="lead">{% trans "Escríbenos a" %} <a href="maito:apilam.es@gmail.com">apilam.es@gmail.com</a></p>
+                    <p class="titular-blue-box">{% trans "¿Quieres avalar el uso de e-lactancia?" %}
+                    <span class="lead">&nbsp;&nbsp;&nbsp;{% trans "Escríbenos a" %} <a class="with-underline" href="mailto:apilam.es@gmail.com">apilam.es@gmail.com</a></span></p>
                 </div>
             </div>
         </div>      
        
         
     </div>
+    
+    <div class="container">
+        <div class="row" style="margin-bottom:80px;">   
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="box dashed-blue-box ">
+                    <p class="titular-blue-box">{% trans "¿No encontraste lo que buscabas o tienes alguna sugerencia sobre la página?" %}
+                        <span class="lead">&nbsp;&nbsp;&nbsp;{% trans "Escríbenos a" %} <a class="with-underline" href="mailto:elactancia.org@gmail.com">elactancia.org@gmail.com</a></span></p>
+                </div>
+            </div>
+        </div>      
+    </div>
+    
 </div>
 
 
