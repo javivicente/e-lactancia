@@ -182,10 +182,10 @@
 {#################################################################}
 {% block names_and_biblio %}
 
-    <div class="row top-bottom-margins iguala_altura">
+<div class="row top-bottom-margins ">
     <!-- alias -->
     {% if prod_alias or prod_otras_escrituras %}
-        <div class="column {{span_names}}">
+        <div class="column col-xs-12 col-sm-6 col-md-5">
             <div class="box grey-box">
                 <h3 class="risk-header">{% trans "Otros nombres" %}</h3>
                 {% block other_names_first %}
@@ -219,46 +219,8 @@
         </div> <!-- OTROS NOMBRES well -->
     {% endif %}
     
-    {% if prod.hay_marcas %}
-        <div class="column {{span_names}}">
-            <div class="box grey-box" id="box-marcas">
-                <h3 class="risk-header">{% trans "Marcas comerciales" %}</h3>
-                
-            
-                <p>{% trans "Principales marcas comerciales de diversos países que contienen" %} <strong>{% block term_en_marca %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición:" %}</p>
-
-                {% if prod.marcas.count > 5 %}
-                    <div class="accordion accordion-marcas" id="marcas_accordion">
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle text-center" data-toggle="collapse" data-parent="#marcas_accordion" href="#collapsemarcaOne" id="accordion-marcas">{% trans "Listado de" %} {{prod.marcas.count}} {% trans "marcas" %}</a>
-                            </div>
-                            <div id="collapsemarcaOne" class="accordion-body collapse">
-                                <div class="accordion-inner">
-                {% endif %}
-                     <ul>
-                     {% for marca in prod.marcas.all|dictsort:"nombre" %}
-                        {% if marca.principios_activos.count > 1 %}
-                            <li><a href="{% url 'lactancia:ficha_marca' marca.slug %}">{{ marca.nombre_paises }}</a>&trade;. 
-                            {% trans "Contiene otros elementos aparte de" %} <strong>{% block term_en_marca_composicion %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición" %}
-                            </li>
-                        {% else %}
-                            <li><a href="{% url 'lactancia:ficha_marca' marca.slug %}">{{ marca.nombre_paises }}</a>&trade;
-                            </li>
-                        {% endif %}
-                     {% endfor %}
-                     </ul>
-                {% if prod.marcas.count > 5 %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-        </div> <!-- MARCA well -->
-    {% endif %}
-
-        <div class="column {{span_names}}">
+    <div class="col-xs-12 col-sm-6 col-md-7">
+        <div class="col-xs-12">
             <div class="box grey-box">
                 {% if prod.grupo.count > 1 %}
                     <h3 class="risk-header">{% trans "Grupos" %}</h3>
@@ -274,7 +236,46 @@
                 </ul>
              </div>
         </div> <!-- GRUPOS well -->
-    </div> {# cierre row equal #}
+        {% if prod.hay_marcas %}
+            <div class="col-xs-12">
+                <div class="box grey-box" id="box-marcas">
+                    <h3 class="risk-header">{% trans "Marcas comerciales" %}</h3>
+                    
+                
+                    <p>{% trans "Principales marcas comerciales de diversos países que contienen" %} <strong>{% block term_en_marca %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición:" %}</p>
+
+                    {% if prod.marcas.count > 5 %}
+                        <div class="accordion accordion-marcas" id="marcas_accordion">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle text-center" data-toggle="collapse" data-parent="#marcas_accordion" href="#collapsemarcaOne" id="accordion-marcas">{% trans "Listado de" %} {{prod.marcas.count}} {% trans "marcas" %}</a>
+                                </div>
+                                <div id="collapsemarcaOne" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                    {% endif %}
+                         <ul>
+                         {% for marca in prod.marcas.all|dictsort:"nombre" %}
+                            {% if marca.principios_activos.count > 1 %}
+                                <li><a href="{% url 'lactancia:ficha_marca' marca.slug %}">{{ marca.nombre_paises }}</a>&trade;. 
+                                {% trans "Contiene otros elementos aparte de" %} <strong>{% block term_en_marca_composicion %}{{prod.nombre}}{% endblock %}</strong> {% trans "en su composición" %}
+                                </li>
+                            {% else %}
+                                <li><a href="{% url 'lactancia:ficha_marca' marca.slug %}">{{ marca.nombre_paises }}</a>&trade;
+                                </li>
+                            {% endif %}
+                         {% endfor %}
+                         </ul>
+                    {% if prod.marcas.count > 5 %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div> <!-- MARCA well -->
+        {% endif %}        
+    </div> {# COLUMNA DE GRUPO Y MARCAS #}
+</div> {# cierre row equal #}
 
     
 
