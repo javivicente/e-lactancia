@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-22 13:58+0100\n"
+"POT-Creation-Date: 2018-02-26 17:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -431,14 +431,14 @@ msgstr "Last update"
 msgid "grupos con los que se relaciona"
 msgstr "related groups"
 
-#: models.py:46 templates/lactancia/d_producto_b3.html:267
+#: models.py:46 templates/lactancia/d_producto_b3.html:229
 #: templates/lactancia/detalle_p.html:396
 msgid "Grupo"
 msgstr "Group"
 
 #: models.py:47 templates/lactancia/base.html:573
-#: templates/lactancia/base_bootstrap3.html:424
-#: templates/lactancia/d_producto_b3.html:264
+#: templates/lactancia/base_bootstrap3.html:421
+#: templates/lactancia/d_producto_b3.html:226
 #: templates/lactancia/detalle_p.html:393
 #: templates/lactancia/estadisticas_json_ES-b3.html:898
 #: templates/lactancia/estadisticas_json_ES.html:1411
@@ -726,7 +726,7 @@ msgid ""
 msgstr ""
 
 #: models.py:329 templates/lactancia/base.html:557
-#: templates/lactancia/base_bootstrap3.html:408
+#: templates/lactancia/base_bootstrap3.html:405
 msgid "Sinónimos de productos"
 msgstr "Products synonyms"
 
@@ -1760,7 +1760,7 @@ msgid "Web desarrollada por"
 msgstr "Web developed by"
 
 #: templates/lactancia/base.html:549
-#: templates/lactancia/base_bootstrap3.html:400
+#: templates/lactancia/base_bootstrap3.html:397
 #: templates/lactancia/estadisticas_json_ES-b3.html:20
 #: templates/lactancia/estadisticas_json_ES-b3.html:69
 #: templates/lactancia/estadisticas_json_ES-b3.html:118
@@ -1779,37 +1779,37 @@ msgid "Productos"
 msgstr "Products"
 
 #: templates/lactancia/base.html:550
-#: templates/lactancia/base_bootstrap3.html:401
+#: templates/lactancia/base_bootstrap3.html:398
 msgid "No encontramos productos para tu consulta"
 msgstr "No products found for your query"
 
 #: templates/lactancia/base.html:558
-#: templates/lactancia/base_bootstrap3.html:409
+#: templates/lactancia/base_bootstrap3.html:406
 msgid "No encontramos sinónimos para tu consulta"
 msgstr "No synonyms found for your query"
 
 #: templates/lactancia/base.html:565
-#: templates/lactancia/base_bootstrap3.html:416
+#: templates/lactancia/base_bootstrap3.html:413
 msgid "Productos en otras escrituras"
 msgstr "Products in other writings and languages"
 
 #: templates/lactancia/base.html:566
-#: templates/lactancia/base_bootstrap3.html:417
+#: templates/lactancia/base_bootstrap3.html:414
 msgid "No encontramos resultados para tu consulta"
 msgstr "No results found for your query"
 
 #: templates/lactancia/base.html:574
-#: templates/lactancia/base_bootstrap3.html:425
+#: templates/lactancia/base_bootstrap3.html:422
 msgid "No encontramos grupos para tu consulta"
 msgstr "No groups found for your query"
 
 #: templates/lactancia/base.html:581
-#: templates/lactancia/base_bootstrap3.html:432
+#: templates/lactancia/base_bootstrap3.html:429
 msgid "Marcas de productos"
 msgstr "Products tradenames"
 
 #: templates/lactancia/base.html:582
-#: templates/lactancia/base_bootstrap3.html:433
+#: templates/lactancia/base_bootstrap3.html:430
 msgid "No encontramos marcas para tu consulta"
 msgstr "No tradenames found for your query"
 
@@ -1837,12 +1837,12 @@ msgid "Más información"
 msgstr "More information"
 
 #: templates/lactancia/base.html:642
-#: templates/lactancia/base_bootstrap3.html:456
+#: templates/lactancia/base_bootstrap3.html:453
 msgid "política de privacidad"
 msgstr "Privacy Policy"
 
 #: templates/lactancia/base.html:643
-#: templates/lactancia/base_bootstrap3.html:457
+#: templates/lactancia/base_bootstrap3.html:454
 msgid ""
 "Usamos cookies para mejorar tu experiencia. Al continuar navegando en "
 "nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre "
@@ -2043,7 +2043,7 @@ msgstr ""
 
 #: templates/lactancia/creditos.html:107
 #: templates/lactancia/creditos_b3.html:113
-#: templates/lactancia/d_producto_b3.html:588
+#: templates/lactancia/d_producto_b3.html:589
 #: templates/lactancia/partial_citation.html:8
 msgid ""
 "Elige el formato de cita bibliográfica que prefieras. Puedes copiar el texto "
@@ -2137,41 +2137,41 @@ msgid "productos"
 msgstr "products"
 
 #: templates/lactancia/d_grupo_b3.html:160
-#: templates/lactancia/d_producto_b3.html:479
+#: templates/lactancia/d_producto_b3.html:480
 #: templates/lactancia/partial_ratings.html:67
 msgid "Visitas totales"
 msgstr "Total visits"
 
 #: templates/lactancia/d_grupo_b3.html:165
-#: templates/lactancia/d_producto_b3.html:484
+#: templates/lactancia/d_producto_b3.html:485
 msgid "Ayúdanos a mejorar esta ficha"
 msgstr "Help us improve this entry"
 
 #: templates/lactancia/d_grupo_b3.html:175
-#: templates/lactancia/d_producto_b3.html:494
+#: templates/lactancia/d_producto_b3.html:495
 #: templates/lactancia/partial_ratings.html:37
 msgid "Comentario enviado con éxito. ¡Muchas gracias!"
 msgstr "Comment successfully submitted. Thank you!"
 
 #: templates/lactancia/d_grupo_b3.html:177
-#: templates/lactancia/d_producto_b3.html:496
+#: templates/lactancia/d_producto_b3.html:497
 #: templates/lactancia/partial_ratings.html:39
 msgid "Puedes editar tu comentario y volver a enviarlo si lo deseas"
 msgstr "You can edit your comment and send it again if you wish"
 
 #: templates/lactancia/d_grupo_b3.html:185
-#: templates/lactancia/d_producto_b3.html:504
+#: templates/lactancia/d_producto_b3.html:505
 #: templates/lactancia/partial_ratings.html:50
 msgid "Enviar"
 msgstr "Send"
 
 #: templates/lactancia/d_grupo_b3.html:190
-#: templates/lactancia/d_producto_b3.html:509
+#: templates/lactancia/d_producto_b3.html:510
 msgid "¿Necesitas más información?"
 msgstr "Do you need more information?"
 
 #: templates/lactancia/d_grupo_b3.html:193
-#: templates/lactancia/d_producto_b3.html:512
+#: templates/lactancia/d_producto_b3.html:513
 msgid "Escríbenos a elactancia.org@gmail.com"
 msgstr "Write us at elactancia.org@gmail.com"
 
@@ -2295,7 +2295,17 @@ msgstr "Other names"
 msgid "en otros idiomas o escrituras"
 msgstr "in other languages or writings"
 
-#: templates/lactancia/d_producto_b3.html:225
+#: templates/lactancia/d_producto_b3.html:227
+#: templates/lactancia/detalle_p.html:394
+msgid "pertenece a las siguientes familias o grupos:"
+msgstr "belongs to these groups or families:"
+
+#: templates/lactancia/d_producto_b3.html:230
+#: templates/lactancia/detalle_p.html:397
+msgid "pertenece a la siguiente familia o grupo:"
+msgstr "belongs to this group or family:"
+
+#: templates/lactancia/d_producto_b3.html:242
 #: templates/lactancia/detalle_p.html:332
 #: templates/lactancia/estadisticas_json_ES-b3.html:898
 #: templates/lactancia/estadisticas_json_ES.html:1411
@@ -2304,101 +2314,91 @@ msgstr "in other languages or writings"
 msgid "Marcas comerciales"
 msgstr "Tradenames"
 
-#: templates/lactancia/d_producto_b3.html:228
+#: templates/lactancia/d_producto_b3.html:245
 #: templates/lactancia/detalle_p.html:335
 msgid "Principales marcas comerciales de diversos países que contienen"
 msgstr "Main tradenames from several countries containing"
 
-#: templates/lactancia/d_producto_b3.html:228
+#: templates/lactancia/d_producto_b3.html:245
 #: templates/lactancia/detalle_p.html:335
 msgid "en su composición:"
 msgstr "in its composition:"
 
-#: templates/lactancia/d_producto_b3.html:234
-#: templates/lactancia/d_producto_b3.html:429
+#: templates/lactancia/d_producto_b3.html:251
+#: templates/lactancia/d_producto_b3.html:430
 #: templates/lactancia/detalle_p.html:341
 #: templates/lactancia/detalle_p.html:568
 msgid "Listado de"
 msgstr "List of"
 
-#: templates/lactancia/d_producto_b3.html:234
+#: templates/lactancia/d_producto_b3.html:251
 #: templates/lactancia/detalle_p.html:341
 msgid "marcas"
 msgstr "tradenames"
 
-#: templates/lactancia/d_producto_b3.html:243
+#: templates/lactancia/d_producto_b3.html:260
 #: templates/lactancia/detalle_p.html:362
 msgid "Contiene otros elementos aparte de"
 msgstr "Contains other elements than"
 
-#: templates/lactancia/d_producto_b3.html:243
+#: templates/lactancia/d_producto_b3.html:260
 #: templates/lactancia/detalle_p.html:362
 msgid "en su composición"
 msgstr "in its composition"
 
-#: templates/lactancia/d_producto_b3.html:265
-#: templates/lactancia/detalle_p.html:394
-msgid "pertenece a las siguientes familias o grupos:"
-msgstr "belongs to these groups or families:"
-
-#: templates/lactancia/d_producto_b3.html:268
-#: templates/lactancia/detalle_p.html:397
-msgid "pertenece a la siguiente familia o grupo:"
-msgstr "belongs to this group or family:"
-
-#: templates/lactancia/d_producto_b3.html:294
+#: templates/lactancia/d_producto_b3.html:295
 #: templates/lactancia/detalle_p.html:433
 msgid "Farmacocinética"
 msgstr "Pharmacokinetics"
 
-#: templates/lactancia/d_producto_b3.html:299
+#: templates/lactancia/d_producto_b3.html:300
 #: templates/lactancia/detalle_p.html:438
 msgid "Variable"
 msgstr "Variable"
 
-#: templates/lactancia/d_producto_b3.html:300
+#: templates/lactancia/d_producto_b3.html:301
 #: templates/lactancia/detalle_p.html:439
 msgid "Valor"
 msgstr "Value"
 
-#: templates/lactancia/d_producto_b3.html:301
+#: templates/lactancia/d_producto_b3.html:302
 #: templates/lactancia/detalle_p.html:440
 msgid "Unidades"
 msgstr "Units"
 
-#: templates/lactancia/d_producto_b3.html:362
-#: templates/lactancia/d_producto_b3.html:372
+#: templates/lactancia/d_producto_b3.html:363
+#: templates/lactancia/d_producto_b3.html:373
 #: templates/lactancia/detalle_p.html:501
 #: templates/lactancia/detalle_p.html:511
 msgid "horas"
 msgstr "hours"
 
-#: templates/lactancia/d_producto_b3.html:423
+#: templates/lactancia/d_producto_b3.html:424
 #: templates/lactancia/detalle_p.html:562
 msgid "Bibliografía"
 msgstr "References"
 
-#: templates/lactancia/d_producto_b3.html:429
+#: templates/lactancia/d_producto_b3.html:430
 #: templates/lactancia/detalle_p.html:568
 msgid "referencias"
 msgstr "references"
 
-#: templates/lactancia/d_producto_b3.html:439
+#: templates/lactancia/d_producto_b3.html:440
 #: templates/lactancia/detalle_p.html:578
 msgid "Resumen"
 msgstr "Abstract"
 
-#: templates/lactancia/d_producto_b3.html:442
+#: templates/lactancia/d_producto_b3.html:443
 #: templates/lactancia/detalle_p.html:581
 msgid "Texto completo (enlace a fuente original)"
 msgstr "Full text (link to original source)"
 
-#: templates/lactancia/d_producto_b3.html:445
+#: templates/lactancia/d_producto_b3.html:446
 #: templates/lactancia/detalle_p.html:584
 msgid "Texto completo (en nuestros servidores)"
 msgstr "Full text (in our servers)"
 
-#: templates/lactancia/d_producto_b3.html:451
+#: templates/lactancia/d_producto_b3.html:452
 #: templates/lactancia/detalle_p.html:590
 msgid ""
 "Estamos trabajando en poner las citas bibliográficas de este producto. En "
@@ -2409,7 +2409,7 @@ msgstr ""
 "available soon. If you wish to have access to this information, please let "
 "us know by leaving your comment in the opinion section below."
 
-#: templates/lactancia/d_producto_b3.html:453
+#: templates/lactancia/d_producto_b3.html:454
 #: templates/lactancia/detalle_p.html:592
 msgid "No disponemos de bibliografía para este producto."
 msgstr "There are no references for this product."
@@ -3656,9 +3656,8 @@ msgid "Recibe información sobre lactancia y APILAM."
 msgstr "Get information about breastfeeding and APILAM"
 
 #: templates/lactancia/partial_pink_donation.html:14
-msgid ""
-"Tu aportación es fundamental para que este servicio siga siendo gratuito."
-msgstr "Your contribution is essential for this service to remain free."
+msgid "Tu aportación es fundamental para que este servicio siga existiendo."
+msgstr "Your contribution is essential for this service to continue to exist."
 
 #: templates/lactancia/partial_pink_donation.html:14
 msgid ""
