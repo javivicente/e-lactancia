@@ -11,7 +11,8 @@
             <span class="icon-bar"></span>
         </button>
         {% block topbar_brand %}
-        <a class="navbar-brand navbar-brand-home" href="{% block topbar_brand_url %}{% url 'lactancia:landing' %}{% endblock %}">e-lactancia</a>
+        {#<a class="navbar-brand navbar-brand-home" href="{% block topbar_brand_url %}{% url 'lactancia:landing' %}{% endblock %}">e-lactancia</a>#}
+        <a class="navbar-brand navbar-brand-home" href="{% block topbar_brand_url %}{% url 'lactancia:landing' %}{% endblock %}"><img src="{{ STATIC_URL }}img/logo-apilam-.png" id="top_logo"/></a>
         {% endblock %}                    
         <div class="row visible-xs hidden-sm hidden-md hidden-lg"><a class="btn round btn-donate pull-right top_btn_donar" href="{% url 'lactancia:donativos' %}" style="margin-right:6px; margin-top:16px;">{% trans 'DONA AHORA' %}</a></div>
         
