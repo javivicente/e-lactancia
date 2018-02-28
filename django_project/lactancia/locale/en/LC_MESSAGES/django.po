@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 19:25+0100\n"
+"POT-Creation-Date: 2018-02-28 20:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1662,7 +1662,7 @@ msgstr "Reading the fascinating text of the Legal Notice of e-lactancia"
 
 # mark to review!
 #: templates/lactancia/base.html:72 templates/lactancia/landing.html:36
-#: templates/lactancia/partial_top_bar.html:20
+#: templates/lactancia/partial_top_bar.html:29
 msgid "Buscar"
 msgstr "Search"
 
@@ -1673,10 +1673,10 @@ msgstr "Search"
 #: templates/lactancia/partial_footer.html:107
 #: templates/lactancia/partial_pink_donation.html:20
 #: templates/lactancia/partial_pink_donation_2.html:14
-#: templates/lactancia/partial_top_bar.html:17
-#: templates/lactancia/partial_top_bar.html:40
-#: templates/lactancia/partial_top_bar_home.html:16
-#: templates/lactancia/partial_top_bar_home.html:30
+#: templates/lactancia/partial_top_bar.html:25
+#: templates/lactancia/partial_top_bar.html:50
+#: templates/lactancia/partial_top_bar_home.html:17
+#: templates/lactancia/partial_top_bar_home.html:31
 msgid "DONA AHORA"
 msgstr "DONATE NOW"
 
@@ -3248,7 +3248,7 @@ msgid "e-lactancia es un recurso recomendado por la"
 msgstr "e-lactancia is a resource recommended by"
 
 #: templates/lactancia/landing.html:35
-#: templates/lactancia/partial_home_header.html:18
+#: templates/lactancia/partial_home_header.html:16
 msgid "Escribe tu búsqueda"
 msgstr "Type your search"
 
@@ -3257,17 +3257,17 @@ msgid "Por ejemplo"
 msgstr "For example"
 
 #: templates/lactancia/landing.html:40
-#: templates/lactancia/partial_home_header.html:25
+#: templates/lactancia/partial_home_header.html:23
 msgid "Ibuprofeno"
 msgstr "Ibuprofen"
 
 #: templates/lactancia/landing.html:41
-#: templates/lactancia/partial_home_header.html:26
+#: templates/lactancia/partial_home_header.html:24
 msgid "Couldina"
 msgstr "Couldina"
 
 #: templates/lactancia/landing.html:42
-#: templates/lactancia/partial_home_header.html:27
+#: templates/lactancia/partial_home_header.html:25
 msgid "Bayas de Goji"
 msgstr "Goji berries"
 
@@ -3276,12 +3276,12 @@ msgid "Píldora del día después"
 msgstr "Emergency contraceptive pills"
 
 #: templates/lactancia/landing.html:44
-#: templates/lactancia/partial_home_header.html:28
+#: templates/lactancia/partial_home_header.html:26
 msgid "Fitoterapia"
 msgstr "Phytotherapy"
 
 #: templates/lactancia/landing.html:45
-#: templates/lactancia/partial_home_header.html:29
+#: templates/lactancia/partial_home_header.html:27
 msgid "Última actualización"
 msgstr "Last update"
 
@@ -3290,7 +3290,7 @@ msgid "Consulta la compatibilidad de la <strong>Lactancia</strong> con"
 msgstr "Check the compatibility of <strong>Breastfeeding</strong> with"
 
 #: templates/lactancia/landing.html:68
-#: templates/lactancia/partial_home_header.html:15
+#: templates/lactancia/partial_home_header.html:13
 msgid "términos"
 msgstr "terms"
 
@@ -3541,7 +3541,7 @@ msgstr ""
 "twitter.com/apilam_\" target=\"_blank\">Twitter</a>, <a href=\"https://"
 "instagram.com/apilam_breastfeeding_museum/\" target=\"_blank\">Instagram</a>"
 
-#: templates/lactancia/partial_donativos_header.html:10
+#: templates/lactancia/partial_donativos_header.html:11
 msgid ""
 "Cientos de madres se ven obligadas a interrumpir sus lactancias pese a que "
 "pocas situaciones lo justifican."
@@ -3549,21 +3549,21 @@ msgstr ""
 "Hundreds of mothers are forced to interrupt nursing although few situations "
 "justify it."
 
-#: templates/lactancia/partial_donativos_header.html:12
+#: templates/lactancia/partial_donativos_header.html:13
 msgid "Las mamás y sus bebés te necesitan. Salva lactancias. Dona ahora."
 msgstr "Moms and their babies need you. Save lactations. Donate now."
 
 #: templates/lactancia/partial_footer.html:17
-#: templates/lactancia/partial_footer_4_landing.html:17
 msgid ""
-"e-lactancia es un proyecto de <a class=\"white-text with-underline\" href="
+"<a class=\"white-text with-underline\" href=\"http://e-lactancia.org\">e-"
+"lactancia</a> es un proyecto de <a class=\"white-text with-underline\" href="
 "\"http://apilam.org/\" target=\"_blank\">APILAM</a>, Asociación para la "
 "Promoción e Investigación científica y cultural de la Lactancia Materna, "
 "bajo <a class=\"white-text with-underline\" target=\"_blank\" href=\"http://"
 "creativecommons.org/licenses/by-nc-sa/4.0/\">Licencia Internacional Creative "
 "Commons</a>"
 msgstr ""
-"e-lactancia is a project of <a class='white-text with-underline' "
+"<a class=\"white-text with-underline\" href=\"http://e-lactancia.org\">e-lactancia</a> is a project of <a class='white-text with-underline' "
 "href='http://apilam.org/' target='_blank'>APILAM</a>, Association for "
 "Promotion and cultural and scientific Research of Breastfeeding, under a  <a "
 "class='white-text with-underline' target='_blank' href='http://"
@@ -3588,8 +3588,8 @@ msgstr "STATS"
 
 #: templates/lactancia/partial_footer.html:110
 #: templates/lactancia/partial_newsletter_box.html:13
-#: templates/lactancia/partial_top_bar.html:34
-#: templates/lactancia/partial_top_bar_home.html:24
+#: templates/lactancia/partial_top_bar.html:44
+#: templates/lactancia/partial_top_bar_home.html:25
 msgid "Suscríbete"
 msgstr "Subscribe"
 
@@ -3609,6 +3609,22 @@ msgstr ""
 "Icons of heart, green leaf and medical cross have been graciously given by "
 "Flaticon"
 
+#: templates/lactancia/partial_footer_4_landing.html:17
+msgid ""
+"e-lactancia es un proyecto de <a class=\"white-text with-underline\" href="
+"\"http://apilam.org/\" target=\"_blank\">APILAM</a>, Asociación para la "
+"Promoción e Investigación científica y cultural de la Lactancia Materna, "
+"bajo <a class=\"white-text with-underline\" target=\"_blank\" href=\"http://"
+"creativecommons.org/licenses/by-nc-sa/4.0/\">Licencia Internacional Creative "
+"Commons</a>"
+msgstr ""
+"e-lactancia is a project of <a class='white-text with-underline' "
+"href='http://apilam.org/' target='_blank'>APILAM</a>, Association for "
+"Promotion and cultural and scientific Research of Breastfeeding, under a  <a "
+"class='white-text with-underline' target='_blank' href='http://"
+"creativecommons.org/licenses/by-nc-sa/4.0/'> Creative Commons Internacional "
+"License</a>"
+
 #: templates/lactancia/partial_footer_4_landing.html:24
 msgid "Pago seguro con PayPal"
 msgstr "Secure payment with PayPal"
@@ -3618,15 +3634,15 @@ msgid ""
 "Los iconos de nuestros resultados han sido cedidos graciosamente por Flaticon"
 msgstr "Icons of our results have been graciously given by Flaticon"
 
-#: templates/lactancia/partial_home_header.html:11
+#: templates/lactancia/partial_home_header.html:9
 msgid "¿Es compatible con la lactancia?"
 msgstr "Is it compatible with breastfeeding?"
 
-#: templates/lactancia/partial_home_header.html:15
+#: templates/lactancia/partial_home_header.html:13
 msgid "Consulta la compatibilidad de la lactancia materna con"
 msgstr "Check the compatibility of Breastfeeding with"
 
-#: templates/lactancia/partial_home_header.html:24
+#: templates/lactancia/partial_home_header.html:22
 msgid "Algunos ejemplos: "
 msgstr "Some examples:"
 
