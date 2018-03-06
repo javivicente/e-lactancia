@@ -2133,7 +2133,7 @@ msgstr "in this group"
 #: templates/lactancia/detalle_g2.html:180
 #: templates/lactancia/detalle_g2.html:202
 msgid "No hay productos de"
-msgstr "There are no products of"
+msgstr "There are no products with"
 
 #: templates/lactancia/d_grupo_b3.html:55
 #: templates/lactancia/d_grupo_b3.html:67
