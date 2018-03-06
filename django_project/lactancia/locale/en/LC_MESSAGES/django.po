@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-28 20:54+0100\n"
+"POT-Creation-Date: 2018-03-06 16:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2110,6 +2110,20 @@ msgstr "Last update:"
 msgid "perteneciente a"
 msgstr "belonging to"
 
+#: templates/lactancia/d_grupo_b3.html:51
+#: templates/lactancia/d_grupo_b3.html:63
+#: templates/lactancia/d_grupo_b3.html:75
+#: templates/lactancia/d_grupo_b3.html:87
+msgid "términos con"
+msgstr "terms with"
+
+#: templates/lactancia/d_grupo_b3.html:51
+#: templates/lactancia/d_grupo_b3.html:63
+#: templates/lactancia/d_grupo_b3.html:75
+#: templates/lactancia/d_grupo_b3.html:87
+msgid "en este grupo"
+msgstr "in this group"
+
 #: templates/lactancia/d_grupo_b3.html:55
 #: templates/lactancia/d_grupo_b3.html:67
 #: templates/lactancia/d_grupo_b3.html:79
@@ -3563,7 +3577,8 @@ msgid ""
 "creativecommons.org/licenses/by-nc-sa/4.0/\">Licencia Internacional Creative "
 "Commons</a>"
 msgstr ""
-"<a class=\"white-text with-underline\" href=\"http://e-lactancia.org\">e-lactancia</a> is a project of <a class='white-text with-underline' "
+"<a class=\"white-text with-underline\" href=\"http://e-lactancia.org\">e-"
+"lactancia</a> is a project of <a class='white-text with-underline' "
 "href='http://apilam.org/' target='_blank'>APILAM</a>, Association for "
 "Promotion and cultural and scientific Research of Breastfeeding, under a  <a "
 "class='white-text with-underline' target='_blank' href='http://"
@@ -4334,11 +4349,11 @@ msgstr "by level of risk according e-lactancia.org"
 msgid "['muy mala', 'mala', 'regular', 'buena', 'muy buena']"
 msgstr "['very bad', 'bad', 'not bad', 'good', 'very good']"
 
-#: views.py:1413
+#: views.py:1430
 msgid "Tú puedes salvar lactancias"
 msgstr "You can save breastfeeding"
 
-#: views.py:1414
+#: views.py:1431
 msgid ""
 "Cientos de madres se ven obligadas a interrumpir sus lactancia aunque pocas "
 "situaciones lo justifica. Las mamás y sus bebés te necesitan. Salva "
@@ -4347,27 +4362,27 @@ msgstr ""
 "Hundreds of mothers are forced to interrupt nursing although few situations "
 "justify it. Moms and their babies need you. Save breastfeeding. Donate now."
 
-#: views.py:2015 views.py:2022 views.py:2046 views.py:2055 views.py:2079
-#: views.py:2087
+#: views.py:2032 views.py:2039 views.py:2063 views.py:2072 views.py:2096
+#: views.py:2104
 msgid ""
 "Asociación para la Promoción científica y cultural de la Lactancia Materna"
 msgstr ""
 "Association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2102
+#: views.py:2119
 msgid "En e-lactancia.org."
 msgstr "In e-lactancia.org"
 
-#: views.py:2102 views.py:2104
+#: views.py:2119 views.py:2121
 msgid "Recuperado"
 msgstr "Retrieved"
 
-#: views.py:2102 views.py:2104
+#: views.py:2119 views.py:2121
 msgid "a partir de"
 msgstr "from"
 
-#: views.py:2104 views.py:2133 views.py:2135
+#: views.py:2121 views.py:2150 views.py:2152
 msgid ""
 "APILAM (Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna)"
@@ -4375,11 +4390,11 @@ msgstr ""
 "APILAM (Association for promotion and cultural and scientific research of "
 "breastfeeding)"
 
-#: views.py:2114
+#: views.py:2131
 msgid "En"
 msgstr "In"
 
-#: views.py:2114 views.py:2122
+#: views.py:2131 views.py:2139
 msgid ""
 "APILAM: Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna"
@@ -4387,23 +4402,23 @@ msgstr ""
 "APILAM: association for promotion and cultural and scientific research of "
 "breastfeeding"
 
-#: views.py:2114 views.py:2122
+#: views.py:2131 views.py:2139
 msgid "actualizado"
 msgstr "updated"
 
-#: views.py:2114 views.py:2122
+#: views.py:2131 views.py:2139
 msgid "acceso"
 msgstr "accessed"
 
-#: views.py:2114 views.py:2122
+#: views.py:2131 views.py:2139
 msgid "Disponible en"
 msgstr "Available from"
 
-#: views.py:2133 views.py:2135
+#: views.py:2150 views.py:2152
 msgid "accedido el"
 msgstr "accessed"
 
-#: views.py:2225
+#: views.py:2242
 msgid "Descargar"
 msgstr "Download"
 

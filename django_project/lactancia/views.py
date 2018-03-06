@@ -1206,33 +1206,46 @@ def get_context_for_grupo(request, grupo):
         exists_r0 = Producto.objects.filter(**filterargs).exists()
         cache.set('grupo_r0_'+str(grupo.id)+'_exists_es', exists_r0,timeout)
         
-    prods_r3 = None
-    prods_r2 = None
-    prods_r1 = None
-    prods_r0 = None
+    n_r3 = None
+    n_r2 = None
+    n_r1 = None
+    n_r0 = None
     
-    '''
-    prods_r3 = cache.get('grupo_r3_'+str(grupo.id)+'_es')
-    if prods_r3 == None:
-        filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 3 }
-        prods_r3 = Producto.objects.filter(**filterargs).order_by('nombre')
-        cache.set('grupo_r3_'+str(grupo.id)+'_es', prods_r3,timeout)
-    prods_r2 = cache.get('grupo_r2_'+str(grupo.id)+'_es')
-    if prods_r2 == None:
-        filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 2 }
-        prods_r2 = Producto.objects.filter(**filterargs).order_by('nombre')
-        cache.set('grupo_r2_'+str(grupo.id)+'_es', prods_r2,timeout)
-    prods_r1 = cache.get('grupo_r1_'+str(grupo.id)+'_es')
-    if prods_r1 == None:
-        filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 1 }
-        prods_r1 = Producto.objects.filter(**filterargs).order_by('nombre')
-        cache.set('grupo_r1_'+str(grupo.id)+'_es', prods_r1,timeout)
-    prods_r0 = cache.get('grupo_r0_'+str(grupo.id)+'_es')
-    if prods_r0 == None:
-        filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 0 }
-        prods_r0 = Producto.objects.filter(**filterargs).order_by('nombre')
-        cache.set('grupo_r0_'+str(grupo.id)+'_es', prods_r0,timeout)
-    '''
+    
+    n_r3 = cache.get('grupo_r3_N_of_'+str(grupo.id)+'_es')
+    if n_r3 == None:
+        if exists_r3:
+            filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 3 }
+            n_r3 = Producto.objects.filter(**filterargs).count()
+        else:
+            n_r3 = 0
+        cache.set('grupo_r3_N_of_'+str(grupo.id)+'_es', n_r3,timeout)
+    n_r2 = cache.get('grupo_r2_N_of_'+str(grupo.id)+'_es')
+    if n_r2 == None:
+        if exists_r2:
+            filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 2 }
+            n_r2 = Producto.objects.filter(**filterargs).count()
+        else:
+            n_r2 = 0
+        cache.set('grupo_r2_N_of_'+str(grupo.id)+'_es', n_r2,timeout)
+    n_r1 = cache.get('grupo_r1_N_of_'+str(grupo.id)+'_es')
+    if n_r1 == None:
+        if exists_r1:
+            filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 1 }
+            n_r1 = Producto.objects.filter(**filterargs).count()
+        else:
+            n_r1 = 0
+        cache.set('grupo_r1_N_of_'+str(grupo.id)+'_es', n_r1,timeout)
+    n_r0 = cache.get('grupo_r0_N_of_'+str(grupo.id)+'_es')
+    if n_r0 == None:
+        if exists_r0:
+            filterargs = { 'grupo': grupo.id, 'riesgo__nivel': 0 }
+            n_r0 = Producto.objects.filter(**filterargs).count()
+        else:
+            n_r0 = 0
+        cache.set('grupo_r0_N_of_'+str(grupo.id)+'_es', n_r0,timeout)
+    
+    
     
     '''calling the messages in the page'''
     prod_disclaimer = cache.get('prod_disclaimer')
@@ -1299,6 +1312,10 @@ def get_context_for_grupo(request, grupo):
                'exists_r2': exists_r2,
                'exists_r1': exists_r1,
                'exists_r0': exists_r0,
+               'n_r3': n_r3,
+               'n_r2': n_r2,
+               'n_r1': n_r1,
+               'n_r0': n_r0,
                'prods': prods,
                'prod_disclaimer': prod_disclaimer,
                'risk0_info': risk0_info,
