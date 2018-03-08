@@ -2240,7 +2240,7 @@ def download_citation(request):
             item = Otras_escrituras.objects.get(id=id)
     result = ''
     result += '<div class="col-xs-12">' + '<a href="'+ generate_citation_link(item, citation) + '" download id="btn_download_citation" class="btn btn-info">' + _(u'Descargar') + '</a>' + '</div>'
-    result += '<div class="col-xs-12" style="margin-top:20px;"><p>' + generate_citation_text(item,citation) + '</p></div>'
+    result += '<div class="col-xs-12" style="margin-top:20px;"><p class="dont-break-out">' + generate_citation_text(item,citation) + '</p></div>'
     
     
     return HttpResponse(result)       

@@ -1,0 +1,72 @@
+{% load static %} 
+{% load i18n %} 
+
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-fixed-top navbar-static-top navbar-el navbar-default-el" id="top-navbar">
+    <div class="container" id="topbar">
+        
+        <button type="button" id="btn_toggle_top" class="navbar-toggle navbar-toggle-el collapsed" data-toggle="collapse" data-target="#navbar-topbar" aria-expanded="false" aria-controls="navbar-topbar">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-bars fa-fw"></i>
+        </button>
+        <button type="button" id="btn_lupita_top" class="navbar-toggle navbar-toggle-el" aria-expanded="false" aria-controls="navbar-search-topbar">
+            <i class="fa fa-search fa-fw"></i>
+        </button> 
+        
+        
+        {% block topbar_brand %}
+        <a class="navbar-brand navbar-brand-el" href="{% block topbar_brand_url %}{% url 'lactancia:landing' %}{% endblock %}"><img src="{{ STATIC_URL }}img/logo-apilam-.png" id="top_logo"/><span>e-lactancia</span></a>
+        {% endblock %}
+        <div class="row visible-xs hidden-sm hidden-md hidden-lg"><a class="btn round btn-donate  top_btn_donar pull-right" href="{% url 'lactancia:donativos' %}">{% trans 'DONA AHORA' %}</a></div>
+        
+                           
+        
+        
+        {% block topbar_search %}
+        <div id="navbar-search-topbar" class="hide-search-bar-for-xs">
+            <form class="navbar-form navbar-form-el form-search" id="search_form" action="{% block search_bar_action %}{% url 'lactancia:buscar' %}{% endblock %}">
+            <input class="typeahead" placeholder="{% trans 'Buscar' %}" type="text" id="search_input" name="q" style="display:inline;"/>
+            </form>
+            <input type="hidden" id="term-type" name="term-type" value="">
+            <input type="hidden" id="term-id" name="term-id" value="">
+        </div>
+        {% endblock %}
+        {# bloque de la derecha (se colapsa en móvil) #}
+        <div id="navbar-topbar" class="navbar-collapse collapse navbar-collapse-el">
+            <ul id="top_bar_right_menu" class="nav navbar-nav navbar-right navbar-nav-el">
+                <li>
+                    {# BOTON SUSCRIPCION #}
+                    <a class="btn btn-mail outline" id="top_btn_suscripcion" href="#subscribe" rel="nofollow" onclick="$('#subscribe').modal('show');"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;{% trans 'Suscríbete' %}</a>
+                </li> 
+                <li class="hidden-xs">{# BOTON DONAR PAYPAL #}
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}4BLX2BB5A8KYY{% else %}BLSTZ4B6QGTJQ{% endif %}">
+                            <input class="btn round btn-donate " id="#top_btn_donar" type="submit" value="{% trans 'DONA AHORA' %}"/>
+                    </form>
+                </li>
+                <li>
+                {% block idiomas %}        
+                <li id="topbar_language">
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                             <select class="selectpicker" id="language_top" name="language" data-width="auto" data-style="btn-default btn-xs navbar-btn" onchange="this.form.submit()">
+                             {% get_language_info_list for LANGUAGES as languages %}
+                             {% for language in languages %}
+                             <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                                    {{ language.code|upper }} 
+                                </option>
+                                {% endfor %}
+                                </select>
+                        </form>    
+                    </li>
+                {% endblock %}
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+        
+      </div>
+    </nav>
+        
+       

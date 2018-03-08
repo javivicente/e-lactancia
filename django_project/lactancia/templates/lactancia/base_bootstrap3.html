@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link href="{{STATIC_URL}}css/e-lactancia.v2.0.5.css" rel="stylesheet"> 
+    <link href="{{STATIC_URL}}css/e-lactancia.v2.0.6.css" rel="stylesheet"> 
     <link href="{{STATIC_URL}}img/favicon-elactancia.ico" rel="icon" type="image/x-icon">
      
       {# Google Analytics #}
@@ -46,7 +46,7 @@
     
     {% block pre_mainpage %}
     
-    {% include 'lactancia/partial_top_bar.html' %}
+    {% include 'lactancia/partial_top_bar_alt.html' %}
     
     {% endblock %} {# pre_mainpage #}
     
@@ -144,7 +144,7 @@
             var width; 
         
             if ($(window).width()<425 ){
-                width = $(window).width()*0.8; 
+                width = $(window).width()*0.9; 
             }
             //less than 768px
             else{ 
@@ -157,13 +157,13 @@
                     /* Small Devices, .visible-sm-* */
                     if ($(window).width() < 991){
                         //width = $(window).width() - 620;
-                        width = $(window).width()*0.8;
+                        width = $(window).width()*0.25;
                     }
                     else{
                         /* Medium Devices, .visible-md-* */
                         if ($(window).width() < 1199){
                            // width = $(window).width() - 700; 
-                            width = $(window).width()*0.8; 
+                            width = $(window).width()*0.35; 
                         }
                         /* Large Devices, .visible-lg-* */
                         else {
@@ -175,7 +175,7 @@
             $('#search_form .typeahead').css('width', width); 
             $('#search_form .tt-query').css('width', width); 
             $('#search_form .tt-hint').css('width', width);  
-
+            
         };
         
         
@@ -190,7 +190,18 @@
         });
     </script>
     <script>
-               
+          $(function() {
+                $("#btn_lupita_top").click(function() {
+                    $("#navbar-search-topbar").slideToggle();
+                    $('#btn_lupita_top .fa').toggleClass('fa-search fa-times');
+                }); 
+            });     
+            
+          $(function() {
+                $("#btn_toggle_top").click(function() {
+                    $('#btn_toggle_top .fa').toggleClass('fa-bars fa-times');
+                }); 
+            });     
     </script>
     <script>
         
