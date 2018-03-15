@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-06 16:23+0100\n"
+"POT-Creation-Date: 2018-03-15 11:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -437,7 +437,7 @@ msgid "Grupo"
 msgstr "Group"
 
 #: models.py:47 templates/lactancia/base.html:573
-#: templates/lactancia/base_bootstrap3.html:421
+#: templates/lactancia/base_bootstrap3.html:432
 #: templates/lactancia/d_producto_b3.html:226
 #: templates/lactancia/detalle_p.html:393
 #: templates/lactancia/estadisticas_json_ES-b3.html:898
@@ -726,7 +726,7 @@ msgid ""
 msgstr ""
 
 #: models.py:329 templates/lactancia/base.html:557
-#: templates/lactancia/base_bootstrap3.html:405
+#: templates/lactancia/base_bootstrap3.html:416
 msgid "Sinónimos de productos"
 msgstr "Products synonyms"
 
@@ -1663,6 +1663,7 @@ msgstr "Reading the fascinating text of the Legal Notice of e-lactancia"
 # mark to review!
 #: templates/lactancia/base.html:72 templates/lactancia/landing.html:36
 #: templates/lactancia/partial_top_bar.html:29
+#: templates/lactancia/partial_top_bar_alt.html:28
 msgid "Buscar"
 msgstr "Search"
 
@@ -1675,8 +1676,12 @@ msgstr "Search"
 #: templates/lactancia/partial_pink_donation_2.html:14
 #: templates/lactancia/partial_top_bar.html:25
 #: templates/lactancia/partial_top_bar.html:50
+#: templates/lactancia/partial_top_bar_alt.html:20
+#: templates/lactancia/partial_top_bar_alt.html:43
 #: templates/lactancia/partial_top_bar_home.html:17
 #: templates/lactancia/partial_top_bar_home.html:31
+#: templates/lactancia/partial_top_bar_home_alt.html:15
+#: templates/lactancia/partial_top_bar_home_alt.html:29
 msgid "DONA AHORA"
 msgstr "DONATE NOW"
 
@@ -1761,7 +1766,7 @@ msgid "Web desarrollada por"
 msgstr "Web developed by"
 
 #: templates/lactancia/base.html:549
-#: templates/lactancia/base_bootstrap3.html:397
+#: templates/lactancia/base_bootstrap3.html:408
 #: templates/lactancia/estadisticas_json_ES-b3.html:20
 #: templates/lactancia/estadisticas_json_ES-b3.html:69
 #: templates/lactancia/estadisticas_json_ES-b3.html:118
@@ -1780,37 +1785,37 @@ msgid "Productos"
 msgstr "Products"
 
 #: templates/lactancia/base.html:550
-#: templates/lactancia/base_bootstrap3.html:398
+#: templates/lactancia/base_bootstrap3.html:409
 msgid "No encontramos productos para tu consulta"
 msgstr "No products found for your query"
 
 #: templates/lactancia/base.html:558
-#: templates/lactancia/base_bootstrap3.html:406
+#: templates/lactancia/base_bootstrap3.html:417
 msgid "No encontramos sinónimos para tu consulta"
 msgstr "No synonyms found for your query"
 
 #: templates/lactancia/base.html:565
-#: templates/lactancia/base_bootstrap3.html:413
+#: templates/lactancia/base_bootstrap3.html:424
 msgid "Productos en otras escrituras"
 msgstr "Products in other writings and languages"
 
 #: templates/lactancia/base.html:566
-#: templates/lactancia/base_bootstrap3.html:414
+#: templates/lactancia/base_bootstrap3.html:425
 msgid "No encontramos resultados para tu consulta"
 msgstr "No results found for your query"
 
 #: templates/lactancia/base.html:574
-#: templates/lactancia/base_bootstrap3.html:422
+#: templates/lactancia/base_bootstrap3.html:433
 msgid "No encontramos grupos para tu consulta"
 msgstr "No groups found for your query"
 
 #: templates/lactancia/base.html:581
-#: templates/lactancia/base_bootstrap3.html:429
+#: templates/lactancia/base_bootstrap3.html:440
 msgid "Marcas de productos"
 msgstr "Products tradenames"
 
 #: templates/lactancia/base.html:582
-#: templates/lactancia/base_bootstrap3.html:430
+#: templates/lactancia/base_bootstrap3.html:441
 msgid "No encontramos marcas para tu consulta"
 msgstr "No tradenames found for your query"
 
@@ -1838,12 +1843,12 @@ msgid "Más información"
 msgstr "More information"
 
 #: templates/lactancia/base.html:642
-#: templates/lactancia/base_bootstrap3.html:453
+#: templates/lactancia/base_bootstrap3.html:464
 msgid "política de privacidad"
 msgstr "Privacy Policy"
 
 #: templates/lactancia/base.html:643
-#: templates/lactancia/base_bootstrap3.html:454
+#: templates/lactancia/base_bootstrap3.html:465
 msgid ""
 "Usamos cookies para mejorar tu experiencia. Al continuar navegando en "
 "nuestro sitio, aceptas el uso de nuestras cookies. Más información sobre "
@@ -3557,15 +3562,15 @@ msgstr ""
 
 #: templates/lactancia/partial_donativos_header.html:11
 msgid ""
-"Cientos de madres se ven obligadas a interrumpir sus lactancias pese a que "
+"Muchas mujeres se ven obligadas a interrumpir sus lactancias pese a que "
 "pocas situaciones lo justifican."
 msgstr ""
-"Hundreds of mothers are forced to interrupt nursing although few situations "
+"Many women are forced to interrupt nursing although few situations "
 "justify it."
 
 #: templates/lactancia/partial_donativos_header.html:13
-msgid "Las mamás y sus bebés te necesitan. Salva lactancias. Dona ahora."
-msgstr "Moms and their babies need you. Save lactations. Donate now."
+msgid "Madres y bebés te necesitan. Salva lactancias. Dona ahora."
+msgstr "Mothers and babies need you. Save lactations. Donate now."
 
 #: templates/lactancia/partial_footer.html:17
 msgid ""
@@ -3604,7 +3609,9 @@ msgstr "STATS"
 #: templates/lactancia/partial_footer.html:110
 #: templates/lactancia/partial_newsletter_box.html:13
 #: templates/lactancia/partial_top_bar.html:44
+#: templates/lactancia/partial_top_bar_alt.html:39
 #: templates/lactancia/partial_top_bar_home.html:25
+#: templates/lactancia/partial_top_bar_home_alt.html:23
 msgid "Suscríbete"
 msgstr "Subscribe"
 
