@@ -1460,20 +1460,17 @@ def donativo_cancelado(request):
 
 def boletin_error(request):
     
-    return redirect('lactancia:landing', permanent=True)
-    '''
     context = initial_context
     context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/boletin_error.html', context)
-    '''
+    
 
 def boletin_ok(request):
-    return redirect('lactancia:landing', permanent=True)
-    '''
+    
     context = initial_context
     context.update({'meta': set_meta(request)})
     return render(request, 'lactancia/boletin_ok.html', context)
-    '''
+    
     
 '''Lista de productos que tienen alternativas con un riesgo mayor que el del
 propio producto'''
