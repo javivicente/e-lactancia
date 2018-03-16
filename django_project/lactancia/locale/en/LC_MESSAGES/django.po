@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-15 11:08+0100\n"
+"POT-Creation-Date: 2018-03-16 12:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1681,7 +1681,7 @@ msgstr "Search"
 #: templates/lactancia/partial_top_bar_home.html:17
 #: templates/lactancia/partial_top_bar_home.html:31
 #: templates/lactancia/partial_top_bar_home_alt.html:15
-#: templates/lactancia/partial_top_bar_home_alt.html:29
+#: templates/lactancia/partial_top_bar_home_alt.html:27
 msgid "DONA AHORA"
 msgstr "DONATE NOW"
 
@@ -3386,6 +3386,17 @@ msgid ""
 "¡Enhorabuena! Todos los productos de nivel 3 tienen alternativas coherentes"
 msgstr "Congratulations! All level 2 products have coherent alternatives"
 
+#: templates/lactancia/partial_boletin_icontact.html:189
+msgid "<strong>Únete</strong> a nuestro boletín"
+msgstr "<strong>Join</strong> our newsletter"
+
+#: templates/lactancia/partial_boletin_icontact.html:191
+msgid ""
+"Recibe información actualizada, novedades y noticias sobre la lactancia, el "
+"proyecto e-lactancia y otras iniciativas de APILAM"
+msgstr ""
+"Get updated info, tips and news about breastfeeding, e-lactancia project and other initiatives from APILAM"
+
 #: templates/lactancia/partial_citation.html:7
 #: templates/lactancia/partial_citation_b3.html:3
 msgid "Cómo citar esta ficha"
@@ -3565,8 +3576,8 @@ msgid ""
 "Muchas mujeres se ven obligadas a interrumpir sus lactancias pese a que "
 "pocas situaciones lo justifican."
 msgstr ""
-"Many women are forced to interrupt nursing although few situations "
-"justify it."
+"Many women are forced to interrupt nursing although few situations justify "
+"it."
 
 #: templates/lactancia/partial_donativos_header.html:13
 msgid "Madres y bebés te necesitan. Salva lactancias. Dona ahora."

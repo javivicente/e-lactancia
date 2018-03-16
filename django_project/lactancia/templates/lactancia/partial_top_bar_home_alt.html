@@ -22,12 +22,9 @@
                     {# BOTON SUSCRIPCION #}
                     <a class="btn btn-mail outline" id="top_btn_suscripcion" href="#subscribe" rel="nofollow" onclick="$('#subscribe').modal('show');"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;{% trans 'Suscríbete' %}</a>
                 </li> 
-                <li class="hidden-xs">{# BOTON DONAR PAYPAL #}
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="{% if LANGUAGE_CODE == 'es' %}4BLX2BB5A8KYY{% else %}BLSTZ4B6QGTJQ{% endif %}">
-                            <input class="btn round btn-donate" id="top_btn_donar" type="submit" value="{% trans 'DONA AHORA' %}"/>
-                    </form>
+                <li class="hidden-xs">{# BOTON DONAR #}
+                    
+                    <input type="button" class="btn round btn-donate"  id="#top_btn_donar" value="{% trans 'DONA AHORA' %}" onclick="location.href ={% url 'lactancia:donativos' %};" style="margin-left:15px;">
                 </li>
                 <li>
                 {% block idiomas %}        
