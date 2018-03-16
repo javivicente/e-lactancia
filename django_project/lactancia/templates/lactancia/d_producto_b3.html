@@ -507,11 +507,13 @@
                     </form>
                 </div>
                 
+                {% comment %}
                 <h4 class="risk-header text-uppercase">{% trans "¿Necesitas más información?" %} 
                 </h4>
                 <div class="row" style="margin: 20px 20px 20px 5px;">
                     <p>{% trans 'Escríbenos a elactancia.org@gmail.com' %}</p>
                 </div>
+                {% endcomment %}
             </div>
             <div class="col-sm-6 col-md-4">
                 {% block citation %}
@@ -521,6 +523,11 @@
         </div>
     </div>
 </div>
+
+{############# MENSAJE DE CONTACTO SI PROBLEMA Y FAJA DE ENTIDAD RECOMENDADORA ####################}
+{% include 'lactancia/partial_help_recommendations.html' %}
+{##################################################################################################}
+
 
 {% endblock %}
 

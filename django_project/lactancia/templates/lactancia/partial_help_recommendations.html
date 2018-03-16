@@ -1,0 +1,19 @@
+{% load static %} 
+{% load i18n %} 
+
+
+<div class="container">
+    <div class="row top-bottom-margins">
+        <h2 class="text-center blue-text titular-blue-box" style="margin-top:50px;">{% trans "¿No encontraste lo que buscabas o tienes alguna sugerencia?" %}</h2>
+        <p class="lead text-center" style="margin-bottom:100px;">&nbsp;&nbsp;&nbsp;{% trans "Escríbenos a" %} <a class="with-underline" href="mailto:elactancia.org@gmail.com">elactancia.org@gmail.com</a></p>
+        
+    </div>
+</div>
+
+<div class="container-fluid blue">
+    <div class="container">
+        <p class="lead text-center">{% trans "e-lactancia es un recurso recomendado por" %} <a class="with-underline" href="{% url 'lactancia:avales' %}#{{aval.id}}" target="_blank">{{aval.entidad}}{% if aval.pais %} {% trans "de" %} {{aval.pais.nombre}}{% endif %}</a></p>
+        <p class="text-center">{% trans "¿Quieres recomendar el uso de e-lactancia?" %}
+        {% trans "Escríbenos al" %} <a class="with-underline" href="mailto:apilam.es@gmail.com">{% trans "correo corporativo de APILAM" %}</a></span></p>
+    </div>
+</div>

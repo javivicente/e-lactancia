@@ -155,6 +155,18 @@ def get_alert_risk(context):
     context.update({ 'alert_risk': alert_risk, })
     return context
     
+'''returns the message of active alert(s) for risk level change of a product
+    (top button of the top bar)
+'''    
+def get_current_aval(context):
+    aval = cache.get('aval')
+    if aval == None:
+        aval =  Aval.objects.filter(visible=True).order_by('?')[0] 
+        cache.set('aval', aval)
+        
+    context.update({ 'aval': aval})
+    return context    
+    
     
 def load_initial_context():
     PRODS, N_prods = typeahead_productos()
@@ -172,6 +184,7 @@ def load_initial_context():
 
                 }
                 
+    context=get_current_aval(context)
     context=get_alert_risk(context)
     return context 
     
