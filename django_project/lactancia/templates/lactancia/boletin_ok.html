@@ -5,6 +5,11 @@
 
 
 {% block mainpage %}
+<h3>{% trans "Gracias por unirte al boletín de APILAM" %}</h3>
+<p style="margin-bottom: 300px;">{% trans "En unos momentos recibirás un correo de confirmación en tu buzón." %}</p>
+
+
+{% comment %}
     <h3>{% trans "¡Gracias por tu tiempo!" %}</h3>
             
     <p>{% trans "Muchas gracias por suscribirte" %}. {% trans "Has sido añadida/o correctamente a nuestro boletín." %} 
@@ -31,4 +36,6 @@
            <p >{% trans "Nos tomamos tu privacidad muy en serio y empleamos una serie de medidas de seguridad para proteger tu información personal" %}.</p>
         </div>
     </div>
+{% endcomment %}    
+    
 {% endblock %}

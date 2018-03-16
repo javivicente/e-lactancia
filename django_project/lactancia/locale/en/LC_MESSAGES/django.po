@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-16 18:12+0100\n"
+"POT-Creation-Date: 2018-03-16 19:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1876,91 +1876,12 @@ msgid "Gracias por unirte al Boletín"
 msgstr "Thank you for joining the Newsletter"
 
 #: templates/lactancia/boletin_ok.html:8
-#: templates/lactancia/partial_newsletter.html:6
-msgid "¡Gracias por tu tiempo!"
-msgstr "Thank you for your time!"
+msgid "Gracias por unirte al boletín de APILAM"
+msgstr "Thank you for joining the APILAM's newsletter"
 
-#: templates/lactancia/boletin_ok.html:10
-msgid "Muchas gracias por suscribirte"
-msgstr "Thank you for subscribing"
-
-#: templates/lactancia/boletin_ok.html:10
-#: templates/lactancia/partial_newsletter.html:10
-msgid "Has sido añadida/o correctamente a nuestro boletín."
-msgstr "You have successfully been added to our newsletter."
-
-#: templates/lactancia/boletin_ok.html:11
-msgid "Recibirás un correo de confirmación en tu buzón en unos minutos"
-msgstr "You'll receive a confirmation mail in a minute to your inbox"
-
-#: templates/lactancia/boletin_ok.html:12
-#: templates/lactancia/partial_newsletter.html:12
-msgid "Muchas gracias de parte de todo el equipo de e-lactancia APILAM"
-msgstr "Thank you very much from the team of e-lactancia and APILAM"
-
-#: templates/lactancia/boletin_ok.html:14
-#: templates/lactancia/partial_newsletter.html:13
-msgid ""
-"A continuación te mostramos información útil sobre nuestra política de "
-"comunicaciones"
-msgstr "Here are some useful information on our communication policy"
-
-#: templates/lactancia/boletin_ok.html:18
-#: templates/lactancia/partial_newsletter.html:16
-msgid "¿Qué voy a obtener? "
-msgstr "What am I going to get?"
-
-#: templates/lactancia/boletin_ok.html:19
-#: templates/lactancia/partial_newsletter.html:17
-msgid ""
-"Únicamente te mandaremos información relevante relacionada con la lactancia "
-"materna, APILAM y e-lactancia"
-msgstr ""
-"We will only send you relevant information related to breastfeeding, APILAM "
-"and e-lactancia"
-
-#: templates/lactancia/boletin_ok.html:22
-#: templates/lactancia/partial_newsletter.html:19
-msgid "¿Cómo puedo dejar de recibir vuestros correos?"
-msgstr "How can I stop receiving email?"
-
-#: templates/lactancia/boletin_ok.html:23
-#: templates/lactancia/partial_newsletter.html:20
-msgid ""
-"Puedes hacer click en el link que apacerá al final de cualquier correo que "
-"te mandemos para anular tu suscripción de forma segura e instantánea"
-msgstr ""
-"You can click the link at the bottom of any email we send to instantly and "
-"securely unsubscribe"
-
-#: templates/lactancia/boletin_ok.html:26
-#: templates/lactancia/partial_newsletter.html:22
-msgid "¿Cómo puedo asegurarme de que vuestros correos me llegan?"
-msgstr "How can I ensure your email gets to me?"
-
-#: templates/lactancia/boletin_ok.html:27
-#: templates/lactancia/partial_newsletter.html:23
-msgid ""
-"Nos puedes ayudar a llegar a tu buzón de entrada si te tomas unos segundos "
-"para añadir nuestro email (apilam.es@gmail.com) a tu lista de contactos"
-msgstr ""
-"You can help us reach every time your inbox by taking a few seconds right "
-"now to add our email address (apilam.es@gmail.com) to your contacts or safe "
-"sender list"
-
-#: templates/lactancia/boletin_ok.html:30
-#: templates/lactancia/partial_newsletter.html:25
-msgid "¿Mi información está segura?"
-msgstr "Is my information secure?"
-
-#: templates/lactancia/boletin_ok.html:31
-#: templates/lactancia/partial_newsletter.html:26
-msgid ""
-"Nos tomamos tu privacidad muy en serio y empleamos una serie de medidas de "
-"seguridad para proteger tu información personal"
-msgstr ""
-"We value your privacy and use a variety of security measures to protect your "
-"personal information"
+#: templates/lactancia/boletin_ok.html:9
+msgid "En unos momentos recibirás un correo de confirmación en tu buzón."
+msgstr "You'll receive a confirmation mail in a minute to your inbox."
 
 #: templates/lactancia/creditos.html:10 templates/lactancia/creditos.html:11
 msgid "Descubre quiénes están detrás de e-lactancia "
@@ -3644,9 +3565,8 @@ msgid ""
 msgstr "Icons of our results have been graciously given by Flaticon"
 
 #: templates/lactancia/partial_help_recommendations.html:7
-msgid "¿No encontraste lo que buscabas o tienes alguna sugerencia?"
-msgstr ""
-"Did not find what you were looking for or do you have any suggestions?"
+msgid "¿Necesitas más información o no encontraste lo que buscabas?"
+msgstr "Do you need more information or did not found what you were looking for?"
 
 #: templates/lactancia/partial_help_recommendations.html:15
 msgid "e-lactancia es un recurso recomendado por"
@@ -3688,13 +3608,80 @@ msgstr ""
 "By indicating your profile you can evaluate the information of any term "
 "collected in e-lactancia."
 
+#: templates/lactancia/partial_newsletter.html:6
+msgid "¡Gracias por tu tiempo!"
+msgstr "Thank you for your time!"
+
 #: templates/lactancia/partial_newsletter.html:10
 msgid "Muchas gracias por suscribirte,"
 msgstr "Thank you for subscribing,"
 
+#: templates/lactancia/partial_newsletter.html:10
+msgid "Has sido añadida/o correctamente a nuestro boletín."
+msgstr "You have successfully been added to our newsletter."
+
 #: templates/lactancia/partial_newsletter.html:11
 msgid "Recibirás nuestro boletín en la  dirección"
 msgstr "You will receive our newsletter to"
+
+#: templates/lactancia/partial_newsletter.html:12
+msgid "Muchas gracias de parte de todo el equipo de e-lactancia APILAM"
+msgstr "Thank you very much from the team of e-lactancia and APILAM"
+
+#: templates/lactancia/partial_newsletter.html:13
+msgid ""
+"A continuación te mostramos información útil sobre nuestra política de "
+"comunicaciones"
+msgstr "Here are some useful information on our communication policy"
+
+#: templates/lactancia/partial_newsletter.html:16
+msgid "¿Qué voy a obtener? "
+msgstr "What am I going to get?"
+
+#: templates/lactancia/partial_newsletter.html:17
+msgid ""
+"Únicamente te mandaremos información relevante relacionada con la lactancia "
+"materna, APILAM y e-lactancia"
+msgstr ""
+"We will only send you relevant information related to breastfeeding, APILAM "
+"and e-lactancia"
+
+#: templates/lactancia/partial_newsletter.html:19
+msgid "¿Cómo puedo dejar de recibir vuestros correos?"
+msgstr "How can I stop receiving email?"
+
+#: templates/lactancia/partial_newsletter.html:20
+msgid ""
+"Puedes hacer click en el link que apacerá al final de cualquier correo que "
+"te mandemos para anular tu suscripción de forma segura e instantánea"
+msgstr ""
+"You can click the link at the bottom of any email we send to instantly and "
+"securely unsubscribe"
+
+#: templates/lactancia/partial_newsletter.html:22
+msgid "¿Cómo puedo asegurarme de que vuestros correos me llegan?"
+msgstr "How can I ensure your email gets to me?"
+
+#: templates/lactancia/partial_newsletter.html:23
+msgid ""
+"Nos puedes ayudar a llegar a tu buzón de entrada si te tomas unos segundos "
+"para añadir nuestro email (apilam.es@gmail.com) a tu lista de contactos"
+msgstr ""
+"You can help us reach every time your inbox by taking a few seconds right "
+"now to add our email address (apilam.es@gmail.com) to your contacts or safe "
+"sender list"
+
+#: templates/lactancia/partial_newsletter.html:25
+msgid "¿Mi información está segura?"
+msgstr "Is my information secure?"
+
+#: templates/lactancia/partial_newsletter.html:26
+msgid ""
+"Nos tomamos tu privacidad muy en serio y empleamos una serie de medidas de "
+"seguridad para proteger tu información personal"
+msgstr ""
+"We value your privacy and use a variety of security measures to protect your "
+"personal information"
 
 #: templates/lactancia/partial_newsletter.html:42
 #: templates/lactancia/partial_newsletter.html:56
@@ -4437,8 +4424,12 @@ msgstr "accessed"
 msgid "Descargar"
 msgstr "Download"
 
-#~ msgid "¿Necesitas más información?"
-#~ msgstr "Do you need more information?"
+#~ msgid "Muchas gracias por suscribirte"
+#~ msgstr "Thank you for subscribing"
+
+#~ msgid "¿No encontraste lo que buscabas o tienes alguna sugerencia?"
+#~ msgstr ""
+#~ "Did not find what you were looking for or do you have any suggestions?"
 
 #~ msgid "Escríbenos a elactancia.org@gmail.com"
 #~ msgstr "Write us at elactancia.org@gmail.com"
