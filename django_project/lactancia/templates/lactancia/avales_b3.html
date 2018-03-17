@@ -13,12 +13,12 @@
 <div id="{{aval.id}}" style="margin-bottom:120px;"></div>
 <div class="row"> 
   
-  <div class="col-xs-4" >
+  <div class="col-xs-7 col-sm-7 col-md-4" >
     <p class="text-right"><img class="logo" src="{{aval.logo.url}}"></p>
     <p  class="text-right">{{aval.URL}}</p>
   </div>
 
-  <div class="col-xs-6">
+  <div class="col-xs-11 col-sm-10 col-md-6">
     <h2 class="h3">{{aval.entidad}} {% if aval.pais %}({{aval.pais.nombre}}){% endif %}</h2>
     <blockquote >
         <p>{{aval.extracto|safe}}</p>
@@ -35,7 +35,7 @@
 {% for t in textos_avales %}
     {% if t.visible %}
     <div class="row"> 
-       <div class="col-xs-8">
+       <div class="col-xs-10 col-sm-10 col-md-7">
             <h2 class="text-center">{{t.title}}</h2>
             {{ t.content|safe|linebreaks}}
        </div>

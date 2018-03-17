@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-16 19:40+0100\n"
+"POT-Creation-Date: 2018-03-17 11:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1880,8 +1880,10 @@ msgid "Gracias por unirte al boletín de APILAM"
 msgstr "Thank you for joining the APILAM's newsletter"
 
 #: templates/lactancia/boletin_ok.html:9
-msgid "En unos momentos recibirás un correo de confirmación en tu buzón."
-msgstr "You'll receive a confirmation mail in a minute to your inbox."
+msgid ""
+"En unos momentos recibirás un correo en tu buzón para que completes el "
+"proceso de suscripción."
+msgstr "You'll receive a mail in a minute to your inbox so you can complete your subscription."
 
 #: templates/lactancia/creditos.html:10 templates/lactancia/creditos.html:11
 msgid "Descubre quiénes están detrás de e-lactancia "
@@ -3566,7 +3568,8 @@ msgstr "Icons of our results have been graciously given by Flaticon"
 
 #: templates/lactancia/partial_help_recommendations.html:7
 msgid "¿Necesitas más información o no encontraste lo que buscabas?"
-msgstr "Do you need more information or did not found what you were looking for?"
+msgstr ""
+"Do you need more information or did not found what you were looking for?"
 
 #: templates/lactancia/partial_help_recommendations.html:15
 msgid "e-lactancia es un recurso recomendado por"
