@@ -1451,8 +1451,8 @@ msgstr ""
 "\t\t<h2>TERMS OF USE</h2>\n"
 "\t\n"
 "\t\t<p>These legal conditions regulate the use of this website (hereafter "
-"<strong>e-lactancia.org</strong>) that the Association for the Promotion and "
-"Cultural  and Scientific Research of Breastfeeding (hereinafter APILAM) "
+"<strong>e-lactancia.org</strong>) that the Association for Promotion of and "
+"Cultural  and Scientific Research into Breastfeeding (hereinafter APILAM) "
 "makes available to users of Internet. This page is for the general public "
 "but the recommendations contained in it are not intended to replace your "
 "relationship with your doctor, but to compound it.</p>\n"
@@ -1742,8 +1742,8 @@ msgid ""
 "by-nc-sa/4.0/\">Licencia Internacional Creative Commons</a>"
 msgstr ""
 "e-lactancia is a project of <a class='white-text' href='http://apilam.org/' "
-"target='_blank'>APILAM</a>, association for promotion and cultural and "
-"scientific research of breastfeeding, under a  <a class='white-text' "
+"target='_blank'>APILAM</a>, association for promotion of and cultural and "
+"scientific research into breastfeeding, under a  <a class='white-text' "
 "target='_blank' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'> "
 "Creative Commons Internacional License</a>"
 
@@ -3161,7 +3161,7 @@ msgstr "Do you want to sponsor e-lactancia?"
 #: templates/lactancia/home-b3.html:114
 #: templates/lactancia/partial_help_recommendations.html:8
 msgid "Escríbenos a"
-msgstr "Write us at"
+msgstr "Write to us at"
 
 #: templates/lactancia/landing.html:35
 #: templates/lactancia/partial_home_header.html:16
@@ -3298,7 +3298,7 @@ msgstr ""
 #: templates/lactancia/partial_citation.html:7
 #: templates/lactancia/partial_citation_b3.html:3
 msgid "Cómo citar esta ficha"
-msgstr "How to cite this file"
+msgstr "How to cite this entry"
 
 #: templates/lactancia/partial_comments_terms.html:7
 msgid "Error al enviar tu comentario"
@@ -3552,7 +3552,7 @@ msgid ""
 msgstr ""
 "e-lactancia is a project of <a class='white-text with-underline' "
 "href='http://apilam.org/' target='_blank'>APILAM</a>, Association for "
-"Promotion and cultural and scientific Research of Breastfeeding, under a  <a "
+"Promotion of and cultural and scientific Research into Breastfeeding, under a  <a "
 "class='white-text with-underline' target='_blank' href='http://"
 "creativecommons.org/licenses/by-nc-sa/4.0/'> Creative Commons Internacional "
 "License</a>"
@@ -3577,7 +3577,7 @@ msgstr "e-lactancia is a resource recommended by"
 
 #: templates/lactancia/partial_help_recommendations.html:16
 msgid "¿Quieres recomendar el uso de e-lactancia?"
-msgstr "Do you want to endorse the use of e-lactancia?"
+msgstr "Would you like to recommend the use of e-lactancia?"
 
 #: templates/lactancia/partial_help_recommendations.html:17
 msgid "Escríbenos al"
@@ -3713,7 +3713,7 @@ msgstr ""
 
 #: templates/lactancia/partial_pink_donation.html:14
 msgid "Gracias por ayudar a seguir salvando lactancias."
-msgstr "Thank you for helping rescuing breastfeeding."
+msgstr "Thank you for helping to protect and promote breastfeeding."
 
 # mark to review!
 #: templates/lactancia/partial_pink_donation.html:15
@@ -3890,8 +3890,8 @@ msgid ""
 "Registro General de Protección de Datos de la Agencia Española de Protección "
 "de Datos.</p>"
 msgstr ""
-"<p>The Association for the Promotion and Cultural  and Scientific Research "
-"of Breastfeeding, APILAM onwards, with VAT number G98446727, contact address "
+"<p>The Association for Promotion of and Cultural and Scientific Research into "
+"Breastfeeding, APILAM onwards, with VAT number G98446727, contact address "
 "located at Bairén street, 14-1, Gandia (Valencia) SPAIN and mail address <a "
 "href='mailto:apilam.es@gmail.com'>apilam.es@gmail.com</a>, is responsible "
 "for the files containing personal data collected and treated through this "
@@ -4331,8 +4331,8 @@ msgid ""
 "científica y cultural de la Lactancia Materna, APILAM."
 msgstr ""
 "Information about the compatibility of breastfeeding with medical "
-"prescriptions and other products developed by the Association for Promotion "
-"and Cultural and Scientific Research of Breastfeeding, APILAM"
+"prescriptions and other products developed by the Association for Promotion of "
+"and Cultural and Scientific Research into Breastfeeding, APILAM"
 
 #: views.py:200 views.py:204 views.py:208 views.py:212
 msgid "Nivel de riesgo para la lactancia según e-lactancia.org"
@@ -4392,7 +4392,7 @@ msgid ""
 "APILAM (Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna)"
 msgstr ""
-"APILAM (Association for promotion and cultural and scientific research of "
+"APILAM (Association for promotion of and cultural and scientific research into "
 "breastfeeding)"
 
 #: views.py:2141
@@ -4404,7 +4404,7 @@ msgid ""
 "APILAM: Asociación para la promoción e investigación científica y cultural "
 "de la lactancia materna"
 msgstr ""
-"APILAM: association for promotion and cultural and scientific research of "
+"APILAM: association for promotion of and cultural and scientific research into "
 "breastfeeding"
 
 #: views.py:2141 views.py:2149
