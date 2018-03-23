@@ -622,19 +622,25 @@ class ProductoForm(ModelForm):
                    for article in self.cleaned_data['biblio']:
                         instance.biblio.add(article)
                                
-                   # second, we add the articles in the csv file                        
-                   file = self.cleaned_data['csvfile']
-                   if file and file.name.endswith('.csv'):
-                        records = csv.reader(file)
-                        for line in records:
-                                if line[0] != 'Title':
-                                        b, created = Bibliografia.objects.get_or_create(
-                                                    titulo=line[0],
-                                                    autores=line[2],
-                                                    publicacion = line[4][:-4],
-                                                    anyo = line[4][-4:],
-                                                    abstract_link="http://www.ncbi.nlm.nih.gov"+ line[1])
-                                        instance.biblio.add(b)
+                   # second, we add the articles in the csv file    
+                   # BUT ONLY IN CASE THE FILE HAS CHANGED
+                   # (this is the desired behaviour for administrators since they might
+                   # edit the list AFTER the CSV is loaded and remove some item(s).
+                   # If we dont control this, each time the product is saved the list of
+                   # papers from the csv will override their content paper curation.)
+                   if instance.csvfile != self.cleaned_data['csvfile']:
+                       file = self.cleaned_data['csvfile']
+                       if file and file.name.endswith('.csv'):
+                            records = csv.reader(file)
+                            for line in records:
+                                    if line[0] != 'Title':
+                                            b, created = Bibliografia.objects.get_or_create(
+                                                        titulo=line[0],
+                                                        autores=line[2],
+                                                        publicacion = line[4][:-4],
+                                                        anyo = line[4][-4:],
+                                                        abstract_link="http://www.ncbi.nlm.nih.gov"+ line[1])
+                                            instance.biblio.add(b)
                 self.save_m2m = save_m2m
 
                 
