@@ -1396,11 +1396,10 @@ def alerta_riesgos(request):
  
 
 def creditos(request):
-    try:
-        textos = Docs.objects.filter(type='c').order_by('order')
-    except Docs.DoesNotExist:
-        textos = None
-
+    textos = cache.get('textos_creditos')
+    if textos == None:
+        textos = Docs.objects.filter(type='c', visible=True).order_by('order')
+        cache.set('textos_creditos', textos)
 
     context = {
                  'textos': textos,
