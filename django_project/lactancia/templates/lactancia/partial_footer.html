@@ -109,24 +109,24 @@
                             {# BOTON SUSCRIPCION #}
                             <a class="btn btn-mail outline" href="#subscribe" rel="nofollow" onclick="$('#subscribe').modal('show');" style="margin-top:10px;"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;{% trans 'Suscríbete' %}</a>
                         
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            
-            
-            {#  bloque políticas#}
-            <div class="row">
-                {% comment %}
-                <div class="row">
-                 <div class="col-xs-12">
-                    <ul class="list-unstyled list-inline" >
-                        <li><small>{% trans "Busque y lea con detenimiento la información disponible en el sitio sobre su consulta. Si todavía tiene dudas, escríbanos a" %} <a class="white-text" href="mailto:apilam.es@gmail.com" >apilam.es@gmail.com</a></small></li>
-                     </ul>
-                 </div>
+            {# BLOQUE HONCODE #}
+            <div class="row" style="margin-top:30px;">
+                
+                <div class="col-xs-12 col-sm-12 col-md-6 ">
+                {% if LANGUAGE_CODE == 'es' %}
+                    <p><a href="https://www.healthonnet.org/HONcode/Spanish/?HONConduct836892" onclick="window.open(this.href); return false;" > <img src="https://www.honcode.ch/HONcode/Seal/HONConduct836892_hr2.gif" style="border:0px; width: 69px; height: 31px; float: left; margin: 2px;" title="Nosotros subscribimos Los Principios del código HONcode de la Fundación Salud en la Red" alt="Nosotros subscribimos Los Principios del código HONcode de la Fundación Salud en la Red" /></a> Nosotros subscribimos los <a class="white-text with-underline" href="http://www.healthonnet.org/HONcode/Spanish/" onclick="window.open(this.href); return false;"> Principios del código HONcode</a>. <br /><a href="https://www.healthonnet.org/HONcode/Spanish/?HONConduct836892" class="white-text with-underline" onclick="window.open(this.href); return false;">Compru&eacute;belo aquí</a>. </p>
+                {% else %}
+                    <p><a href="https://www.healthonnet.org/HONcode/Conduct.html?HONConduct836892" onclick="window.open(this.href); return false;" > <img src="https://www.honcode.ch/HONcode/Seal/HONConduct836892_hr1.gif" style="border:0px; width: 49px; height: 72px; float: left; margin: 2px;" title="This website is certified by Health On the Net Foundation. Click to verify." alt="This website is certified by Health On the Net Foundation. Click to verify." /></a> This site complies with the <a class="white-text with-underline" href="http://www.healthonnet.org/HONcode/Conduct.html" onclick="window.open(this.href); return false;"> HONcode standard for trustworthy health</a> information: <br /><a href="https://www.healthonnet.org/HONcode/Conduct.html?HONConduct836892" class="white-text with-underline" onclick="window.open(this.href); return false;">verify here.</a> </p>
+                {% endif %}
                 </div>
-                {% endcomment %}
-                <div class="col-xs-12 footer_politicas">
+                
+                
+                {# políticas #}
+                <div class="col-xs-12 col-sm-12 col-md-6 ">
                     <ul class="list-unstyled list-inline" >
                       <li><small><a class="white-text" href="{% url 'lactancia:aviso_legal' %}" rel="nofollow">{% trans 'Aviso legal' %}</a></small></li>
                       <li>|</li>
@@ -135,6 +135,7 @@
                       <li><small><a class="white-text" href="{% url 'lactancia:cookies' %}" rel="nofollow">{% trans 'Política de cookies' %}</a></small></li>
                     </ul>
                 </div>
+                {# desarrolladores #}
                 <div class="col-xs-12 footer_desarrollos">
                      <ul class="list-unstyled list-inline">
                         <li><small><a class="white-text" href="http://baptistepons.com" target="_blank">{% trans 'Diseño: Baptiste Pons' %}</a></small></li>
@@ -153,10 +154,11 @@
                 </div>
             {% endif %}
             {% endblock %}
+                
+                
             </div>
+            {% endblock %}
           
-          </div>
-          {% endblock %}
           
       </div>
     </footer>

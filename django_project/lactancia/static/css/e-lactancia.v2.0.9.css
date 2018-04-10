@@ -1510,7 +1510,7 @@ input[type='radio'], label{
   position: absolute;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 1200px;
+  height: 1350px;
   color: #fff;
   background-color: #4db2d0;
   padding: 50px;
@@ -1544,7 +1544,7 @@ text-align: center;
     
 }
 .footer_desarrollos{
-    margin: 0px 15px;
+    margin: 30px 0px;
 }
 
 .links-sm-footer > li{
@@ -1656,7 +1656,7 @@ hidden-xs{
         }
         
         .footer {
-        height: 800px;
+        height: 810px;
         padding: 50px;
         }
 
@@ -1788,7 +1788,7 @@ hidden-xs{
      
     .footer {
     /* Set the fixed height of the footer here */
-    height: 500px;
+    height: 560px;
     padding: 50px 0px;
   }
   
@@ -1922,7 +1922,7 @@ hidden-xs{
     
     .footer {
     /* Set the fixed height of the footer here */
-    height: 380px;
+    height: 440px;
     padding: 50px 0px;
   }
   
