@@ -34,20 +34,6 @@ from django.templatetags.static import static
 timeout = 60 * 2 # Default cache timeout is 300 (5 mins) use this (1hour) for things that do not change very often
 PROJECT_PATH = '/home/django'
 
-json_data=file(PROJECT_PATH +'/media/visitas_grupos.json','r')
-visitas_grupos = json.loads(json_data.read())
-
-json_data=file(PROJECT_PATH +'/media/visitas_productos.json','r')
-visitas_productos = json.loads(json_data.read())
-
-json_data=file(PROJECT_PATH +'/media/visitas_alias.json','r')
-visitas_sinonimos = json.loads(json_data.read())
-
-json_data=file(PROJECT_PATH +'/media/visitas_escrituras.json','r')
-visitas_escrituras = json.loads(json_data.read())
-
-json_data=file(PROJECT_PATH +'/media/visitas_marcas.json','r')
-visitas_marcas = json.loads(json_data.read())
 
 
 def index(request):
