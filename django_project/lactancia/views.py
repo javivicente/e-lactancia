@@ -696,27 +696,37 @@ def get_visits(item):
 def get_visits(item):
     iam = item.dime_que_eres()
     if iam==u'grupo':
-        for v in visitas_grupos:
-            if v['id']==item.id:
-                return v['visits']
+        try:
+            v = Visita_grupo_total.objects.get(grupo=item.pk)
+            return v.visitas
+        except Visita_grupo_total.DoesNotExist:
+            return 0
     elif iam==u'marca':
-        for v in visitas_marcas:
-            if v['id']==item.id:
-                return v['visits']
+        try:
+            v = Visita_marca_total.objects.get(marca=item.pk)
+            return v.visitas
+        except Visita_marca_total.DoesNotExist:
+            return 0
     elif iam==u'alias':
-        for v in visitas_sinonimos:
-            if v['id']==item.id:
-                return v['visits']
+        try:
+            v = Visita_alias_total.objects.get(alias=item.pk)
+            return v.visitas
+        except Visita_alias_total.DoesNotExist:
+            return 0
     elif iam==u'producto':
-        for v in visitas_productos:
-            if v['id']==item.id:
-                return v['visits']
+        try:
+            v = Visita_producto_total.objects.get(producto=item.pk)
+            return v.visitas
+        except Visita_producto_total.DoesNotExist:
+            return 0
     elif iam==u'otra_escritura':
-        for v in visitas_escrituras:
-            if v['id']==item.id:
-                return v['visits']
+        try:
+            v = Visita_otras_escrituras_total.objects.get(otras_escrituras=item.pk)
+            return v.visitas
+        except Visita_otras_escrituras_total.DoesNotExist:
+            return 0
     
-    return [0]*15           
+    return 0           
                 
                 
 def get_client_ip(request):
@@ -1524,6 +1534,8 @@ def limpia_cache(request):
 ''' CALCULO DE VISITAS '''
 def calculate_visits():
     
+    PROJECT_PATH = '/home/django'
+    
     grupos_all = Grupo.objects.all().order_by('id')
     for p in grupos_all:
     
@@ -1534,14 +1546,8 @@ def calculate_visits():
         visita.visitas = aux
         visita.save()
         
-        '''
-        # salvamos en número de visitas total por perfil de usuario:
-        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
-            visita, created = Visita_grupo_perfil.objects.get_or_create(grupo=p,perfil=i)
-            visita.visitas = aux.filter(user__perfil=i).count()
-            visita.save()
-        '''
         
+            
     productos_all = Producto.objects.all().order_by('id')
     for p in productos_all:
     
@@ -1552,13 +1558,6 @@ def calculate_visits():
         visita.visitas = aux
         visita.save()
         
-    '''
-        # salvamos en número de visitas total por perfil de usuario:
-        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
-            visita, created = Visita_producto_perfil.objects.get_or_create(producto=p,perfil=i)
-            visita.visitas = aux.filter(user__perfil=i).count()
-            visita.save()
-    '''
         
     otras_escrituras_all = Otras_escrituras.objects.all().order_by('id')
     for p in otras_escrituras_all:
@@ -1570,13 +1569,6 @@ def calculate_visits():
         visita.visitas = aux
         visita.save()
         
-    '''
-        # salvamos en número de visitas total por perfil de usuario:
-        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
-            visita, created = Visita_otras_escrituras_perfil.objects.get_or_create(otras_escrituras=p,perfil=i)
-            visita.visitas = aux.filter(user__perfil=i).count()
-            visita.save()
-    '''
         
     alias_all = Alias.objects.all().order_by('id')
     for p in alias_all:
@@ -1587,14 +1579,6 @@ def calculate_visits():
         visita, created = Visita_alias_total.objects.get_or_create(alias=p)
         visita.visitas = aux
         visita.save()
-    '''    
-    
-        # salvamos en número de visitas total por perfil de usuario:
-        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
-            visita, created = Visita_alias_perfil.objects.get_or_create(alias=p,perfil=i)
-            visita.visitas = aux.filter(user__perfil=i).count()
-            visita.save()
-    '''    
             
     
     marcas_all = Marca.objects.all().order_by('id')
@@ -1607,13 +1591,6 @@ def calculate_visits():
         visita.visitas = aux
         visita.save()
         
-    '''
-        # salvamos en número de visitas total por perfil de usuario:
-        for i in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']:
-            visita, created = Visita_marca_perfil.objects.get_or_create(marca=p,perfil=i)
-            visita.visitas = aux.filter(user__perfil=i).count()
-            visita.save()
-    '''
     return 0
     
 ''' ESTADISTICAS '''
