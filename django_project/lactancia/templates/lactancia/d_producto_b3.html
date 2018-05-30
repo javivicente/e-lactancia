@@ -76,13 +76,13 @@
                                         <ul class="inline">
                                         {% for ref in prod.referencia_otros_productos.all|dictsort:"nombre" %}
                                             <li><a 
-                                                  {% if prod.riesgo.nivel == 0 %}
+                                                  {% if ref.riesgo.nivel == 0 %}
                                                     class="link_r0" 
-                                                  {% elif prod.riesgo.nivel == 1 %}
+                                                  {% elif ref.riesgo.nivel == 1 %}
                                                     class="link_r1"
-                                                  {% elif prod.riesgo.nivel == 2 %}
+                                                  {% elif ref.riesgo.nivel == 2 %}
                                                     class="link_r2"
-                                                  {% elif prod.riesgo.nivel == 3 %}
+                                                  {% elif ref.riesgo.nivel == 3 %}
                                                     class="link_r3"
                                                   {% endif %} 
                                                   href="{% url 'lactancia:ficha_producto' ref.slug %}" target="_blank"><strong>{{ ref.nombre }}</strong></a> ({{ref.riesgo.nombre}})</li>
