@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-22 19:05+0200\n"
+"POT-Creation-Date: 2018-05-30 13:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1945,17 +1945,17 @@ msgid "Comunicación"
 msgstr "Communication"
 
 #: templates/lactancia/creditos.html:64
-#: templates/lactancia/creditos_b3.html:61
+#: templates/lactancia/creditos_b3.html:69
 msgid "Licenciada en Periodismo"
 msgstr "Degree in Journalism"
 
 #: templates/lactancia/creditos.html:103
-#: templates/lactancia/creditos_b3.html:109
+#: templates/lactancia/creditos_b3.html:117
 msgid "Cómo citar esta web"
 msgstr "How to cite this website"
 
 #: templates/lactancia/creditos.html:104
-#: templates/lactancia/creditos_b3.html:110
+#: templates/lactancia/creditos_b3.html:118
 msgid ""
 "Puedes citar esta web para tus trabajos científicos. Encontrarás este mismo "
 "desplegable en cada ficha de la web para que puedas hacer citas "
@@ -1966,7 +1966,7 @@ msgstr ""
 "specific products and terms."
 
 #: templates/lactancia/creditos.html:106
-#: templates/lactancia/creditos_b3.html:112
+#: templates/lactancia/creditos_b3.html:120
 msgid ""
 "Si necesitas citar la web de e-lactancia, abajo puedes encontrar varios "
 "formatos de cita, según tus necesidades."
@@ -1975,7 +1975,7 @@ msgstr ""
 "citation formats, according to your needs."
 
 #: templates/lactancia/creditos.html:107
-#: templates/lactancia/creditos_b3.html:113
+#: templates/lactancia/creditos_b3.html:121
 #: templates/lactancia/d_producto_b3.html:604
 #: templates/lactancia/partial_citation.html:8
 msgid ""
@@ -2000,9 +2000,17 @@ msgstr "Degree in pharmacy"
 
 #: templates/lactancia/creditos_b3.html:53
 msgid "Doctora en Farmacia. IBCLC"
-msgstr "Doctor of Pharmacy. IBCLC"
+msgstr "Doctor in Pharmacy. IBCLC"
 
 #: templates/lactancia/creditos_b3.html:60
+msgid "Socia internacional"
+msgstr "International Partner"
+
+#: templates/lactancia/creditos_b3.html:61
+msgid "Doctora en Farmacia. IBFAN y LLL Grecia"
+msgstr "Doctor in Pharmacy. IBFAN & LLL Greece"
+
+#: templates/lactancia/creditos_b3.html:68
 msgid "Comunicación y patrocinio"
 msgstr "Communication & sponsorship"
 
@@ -3290,11 +3298,11 @@ msgid ""
 "¡Enhorabuena! Todos los productos de nivel 3 tienen alternativas coherentes"
 msgstr "Congratulations! All level 2 products have coherent alternatives"
 
-#: templates/lactancia/partial_boletin_icontact.html:189
+#: templates/lactancia/partial_boletin_icontact.html:7
 msgid "<strong>Únete</strong> a nuestro boletín"
 msgstr "<strong>Join</strong> our newsletter"
 
-#: templates/lactancia/partial_boletin_icontact.html:191
+#: templates/lactancia/partial_boletin_icontact.html:9
 msgid ""
 "Recibe información actualizada, novedades y noticias sobre la lactancia, el "
 "proyecto e-lactancia y otras iniciativas de APILAM"
@@ -4016,7 +4024,7 @@ msgstr ""
 "information and we treat the information provided by the interested persons "
 "with the following purpose for each capture system:"
 
-#: templates/lactancia/privacidad-b3.html:42
+#: templates/lactancia/privacidad-b3.html:43
 msgid ""
 "Formulario de suscripción a contenidos: Solicitamos los siguientes datos "
 "personales: Nombre, Email, para gestionar la lista de suscripciones, enviar "
@@ -4042,7 +4050,7 @@ msgstr ""
 "target=\"_blank\">here</a>, approved by the European Committee of Data "
 "Protection."
 
-#: templates/lactancia/privacidad-b3.html:44
+#: templates/lactancia/privacidad-b3.html:46
 msgid ""
 "Formulario de donativos: El usuario dispone de diferentes formularios de "
 "donativos sujetos a las condiciones de donación donde se le requerirán datos "
@@ -4050,14 +4058,19 @@ msgid ""
 "teléfono, dirección completa. Informamos de que los datos que nos facilites, "
 "incluidos los datos de pago serán recabados y gestionados por la pasarela de "
 "pago PayPal ubicada en Europa."
-msgstr "Donation form: The user has different forms for donations subject to the conditions of donation where contact and payment information will be required such as: Name, surname, ID, email, telephone, full address. We inform you that the data you provide, including payment information, will be collected and managed by the PayPal payment gateway located in Europe."
+msgstr ""
+"Donation form: The user has different forms for donations subject to the "
+"conditions of donation where contact and payment information will be "
+"required such as: Name, surname, ID, email, telephone, full address. We "
+"inform you that the data you provide, including payment information, will be "
+"collected and managed by the PayPal payment gateway located in Europe."
 
-#: templates/lactancia/privacidad-b3.html:46
+#: templates/lactancia/privacidad-b3.html:49
 #: templates/lactancia/privacidad.html:47
 msgid "<h3>EJERCICIO DE DERECHOS</h3>"
 msgstr "<h3>EXERCISE OF RIGHTS</h3>"
 
-#: templates/lactancia/privacidad-b3.html:47
+#: templates/lactancia/privacidad-b3.html:50
 #: templates/lactancia/privacidad.html:48
 msgid ""
 "En cualquier momento podrá ejercer los Derechos de acceso, rectificación, "
@@ -4072,12 +4085,12 @@ msgstr ""
 "license or passport) by email to <a href='mailto:apilam.es@gmail.com'>apilam."
 "es@gmail.com</a>."
 
-#: templates/lactancia/privacidad-b3.html:49
+#: templates/lactancia/privacidad-b3.html:52
 #: templates/lactancia/privacidad.html:50
 msgid "<h3>VERSIÓN</h3>"
 msgstr "<h3>VERSION</h3>"
 
-#: templates/lactancia/privacidad-b3.html:50
+#: templates/lactancia/privacidad-b3.html:53
 msgid ""
 "Esta política de privacidad es de fecha 22/05/2018 y cualquier modificación "
 "de sus términos será publicada en esta página web."
