@@ -183,7 +183,16 @@ class Producto(models.Model):
     def num_biblio(self):
         return (self.biblio.count())
     num_biblio.short_description=_(u'Nº refs. bibliográficas')
-
+    
+    def biblio_en_vancouver(self):
+        for b in self.biblio.all():
+            if b.tiene_detalle() == False:
+                return False
+        return True
+    biblio_en_vancouver.boolean=True
+    biblio_en_vancouver.short_description=_(u'Biblio en formato Vancouver')
+    
+    
     def hay_marcas(self):
         return (self.marcas.count() > 0)
     hay_marcas.boolean=True
@@ -299,6 +308,12 @@ class Bibliografia(models.Model):
     tiene_pdf.admin_order_field='nombre'
     tiene_pdf.boolean=True
     tiene_pdf.short_description=_(u'PDF adjunto')
+    
+    def tiene_detalle(self):
+        return (self.detalle_publicacion is not None)
+    tiene_pdf.admin_order_field='nombre'
+    tiene_pdf.boolean=True
+    tiene_pdf.short_description=_(u'Tiene formato Vancouver')
 
     def obten_productos(self):
         return ";\n".join([p.nombre for p in self.productos.all()])

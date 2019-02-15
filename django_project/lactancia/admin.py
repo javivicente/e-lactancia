@@ -765,7 +765,7 @@ class ProductoAdmin(ExportMixin, admin.ModelAdmin):
         
     form = ProductoForm
     resource_class = ProductoResource
-    list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'num_biblio', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
+    list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'obten_marcas', 'num_biblio','biblio_en_vancouver', 'es_principio_activo','opiniones_pendientes','visitas', 'fecha_modificacion','traducido_al_ingles',)
     #list_display = ('nombre', 'riesgo', 'obten_alternativas', 'obten_grupos', 'num_marcas', 'tiene_biblio','num_biblio', 'es_principio_activo','opiniones_pendientes', 'fecha_modificacion','traducido_al_ingles',)
     list_filter = ( 'riesgo', 'grupo', )
     ordering = ('nombre',)
