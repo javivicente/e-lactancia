@@ -61,6 +61,7 @@ class Migration(migrations.Migration):
                 ('titulo', models.CharField(max_length=1000, verbose_name='T\xedtulo')),
                 ('autores', models.CharField(max_length=1000, null=True, verbose_name='Autores', blank=True)),
                 ('publicacion', models.CharField(max_length=1000, null=True, verbose_name='Revista', blank=True)),
+                ('detalle_publicacion', models.CharField(max_length=1000, null=True, verbose_name='Referencia_completa', blank=True)),
                 ('anyo', models.PositiveSmallIntegerField(null=True, verbose_name='A\xf1o', blank=True)),
                 ('abstract_link', models.URLField(help_text='Enlace al abstract del art\xedculo', max_length=500, null=True, blank=True)),
                 ('full_text_link', models.URLField(help_text='Enlace al texto completo del art\xedculo', max_length=500, null=True, blank=True)),

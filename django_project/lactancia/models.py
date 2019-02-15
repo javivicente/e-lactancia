@@ -275,6 +275,7 @@ class Bibliografia(models.Model):
     titulo = models.CharField(_(u'Título'),max_length=1000, unique=False)
     autores = models.CharField(_(u'Autores'), max_length=1000, blank=True, null=True)
     publicacion = models.CharField(_(u'Revista'), max_length=1000, blank=True, null=True)
+    detalle_publicacion = models.CharField(_(u'Referencia_completa'), max_length=1000, blank=True, null=True)
     anyo = models.PositiveSmallIntegerField(verbose_name=_(u'Año'), blank=True, null=True)
     abstract_link = models.URLField(max_length=500, blank=True, null=True, help_text=_(u'Enlace al abstract del artículo'))
     full_text_link = models.URLField(max_length=500, blank=True, null=True, help_text=_(u'Enlace al texto completo del artículo'))

@@ -442,7 +442,12 @@
                             {% if prod.hay_biblio %}
                                 <ol>
                                     {% for biblio in prod.biblio.all|dictsortreversed:"anyo" %}
-                                        <li>{{biblio.autores}} <em>{{ biblio.titulo }}</em> <strong>{{biblio.publicacion}}</strong> <strong>{{biblio.anyo}}</strong>
+                                        <li>{{biblio.autores}} <em>{{ biblio.titulo }}</em> 
+                                        {% if biblio.detalle_publicacion  %}
+                                        <strong>{{biblio.detalle_publicacion}}</strong>
+                                        {% else %}
+                                        <strong>{{biblio.publicacion}}</strong> <strong>{{biblio.anyo}}</strong>
+                                        {% endif %}
                                         {% if biblio.abstract_link  %}
                                             <a class="btn btn-link" href="{{biblio.abstract_link}}" target="_blank">{% trans "Resumen" %}</a>
                                         {% endif %}

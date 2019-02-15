@@ -392,6 +392,7 @@ class BiblioForm(ModelForm):
                         'titulo': AutosizedTextarea(attrs={'rows': 1, 'class': 'span12'}),
                         'publicacion': AutosizedTextarea(attrs={'rows': 1, 'class': 'span8'}),
                         'anyo': AutosizedTextarea(attrs={'rows': 1, 'class': 'input-small'}),
+                        'detalle_publicacion': AutosizedTextarea(attrs={'rows': 1, 'class': 'span8'}),
                         'productos': Select2MultipleWidget(attrs={'rows': 5, 'class': 'span12'}),
                         }
                 fields= '__all__'
@@ -457,6 +458,7 @@ class BiblioResource(resources.ModelResource):
                    'autores',
                    'publicacion',
                    'anyo',
+                   'detalle_publicacion',
                    'productos',
                    'abstract_link',
                    'full_text_link',
@@ -467,6 +469,7 @@ class BiblioResource(resources.ModelResource):
                    'autores',
                    'publicacion',
                    'anyo',
+                   'detalle_publicacion',
                    'productos',
                    'abstract_link',
                    'full_text_link',
@@ -500,7 +503,7 @@ class BibliografiaAdmin(ExportMixin, admin.ModelAdmin):
         fieldsets = (
                 (None, {
                         'classes': ('wide',),
-                        'fields': ('autores','titulo','publicacion', 'anyo')
+                        'fields': ('autores','titulo','publicacion', 'anyo', 'detalle_publicacion',)
                 }),
                 (_(u'Enlaces'), {
                         'fields': ('abstract_link', 'full_text_link','pdf')
@@ -638,8 +641,12 @@ class ProductoForm(ModelForm):
                                                         titulo=line[0],
                                                         autores=line[2],
                                                         publicacion = line[4][:-4],
-                                                        anyo = line[4][-4:],
-                                                        abstract_link="http://www.ncbi.nlm.nih.gov"+ line[1])
+                                                        anyo = line[4][-4:]
+                                                        )
+                                            
+                                            b.abstract_link="http://www.ncbi.nlm.nih.gov"+ line[1]
+                                            b.detalle_publicacion = line[3].split(' doi')[0]
+                                            b.save()
                                             instance.biblio.add(b)
                 self.save_m2m = save_m2m
 
