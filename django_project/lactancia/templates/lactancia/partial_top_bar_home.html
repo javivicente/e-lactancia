@@ -31,7 +31,6 @@
                             <input class="btn round btn-donate" id="top_btn_donar" type="submit" value="{% trans 'DONA AHORA' %}"/>
                     </form>
                 </li>
-                <li>
                 {% block idiomas %}        
                 <li id="topbar_language">
                         <form action="{% url 'set_language' %}" method="post">
@@ -46,9 +45,9 @@
                                 {% endfor %}
                                 </select>
                         </form>    
-                    </li>
-                {% endblock %}
                 </li>
+                {% endblock %}
+                
             </ul>
         </div><!--/.nav-collapse -->
       </div>

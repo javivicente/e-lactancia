@@ -26,7 +26,6 @@
                     
                     <input type="button" class="btn round btn-donate"  id="#top_btn_donar" value="{% trans 'DONA AHORA' %}" onclick="location.href ={% url 'lactancia:donativos' %};" style="margin-left:15px;">
                 </li>
-                <li>
                 {% block idiomas %}        
                 <li id="topbar_language">
                         <form action="{% url 'set_language' %}" method="post">
@@ -43,7 +42,6 @@
                         </form>    
                     </li>
                 {% endblock %}
-                </li>
             </ul>
         </div><!--/.nav-collapse -->
       </div>

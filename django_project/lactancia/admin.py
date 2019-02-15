@@ -870,10 +870,10 @@ admin.site.register(Mensaje, MensajeAdmin)
 
 
 class ComentarioAdmin(admin.ModelAdmin):
-    list_display = ('user','item_name','lang','leido','fecha_modificacion')
+    list_display = ('user','item_name','comentario','lang','leido','fecha_modificacion')
     list_filter = ('leido','fecha_modificacion', 'user__perfil', 'lang',)
     ordering = ('-fecha_modificacion',)
-    search_fields = ('prod__nombre','alias__nombre', 'marca__nombre', 'grupo__nombre', 'mensaje__nombre')
+    search_fields = ('prod__nombre','alias__nombre','comentario', 'marca__nombre', 'grupo__nombre', 'mensaje__nombre')
     readonly_fields = ('user', 'comentario', 'prod','alias','marca','grupo','mensaje','lang', 'fecha_creacion','fecha_modificacion',)
 
     fieldsets = (
