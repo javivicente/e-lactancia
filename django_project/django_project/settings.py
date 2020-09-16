@@ -81,7 +81,7 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
-ALLOWED_HOSTS = ['188.166.122.21', '178.62.241.18', '0.0.0.0:9000', '127.0.0.1:9000','localhost', 'e-lactancia.org', 'www.e-lactancia.org',u'e-lactancia.org',u'www.e-lactancia.org', 'tupacienteperfecto.com', u'tupacienteperfecto.com', 'www.tupacienteperfecto.com', u'tupacienteperfecto.com']
+ALLOWED_HOSTS += ['188.166.122.21', '178.62.241.18', '0.0.0.0:9000', '127.0.0.1:9000','localhost', 'e-lactancia.org', 'www.e-lactancia.org',u'e-lactancia.org',u'www.e-lactancia.org', 'tupacienteperfecto.com', u'tupacienteperfecto.com', 'www.tupacienteperfecto.com', u'tupacienteperfecto.com']
 
 LANGUAGE_CODE = 'es-ES'
 
