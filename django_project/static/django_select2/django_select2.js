@@ -1,4 +1,4 @@
-(function ($) {
+(function ($) { 
   var init = function ($element, options) {
     $element.select2(options)
   }
