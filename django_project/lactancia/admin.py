@@ -49,13 +49,15 @@ class GrupoResource(resources.ModelResource):
     
     class Meta: 
         model = Grupo
-        fields = ( 'nombre',
+        fields = ( 'id',
+                   'nombre',
                    'relacionados',
                    'num_productos',
                    'visitas',
                    'fecha_modificacion',
                     )
-        export_order = ( 'nombre',
+        export_order = ( 'id',
+                   'nombre',
                    'relacionados',
                    'num_productos',
                    'visitas',
@@ -164,13 +166,13 @@ class MarcaResource(resources.ModelResource):
     
     class Meta: 
         model = Marca
-        fields = ( 'nombre',
+        fields = ( 'id','nombre',
                    'paises',
                    'principios_activos',
                    'visitas',
                    'fecha_modificacion',
                     )
-        export_order = ( 'nombre',
+        export_order = ( 'id','nombre',
                    'paises',
                    'principios_activos',
                    'visitas',
@@ -330,13 +332,13 @@ class Otras_escriturasResource(resources.ModelResource):
     
     class Meta: 
         model = Otras_escrituras
-        fields = ( 'nombre',
+        fields = ( 'id', 'nombre',
                    'producto_principal',
                    'escritura',
                    'visitas',
                    'fecha_modificacion',
                     )
-        export_order = ( 'nombre',
+        export_order = ( 'id', 'nombre',
                    'producto_principal',
                    'escritura',
                    'visitas',
@@ -691,7 +693,7 @@ class ProductoResource(resources.ModelResource):
     
     class Meta: 
         model = Producto
-        fields = ( 'nombre',
+        fields = ( 'id','nombre',
                    'riesgo',
                    'grupos',
                    'comentario',
@@ -713,7 +715,7 @@ class ProductoResource(resources.ModelResource):
                    'num_referencias_biblio',
                    'fecha_modificacion',
                     )
-        export_order = ( 'nombre',
+        export_order = ( 'id','nombre',
                    'riesgo',
                    'grupos',
                    'comentario',
